@@ -19,6 +19,7 @@ var app =
             {
                 that.playing = true;
                 console.log("play");
+                that.play();
                 $("#play .icon").attr("src","icons/pause.png");
             }
         } );
@@ -29,25 +30,46 @@ var app =
         var that = this;
 
         that.queue.push({a,b});
+    },
+
+    play : function()
+    {
+        var that = this;
+
+        var elem = that.queue[0];
+        $("#content").prepend("<div class='textA'>" + elem.a + "</div>");
+        $("#content").prepend("<div class='textB'>" + elem.b + "</div>");
+
+        that.queue.shift();
+
+        console.log("playing");
+
+        setTimeout(function()
+        {
+            if(that.playing)
+            {
+                that.play();
+            }
+        },3000);
+
     }
 }
-
 
 $( document ).ready(function() 
 {
     app.init(document);
 
     app.push("It was the best sandcastle he had ever seen.","C'était le meilleur château de sable qu'il ait jamais vu.");
-    app.push("Red is greener than purple, for sure.","...");
-    app.push("Buried deep in the snow, he hoped his batteries were fresh in his avalanche beacon.","...");
-    app.push("The thick foliage and intertwined vines made the hike nearly impossible.","...");
-    app.push("Little Red Riding Hood decided to wear orange today.","...");
-    app.push("Mothers spend months of their lives waiting on their children.","...");
-    app.push("She was only made the society president because she can whistle with her toes.","...");
-    app.push("Improve your goldfish's physical fitness by getting him a bicycle.","...");
-    app.push("There were a lot of paintings of monkeys waving bamboo sticks in the gallery.","...");
-    app.push("Yeah, I think it's a good environment for learning English.","...");
-    app.push("He always wore his sunglasses at night.","...");
+    app.push("Red is greener than purple, for sure.","Le rouge est plus vert que le violet, c’est sûr.");
+    app.push("Buried deep in the snow, he hoped his batteries were fresh in his avalanche beacon.","Enfoui profondément dans la neige, il espérait que ses batteries étaient neuves dans sa balise d'avalanche.");
+    app.push("The thick foliage and intertwined vines made the hike nearly impossible.","Le feuillage épais et les vignes entrelacées rendaient la randonnée presque impossible.");
+    app.push("Little Red Riding Hood decided to wear orange today.","Le Petit Chaperon Rouge a décidé de porter du orange aujourd'hui.");
+    app.push("Mothers spend months of their lives waiting on their children.","Les mères passent des mois de leur vie à attendre leurs enfants.");
+    app.push("She was only made the society president because she can whistle with her toes.","Elle n’a été nommée présidente de la société que parce qu’elle sait siffler avec ses orteils.");
+    app.push("Improve your goldfish's physical fitness by getting him a bicycle.","Améliorez la forme physique de votre poisson rouge en lui offrant un vélo.");
+    app.push("There were a lot of paintings of monkeys waving bamboo sticks in the gallery.","Il y avait beaucoup de peintures de singes agitant des bâtons de bambou dans la galerie.");
+    app.push("Yeah, I think it's a good environment for learning English.","Oui, je pense que c'est un bon environnement pour apprendre l'anglais.");
+    app.push("He always wore his sunglasses at night.","La nuit, il portait toujours ses lunettes de soleil.");
     app.push("So long and thanks for the fish.","...");
     app.push("He stepped gingerly onto the bridge knowing that enchantment awaited on the other side.","...");
     app.push("The quick brown fox jumps over the lazy dog.","...");
@@ -87,6 +109,8 @@ $( document ).ready(function()
     app.push("When confronted with a rotary dial phone the teenager was perplexed.","...");
     app.push("They're playing the piano while flying in the plane.","...");
     app.push("The tattered work gloves speak of the many hours of hard labor he endured throughout his life.","...");
+
+
 });
 
 
