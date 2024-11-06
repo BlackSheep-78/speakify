@@ -1,0 +1,32 @@
+#menu
+{
+    border: 1px solid grey;
+    border-radius: 5px; 
+    width: 300px;
+    height: 50px;
+    margin:5px auto 5px auto;
+
+    display: flex;
+}
+
+#play
+{
+    border: 1px solid grey;
+    border-radius: 20px; 
+    width: 40px;
+    height: 40px;
+
+    margin: 5px;
+    align-items:center ;
+
+    cursor: pointer;
+}
+
+#content
+{
+    border: 1px solid grey;
+    border-radius: 5px; 
+    width: 300px;
+    height: 500px;
+    margin:5px auto 5px auto;
+}
