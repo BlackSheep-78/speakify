@@ -110,7 +110,6 @@ $( document ).ready(function()
     app.push("They're playing the piano while flying in the plane.","...");
     app.push("The tattered work gloves speak of the many hours of hard labor he endured throughout his life.","...");
 
-
 });
 
 
