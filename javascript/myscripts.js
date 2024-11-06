@@ -12,15 +12,13 @@ var app =
             {
                 that.playing = false;
                 console.log("pause");
-                $(this).html("<center>&#10074;</center>");
-
-
+                $("#play .icon").attr("src","icons/play.png");
             }
             else
             {
                 that.playing = true;
                 console.log("play");
-                $(this).html("<center>&#9658;</center>");
+                $("#play .icon").attr("src","icons/pause.png");
             }
         } );
     }
