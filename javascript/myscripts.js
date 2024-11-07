@@ -87,8 +87,8 @@ $( document ).ready(function()
     app.push("I'd rather be a bird than a fish.","Je préférerais être un oiseau qu'un poisson.");
     app.push("Nobody questions who built the pyramids in Mexico.","Personne ne se demande qui a construit les pyramides au Mexique.");
     app.push("There's a message for you if you look up.","Il y a un message pour vous si vous levez les yeux.");
-    app.push("It was difficult for Mary to admit that most of her workout consisted of exercising poor judgment.","...");
-    app.push("Waffles are always better without fire ants and fleas.","Il était difficile pour Mary d’admettre que la majeure partie de son entraînement consistait à faire preuve d’un mauvais jugement.");
+    app.push("It was difficult for Mary to admit that most of her workout consisted of exercising poor judgment","Il était difficile pour Mary d’admettre que la majeure partie de son entraînement consistait à faire preuve d’un mauvais jugement.");
+    app.push("Waffles are always better without fire ants and fleas.","Les gaufres sont toujours meilleures sans fourmis de feu ni puces.");
     app.push("25 years later, she still regretted that specific moment.","25 ans plus tard, elle regrette encore ce moment précis.");
     app.push("Martha came to the conclusion that shake weights are a great gift for any occasion.","Martha est arrivée à la conclusion que les poids shake sont un excellent cadeau pour toute occasion.");
     app.push("You bite up because of your lower jaw.","Vous mordez à cause de votre mâchoire inférieure.");
