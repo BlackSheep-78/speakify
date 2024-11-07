@@ -7,6 +7,8 @@ var app =
     {  
         var that = this;
 
+        that.ajax();
+
         $( "#play" ).on( "click", function() 
         {
             if(that.playing)
@@ -47,44 +49,39 @@ var app =
         var elem    = that.queue[0];
         var content = $("#content");
 
+        $(content).empty();
+
         if(iteration === 0)
         {
             console.log("iteration 0 : preparing stuff");
 
-            list = [];
+            var list = [];
+            var tmp  = {};
+
+            for(var i = 0; i < elem.length; i++) 
+            {
+                tmp[elem[i].language] = elem[i];
+            }
 
             for(var i = 0; i < schema.length; i++) 
             {
-                schema[i].block = $("<div class='textA'>" + elem.a + "</div>");
+                schema[i].block = $("<div class='textA'>" + tmp[schema[i].language].text + "</div>");
 
                 for(var j = 0; j < schema[i].quantity; j++) 
                 {
                     list.push({language:schema[i].language});
                 }
 
-
                 $(schema[i].block).hide().fadeIn().appendTo(content);
-
-                /*
-                (function () 
-                {
-                    console.log("i:",i);
-                    $(schema[i].block).hide().fadeIn().appendTo(content);
-                })(schema, content,i);
-                */
             };
 
-
-            
-
-            console.log("schema",schema);
-            console.log("list",list);
-            console.log("queue",that.queue);
+            //console.log("schema",schema);
+            //console.log("list",list);
+            //console.log("queue",that.queue);
         }
 
-
-
-
+        that.queue.shift();
+        that.queue.push(elem);
     },
 
     play : function()
@@ -151,6 +148,16 @@ var app =
             }
         },5000);
 
+    },
+
+    ajax : function()
+    {
+        var that = this;
+
+        $.get( "http://localhost/translate/?json=true", function( data ) 
+        {
+          that.queue = JSON.parse(data);
+        });
     }
 }
 
@@ -158,7 +165,6 @@ $(document).ready(function()
 {
     app.init(document);
 
-    app.push("It was the best sandcastle he had ever seen.","C'était le meilleur château de sable qu'il ait jamais vu.");
     app.push("Red is greener than purple, for sure.","Le rouge est plus vert que le violet, c’est sûr.");
     app.push("Buried deep in the snow, he hoped his batteries were fresh in his avalanche beacon.","Enfoui profondément dans la neige, il espérait que ses batteries étaient neuves dans sa balise d'avalanche.");
     app.push("The thick foliage and intertwined vines made the hike nearly impossible.","Le feuillage épais et les vignes entrelacées rendaient la randonnée presque impossible.");
