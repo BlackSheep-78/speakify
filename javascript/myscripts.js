@@ -28,37 +28,77 @@ var app =
     push : function(a,b)
     {
         var that = this;
-
         that.queue.push({a,b});
     },
 
     play : function()
     {
         var that = this;
-
         var elem = that.queue[0];
 
-        $("#content").prepend("<div class='textA'>" + elem.a + "</div>");
-        $("#content").prepend("<div class='textB'>" + elem.b + "</div>");
+        var content   = $("#content");
+        var blockA    = $("<div class='textA'>" + elem.a + "</div>");
+        var blockB    = $("<div class='textB'>" + elem.b + "</div>");
+
+        var progressA = $("<div class='progressA'></div>");
+        var progressB = $("<div class='progressB'></div>");
+
+        var audioA  = $("<audio><source src='sample.mp3' type='audio/mpeg'>Your browser does not support the audio element.</audio>");
+        var audioB  = $("<audio><source src='sample.mp3' type='audio/mpeg'>Your browser does not support the audio element.</audio>");
+
+        $(content).empty();
+
+        $(audioA).appendTo(blockA);
+        $(audioB).appendTo(blockB);
+
+        $(blockA).hide().fadeIn().appendTo(content);
+        $(progressA).hide().fadeIn().appendTo(content);
+        $(blockB).hide().fadeIn().appendTo(content);
+        $(progressB).hide().fadeIn().appendTo(content);
+
+        var progressAini = $(progressA).width();
+        var progressAlen = $(blockA).outerWidth() - progressAini;
+
+        console.log(progressAlen);
+
+        audioA[0].addEventListener('ended', function() 
+        {
+            console.log("ended");
+        }, false);
+
+        audioA[0].addEventListener("canplay",function()
+        {
+            //console.log("Duration:" + audioA[0].duration + " seconds");
+            //console.log("Source:" + audioA[0].src);
+        });
+        
+        audioA[0].addEventListener("timeupdate",function()
+        {
+
+            
+            var width = progressAini + ( progressAlen * (audioA[0].currentTime / audioA[0].duration));
+            $(progressA).width(width + "px");
+
+            console.log(width,progressAini,progressAlen,audioA[0].currentTime,audioA[0].duration);
+        });
+
+        audioA[0].play();
 
         that.queue.shift();
-
-        console.log("playing",elem,that.queue);
-
         that.queue.push(elem);
 
         setTimeout(function()
         {
             if(that.playing)
             {
-                that.play();
+                //that.play();
             }
         },5000);
 
     }
 }
 
-$( document ).ready(function() 
+$(document).ready(function()
 {
     app.init(document);
 
