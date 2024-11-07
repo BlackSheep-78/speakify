@@ -31,6 +31,62 @@ var app =
         that.queue.push({a,b});
     },
 
+    run: function()
+    {
+        var schema = [{language:1,quantity:1},{language:2,quantity:3},{language:3,quantity:2},{language:2,quantity:2}];
+
+        this.loop(schema);
+    },
+
+    loop: function(schema,list,iteration)
+    {
+        var that = this;
+
+        if(typeof(iteration) === 'undefined') { iteration = 0; }
+
+        var elem    = that.queue[0];
+        var content = $("#content");
+
+        if(iteration === 0)
+        {
+            console.log("iteration 0 : preparing stuff");
+
+            list = [];
+
+            for(var i = 0; i < schema.length; i++) 
+            {
+                schema[i].block = $("<div class='textA'>" + elem.a + "</div>");
+
+                for(var j = 0; j < schema[i].quantity; j++) 
+                {
+                    list.push({language:schema[i].language});
+                }
+
+
+                $(schema[i].block).hide().fadeIn().appendTo(content);
+
+                /*
+                (function () 
+                {
+                    console.log("i:",i);
+                    $(schema[i].block).hide().fadeIn().appendTo(content);
+                })(schema, content,i);
+                */
+            };
+
+
+            
+
+            console.log("schema",schema);
+            console.log("list",list);
+            console.log("queue",that.queue);
+        }
+
+
+
+
+    },
+
     play : function()
     {
         var that = this;
