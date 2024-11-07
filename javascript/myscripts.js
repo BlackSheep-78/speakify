@@ -37,12 +37,15 @@ var app =
         var that = this;
 
         var elem = that.queue[0];
+
         $("#content").prepend("<div class='textA'>" + elem.a + "</div>");
         $("#content").prepend("<div class='textB'>" + elem.b + "</div>");
 
         that.queue.shift();
 
-        console.log("playing");
+        console.log("playing",elem,that.queue);
+
+        that.queue.push(elem);
 
         setTimeout(function()
         {
@@ -50,7 +53,7 @@ var app =
             {
                 that.play();
             }
-        },3000);
+        },5000);
 
     }
 }
@@ -70,26 +73,26 @@ $( document ).ready(function()
     app.push("There were a lot of paintings of monkeys waving bamboo sticks in the gallery.","Il y avait beaucoup de peintures de singes agitant des bâtons de bambou dans la galerie.");
     app.push("Yeah, I think it's a good environment for learning English.","Oui, je pense que c'est un bon environnement pour apprendre l'anglais.");
     app.push("He always wore his sunglasses at night.","La nuit, il portait toujours ses lunettes de soleil.");
-    app.push("So long and thanks for the fish.","...");
-    app.push("He stepped gingerly onto the bridge knowing that enchantment awaited on the other side.","...");
-    app.push("The quick brown fox jumps over the lazy dog.","...");
-    app.push("He set out for a short walk, but now all he could see were mangroves and water were for miles.","...");
-    app.push("Normal activities took extraordinary amounts of concentration at the high altitude.","...");
-    app.push("Jason lived his life by the motto : Anything worth doing is worth doing poorly.","...");
-    app.push("When nobody is around, the trees gossip about the people who have walked under them.","...");
-    app.push("Watching the geriatric men’s softball team brought back memories of 3 yr olds playing t-ball.","...");
-    app.push("He would only survive if he kept the fire going and he could hear thunder in the distance.","...");
-    app.push("The sight of his goatee made me want to run and hide under my sister-in-law's bed.","...");
-    app.push("There was no telling what thoughts would come from the machine.","...");
-    app.push("I'd rather be a bird than a fish.","...");
-    app.push("Nobody questions who built the pyramids in Mexico.","...");
-    app.push("There's a message for you if you look up.","...");
+    app.push("So long and thanks for the fish.","Au revoir et merci pour le poisson.");
+    app.push("He stepped gingerly onto the bridge knowing that enchantment awaited on the other side.","Il marcha avec précaution sur le pont, sachant que l'enchantement l'attendait de l'autre côté.");
+    app.push("The quick brown fox jumps over the lazy dog.","Le renard brun rapide saute par-dessus le chien paresseux.");
+    app.push("He set out for a short walk, but now all he could see were mangroves and water were for miles.","Il partit pour une courte promenade, mais maintenant tout ce qu'il pouvait voir c'était des mangroves et de l'eau à des kilomètres à la ronde.");
+    app.push("Normal activities took extraordinary amounts of concentration at the high altitude.","Les activités normales demandaient une concentration extraordinaire à haute altitude.");
+    app.push("Jason lived his life by the motto : Anything worth doing is worth doing poorly.","Jason a vécu sa vie selon la devise : tout ce qui vaut la peine d'être fait vaut la peine d'être mal fait.");
+    app.push("When nobody is around, the trees gossip about the people who have walked under them.","Quand il n'y a personne autour, les arbres racontent des ragots sur les gens qui ont marché sous eux.");
+    app.push("Watching the geriatric men’s softball team brought back memories of 3 yr olds playing t-ball.","Regarder l’équipe de softball masculine gériatrique m’a rappelé des souvenirs d’enfants de 3 ans jouant au t-ball.");
+    app.push("He would only survive if he kept the fire going and he could hear thunder in the distance.","Il ne survivrait que s'il entretenait le feu et s'il pouvait entendre le tonnerre au loin.");
+    app.push("The sight of his goatee made me want to run and hide under my sister-in-law's bed.","La vue de sa barbiche m'a donné envie de courir me cacher sous le lit de ma belle-sœur.");
+    app.push("There was no telling what thoughts would come from the machine.","On ne pouvait pas savoir quelles pensées allaient sortir de la machine.");
+    app.push("I'd rather be a bird than a fish.","Je préférerais être un oiseau qu'un poisson.");
+    app.push("Nobody questions who built the pyramids in Mexico.","Personne ne se demande qui a construit les pyramides au Mexique.");
+    app.push("There's a message for you if you look up.","Il y a un message pour vous si vous levez les yeux.");
     app.push("It was difficult for Mary to admit that most of her workout consisted of exercising poor judgment.","...");
-    app.push("Waffles are always better without fire ants and fleas.","...");
-    app.push("25 years later, she still regretted that specific moment.","...");
-    app.push("Martha came to the conclusion that shake weights are a great gift for any occasion.","...");
-    app.push("You bite up because of your lower jaw.","...");
-    app.push("He was sure the Devil created red sparkly glitter.","...");
+    app.push("Waffles are always better without fire ants and fleas.","Il était difficile pour Mary d’admettre que la majeure partie de son entraînement consistait à faire preuve d’un mauvais jugement.");
+    app.push("25 years later, she still regretted that specific moment.","25 ans plus tard, elle regrette encore ce moment précis.");
+    app.push("Martha came to the conclusion that shake weights are a great gift for any occasion.","Martha est arrivée à la conclusion que les poids shake sont un excellent cadeau pour toute occasion.");
+    app.push("You bite up because of your lower jaw.","Vous mordez à cause de votre mâchoire inférieure.");
+    app.push("He was sure the Devil created red sparkly glitter.","Il était sûr que le Diable avait créé des paillettes rouges étincelantes.");
     app.push("It took me too long to realize that the ceiling hadn't been painted to look like the sky.","...");
     app.push("Sometimes it is better to just walk away from things and go back to them later when you’re in a better frame of mind.","...");
     app.push("I used to live in my neighbor's fishpond, but the aesthetic wasn't to my taste.","...");
