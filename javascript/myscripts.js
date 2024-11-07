@@ -67,12 +67,23 @@ var app =
             {
                 schema[i].block = $("<div class='textA'>" + tmp[schema[i].language].text + "</div>");
 
+                if(tmp[schema[i].language].id)
+                {
+                    schema[i].audio = $("<audio controls src='audio/" + tmp[schema[i].language].id + ".wav'></audio>");
+                }
+
+
                 for(var j = 0; j < schema[i].quantity; j++) 
                 {
                     list.push({language:schema[i].language});
                 }
 
                 $(schema[i].block).hide().fadeIn().appendTo(content);
+
+                if(schema[i].audio)
+                {
+                    $(schema[i].audio).hide().fadeIn().appendTo(content);
+                }
             };
 
             //console.log("schema",schema);
@@ -165,8 +176,6 @@ $(document).ready(function()
 {
     app.init(document);
 
-    app.push("Red is greener than purple, for sure.","Le rouge est plus vert que le violet, c’est sûr.");
-    app.push("Buried deep in the snow, he hoped his batteries were fresh in his avalanche beacon.","Enfoui profondément dans la neige, il espérait que ses batteries étaient neuves dans sa balise d'avalanche.");
     app.push("The thick foliage and intertwined vines made the hike nearly impossible.","Le feuillage épais et les vignes entrelacées rendaient la randonnée presque impossible.");
     app.push("Little Red Riding Hood decided to wear orange today.","Le Petit Chaperon Rouge a décidé de porter du orange aujourd'hui.");
     app.push("Mothers spend months of their lives waiting on their children.","Les mères passent des mois de leur vie à attendre leurs enfants.");
