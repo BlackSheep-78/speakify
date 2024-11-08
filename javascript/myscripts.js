@@ -72,7 +72,6 @@ var app =
                     schema[i].audio = $("<audio controls src='audio/" + tmp[schema[i].language].id + ".wav'></audio>");
                 }
 
-
                 for(var j = 0; j < schema[i].quantity; j++) 
                 {
                     list.push({language:schema[i].language});
