@@ -67,11 +67,13 @@ var app =
             {
                 schema[i].block = $("<div class='textA'>" + tmp[schema[i].language].text + "</div>");
 
+
                 if(tmp[schema[i].language].id)
                 {
-                    schema[i].audio = $("<audio controls src='audio/" + tmp[schema[i].language].id + ".wav'></audio>");
+                    schema[i].audio = $("<audio src='audio/" + tmp[schema[i].language].id + ".wav'></audio>");
                 }
 
+                schema[i].progress = $("<div class='progress'></div>");
 
                 for(var j = 0; j < schema[i].quantity; j++) 
                 {
@@ -84,6 +86,8 @@ var app =
                 {
                     $(schema[i].audio).hide().fadeIn().appendTo(content);
                 }
+
+                $(schema[i].progress).hide().fadeIn().appendTo(content);
             };
 
             //console.log("schema",schema);
@@ -142,8 +146,6 @@ var app =
             
             var width = progressAini + ( progressAlen * (audioA[0].currentTime / audioA[0].duration));
             $(progressA).width(width + "px");
-
-            console.log(width,progressAini,progressAlen,audioA[0].currentTime,audioA[0].duration);
         });
 
         audioA[0].play();
@@ -151,13 +153,6 @@ var app =
         that.queue.shift();
         that.queue.push(elem);
 
-        setTimeout(function()
-        {
-            if(that.playing)
-            {
-                //that.play();
-            }
-        },5000);
 
     },
 
