@@ -149,70 +149,16 @@ var app =
         //that.queue.push(elem);
     },
 
-    play : function()
-    {
-        var that = this;
-        var elem = that.queue[0];
-
-        var content   = $("#content");
-        var blockA    = $("<div class='textA'>" + elem.a + "</div>");
-        var blockB    = $("<div class='textB'>" + elem.b + "</div>");
-
-        var progressA = $("<div class='progressA'></div>");
-        var progressB = $("<div class='progressB'></div>");
-
-        var audioA  = $("<audio><source src='sample.mp3' type='audio/mpeg'>Your browser does not support the audio element.</audio>");
-        var audioB  = $("<audio><source src='sample.mp3' type='audio/mpeg'>Your browser does not support the audio element.</audio>");
-
-        $(content).empty();
-
-        $(audioA).appendTo(blockA);
-        $(audioB).appendTo(blockB);
-
-        $(blockA).hide().fadeIn().appendTo(content);
-        $(progressA).hide().fadeIn().appendTo(content);
-        $(blockB).hide().fadeIn().appendTo(content);
-        $(progressB).hide().fadeIn().appendTo(content);
-
-        var progressAini = $(progressA).width();
-        var progressAlen = $(blockA).outerWidth() - progressAini;
-
-        console.log(progressAlen);
-
-        audioA[0].addEventListener('ended', function() 
-        {
-            console.log("ended");
-        }, false);
-
-        audioA[0].addEventListener("canplay",function()
-        {
-            //console.log("Duration:" + audioA[0].duration + " seconds");
-            //console.log("Source:" + audioA[0].src);
-        });
-        
-        audioA[0].addEventListener("timeupdate",function()
-        {
-
-            
-            var width = progressAini + ( progressAlen * (audioA[0].currentTime / audioA[0].duration));
-            $(progressA).width(width + "px");
-        });
-
-        audioA[0].play();
-
-        that.queue.shift();
-        that.queue.push(elem);
-
-
-    },
-
     ajax : function()
     {
         var that = this;
 
         $.get( "http://localhost/translate/?json=true", function( data ) 
         {
-          that.queue = JSON.parse(data);
+            that.queue = JSON.parse(data);
+
+            console.log("QUEUE",that.queue);
+
         });
     }
 }
