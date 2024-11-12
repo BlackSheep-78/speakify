@@ -1,35 +1,48 @@
 # pip install -u pipenv
 
-
-
 import pyttsx3
-engine = pyttsx3.init() # object creation
+import csv
+
+id = 0
+
+def run(lang,id,text):
+
+    engine = pyttsx3.init() # object creation
+
+    voice = lang
+    sentence = text
+
+    """ RATE"""
+    rate = engine.getProperty('rate')   # getting details of current speaking rate
+                                        #printing current voice rate
+    engine.setProperty('rate', 125)     # setting up new voice rate
 
 
-id = "8"
-voice = 2
-sentence = "Enfoui profondément dans la neige, il espérait que ses batteries étaient neuves dans sa balise d'avalanche."
+    """VOLUME"""
+    volume = engine.getProperty('volume')   #getting to know current volume level (min=0 and max=1)
+    print (volume)                          #printing current volume level
+    engine.setProperty('volume',1.0)    # setting up volume level  between 0 and 1
 
-""" RATE"""
-rate = engine.getProperty('rate')   # getting details of current speaking rate
-                                    #printing current voice rate
-engine.setProperty('rate', 125)     # setting up new voice rate
-
-
-"""VOLUME"""
-volume = engine.getProperty('volume')   #getting to know current volume level (min=0 and max=1)
-print (volume)                          #printing current volume level
-engine.setProperty('volume',1.0)    # setting up volume level  between 0 and 1
-
-"""VOICE"""
-voices = engine.getProperty('voices')       #getting details of current voice
+    """VOICE"""
+    voices = engine.getProperty('voices')       #getting details of current voice
 
 
-#engine.setProperty('voice', voices[0].id)  #changing index, changes voices. o for male
-engine.setProperty('voice', voices[voice].id)   #changing index, changes voices. 1 for female
+    #engine.setProperty('voice', voices[0].id)  #changing index, changes voices. o for male
+    engine.setProperty('voice', voices[voice].id)   #changing index, changes voices. 1 for female
 
-engine.save_to_file(sentence, 'audio/' + id + '.wav')
+    engine.save_to_file(sentence, 'audio/' + str(id) + '.wav')
 
-engine.say(sentence)
-engine.runAndWait()
+    engine.say(sentence)
+    engine.runAndWait()
+
+with open('data.csv', newline='') as csvfile:
+    spamreader = csv.reader(csvfile, delimiter=',', quotechar='"')
+    for row in spamreader:
+
+        run(1,id + 1,row[0])
+        run(2,id + 2,row[1])
+
+        id = id + 2
+
+
 
