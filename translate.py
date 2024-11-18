@@ -9,6 +9,8 @@ def run(lang,id,text):
 
     engine = pyttsx3.init() # object creation
 
+
+
     voice = lang
     sentence = text
 
@@ -20,7 +22,7 @@ def run(lang,id,text):
 
     """VOLUME"""
     volume = engine.getProperty('volume')   #getting to know current volume level (min=0 and max=1)
-    print (volume)                          #printing current volume level
+                             #printing current volume level
     engine.setProperty('volume',1.0)    # setting up volume level  between 0 and 1
 
     """VOICE"""
@@ -35,9 +37,12 @@ def run(lang,id,text):
     engine.say(sentence)
     engine.runAndWait()
 
-with open('data.csv', newline='') as csvfile:
+with open('data.csv', newline='', encoding='utf-8') as csvfile:
     spamreader = csv.reader(csvfile, delimiter=',', quotechar='"')
     for row in spamreader:
+
+        #print( row[0])
+        #print( row[1])
 
         run(1,id + 1,row[0])
         run(2,id + 2,row[1])
