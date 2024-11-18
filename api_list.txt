@@ -1,1 +1,3 @@
 https://textgears.com/
+
+https://cloud.google.com/translate/docs/reference/rest/v2/translate
