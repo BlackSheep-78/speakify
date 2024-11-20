@@ -17,10 +17,4 @@
             return $responseDecoded['data']['translations'][0]['translatedText'];
         }  
     }
-
-    $gta = new GoogleTranslateAPi();
-
-    $result = $gta->translate('Hello, World!','en','es');
-
-    print_r($result);
 ?>
