@@ -13,10 +13,6 @@
 
     // Translate 1 using google
 
-    $tra = new Translate();
-    $tra->connectToGoogleToTranslate();
-
-
-
-
+    $translate = new Translate();
+    $translate->connectToGoogleToTranslate();
 ?>

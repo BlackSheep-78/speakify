@@ -27,24 +27,39 @@
 
         function getOneForTranslation()
         {
-            $pair = $this->getRandomPairOfLanguages();
-
-            //print_r($pair);
-
-            $langID = $pair[0]['id'];
 
             $sql = "
                 SELECT 
-                    sa.id sentenceIDA, 
-                    sa.languageID languageIDA,
-                    sa.text textA,
-                    l.`code` languageCode
-                FROM sentences AS sa
-                LEFT JOIN sentence_pairs AS sp 
-                ON sa.id = sp.sentenceIDA AND sa.languageID = sp.languageIDA
-                LEFT JOIN languages AS l ON l.id = ".$langID."
-                WHERE sa.languageID = ".$langID." AND sp.sentenceIDB IS NULL
-                LIMIT 1
+                    s1.sentence_id AS sentence_id_1,
+                    s1.sentence_text AS sentence_text_1,
+                    l1.language_name AS language_name_1,
+                    l1.language_code AS language_code_1,
+                    l3.language_name AS language_name_2,
+                    l3.language_code AS language_code_2
+                FROM sentences s1
+                JOIN languages l1 ON s1.language_id = l1.language_id
+                JOIN languages l3 ON l3.language_active = 1  -- All active languages for missing translation
+                WHERE l1.language_active = 1    -- Only consider active languages for the original sentence
+                AND l3.language_id != l1.language_id  -- Ensure we are checking other languages for translation
+                AND (
+                    NOT EXISTS (  -- Original → Translation is missing
+                        SELECT 1
+                        FROM translation_pairs t1
+                        JOIN sentences s2 ON t1.sentence_id_2 = s2.sentence_id
+                        WHERE t1.sentence_id_1 = s1.sentence_id
+                        AND s2.language_id = l3.language_id  -- Look for sentences in the target language
+                    )
+                    OR
+                    NOT EXISTS (  -- Translation → Original is missing (check reverse direction)
+                        SELECT 1
+                        FROM translation_pairs t2
+                        JOIN sentences s3 ON t2.sentence_id_1 = s3.sentence_id
+                        WHERE t2.sentence_id_2 = s1.sentence_id
+                        AND s3.language_id = l3.language_id  -- Look for reverse translation pair
+                    )
+                )
+                ORDER BY s1.sentence_id
+                LIMIT 1;
             ";
 
             $db = new Database();
@@ -67,7 +82,9 @@
         {
             $data = $this->getOneForTranslation();
 
+            print "<pre>";
             print_r($data);
+            print "</pre>";
         }
     }
 
