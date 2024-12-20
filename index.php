@@ -3,7 +3,7 @@
     if(isset($_GET['json']) and $_GET['json']==true)
     {
 
-        echo file_get_contents(getcwd()."/data.json");
+        echo file_get_contents(getcwd()."/stuff/data.json");
 		
         return;
     }
@@ -22,7 +22,7 @@
         $file = $_GET['file'];
 
         ob_start();
-        include_once($file);
+        include_once("php/".$file);
         $output = ob_get_clean();
         $html = str_replace("{content}",$output,$html);
     }

@@ -1,5 +1,5 @@
 <?php
-    print "<br><center>run.php</center><br><br>";
+    print "<br><center>php/run.php</center><br><br>";
 
     include_once("Database.php");
     include_once("Translate.php");

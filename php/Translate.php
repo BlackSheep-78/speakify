@@ -85,6 +85,15 @@
             print "<pre>";
             print_r($data);
             print "</pre>";
+
+            $GoogleTranslate = new GoogleTranslateApi();
+
+            $data = $GoogleTranslate->translate($data[0]['sentence_text_1'],$data[0]['language_code_1'],$data[0]['language_code_2']);
+
+            print "<pre>";
+            print_r($data);
+            print "</pre>";
+
         }
     }
 

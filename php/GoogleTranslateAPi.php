@@ -2,9 +2,15 @@
 
     class GoogleTranslateAPi 
     {
-        private $apiKey = 'AIzaSyBuWyi6rHjpdqn-QFKkLeORAmcI7r_ogDw';
+        public $apiKey = 'AIzaSyBuWyi6rHjpdqn-QFKkLeORAmcI7r_ogDw';
 
-        function translate($text,$sourceLanguage,$targetLanguage)
+        // Constructor
+        public function __construct() 
+        {
+           
+        }
+
+        public function translate($text,$sourceLanguage,$targetLanguage)
         {
             $url = 'https://www.googleapis.com/language/translate/v2?key='.$this->apiKey.'&q='.rawurlencode($text).'&source='.$sourceLanguage.'&target='.$targetLanguage;
             
