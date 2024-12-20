@@ -2,15 +2,19 @@
 <html>
     <head>
         <title>Translate</title>
-        <link rel="stylesheet" href="css/mystyle.css">
+        <base href="http://localhost/translate/">
+        <link rel="stylesheet" href="css/main.css">
         <script src="libs/jquery-3.7.1.min.js"></script>
-        <script src="javascript/myscripts.js"></script>
+        <script src="js/app.js"></script>
     </head>
     <body>
-        <div id="content"><div id="c"></div></div>
-        <div id="menu">
-            <div id="play">
-                <img class="icon" src="icons/play.png">
+
+        <div class="main">
+            <div class="menu">
+                {menu}
+            </div>
+            <div class="content">
+                {content}
             </div>
         </div>
     </body>

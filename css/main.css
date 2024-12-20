@@ -1,3 +1,21 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.main{
+    display: flex;
+    width: 100%;
+}
+
+.main .menu{
+    width: 20%;
+}
+
+.main .content{
+    width: 80%;
+}
+
+
 #menu
 {
     border: 1px solid grey;
