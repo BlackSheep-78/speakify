@@ -1,39 +1,47 @@
 
-**Translation Database Project: Description and Overview**
+Translation Database Project: Description and Overview
 
-This project involves building a database to store translations from multiple languages. The database needs to handle sentence pairs in different languages, allow querying translation pairs both ways, and provide detailed management of languages and sources.
+This project involves building a database to store translations from multiple languages. 
+The database needs to handle sentence pairs in different languages, allow querying translation pairs both ways, and provide detailed management of languages and sources.
 
-**Project Requirements:**
-1. **Languages Table**: To store information about languages (e.g., language name, language code, language status).
-2. **Sentences Table**: To store sentences in different languages, each sentence is associated with a language.
-3. **Translation Pairs Table**: To store relationships between sentences that are translations of each other.
-4. **Query Requirements**:
-   - The translation pairs should be queried both ways (Original → Translation, and Translation → Original).
-   - The system should be able to track the sources of translations.
-5. **Sources Table**: Store information about sources used for the translations.
-6. **Translation Pair Sources**: Link the translation pairs with their sources.
 
-**Project Tables:**
+Project MySql Tables:
 
-1. **languages**: Contains details about the languages supported by the system.
-2. **sentences**: Contains sentences in different languages along with their associated language ID.
-3. **translation_pairs**: Contains translation pairs that link two sentences as being translations of each other.
-4. **sources**: Stores information about the sources used for the translations.
-5. **translation_pair_sources**: Links translation pairs to their sources.
+    languages:                
+        Contains details about the languages supported by the system.
 
-**Sample Queries:**
+    sentences:                
+        Contains sentences in different languages along with their associated language ID.
 
-- **Find Translation Pair for a Sentence in Any Language**: Given an input sentence, find its translation in a target language.
-- **Find Missing Translations**: Find sentences that are missing translations in either direction (Original → Translation or Translation → Original).
-- **Find All Translation Pairs Linked to a Source**: Retrieve all translation pairs linked to a particular translation source.
+    translation_pairs:        
+        Contains translation pairs that link two sentences as being translations of each other.
 
----
+    sources:                  
+        Stores information about the sources used for the translations.
 
-**Translation Database Project: SQL Schema and Queries**
+    translation_pair_sources: 
+        Links translation pairs to their sources.
 
-1. **Languages Table (Stores Language Details)**
+Query Requirements:
 
-```
+    - The translation pairs should be queried both ways (Original → Translation, and Translation → Original).
+    - The system should be able to track the sources of translations.
+    - Store information about sources used for the translations.
+    - Link the translation pairs with their sources.
+
+
+
+Sample Queries:
+
+    Find Translation Pair for a Sentence in Any Language: Given an input sentence, find its translation in a target language.
+    Find Missing Translations: Find sentences that are missing translations in either direction (Original → Translation or Translation → Original).
+    Find All Translation Pairs Linked to a Source: Retrieve all translation pairs linked to a particular translation source.
+
+
+Translation Database Project: SQL Schema and Queries
+
+Languages Table (Stores Language Details)
+
 CREATE TABLE `languages` (
     `language_id` INT(11) NOT NULL AUTO_INCREMENT,
     `language_name` VARCHAR(100) NOT NULL,
@@ -42,11 +50,10 @@ CREATE TABLE `languages` (
     PRIMARY KEY (`language_id`),
     UNIQUE INDEX `language_code` (`language_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-```
 
-2. **Sentences Table (Stores Sentences in Multiple Languages)**
 
-```
+Sentences Table (Stores Sentences in Multiple Languages)
+
 CREATE TABLE `sentences` (
     `sentence_id` INT(11) NOT NULL AUTO_INCREMENT,
     `sentence_text` TEXT NOT NULL,
@@ -59,11 +66,10 @@ CREATE TABLE `sentences` (
     INDEX `idx_pair_id` (`pair_id`),
     FOREIGN KEY (`language_id`) REFERENCES `languages` (`language_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-```
 
-3. **Translation Pairs Table (Stores Translation Relationships)**
 
-```
+Translation Pairs Table (Stores Translation Relationships)
+
 CREATE TABLE `translation_pairs` (
     `pair_id` INT(11) NOT NULL AUTO_INCREMENT,
     `sentence_id_1` INT(11) NOT NULL,  -- First sentence (original)
@@ -79,11 +85,9 @@ CREATE TABLE `translation_pairs` (
     FOREIGN KEY (`sentence_id_2`) REFERENCES `sentences` (`sentence_id`) ON DELETE CASCADE,
     FOREIGN KEY (`source_id`) REFERENCES `sources` (`source_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-```
 
-4. **Sources Table (Stores Translation Sources)**
+Sources Table (Stores Translation Sources)
 
-```
 CREATE TABLE `sources` (
     `source_id` INT(11) NOT NULL AUTO_INCREMENT,
     `source_name` VARCHAR(255) NOT NULL,
@@ -92,11 +96,9 @@ CREATE TABLE `sources` (
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP(),
     PRIMARY KEY (`source_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-```
 
-5. **Translation Pair Sources Table (Linking Translation Pairs and Sources)**
+Translation Pair Sources Table (Linking Translation Pairs and Sources)
 
-```
 CREATE TABLE `translation_pair_sources` (
     `pair_id` INT(11) NOT NULL,
     `source_id` INT(11) NOT NULL,
@@ -105,15 +107,11 @@ CREATE TABLE `translation_pair_sources` (
     FOREIGN KEY (`pair_id`) REFERENCES `translation_pairs` (`pair_id`) ON DELETE CASCADE,
     FOREIGN KEY (`source_id`) REFERENCES `sources` (`source_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-```
 
----
+Sample Queries
 
-**Sample Queries**
+Find Translation Pair for a Sentence in Any Language
 
-1. **Find Translation Pair for a Sentence in Any Language**
-
-```
 SELECT 
     CASE 
         WHEN tp.sentence_id_1 = s1.sentence_id THEN s2.sentence_text
@@ -127,11 +125,9 @@ JOIN sentences s2 ON tp.sentence_id_2 = s2.sentence_id
 JOIN languages l1 ON s1.language_id = l1.language_id
 JOIN languages l2 ON s2.language_id = l2.language_id
 WHERE s1.sentence_text = 'Hello';
-```
 
-2. **Find Missing Translations (Original → Translation or Reverse)**
+Find Missing Translations (Original → Translation or Reverse)
 
-```
 SELECT 
     s1.sentence_id AS sentence_id_1,
     s1.sentence_text AS sentence_text_1,
@@ -161,11 +157,11 @@ AND (
 )
 ORDER BY s1.sentence_id
 LIMIT 1;
-```
 
-3. **Find All Translation Pairs Linked to a Source**
 
-```
+Find All Translation Pairs Linked to a Source
+
+
 SELECT 
     tp.pair_id,
     s1.sentence_text AS sentence_1,
@@ -175,4 +171,4 @@ JOIN translation_pairs tp ON tps.pair_id = tp.pair_id
 JOIN sentences s1 ON tp.sentence_id_1 = s1.sentence_id
 JOIN sentences s2 ON tp.sentence_id_2 = s2.sentence_id
 WHERE tps.source_id = 1;
-```
+
