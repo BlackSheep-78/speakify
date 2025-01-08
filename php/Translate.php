@@ -97,6 +97,8 @@
             print_r($sentence_text_2);
             print "</pre>";
 
+            return;
+
             $db = new Database('translate');
             $db->replace("sentence_text_2",$sentence_text_2);
             $db->replace("language_id_2",$data['language_id_2']);

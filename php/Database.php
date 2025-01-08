@@ -91,23 +91,32 @@
             print "<pre>".$this->sql."</pre>";
 
 
+            $mysqli = mysqli_connect($this->host, $this->username, $this->password, $this->database_name);
 
-            $result = mysqli_query($this->connection, $this->sql);
-
-            if ($result) 
+            if (mysqli_multi_query($this->connection, $this->sql)) 
             {
-                // Fetch the result as an associative array
-                while ($row = mysqli_fetch_assoc($result)) 
+                // Loop through the results of each query
+                do 
                 {
-                   $data[] = $row;
-                }
-            } 
-            else 
-            {
+                    // If there is a result set, store it and display it
+                    if ($result = mysqli_store_result($mysqli)) 
+                    {
+                        print_r($result);
 
-                
-
-                echo "Error executing query: " . mysqli_error($conn);
+                        // Fetch and display results (if the last query returned results)
+                        while ($row = mysqli_fetch_assoc($result)) 
+                        {
+                            print_r($row);
+                        }
+                        // Free the result set
+                        mysqli_free_result($result);
+                    }
+                } 
+                while (mysqli_next_result($mysqli)); // Move to the next query
+            
+                echo "Queries executed successfully.\n";
+            } else {
+                echo "Error: " . mysqli_error($mysqli);
             }
 
             return $data;
