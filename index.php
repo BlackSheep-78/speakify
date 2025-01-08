@@ -1,5 +1,7 @@
 <?php
 
+    define('BASE_PATH', __DIR__);
+
     if(isset($_GET['json']) and $_GET['json']==true)
     {
 

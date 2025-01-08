@@ -89,3 +89,10 @@
     font-family: Arial, Helvetica, sans-serif;
     background-color: green;
 }
+
+#mysql_dump
+{
+    margin: auto;
+    width: 1200px;
+    height: 600px;
+}

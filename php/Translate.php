@@ -27,15 +27,16 @@
 
         function getOneForTranslation()
         {
-
             $sql = "
                 SELECT 
                     s1.sentence_id AS sentence_id_1,
                     s1.sentence_text AS sentence_text_1,
                     l1.language_name AS language_name_1,
                     l1.language_code AS language_code_1,
+                    l1.language_id AS language_id_1,
                     l3.language_name AS language_name_2,
-                    l3.language_code AS language_code_2
+                    l3.language_code AS language_code_2,
+                    l3.language_id AS language_id_2
                 FROM sentences s1
                 JOIN languages l1 ON s1.language_id = l1.language_id
                 JOIN languages l3 ON l3.language_active = 1  -- All active languages for missing translation
@@ -62,8 +63,9 @@
                 LIMIT 1;
             ";
 
-            $db = new Database();
-            $rows = $db->query($sql);
+            $db = new Database('translate');
+            $db->query($sql);
+            $rows = $db->result();
             
             if(count($rows) == 0) { return []; }
 
@@ -81,19 +83,28 @@
         public function connectToGoogleToTranslate()
         {
             $data = $this->getOneForTranslation();
+            $data = $data[0];
+
 
             print "<pre>";
             print_r($data);
             print "</pre>";
 
             $GoogleTranslate = new GoogleTranslateApi();
-
-            $data = $GoogleTranslate->translate($data[0]['sentence_text_1'],$data[0]['language_code_1'],$data[0]['language_code_2']);
+            $sentence_text_2 = $GoogleTranslate->translate($data['sentence_text_1'],$data['language_code_1'],$data['language_code_2']);
 
             print "<pre>";
-            print_r($data);
+            print_r($sentence_text_2);
             print "</pre>";
 
+            $db = new Database('translate');
+            $db->replace("sentence_text_2",$sentence_text_2);
+            $db->replace("language_id_2",$data['language_id_2']);
+            $db->replace("sentence_id_1",$data['sentence_id_1']);
+            $db->replace("translation_version",1);
+            $db->replace("source_id",1);
+            $db->file("insert_sentence_translation.sql");
+            $rows = $db->result();
         }
     }
 
