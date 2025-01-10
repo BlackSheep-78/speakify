@@ -2,24 +2,26 @@
 
     echo "<center>mysqlschema.php</center><br><br><br>";
 
-    include_once("Database.php");
+    require_once BASEPATH."/classes/Database.php";
 
-    $database_name = 'translate';
+    $database = 'translate';
 
-    $db = new Database($database_name);
+    $db = new Database();
+    $db->connect();
     $db->query("SHOW TABLES");
     $rows = $db->result();
 
     // Initialize output content
     $output = "-- Database Schema Export\n";
-    $output .= "-- Database Name: $database_name\n\n";
+    $output .= "-- Database Name: $database\n\n";
 
     foreach($rows as $row)
     {
         $table = $row['Tables_in_translate'];
 
-        $db = new Database($database_name);
-        $db->replace('table',$table);
+        $db = new Database();
+        $db->connect();
+        $db->replace('table',$table,'s');
         $db->query("SHOW CREATE TABLE `{table}`");
         $row = $db->result();
 

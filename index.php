@@ -1,14 +1,7 @@
 <?php
 
-    define('BASE_PATH', __DIR__);
-
-    if(isset($_GET['json']) and $_GET['json']==true)
-    {
-
-        echo file_get_contents(getcwd()."/stuff/data.json");
-		
-        return;
-    }
+    require_once('config.php');
+    require_once(ROOT.DIRECTORY_SEPARATOR.'engine'.DIRECTORY_SEPARATOR.'config.php');
 
     $html = file_get_contents(getcwd()."/html/index.html");
     $menu = file_get_contents(getcwd()."/html/menu.html"); 
