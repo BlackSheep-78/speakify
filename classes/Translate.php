@@ -57,12 +57,12 @@
 
             $db = new Database();
             $db->connect();
+            $db->file("insert_sentence_translation.sql");
             $db->replace("sentence_text_2",$sentence_text_2,"s");
             $db->replace("language_id_2",$data['language_id_2'],"i");
             $db->replace("sentence_id_1",$data['sentence_id_1'],"i");
             $db->replace("translation_version",1,"i");
             $db->replace("source_id",1,"i");
-            $db->file("insert_sentence_translation.sql");
             $rows = $db->result();
         }
     }
