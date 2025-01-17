@@ -17,6 +17,12 @@ var app =
                 } 
             });
         });
+
+        $("#b2").on('click',function()
+        {
+            console.log(that.playlist.length);
+        });
+
     },
 
     f1: function()
