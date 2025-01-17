@@ -11,18 +11,10 @@ var app =
         {
             that.ajax("json=true&get=sentences",function(data)
             {
-                that.playlist = data;
-
-                console.log(data);
-                
-                /*
                 for(let i = 0; i < data.length; i++)
                 {
                     that.playlist.push(data[i]);
-
-                    console.log(data[i]);
-                }
-                    */
+                } 
             });
         });
     },
@@ -39,18 +31,6 @@ var app =
     clone : function(selector)
     {
         let sample = $($("template1").clone()[0]);
-    },
-
-    render: function()
-    {
-        let sample = that.clone("#template1");
-        console.log(sample);
-    },
-
-    push : function(a,b)
-    {
-        var that = this;
-        that.queue.push({a,b});
     },
 
     run: function()
