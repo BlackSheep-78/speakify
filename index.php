@@ -3,6 +3,16 @@
     require_once('config.php');
     require_once(ROOT.DIRECTORY_SEPARATOR.'engine'.DIRECTORY_SEPARATOR.'config.php');
 
+
+    if(isset($_GET['json']) && $_GET['json'] == true)
+    {
+        if(isset($_GET['get']) && $_GET['get'] == 'sentences')
+        {
+            include_once "php/get_sentences.php";
+            exit;
+        }
+    }
+
     $html = file_get_contents(getcwd()."/html/index.html");
     $menu = file_get_contents(getcwd()."/html/menu.html"); 
     $html = str_replace("{menu}",$menu,$html);

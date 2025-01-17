@@ -15,17 +15,81 @@
     width: 80%;
 }
 
+/* ************************************** */
+
+
+#content
+{
+    border: 1px solid grey;
+    border-radius: 10px; 
+    width: 300px;
+    height: 500px;
+    margin:5px auto 5px auto;
+    overflow: auto;
+    background-color: darkgrey;
+}
+
+#content .translation .language
+{
+    border: 1px solid grey;
+    padding: 3px;
+    margin: 3px;
+    border-radius: 7px;
+    background-color: white;
+}
+
+/* Customize the scrollbar */
+#content::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+    height: 12px; /* Height of the scrollbar (for horizontal bars) */
+}
+
+/* Track (background of the scrollbar) */
+#content::-webkit-scrollbar-track {
+    background: #f0f0f0; /* Background color of the track */
+    border-radius: 6px; /* Rounded corners for the track */
+}
+
+/* Thumb (the draggable part of the scrollbar) */
+#content::-webkit-scrollbar-thumb {
+    background: darkgrey; /* Color of the scrollbar thumb */
+    border-radius: 6px; /* Rounded corners for the thumb */
+}
+
+/* Hover effect on the thumb */
+#content::-webkit-scrollbar-thumb:hover {
+    background: darkgrey; /* Darker color when hovered */
+}
 
 #menu
 {
     border: 1px solid grey;
-    border-radius: 5px; 
+    border-radius: 10px; 
     width: 300px;
     height: 50px;
     margin:5px auto 5px auto;
 
     display: flex;
     justify-content: center;
+    align-items: center;
+
+    background-color: darkgrey;
+}
+
+#menu .button
+{
+    border: 1px solid grey;
+    border-radius: 7px;
+    width: 45px;
+    height: 45px;
+    margin: 0 1px 0 1px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    background-color: white;
 }
 
 #play
@@ -51,15 +115,7 @@
     height:25px; 
 }
 
-#content
-{
-    border: 1px solid grey;
-    border-radius: 5px; 
-    width: 300px;
-    height: 500px;
-    margin:5px auto 5px auto;
-    overflow: hidden;
-}
+
 
 .textA
 {
