@@ -23,20 +23,28 @@ var app =
             console.log(that.playlist.length);
         });
 
+        $("#b5").on('click',function()
+        {
+            that.clone();
+        });
+
+        $("#b6").on('click',function()
+        {
+            console.log(that);
+        });
     },
 
     f1: function()
     {
         let that = this;
         console.log(that.playlist);
-
-
-
     },
 
-    clone : function(selector)
+    clone : function()
     {
-        let sample = $($("template1").clone()[0]);
+        let translationBlock = $("#template1").clone();
+
+        console.log(translationBlock);
     },
 
     run: function()
@@ -50,19 +58,13 @@ var app =
     {
         var that = this;
 
-        
-
         if(typeof(iteration) === 'undefined') { iteration = 0; }
 
         var elem    = that.queue[0];
         var content = $("#content");
 
-        
-
         if(iteration === 0)
         {
-            //console.log("iteration 0 : preparing stuff");
-
             $(content).empty();
 
             var list = [];
