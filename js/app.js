@@ -1,6 +1,7 @@
 var app = 
 {
     playing  : false,
+    data     : { group : {} },
     playlist : [],
     elements : {},
     template : {},
@@ -56,18 +57,29 @@ var app =
 
     loadTranslations : function(callback)
     {
-        let that = this;
-
+        let that     = this;
+        let group    = that.data.group;
+        let playlist = that.playlist;
+        
         that.ajax("json=true&get=sentences",function(data)
         {
             console.log("** Translations **");
             console.log(data);
+            console.log(data.translation.pairs);
 
-
-            for(let i = 0; i < data.length; i++)
+            for(let i = 0; i < data.translation.pairs.length; i++)
             {
-                that.playlist.push(data[i]);
+                let pair  = data.translation.pairs[i];
+
+                if(typeof group[pair['id1']] == 'undefined')
+                {
+                    group[pair['id1']] = pair;
+                    playlist.push(group[pair['id1']]);
+                }
             } 
+
+            console.log(group);
+            console.log(playlist);
 
             callback();
         }); 
@@ -143,6 +155,7 @@ var app =
 
     addTranslationBlockToInterface: function(index)
     {
+        /*
         let that = this;
 
         if(typeof index == "undefined") { index = 0; }
@@ -163,22 +176,23 @@ var app =
             that.addTranslationBlockToInterface(index);
 
         },1000);
+        */
     },
 
     play : function()
     {
         let that = this;
 
-        that.loadTranslations(function()
+        that.loadSchema('json/schema1.json',function(html)
         {
-            that.loadSchema('json/schema1.json',function(html)
+            that.loadHtmlTemplate('html/template/translation.html',function(html)
             {
-                that.loadHtmlTemplate('html/template/translation.html',function(html)
+                that.loadTranslations(function()
                 {
                     that.addTranslationBlockToInterface();
                 });
             });
-        });
+        }); 
     },
 
     run: function()

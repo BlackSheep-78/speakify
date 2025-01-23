@@ -1,8 +1,6 @@
 <?php
 
     require_once('config.php');
-    require_once(ROOT.DIRECTORY_SEPARATOR.'engine'.DIRECTORY_SEPARATOR.'config.php');
-
 
     if(isset($_GET['json']) && $_GET['json'] == true)
     {
