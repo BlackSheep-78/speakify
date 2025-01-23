@@ -1,50 +1,184 @@
 var app = 
 {
-    playing : false,
+    playing  : false,
     playlist : [],
+    elements : {},
+    template : {},
+    schema   : {},
 
     init: function(document)
     {  
         let that = this;
+        that.elements["#content"] = document.getElementById("content");
+        that.elements["#content"].innerHTML = "";
 
-        $("#b1").on('click',function()
+        $("#b1").on('click',function() { });
+        $("#b2").on('click',function() { });
+        $("#b3").on('click',function() { });
+        $("#b5").on('click',function() { });
+        $("#b6").on('click',function() { that.play(); });
+    },
+
+    first: function(obj)
+    {
+        for (const key in obj) 
         {
-            that.ajax("json=true&get=sentences",function(data)
+            if (obj.hasOwnProperty(key)) 
+            { 
+                return key;
+            }
+        }
+    },
+
+    load: function(arguments,callback)
+    {
+        fetch(arguments.url) // URL to fetch data from
+        .then(response => 
+        {
+            if (!response.ok) 
             {
-                for(let i = 0; i < data.length; i++)
-                {
-                    that.playlist.push(data[i]);
-                } 
-            });
-        });
+                throw new Error('Network response was not ok');
+            }
 
-        $("#b2").on('click',function()
-        {
-            console.log(that.playlist.length);
-        });
+            if(arguments.dataType && arguments.dataType == "text")
+            {
+                return response.text();
+            }
 
-        $("#b5").on('click',function()
+            return response.json(); // Parse JSON from the response
+        })
+        .then(data => callback(data)) // Handle the JSON data
+        .catch(error => 
         {
-            that.clone();
-        });
-
-        $("#b6").on('click',function()
-        {
-            console.log(that);
+            console.error('There was a problem with the fetch operation:', error);
         });
     },
 
-    f1: function()
+    loadTranslations : function(callback)
     {
         let that = this;
-        console.log(that.playlist);
+
+        that.ajax("json=true&get=sentences",function(data)
+        {
+            console.log("** Translations **");
+            console.log(data);
+
+
+            for(let i = 0; i < data.length; i++)
+            {
+                that.playlist.push(data[i]);
+            } 
+
+            callback();
+        }); 
     },
 
-    clone : function()
+    loadHtmlTemplate: function(url,callback)
     {
-        let translationBlock = $("#template1").clone();
+        let that = this;
 
-        console.log(translationBlock);
+        if(that.template[url])
+        {
+            if(callback)
+            {
+                callback(that.template[url]);
+            }
+            
+            return that.template[url];
+        }
+
+        that.load({'url':url,'dataType':'text'},function(data)
+        {
+            that.template[url] = data;
+
+            if(callback)
+            {
+                callback(that.template[url]);
+            }
+        });
+    },
+
+    loadSchema: function(url,callback)
+    {
+        let that = this;
+
+        if(that.schema[url])
+        {
+            if(callback)
+            {
+                callback(that.schema[url]);
+            }
+            
+            return that.schema[url];
+        }
+
+        that.load({'url':url,'dataType':'json'},function(data)
+        {
+            that.schema[url] = data;
+
+            if(callback)
+            {
+                callback(that.schema[url]);
+            }
+        });
+    },
+
+    dataPlusHtmlToElement: function(type,data,html)
+    {
+        console.log(data);
+
+        let that = this;
+
+        const template = document.createElement('template');
+        template.innerHTML = html;
+
+        let element = template.content.firstElementChild;
+
+        let sentence = element.getElementsByClassName("sentence");
+        let first = that.first(data.sentences);
+        sentence[0].innerHTML = data.sentences[first].sentence.text;
+
+        return element;
+    },
+
+    addTranslationBlockToInterface: function(index)
+    {
+        let that = this;
+
+        if(typeof index == "undefined") { index = 0; }
+        let data = that.playlist[index];
+        if(typeof data == "undefined") { return; }
+
+        let html = that.loadHtmlTemplate('html/template/translation.html');
+
+        that.playlist[index]['element'] = that.dataPlusHtmlToElement('translation',data,html);
+
+        console.log(that.playlist[index]);
+
+        that.elements['#content'].append(that.playlist[index]['element']);
+
+        index += 1;
+        setTimeout(function()
+        { 
+            that.addTranslationBlockToInterface(index);
+
+        },1000);
+    },
+
+    play : function()
+    {
+        let that = this;
+
+        that.loadTranslations(function()
+        {
+            that.loadSchema('json/schema1.json',function(html)
+            {
+                that.loadHtmlTemplate('html/template/translation.html',function(html)
+                {
+                    that.addTranslationBlockToInterface();
+                });
+            });
+        });
     },
 
     run: function()

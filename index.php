@@ -8,7 +8,7 @@
     {
         if(isset($_GET['get']) && $_GET['get'] == 'sentences')
         {
-            include_once "php/get_sentences.php";
+            include_once "php/get_sentences_2.php";
             exit;
         }
     }
