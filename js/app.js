@@ -63,7 +63,6 @@ var app =
     loadTranslations : function(callback)
     {
         let that     = this;
-        let pair     = that.data.pair;
         let group    = that.data.group;
 
         let playlist = that.playlist;
@@ -84,22 +83,22 @@ var app =
 
             console.log("** data.sentences **");
             console.log(that.data.sentences);
+            console.log(data.translation);
+
+  
 
             for(let i = 0; i < data.translation.pairs.length; i++)
             {
                 let pair  = data.translation.pairs[i];
 
-                if(typeof group.list[group.last.id] == 'undefined')
-                {
-                    group.list[group.last.id] = pair;
+                console.log(pair);
 
-                    //playlist.push(group[pair['id1']]);
-                    group.last.id ++;
-                }
-                else
-                {
+                group.list[group.last.id] = that.data.sentences[pair[0].id1];
+                group.list[group.last.id]['translations'] 
+                group.last.id++;
 
-                }
+
+
             } 
 
             console.log("** data.groups **");
