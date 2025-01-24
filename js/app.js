@@ -1,11 +1,16 @@
 var app = 
 {
-    playing  : false,
-    data     : { group : {} },
+    data     : 
+    { 
+        sentences : {}, 
+        group     : { list : {}, last : { id : 0 }},
+        pair      : { list : {}}
+    },
     playlist : [],
     elements : {},
     template : {},
     schema   : {},
+    playing  : false,
 
     init: function(document)
     {  
@@ -58,28 +63,47 @@ var app =
     loadTranslations : function(callback)
     {
         let that     = this;
+        let pair     = that.data.pair;
         let group    = that.data.group;
+
         let playlist = that.playlist;
         
         that.ajax("json=true&get=sentences",function(data)
         {
-            console.log("** Translations **");
+            console.log("** Translations data from server **");
             console.log(data);
-            console.log(data.translation.pairs);
+
+            for(let i = 0; i < data.sentences.length; i++)
+            {
+                let sentence  = data.sentences[i];
+
+                let sid = sentence.sentence.id;
+
+                that.data.sentences[sid] = sentence;
+            } 
+
+            console.log("** data.sentences **");
+            console.log(that.data.sentences);
 
             for(let i = 0; i < data.translation.pairs.length; i++)
             {
                 let pair  = data.translation.pairs[i];
 
-                if(typeof group[pair['id1']] == 'undefined')
+                if(typeof group.list[group.last.id] == 'undefined')
                 {
-                    group[pair['id1']] = pair;
-                    playlist.push(group[pair['id1']]);
+                    group.list[group.last.id] = pair;
+
+                    //playlist.push(group[pair['id1']]);
+                    group.last.id ++;
+                }
+                else
+                {
+
                 }
             } 
 
-            console.log(group);
-            console.log(playlist);
+            console.log("** data.groups **");
+            console.log(that.data.group);
 
             callback();
         }); 
