@@ -2,15 +2,15 @@ var app =
 {
     data     : 
     { 
+        schema   : {},
         sentences : {}, 
         group     : { list : {}, last : { id : 0 }},
-        pair      : { list : {}}
+        pair      : { list : {}},
+        playlist  : { list : [], playing : false}
     },
-    playlist : [],
+    
     elements : {},
     template : {},
-    schema   : {},
-    playing  : false,
 
     init: function(document)
     {  
@@ -72,37 +72,16 @@ var app =
             console.log("** Translations data from server **");
             console.log(data);
 
-            for(let i = 0; i < data.sentences.length; i++)
+            for(let i = 0; i < data.length; i++)
             {
-                let sentence  = data.sentences[i];
+                let sentence  = data[i];
 
+                console.log(sentence);
+                /*
                 let sid = sentence.sentence.id;
-
                 that.data.sentences[sid] = sentence;
+                */
             } 
-
-            console.log("** data.sentences **");
-            console.log(that.data.sentences);
-            console.log(data.translation);
-
-  
-
-            for(let i = 0; i < data.translation.pairs.length; i++)
-            {
-                let pair  = data.translation.pairs[i];
-
-                console.log(pair);
-
-                group.list[group.last.id] = that.data.sentences[pair[0].id1];
-                group.list[group.last.id]['translations'] 
-                group.last.id++;
-
-
-
-            } 
-
-            console.log("** data.groups **");
-            console.log(that.data.group);
 
             callback();
         }); 
@@ -137,23 +116,23 @@ var app =
     {
         let that = this;
 
-        if(that.schema[url])
+        if(that.data.schema[url])
         {
             if(callback)
             {
-                callback(that.schema[url]);
+                callback(that.data.schema[url]);
             }
             
-            return that.schema[url];
+            return that.data.schema[url];
         }
 
         that.load({'url':url,'dataType':'json'},function(data)
         {
-            that.schema[url] = data;
+            that.data.schema[url] = data;
 
             if(callback)
             {
-                callback(that.schema[url]);
+                callback(that.data.schema[url]);
             }
         });
     },
