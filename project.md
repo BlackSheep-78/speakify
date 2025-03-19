@@ -73,7 +73,7 @@
       ├── assets/
       │   ├── audio/                  ✅ (Placeholder for audio files)
       │
-      ├── index.php                   ❌ **(Needs to be created - Main PHP entry point)**
+      ├── index.php                   ✅ (Main PHP entry point)
       └── README.md                   ❌ **(Needs setup instructions & API documentation)**
     ```
 

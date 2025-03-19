@@ -1,0 +1,153 @@
+/* project name: Speakify */
+/* file name: /speakify/public/css/styles.css */
+/* DO NOT REMOVE "project name" and "file name" information */
+
+/* General Styles */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #181a1b;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+header {
+    background: #0d0f12;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 24px;
+    font-weight: bold;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+    text-transform: uppercase;
+}
+
+main {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+}
+
+h2 {
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+button {
+    background: linear-gradient(145deg, #1f2225, #292d31);
+    color: #ffffff;
+    border: 1px solid #5c67f2;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: inset 2px 2px 5px #131517, inset -2px -2px 5px #2c3136;
+}
+
+button:hover {
+    background: linear-gradient(145deg, #2c3136, #1f2225);
+    transform: scale(1.05);
+    border-color: #7289da;
+}
+
+select {
+    background: #1f2225;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 16px;
+    border: 1px solid #5c67f2;
+    cursor: pointer;
+    text-align: center;
+    transition: border 0.3s ease;
+}
+
+select:hover {
+    border-color: #7289da;
+}
+
+/* Card-style Sections (Glassmorphism effect) */
+#playlists, #playlist-management, #tb-schema-management, #player {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 20px;
+    width: 90%;
+    max-width: 700px;
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+ul li {
+    background: rgba(255, 255, 255, 0.1);
+    margin: 8px 0;
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+ul li:hover {
+    background: #5c67f2;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* Player Controls */
+#player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px;
+}
+
+#tb-container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 12px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+audio {
+    width: 100%;
+    margin-top: 10px;
+    filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.2));
+}
+
+/* Align player buttons inline */
+#player-controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+#player-controls button {
+    padding: 12px 15px;
+    border-radius: 12px;
+    font-size: 16px;
+}
