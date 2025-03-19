@@ -1,10 +1,10 @@
-- **File Name**: template.project.md
+- **File Name**: project.md
 - **File Version**: 1.0.0
 
-- **Project Name**: Translation Database System
+- **Project Name**: Speakify
 
 - **Project Description**:
-    - This project involves developing a translation database system that efficiently stores and manages translations. It will integrate with various language sources and tools to enable real-time translation lookups and contextual assistance. The project aims to provide a scalable, structured, and queryable translation database for organizations, AI systems, and translators.
+    - Speakify is an interactive language learning platform that allows users to engage with multilingual audio content through structured playlists. It enables users to create and manage custom translation-based audio experiences, making language acquisition more immersive and effective. Speakify is designed to work across mobile, desktop, and TV screens, ensuring seamless accessibility.
 
 - **Engagement Protocols**:
     - **Note**: All project file content must adhere to the formatting guidelines below to ensure consistency, clarity, and copy/paste friendliness.
@@ -32,7 +32,7 @@
         - The protocols encourage clear communication, constructive feedback, and ongoing adjustments to keep the project on track.
 
 - **Project Data**:
-    - Project directory: translation_database_system
+    - Project directory: speakify
 
 - **Core Features & Objectives**:
     - **Frontend:**
@@ -40,8 +40,8 @@
       - Users can execute a playlist.
       - Users can create playlists.
       - A playlist is composed of:
-        - **Translation Blocks**:
-          - A Translation Block (TB) contains a sentence in a language and its equivalent translations in zero or multiple other languages.
+        - **Translation Blocks (TBs)**:
+          - A Translation Block contains a sentence in a language and its equivalent translations in zero or multiple other languages.
           - Each translation of the sentence will include an audio file in the same language.
       - Users can rearrange the schema of the Translation Blocks within each playlist.
         - **A Translation Block (TB)** is a structured unit designed to manage multilingual sentence playback with user-defined sequencing. Each TB contains a sentence in a specific language, an optional audio file, and zero or more translations, each with its own text and corresponding audio. The key feature of a TB is its customizable playback schema, which allows users to define the order in which each language version is played, the number of repetitions for each audio file, and the timing of subtitle displays. When a TB schema is assigned to a playlist—a collection of multiple TBs—the system cycles through the playlist, playing each TB according to the defined schema. This ensures a structured and controlled playback experience, making TBs ideal for language learning, multilingual audio guides, speech training, and interactive storytelling. By allowing full customization of playback behavior, TBs provide a powerful and flexible solution for managing multilingual content dynamically.
@@ -56,7 +56,7 @@
 
 - **File Structure Overview**:
     ```
-    C:\xampp\htdocs\translate\
+    C:\xampp\htdocs\speakify\
       │
       ├── public/
       │   ├── index.html              ✅ Main UI (Player, Playlist, TB Schema Management)
@@ -75,7 +75,6 @@
       │
       ├── index.php                   ❌ **(Needs to be created - Main PHP entry point)**
       └── README.md                   ❌ **(Needs setup instructions & API documentation)**
-
     ```
 
 - **Initial Tasks and Sub-Tasks** [marked with an 'x' if complete]:
@@ -95,43 +94,6 @@
     - [ ] Implement unit and integration tests.
     - [ ] Document API or UI interactions.
     - [ ] Finalize for deployment.
-
-- **Database Design & SQL Schema**:
-    ```sql
-    CREATE TABLE `languages` (
-        `language_id` INT(11) NOT NULL AUTO_INCREMENT,
-        `language_name` VARCHAR(100) NOT NULL,
-        `language_code` VARCHAR(10) NOT NULL,
-        `language_active` TINYINT(1) DEFAULT 1,
-        PRIMARY KEY (`language_id`),
-        UNIQUE INDEX `language_code` (`language_code`)
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-    CREATE TABLE `sentences` (
-        `sentence_id` INT(11) NOT NULL AUTO_INCREMENT,
-        `sentence_text` TEXT NOT NULL,
-        `language_id` INT(11) NOT NULL,
-        `pair_id` INT(11) NOT NULL,
-        `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP(),
-        `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP() ON UPDATE CURRENT_TIMESTAMP(),
-        PRIMARY KEY (`sentence_id`),
-        FOREIGN KEY (`language_id`) REFERENCES `languages` (`language_id`) ON DELETE CASCADE
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-    ```
-
-- **Query Examples**:
-    ```sql
-    -- Find translation pair for a sentence
-    SELECT 
-        CASE 
-            WHEN tp.sentence_id_1 = s1.sentence_id THEN s2.sentence_text
-            ELSE s1.sentence_text
-        END AS translation
-    FROM translation_pairs tp
-    JOIN sentences s1 ON tp.sentence_id_1 = s1.sentence_id
-    JOIN sentences s2 ON tp.sentence_id_2 = s2.sentence_id
-    WHERE s1.sentence_text = 'Hello';
-    ```
 
 - **Planned Enhancements**:
     - Integration with external machine translation APIs.

@@ -1,15 +1,18 @@
+<!-- project name: Speakify -->
+<!-- file name: /speakify/public/index.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Translation Database PWA</title>
+    <title>Speakify - Learn Languages with Playlists</title>
     <link rel="stylesheet" href="public/css/styles.css">
     <script defer src="public/js/script.js"></script>
 </head>
 <body>
     <header>
-        <h1>Translation Database PWA</h1>
+        <h1>Speakify</h1>
     </header>
     
     <main>
@@ -21,26 +24,17 @@
         </section>
         <!-- "Your Playlists" :end -->
         
-        <!-- "Manage Playlists" :start -->
-        <section id="playlist-management">
-            <h2>Manage Playlists</h2>
-            <select id="playlist-select"></select>
-            <button id="edit-playlist">Edit</button>
-            <button id="delete-playlist">Delete</button>
-        </section>
-        <!-- "Manage Playlists" :end -->
-        
-        <!-- "Manage Schemas" :start -->
+        <!-- "Your Schemas" :start -->
         <section id="tb-schema-management">
-            <h2>Manage Schemas</h2>
-            <button id="create-schema">Create New Schema</button>
-            <ul id="schema-list"></ul>
+            <h2>Your Schemas</h2>
+            <button id="create-schema">Create Schema</button>
+            <ul id="schema-list"></ul> <!-- Schema selection list populated via AJAX -->
         </section>
-        <!-- "Manage Schemas" :end -->
+        <!-- "Your Schemas" :end -->
         
-        <!-- "Player" :start -->
+        <!-- "Player" (Playlist) :start -->
         <section id="player">
-            <h2>Player</h2>
+            <h2 id="player-title">Now Playing: </h2>
             <div id="tb-container">
                 <p id="tb-text">Select a playlist to start</p>
                 <audio id="tb-audio" controls></audio>
@@ -50,9 +44,8 @@
                 <button id="play-btn">Play</button>
                 <button id="next-btn">Next</button>
             </div>
-            
         </section>
-        <!-- "Player" :end -->
+        <!-- "Player" (Playlist) :end -->
     </main>
 </body>
 </html>
