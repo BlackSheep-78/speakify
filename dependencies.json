@@ -1,0 +1,63 @@
+{
+    "files": {
+        "index.html": [
+            "styles.css",
+            "script.js",
+            "api.php",
+            "playlists.json",
+            "schemas.json"
+        ],
+        "styles.css": [],
+        "script.js": [
+            "api.php",
+            "playlists.json",
+            "schemas.json"
+        ],
+        "api.php": [
+            "playlists.json",
+            "schemas.json"
+        ],
+        "playlists.json": [],
+        "schemas.json": [],
+        "index.php": [
+            "api.php"
+        ],
+        "README.md": []
+    },
+    "functions": {
+        "script.js": {
+            "loadPlaylists": [
+                "fetchPlaylistsData"
+            ],
+            "fetchPlaylistsData": [
+                "api.php:getPlaylists"
+            ],
+            "renderPlaylist": [
+                "loadPlaylists"
+            ],
+            "playTranslationBlock": [
+                "fetchAudioFile",
+                "scheduleNextBlock"
+            ],
+            "fetchAudioFile": [
+                "api.php:getAudioFile"
+            ],
+            "scheduleNextBlock": [
+                "playTranslationBlock"
+            ],
+            "initializePlayer": [
+                "loadPlaylists",
+                "renderPlaylist"
+            ]
+        },
+        "api.php": {
+            "getPlaylists": [
+                "queryDatabase"
+            ],
+            "getAudioFile": [
+                "queryDatabase"
+            ],
+            "queryDatabase": []
+        }
+    }
+}

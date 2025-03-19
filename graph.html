@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dependency Graph</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+    <style>
+        #network {
+            width: 100%;
+            height: 600px;
+            border: 1px solid lightgray;
+        }
+    </style>
+</head>
+<body>
+    <h2>Project Dependency Graph</h2>
+    <div id="network"></div>
+
+    <script>
+        const dependencies = {
+            "files": {
+                "index.html": ["styles.css", "script.js", "api.php", "playlists.json", "schemas.json"],
+                "styles.css": [],
+                "script.js": ["api.php", "playlists.json", "schemas.json"],
+                "api.php": ["playlists.json", "schemas.json"],
+                "playlists.json": [],
+                "schemas.json": [],
+                "index.php": ["api.php"],
+                "README.md": []
+            },
+            "functions": {
+                "script.js": {
+                    "loadPlaylists": ["fetchPlaylistsData"],
+                    "fetchPlaylistsData": ["api.php:getPlaylists"],
+                    "renderPlaylist": ["loadPlaylists"],
+                    "playTranslationBlock": ["fetchAudioFile", "scheduleNextBlock"],
+                    "fetchAudioFile": ["api.php:getAudioFile"],
+                    "scheduleNextBlock": ["playTranslationBlock"],
+                    "initializePlayer": ["loadPlaylists", "renderPlaylist"]
+                },
+                "api.php": {
+                    "getPlaylists": ["queryDatabase"],
+                    "getAudioFile": ["queryDatabase"],
+                    "queryDatabase": []
+                }
+            }
+        };
+
+        const nodes = [];
+        const edges = [];
+
+        Object.keys(dependencies.files).forEach(file => {
+            nodes.push({ id: file, label: file, shape: 'box' });
+            dependencies.files[file].forEach(dep => {
+                edges.push({ from: file, to: dep });
+            });
+        });
+
+        Object.keys(dependencies.functions).forEach(file => {
+            Object.keys(dependencies.functions[file]).forEach(func => {
+                const funcNode = `${file}:${func}`;
+                nodes.push({ id: funcNode, label: func, shape: 'ellipse' });
+                dependencies.functions[file][func].forEach(dep => {
+                    edges.push({ from: funcNode, to: dep });
+                });
+            });
+        });
+
+        const container = document.getElementById('network');
+        const data = { nodes: new vis.DataSet(nodes), edges: new vis.DataSet(edges) };
+        const options = {};
+        new vis.Network(container, data, options);
+    </script>
+</body>
+</html>

@@ -66,6 +66,7 @@
       │   │   ├── script.js           ✅ Handles AJAX, Playback, Playlist Management
       │   ├── data/
       │   │   ├── playlists.json      ✅ Simulated API Data (Sample Playlists & TBs)
+      │   │   ├── schemas.json      ✅ Simulated API Data (Sample Playlists & TBs)
       │
       ├── backend/
       │   ├── api.php                 ✅ Serves JSON Data to Frontend
