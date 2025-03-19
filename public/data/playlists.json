@@ -1,0 +1,110 @@
+{
+    "playlists": [
+      {
+        "id": 1,
+        "name": "Speakify - Basic Greetings",
+        "blocks": [
+          {
+            "id": 101,
+            "text": "Hello!",
+            "language": "English",
+            "audio": "audio.mp3",
+            "translations": [
+              { "language": "French", "text": "Bonjour!", "audio": "audio.mp3" }
+            ],
+            "schema": { "order": ["English", "French"], "repeat": [2, 3] }
+          },
+          {
+            "id": 102,
+            "text": "Good morning!",
+            "language": "English",
+            "audio": "audio.mp3",
+            "translations": [
+              { "language": "French", "text": "Bonjour!", "audio": "audio.mp3" }
+            ],
+            "schema": { "order": ["English", "French"], "repeat": [2, 2] }
+          },
+          {
+            "id": 103,
+            "text": "Good evening!",
+            "language": "English",
+            "audio": "audio.mp3",
+            "translations": [
+              { "language": "French", "text": "Bonsoir!", "audio": "audio.mp3" }
+            ],
+            "schema": { "order": ["English", "French"], "repeat": [1, 3] }
+          },
+          {
+            "id": 104,
+            "text": "How are you?",
+            "language": "English",
+            "audio": "audio.mp3",
+            "translations": [
+              { "language": "French", "text": "Comment ça va?", "audio": "audio.mp3" }
+            ],
+            "schema": { "order": ["English", "French"], "repeat": [2, 2] }
+          },
+          {
+            "id": 105,
+            "text": "Nice to meet you!",
+            "language": "English",
+            "audio": "audio.mp3",
+            "translations": [
+              { "language": "French", "text": "Enchanté!", "audio": "audio.mp3" }
+            ],
+            "schema": { "order": ["English", "French"], "repeat": [2, 3] }
+          },
+          {
+            "id": 106,
+            "text": "Thank you!",
+            "language": "English",
+            "audio": "audio.mp3",
+            "translations": [
+              { "language": "French", "text": "Merci!", "audio": "audio.mp3" }
+            ],
+            "schema": { "order": ["English", "French"], "repeat": [1, 2] }
+          },
+          {
+            "id": 107,
+            "text": "Excuse me!",
+            "language": "English",
+            "audio": "audio.mp3",
+            "translations": [
+              { "language": "French", "text": "Excusez-moi!", "audio": "audio.mp3" }
+            ],
+            "schema": { "order": ["English", "French"], "repeat": [2, 3] }
+          },
+          {
+            "id": 108,
+            "text": "Please!",
+            "language": "English",
+            "audio": "audio.mp3",
+            "translations": [
+              { "language": "French", "text": "S'il vous plaît!", "audio": "audio.mp3" }
+            ],
+            "schema": { "order": ["English", "French"], "repeat": [1, 3] }
+          },
+          {
+            "id": 109,
+            "text": "Yes!",
+            "language": "English",
+            "audio": "audio.mp3",
+            "translations": [
+              { "language": "French", "text": "Oui!", "audio": "audio.mp3" }
+            ],
+            "schema": { "order": ["English", "French"], "repeat": [2, 2] }
+          },
+          {
+            "id": 110,
+            "text": "No!",
+            "language": "English",
+            "audio": "audio.mp3",
+            "translations": [
+              { "language": "French", "text": "Non!", "audio": "audio.mp3" }
+            ],
+            "schema": { "order": ["English", "French"], "repeat": [1, 3] }
+          }
+        ]
+      }
+    ]
+  }

@@ -1,0 +1,115 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+}
+
+header {
+    background: #007bff;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+main {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2 {
+    color: #333;
+}
+
+button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+button:hover, select:hover {
+    background: #ccc;
+}
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: #ddd;
+    color: #333;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Playlist Section */
+#playlists, #playlist-management, #tb-schema-management, #player {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    background: #ddd;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+ul li:hover {
+    background: #ccc;
+}
+
+/* Player Controls */
+#player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#tb-container {
+    background: #eee;
+    padding: 15px;
+    border-radius: 8px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+audio {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Align player buttons inline */
+#player-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}

@@ -1,38 +1,15 @@
 <?php
+// Main entry point for the Translation Database System PWA
 
-    require_once('config.php');
+// Set content type to HTML
+header("Content-Type: text/html");
 
-    if(isset($_GET['json']) && $_GET['json'] == true)
-    {
-        if(isset($_GET['get']) && $_GET['get'] == 'sentences')
-        {
-            include_once "php/get_sentences.php";
-            exit;
-        }
-    }
+// Define the path to the public index.html
+$public_index = __DIR__ . '/public/index.html';
 
-    $html = file_get_contents(getcwd()."/html/index.html");
-    $menu = file_get_contents(getcwd()."/html/menu.html"); 
-    $html = str_replace("{menu}",$menu,$html);
-
-    if(!isset($_GET['file']))
-    {
-        $app = file_get_contents(getcwd()."/html/app.html"); 
-        $html = str_replace("{content}",$app,$html);
-    }
-    else if(isset($_GET['file']))
-    {
-        $file = $_GET['file'];
-
-        ob_start();
-        include_once("php/".$file);
-        $output = ob_get_clean();
-        $html = str_replace("{content}",$output,$html);
-    }
-
-    print $html;
-
-
-
-
-?>
+// Check if the file exists before including
+if (file_exists($public_index)) {
+    readfile($public_index);
+} else {
+    echo "<h1>Error: index.html not found.</h1>";
+}
