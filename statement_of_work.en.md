@@ -118,6 +118,23 @@ The **Playback View** is the primary interface where users interact with transla
 
 The **Playback View** enables structured listening and repetition using translation blocks, helping users absorb language naturally.
 
+### 3.3 Wireframes Work in Progress
+The following UI views are in progress for Speakify. Each wireframe will be documented and iterated upon as development continues.
+
+#### ✅ **Core Views (MVP)**
+- [x] **3.2 Playback View** (Playback sequence, audio controls, bottom nav)  
+- [ ] **3.4 Schema Editor View** *(Next priority - Defines playback rules & logic)*  
+- [ ] **3.5 Playlist Library View** *(Browse, search, select, and manage playlists)*  
+- [ ] **3.6 Playlist Editor View** *(Create & modify playlists, assign schemas)*  
+- [ ] **3.7 Smart Lists View** *(Prebuilt lists: verb conjugations, context-based, etc.)*  
+- [ ] **3.8 Settings View** *(Control playback speed, language preferences, offline mode, etc.)*  
+
+#### 🔄 **Extra Features (Planned)**
+- [ ] **3.9 Word of the Day View** *(Daily word with example sentences)*  
+- [ ] **3.10 Login & Profile View** *(Optional login, progress tracking, cloud sync)*  
+- [ ] **3.11 Achievements & Stats View** *(Track XP, learning streaks, goals)*  
+- [ ] **3.12 Offline Mode View** *(Download and manage offline resources)*  
+
 
 ---
 
