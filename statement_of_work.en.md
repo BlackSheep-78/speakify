@@ -95,6 +95,30 @@ Optional:
 [🔐 Login]  
    └── Sync data, save profile, enable cloud features 
 
+### 3.2 Wireframes
+This section provides **low-fidelity wireframes** for the core screens of Speakify. These wireframes illustrate layout, structure, and main UI components.
+
+#### 🎧 **Playback View Wireframe**
+The **Playback View** is the primary interface where users interact with translation-based audio content. It follows a structured **playback sequence** while providing **user progress tracking and quick navigation**.
+
+##### 🔹 **Header (User Stats)**
+| 👤 User | 🔥 Streak | 🌟 XP  |
+|---------|----------|--------|
+| Jorge   | 12 Days  | 2,450  |
+
+##### 🔹 **Playback Sequence**
+- **Active Sentences** (Unfolded, showing controls)
+  - ▶ Play | ⏸ Pause | 🔄 Repeat x2, x3  
+- **Queued Sentences** (Collapsed, waiting in sequence)
+  - 🔽 FR sentence 2 text  
+  - 🔽 FR sentence 3 text  
+
+##### 🔹 **Bottom Navigation**
+| 🏠 Home | 🎧 Playback | 📚 Playlists | 🧠 Smart Lists | ⚙️ Settings |
+
+The **Playback View** enables structured listening and repetition using translation blocks, helping users absorb language naturally.
+
+
 ---
 
 ## 4. Graphical Identity (UI/UX Design) 💡 *(Needs to be worked on)*  

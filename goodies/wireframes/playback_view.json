@@ -1,0 +1,83 @@
+{
+    "viewName": "Playback View",
+    "header": {
+      "userInfo": {
+        "display": true,
+        "elements": [
+          { "type": "text", "icon": "👤", "label": "User", "value": "Jorge" },
+          { "type": "text", "icon": "🔥", "label": "Streak", "value": "12 Days" },
+          { "type": "text", "icon": "🌟", "label": "XP", "value": "2,450" }
+        ]
+      }
+    },
+    "playbackSequence": [
+      {
+        "id": 1,
+        "text": "EN sentence 1 text",
+        "status": "active",
+        "expanded": true,
+        "actions": ["play", "pause", "repeat x2"]
+      },
+      {
+        "id": 2,
+        "text": "FR sentence 1 text",
+        "status": "active",
+        "expanded": true,
+        "actions": ["play", "pause", "repeat x3"]
+      },
+      {
+        "id": 3,
+        "text": "FR sentence 2 text",
+        "status": "queued",
+        "expanded": false
+      },
+      {
+        "id": 4,
+        "text": "FR sentence 3 text",
+        "status": "queued",
+        "expanded": false
+      },
+      {
+        "id": 5,
+        "text": "FR sentence 4 text",
+        "status": "queued",
+        "expanded": false
+      },
+      {
+        "id": 6,
+        "text": "FR sentence 5 text",
+        "status": "queued",
+        "expanded": false
+      },
+      {
+        "id": 7,
+        "text": "FR sentence 6 text",
+        "status": "queued",
+        "expanded": false
+      },
+      {
+        "id": 8,
+        "text": "FR sentence 7 text",
+        "status": "queued",
+        "expanded": false
+      },
+      {
+        "id": 9,
+        "text": "FR sentence 8 text",
+        "status": "queued",
+        "expanded": false
+      }
+    ],
+    "bottomNavigation": {
+      "display": true,
+      "items": [
+        { "icon": "🏠", "label": "Home", "destination": "Dashboard" },
+        { "icon": "🎧", "label": "Player", "destination": "Playback View" },
+        { "icon": "📚", "label": "Playlists", "destination": "Playlist Library" },
+        { "icon": "🧠", "label": "Smart Lists", "destination": "Smart Lists" },
+        { "icon": "⚙️", "label": "Settings", "destination": "Settings" }
+      ]
+    }
+  }
+
+  
