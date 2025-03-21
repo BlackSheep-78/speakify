@@ -51,9 +51,49 @@ Speakify is an interactive language learning platform that enables users to enga
 
 ---
 
-## 3. Navigation & Wireframes 💡 *(Needs to be worked on)*  
-- **User Flow Diagram**: To be designed, showing how users navigate between playlists, playback, and settings.  
-- **Wireframes**: To be created, providing a basic UI sketch of the main features.  
+## 3. Navigation & Wireframes
+
+### 3.1 User Flow Diagram
+
+Start App  
+   ↓  
+[🏠 Dashboard]  
+   ├── Tap "Start New Session" → [🎧 Player]  
+   ├── Tap "Recent Playlist" → [🎧 Player]  
+   ├── Tap "Daily Word" → [🧠 Smart Lists > Word of the Day]  
+   └── Tap "Playlists" → [📚 Playlist Library]  
+
+[📚 Playlist Library]  
+   ├── View Playlist Details → [🎧 Player]  
+   ├── Tap "+ Create Playlist" → [✏️ Playlist Editor]  
+   │     └── Tap "Assign Schema" → [🛠️ Schema Selector or ➕ Create New Schema]  
+   └── Tap "Edit Schema" → [🛠️ Schema Editor]  
+
+[🛠️ Schema Editor]  
+   ├── Define Playback Order (e.g., EN → FR → Pause → Repeat)  
+   ├── Set Repetitions per segment  
+   ├── Adjust Delay / Speed  
+   ├── Name the schema and Save  
+   └── Return to Playlist Editor or use it immediately  
+
+[🧠 Smart Lists]  
+   ├── Word of the Day → [List of contextual sentences]  
+   ├── Verb Conjugations → [List of verb-based sentences]  
+   ├── Thematic Contexts → [Airport, Restaurant, etc.]  
+   └── Dialogues / Stories → [Contextual audio flows]  
+
+[🎧 Player]  
+   ├── Uses selected playlist and schema  
+   └── Controls: Play, Pause, Loop, Next, Previous, Speed  
+
+[⚙️ Settings]  
+   ├── Audio Speed  
+   ├── Language Preferences  
+   └── Offline Mode Options  
+
+Optional:  
+[🔐 Login]  
+   └── Sync data, save profile, enable cloud features 
 
 ---
 
@@ -94,9 +134,14 @@ Speakify is an interactive language learning platform that enables users to enga
 
 ---
 
-## 9. Conclusion 💡 *(Needs to be worked on)*  
-- Summary of Speakify’s purpose and impact.  
-- Future improvements and potential expansions.
+## 9. Conclusion
+
+Speakify is more than just a language app — it’s a flexible, immersive, and user-centered language learning platform designed for real life. Whether on the move, at work, or relaxing at home, users can interact with high-quality multilingual content, tailored playlists, and customizable playback systems.
+
+This document lays the foundation for a powerful language tool that adapts to learners’ needs, supports different contexts, and remains scalable for future innovations like AI translation and voice interaction.
+
+The next steps will be to complete the design prototypes, finalize UI identity, and optimize development workflows to deliver a successful launch by April 23, 2025.
+
 
 ---
 

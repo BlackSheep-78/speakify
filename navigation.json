@@ -1,0 +1,90 @@
+{
+    "initialScreen": "Dashboard",
+    "screens": [
+      {
+        "name": "Dashboard",
+        "icon": "🏠",
+        "description": "Quick access to recent playlists, daily word, and start new session"
+      },
+      {
+        "name": "Playlist Library",
+        "icon": "📚",
+        "description": "Browse, search, filter, and create playlists"
+      },
+      {
+        "name": "Player",
+        "icon": "🎧",
+        "description": "Play translation blocks using custom playback schema"
+      },
+      {
+        "name": "Schema Editor",
+        "icon": "🛠️",
+        "description": "Create and manage playback schemas that define the sequence, delay, and repetition of translations.",
+        "fields": [
+          "schemaName",
+          "languageSequence",
+          "repetitionCount",
+          "delayBetweenSentences",
+          "shuffleMode",
+          "focusMode"
+        ],
+        "accessedFrom": ["Playlist Editor", "Playlist Library"]
+      },
+      {
+        "name": "Playlist Editor",
+        "icon": "✏️",
+        "description": "Create and manage playlists, add translation blocks, and assign schemas.",
+        "fields": [
+          "playlistName",
+          "languagePairs",
+          "addTranslationBlocks",
+          "assignSchema"
+        ]
+      },
+      {
+        "name": "Smart Lists",
+        "icon": "🧠",
+        "description": "Access lists like verbs, context-based sentences, word of the day, etc.",
+        "subLists": [
+          "Word of the Day",
+          "Verb Conjugation",
+          "Context-Based Lists",
+          "Dialogues",
+          "Stories"
+        ]
+      },
+      {
+        "name": "Settings",
+        "icon": "⚙️",
+        "description": "Configure playback, language preferences, offline mode"
+      }
+    ],
+    "authentication": {
+      "required": false,
+      "type": "local-first",
+      "optionalLogin": true,
+      "featuresWithLogin": [
+        "cloudSync",
+        "profileBackup",
+        "AIRecommendations"
+      ]
+    },
+    "playlistCreation": {
+      "entryPoint": "Playlist Library",
+      "action": "+ Create Playlist",
+      "editorFields": [
+        "playlistName",
+        "languagePairs",
+        "addTranslationBlocks",
+        "assignSchema"
+      ]
+    },
+    "bottomNavigation": [
+      "Dashboard",
+      "Player",
+      "Playlist Library",
+      "Smart Lists",
+      "Settings"
+    ]
+  }
+  
