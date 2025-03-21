@@ -138,29 +138,233 @@ The following UI views are in progress for Speakify. Each wireframe will be docu
 
 ---
 
-## 4. Graphical Identity (UI/UX Design) 💡 *(Needs to be worked on)*  
-- **Color Scheme & Typography**: Define visual identity for Speakify.  
-- **Consistency Across Devices**: Ensure a seamless experience between mobile, desktop, and TV.  
+## 4. Graphical Identity (UI/UX Design)
+
+Speakify aims to deliver a clear, immersive, and consistent visual experience across all devices — mobile, desktop, and TV. The design system prioritizes readability, focus, and user-friendliness to support long-term engagement and effective language learning.
 
 ---
 
-## 5. Eco-Responsibility 💡 *(Needs to be worked on)*  
-- **Server Efficiency Considerations**: Optimize hosting to reduce energy consumption.  
-- **Low-Bandwidth Optimization**: Reduce unnecessary data usage.  
-- **Offline Mode Enhancements**: Reduce network dependence to minimize power usage.  
+### 4.1 Color Scheme & Visual Identity
+
+| Purpose        | Color Name      | Hex Code  | Notes                                       |
+|----------------|------------------|-----------|---------------------------------------------|
+| Primary        | Deep Blue        | #0057B7   | Trust, calmness, and focus on learning      |
+| Accent         | Electric Green   | #00E676   | Highlights important actions (e.g., Play)   |
+| Background     | Light Gray       | #F5F7FA   | Neutral, reduces eye strain                 |
+| Surface        | Soft White       | #FFFFFF   | Card and container backgrounds              |
+| Text Primary   | Charcoal Black   | #2E2E2E   | High contrast, legible across screens       |
+| Alert / Error  | Coral Red        | #FF5252   | For deletions, errors, or critical alerts   |
+
+The interface remains predominantly calm and neutral, using vibrant colors only for essential feedback and interactive elements.
 
 ---
 
-## 6. SEO & Online Presence 💡 *(Needs to be worked on)*  
-- **SEO Strategy**: Define how Speakify will be indexed in search engines.  
-- **Keyword Optimization**: Identify relevant keywords for better discoverability.  
-- **Multilingual Indexing**: Optimize for global users.  
+### 4.2 Typography
+
+Speakify uses clean, modern, and readable fonts optimized for accessibility and multilingual content.
+
+| Use Case      | Font                  | Fallbacks              |
+|---------------|------------------------|------------------------|
+| Headings      | Segoe UI Bold          | system-ui, sans-serif  |
+| Body Text     | Segoe UI Regular       | Helvetica, Arial       |
+| UI Highlights | Antipasto Pro (Light)  | Segoe UI               |
+
+Fonts are chosen for their cross-platform availability and aesthetic harmony. All text is responsive and mobile-optimized.
 
 ---
 
-## 7. Team & Workflow 💡 *(Needs to be worked on)*  
-- **Development Team**: Define roles and responsibilities.  
-- **Project Methodology**: Specify whether Agile, Scrum, or Kanban will be used.  
+### 4.3 UI Components & Layout
+
+- **Buttons**: Rounded (border-radius 12px+), vibrant on hover, clean contrast.
+- **Cards & Containers**: Soft drop shadows, consistent padding, neutral backgrounds.
+- **Navigation**: Bottom tab navigation on mobile; top nav or side panel on desktop.
+- **Icons**: Modern icon libraries (Lucide, Tabler, or Material Symbols).
+- **Animations**: Light transitions only for feedback (e.g., active block expansion).
+- **Dark Mode**: Planned as an optional setting for comfort during night use.
+
+---
+
+### 4.4 Consistency Across Devices
+
+Speakify is designed as a **responsive progressive web app (PWA)** with consistent behavior and UI structure across:
+
+- 📱 **Mobile phones**: Thumb-friendly controls, bottom navigation
+- 💻 **Desktops/Laptops**: Scalable layout with larger reading zones
+- 📺 **TVs / Smart Displays**: Large text, high contrast, minimal controls
+
+Grid-based layout, shared styles, and reusable components ensure a unified experience regardless of screen size or input method.
+
+---
+
+
+---
+
+## 5. Eco-Responsibility
+
+Speakify is committed to sustainable digital practices. As a modern, web-based language learning platform, it will be designed with eco-responsibility in mind — optimizing for low energy consumption, reduced data transfer, and efficient use of resources across devices.
+
+---
+
+### 5.1 Server Efficiency Considerations
+To reduce the platform’s environmental footprint, Speakify will prioritize:
+
+- **Lightweight backend services**: Optimized APIs that serve only essential data.
+- **Efficient database queries**: Cached lookups and pagination to reduce server load.
+- **Green hosting options**: Preference for providers using renewable energy (e.g., Infomaniak, Scaleway Green).
+- **Auto-scaling infrastructure**: Dynamic resource allocation based on demand, avoiding overprovisioning.
+
+---
+
+### 5.2 Low-Bandwidth Optimization
+The frontend will be designed to work efficiently even in low-speed or unstable networks, especially for mobile users and global learners.
+
+- **Lazy-loading** of images, audio, and large assets.
+- **Adaptive streaming** for audio files (lower bitrate for slow networks).
+- **Compressed assets** using WebP, Brotli, and modern web formats.
+- **Minimal third-party scripts** to reduce bandwidth waste.
+
+---
+
+### 5.3 Offline Mode Enhancements
+Speakify’s offline mode supports both eco-responsibility and accessibility for users with limited or costly data plans.
+
+- **Local storage caching**: Translation blocks and audio files saved locally per playlist.
+- **Download-on-demand**: Only resources the user requests will be cached.
+- **Preloading control**: Users can choose when and what to make available offline.
+- **Battery-aware logic** (Planned): Defers heavy tasks on low battery conditions.
+
+---
+
+### 5.4 Future Improvements
+- **Energy-aware dark mode**: Lower screen energy use on OLED devices.
+- **Usage-based analytics**: Tracking system load to identify optimization opportunities.
+- **Push for lightweight AI**: If AI features are integrated, use serverless or edge-based solutions with minimal energy impact.
+
+> By implementing these strategies, Speakify aims to align high-quality learning experiences with a responsible and sustainable digital footprint.
+ 
+
+---
+
+## 6. SEO & Online Presence
+
+To ensure Speakify reaches a global audience of language learners, educators, and multilingual professionals, a thoughtful SEO strategy will be implemented. The goal is to make the platform highly visible, searchable, and discoverable across multiple languages and regions.
+
+---
+
+### 6.1 SEO Strategy
+
+The SEO approach for Speakify will focus on both **technical SEO** (site structure, performance) and **content SEO** (relevance, clarity).
+
+- **Progressive Web App Optimization**: Ensure that the PWA is crawlable and well-structured, using server-side or dynamic rendering where necessary.
+- **Clean URL Structure**: URLs will be semantic and localized (e.g. `/fr/playlists`, `/en/word-of-the-day`).
+- **Meta Tags & Open Graph**: Each page will contain meaningful meta titles, descriptions, and social preview metadata.
+- **Sitemaps & Robots.txt**: Automatically generated XML sitemaps and properly configured robots.txt files for optimal indexing.
+- **Fast Loading Times**: Optimized asset delivery and Core Web Vitals compliance for search engine ranking benefits.
+
+---
+
+### 6.2 Keyword Optimization
+
+Relevant keywords will be researched and integrated into the content, targeting different user intents and learning contexts.
+
+**Primary Keyword Targets:**
+- language learning app
+- immersive language practice
+- translation-based audio learning
+- passive language listening
+- learn French while commuting
+- language playlist builder
+- smart vocabulary trainer
+
+**Contextual Keyword Strategies:**
+- Long-tail keywords for specific industries (e.g., "learn medical Spanish phrases")
+- Location-based or culturally sensitive terms (e.g., "daily English for immigrants in France")
+- Voice search optimization (“how do I say hello in Japanese?”)
+
+---
+
+### 6.3 Multilingual Indexing
+
+Since Speakify targets multilingual users worldwide, content must be accessible and indexable in multiple languages.
+
+- **Hreflang Tags**: Used to indicate content language and regional targeting.
+- **Language-specific Metadata**: Page titles, descriptions, and slugs will be localized.
+- **Localized Content URLs**: `/fr`, `/en`, `/es`, etc. paths for each version of a page.
+- **International Keyword Mapping**: Equivalent keywords will be identified across key target languages (EN, FR, ES, DE, etc.).
+
+> All multilingual pages will be SEO-optimized independently to improve visibility in native-language search results.
+
+---
+
+### 6.4 Online Presence & Brand Visibility
+
+Beyond search indexing, Speakify will build awareness through:
+
+- **Social Media Meta Integration** (OG tags, Twitter Cards)
+- **Schema.org Markup** for rich search results (e.g., “language course”, “audio lesson”)
+- **App Store Optimization** (if PWA is deployed as mobile wrapper)
+- **Google Discover Readiness**: Structured articles and featured “Word of the Day” content
+- **Future blog or resource center** to generate organic traffic with educational content
+
+> SEO is not just a discovery tool for Speakify — it’s a growth engine aligned with global accessibility and content relevance.
+
+
+---
+
+## 7. Team & Workflow
+
+Speakify will be developed by a lean, agile, and highly focused team, working collaboratively to deliver a polished product within a tight timeframe. The structure promotes accountability, adaptability, and continuous delivery.
+
+---
+
+### 7.1 Development Team
+
+| Role                   | Responsibility                                                                 |
+|------------------------|---------------------------------------------------------------------------------|
+| **Project Owner**      | Defines the product vision, prioritizes tasks, approves features                |
+| **Product Manager**    | Manages timeline, milestones, and communication between stakeholders            |
+| **Lead Developer**     | Oversees architecture, code quality, and core backend/frontend implementation   |
+| **Frontend Developer** | Builds UI components, ensures responsive and accessible design                  |
+| **Backend Developer**  | Develops API, database, and schema logic (e.g. Playback Loops, user progress)   |
+| **UX/UI Designer**     | Creates wireframes, prototypes, visual style, and ensures cross-device UX       |
+| **QA Tester**          | Conducts manual/automated testing, validates playback sequences and stability   |
+| **Content Curator**    | Prepares and manages multilingual content, translations, and smart lists        |
+| **DevOps (Optional)**  | Handles deployment pipeline, cloud sync, and hosting setup (can be part-time)   |
+
+*Note: Some roles may be fulfilled by the same person during the early stages (e.g., Full Stack Developer wearing multiple hats).*
+
+---
+
+### 7.2 Project Methodology
+
+Speakify will use a **lightweight Agile methodology** based on **Scrum**, with sprints adapted to a short development cycle.
+
+#### 📅 Sprint Rhythm
+- **Sprint Length**: 1 week  
+- **Daily Stand-ups**: 10–15 mins max (asynchronous if remote)  
+- **Weekly Planning & Review**: Set priorities, review sprint results, and define upcoming goals  
+- **Kanban Board**: Used to track task flow (To Do → In Progress → Review → Done)  
+
+#### 🛠 Tools & Workflow
+| Tool           | Purpose                                |
+|----------------|----------------------------------------|
+| Git + GitHub   | Source control and code collaboration  |
+| Trello / Notion| Sprint planning and task tracking      |
+| Figma          | UI/UX collaboration                    |
+| Slack / Discord| Team communication                     |
+| VS Code        | Development environment                |
+
+> This setup encourages clarity, iteration, and accountability while staying adaptable to evolving needs.
+
+---
+
+### 7.3 Collaboration Philosophy
+
+- **Ship fast, improve continuously**: MVP first, polish after validation  
+- **Document as we go**: Avoid silos and make handoff easier  
+- **User-first thinking**: Every sprint must result in tangible improvements for learners  
+- **Learning-friendly**: The dev culture reflects Speakify’s purpose — curiosity, clarity, and growth
+
 
 ---
 
