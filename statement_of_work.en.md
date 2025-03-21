@@ -1,21 +1,20 @@
-
 # Speakify - Cahier des Charges
 
-## 1. Introduction
-### 1.1 Project Overview
+## 1. Introduction  
+### 1.1 Project Overview  
 Speakify is an interactive language learning platform that enables users to engage with multilingual audio content through structured playlists. The platform allows users to create and manage custom translation-based audio experiences, making language acquisition more immersive and effective. Speakify is designed for accessibility across mobile, desktop, and TV screens.
 
-### 1.2 Objectives
-- Provide a structured approach to language learning through **Playback Loops (PLs)**.
-- Enable users to create, manage, and customize **playlists** with various learning modes.
-- Ensure a seamless user experience across multiple devices.
-- Support multiple languages and translations with audio playback.
-- Offer a scalable backend for efficient storage and retrieval of translations.
+### 1.2 Objectives  
+- Provide a structured approach to language learning through **Playback Loops (PLs)**.  
+- Enable users to create, manage, and customize **playlists** with various learning modes.  
+- Ensure a seamless user experience across multiple devices.  
+- Support multiple languages and translations with audio playback.  
+- Offer a scalable backend for efficient storage and retrieval of translations.  
 - Develop and deploy within the time frame of **March 25 to April 23, 2025**.
 
 ---
 
-## 2. Features & Problem Solving
+## 2. Features & Problem Solving  
 ### **2.1 Application Features**  
 - **Multilingual Audio Playlists**: Users can create and customize playlists consisting of Playback Loops with audio files.  
 - **Playback Loops (PLs)**: A structured unit that contains a sentence in a source language and its equivalent translations in multiple languages, each with an associated audio file.  
@@ -37,16 +36,17 @@ Speakify is an interactive language learning platform that enables users to enga
   - **Context-Based Lists**: **Playlists targeting specific circumstances (e.g., airport, hospital, restaurant).**  
   - **Random Sentences**: **Automatically generated lists to expose learners to a wide variety of structures and vocabulary.**  
   - **Dialogues**: **Playlists simulating real conversations to enhance comprehension and engagement.**  
-  - **Stories**: **Narrative-based playlists to promote natural learning through contextual immersion.**
+  - **Stories**: **Narrative-based playlists to promote natural learning through contextual immersion.**  
+  - **Word of the Day Lists**: **Each day, Speakify suggests a new word or verb. Users can access a list of sentences that include the word of the day in real contexts, enhancing vocabulary through daily exposure.**
 
-### 2.2 Target Audience
-- **Language Learners**: Individuals looking to learn or improve a new language through structured listening.
-- **Educators & Tutors**: Teachers who want to create custom language exercises for their students.
-- **Multilingual Professionals**: Business professionals who need to master multiple languages for communication.
-- **Industry-Specific Learners**: Individuals looking to learn domain-specific vocabulary, such as medical, legal, or technical terminology.
-- **Travelers & Expats**: People relocating to a new country who need practical, real-world language exposure.
-- **Speech & Hearing Specialists**: Researchers and professionals working with multilingual content for language studies.
-- **Busy Professionals & Workers**: People who have limited time for formal study but want to learn through passive listening.
+### 2.2 Target Audience  
+- **Language Learners**: Individuals looking to learn or improve a new language through structured listening.  
+- **Educators & Tutors**: Teachers who want to create custom language exercises for their students.  
+- **Multilingual Professionals**: Business professionals who need to master multiple languages for communication.  
+- **Industry-Specific Learners**: Individuals looking to learn domain-specific vocabulary, such as medical, legal, or technical terminology.  
+- **Travelers & Expats**: People relocating to a new country who need practical, real-world language exposure.  
+- **Speech & Hearing Specialists**: Researchers and professionals working with multilingual content for language studies.  
+- **Busy Professionals & Workers**: People who have limited time for formal study but want to learn through passive listening.  
 - **Immigrants & New Residents**: Individuals who need to learn a new language quickly for adaptation and daily interactions.
 
 ---
@@ -96,13 +96,13 @@ Speakify is an interactive language learning platform that enables users to enga
 
 ## 9. Conclusion 💡 *(Needs to be worked on)*  
 - Summary of Speakify’s purpose and impact.  
-- Future improvements and potential expansions.  
+- Future improvements and potential expansions.
 
 ---
 
-**Document Version:** 1.2.0  
-**Date:** March 2025  
-**Author:** Jorge
+**Document Version**: 1.2.0  
+**Date**: March 2025  
+**Author**: Jorge
 
 ---
 
