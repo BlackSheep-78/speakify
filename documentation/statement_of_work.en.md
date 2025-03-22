@@ -10,7 +10,7 @@
 
 ---
 
-- # Speakify - Statement of work
+# Speakify - Statement of work
 
 ## 1. Introduction  
 ### 1.1 Project Overview  
