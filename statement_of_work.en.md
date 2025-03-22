@@ -8,6 +8,8 @@
 - 🇫🇷 [Document de Spécifications Techniques (FR)](https://github.com/BlackSheep-78/speakify/blob/main/technical_specification_document.fr.md)  
 - 🇬🇧 [Technical Specification Document (EN)](https://github.com/BlackSheep-78/speakify/blob/main/technical_specification_document.en.md)
 
+---
+  
 - # Speakify - Statement of work
 
 ## 1. Introduction  
