@@ -26,10 +26,6 @@ Speakify est une plateforme interactive d’apprentissage des langues qui permet
 
 ---
 
-Parfait. Voici la traduction complète du document en blocs prêts à copier-coller.
-
----
-
 ## 2. Fonctionnalités & Résolution des Problèmes  
 ### **2.1 Fonctionnalités de l’application**  
 - **Playlists audio multilingues** : Les utilisateurs peuvent créer et personnaliser des playlists composées de boucles de lecture avec des fichiers audio.  
