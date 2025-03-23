@@ -693,8 +693,19 @@ All HTML pages:
 
 ---
 
-## Appendix A: Visuals
+## Appendix A: Interface Screenshots
 
-### A.1 Speakify Dashboard Preview
+### A.1 Dashboard View
 
-![Speakify Dashboard](./dashboard.png)
+This screenshot shows the Speakify dashboard with quick access to Smart Lists, Playlists, and the Player.
+
+![Dashboard View](./dashboard_view.png)
+
+---
+
+### A.2 Playback Interface
+
+This screenshot demonstrates the playback view with translation blocks, repeat counters, and the floating play/pause control.
+
+![Playback Interface](./playback.png)
+
