@@ -699,7 +699,7 @@ All HTML pages:
 
 This screenshot shows the Speakify dashboard with quick access to Smart Lists, Playlists, and the Player.
 
-![Dashboard View](./dashboard_view.png)
+![Dashboard View](./dashboard.png)
 
 ---
 
