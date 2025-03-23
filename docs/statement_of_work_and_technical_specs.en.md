@@ -215,9 +215,6 @@ Grid-based layout, shared styles, and reusable components ensure a unified exper
 
 ---
 
-
----
-
 ## 5. Eco-Responsibility
 
 Speakify is committed to sustainable digital practices. As a modern, web-based language learning platform, it will be designed with eco-responsibility in mind — optimizing for low energy consumption, reduced data transfer, and efficient use of resources across devices.
