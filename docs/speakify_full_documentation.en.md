@@ -408,6 +408,22 @@ The next steps will be to complete the design prototypes, finalize UI identity, 
 
 ---
 
+
+
+---
+
+## 10–19: Technical Specification Document
+
+## 📄 Documentation
+
+-    [Readme](https://github.com/BlackSheep-78/speakify/blob/main/README.md)
+
+- 🇫🇷 [Cahier des Charges (FR)](https://github.com/BlackSheep-78/speakify/blob/main/docs/statement_of_work.fr.md)  
+- 🇬🇧 [Statement_of_Work  (EN)](https://github.com/BlackSheep-78/speakify/blob/main/docs/statement_of_work.en.md)
+  
+- 🇫🇷 [Document de Spécifications Techniques (FR)](https://github.com/BlackSheep-78/speakify/blob/main/docs/technical_specification_document.fr.md)  
+- 🇬🇧 [Technical Specification Document (EN)](https://github.com/BlackSheep-78/speakify/blob/main/docs/technical_specification_document.en.md)
+
 # Speakify - Technical Specification Document
 
 ## 10. System Architecture
@@ -421,15 +437,15 @@ Speakify is a cross-platform PWA designed to facilitate immersive language learn
 
 ---
 
-⚙️ System Architecture
+## 10. System Architecture
 
-1. High-Level Architecture:
+### 10.1 High-Level Architecture
 - Frontend (HTML/CSS/JS) serves as a dynamic PWA interface
 - Backend (PHP) provides APIs for data retrieval
 - JSON files simulate API data
 - Database (Planned) for structured storage of translations and schemas
 
-2. Component Breakdown:
+### 10.2 Component Breakdown
 - Frontend:
   - HTML, CSS, Bootstrap, JS
   - AJAX loading for playlists and schemas
@@ -445,7 +461,7 @@ Speakify is a cross-platform PWA designed to facilitate immersive language learn
 
 ---
 
-🧱 Technology Stack
+## 11. Technology Stack
 
 | Layer       | Technology     | Version | Notes                             |
 |-------------|----------------|---------|-----------------------------------|
@@ -458,9 +474,9 @@ Speakify is a cross-platform PWA designed to facilitate immersive language learn
 
 ---
 
-📂 Data Model & Structures
+## 12. Data Model & Structures
 
-1. Database Schema:
+### 12.1 Database Schema
 - Tables (Planned):
   - `languages`
   - `sentences`
@@ -468,7 +484,7 @@ Speakify is a cross-platform PWA designed to facilitate immersive language learn
   - `sources`
   - `translation_pair_sources`
 
-2. Example JSON Schema:
+### 12.2 Example JSON Schema
 ```
 {
   "playlist_id": "123",
@@ -487,7 +503,7 @@ Speakify is a cross-platform PWA designed to facilitate immersive language learn
 
 ---
 
-🌐 API Endpoints
+## 13. API Endpoints
 
 Base URL: http://localhost/speakify/backend/api.php
 
@@ -500,7 +516,7 @@ Base URL: http://localhost/speakify/backend/api.php
 
 ---
 
-🧠 Business Logic & Workflows
+## 14. Business Logic & Workflows
 
 - Playback Loop (PL) logic:
   - Follows user-defined schema: order, repetitions, pause
@@ -515,7 +531,7 @@ Base URL: http://localhost/speakify/backend/api.php
 
 ---
 
-🔐 Security
+## 15. Security
 
 - No authentication in current MVP
 - Future:
@@ -525,7 +541,7 @@ Base URL: http://localhost/speakify/backend/api.php
 
 ---
 
-📱 UI Structure (Developer View)
+## 16. UI Structure
 
 | Page/View         | Description                        | Components/Files                 |
 |-------------------|------------------------------------|----------------------------------|
@@ -548,7 +564,7 @@ All HTML pages:
 
 ---
 
-🚀 Environments & Deployment
+## 17. Environments & Deployment
 
 | Environment | URL                        | Notes                     |
 |-------------|-----------------------------|---------------------------|
@@ -558,7 +574,7 @@ All HTML pages:
 
 ---
 
-🧪 Testing Plan
+## 18. Testing Plan
 
 - Manual testing for:
   - Playback functionality
@@ -571,7 +587,7 @@ All HTML pages:
 
 ---
 
-📊 Performance & Constraints
+## 19. Performance & Constraints
 
 - Responsive design for mobile-first experience
 - Fixed footer and floating controls for usability
@@ -583,7 +599,7 @@ All HTML pages:
 
 ---
 
-🧰 Appendix
+## 20. Appendix
 
 - JSON Examples: `playlists.json`, `schemas.json`, `translations.json`
 - Glossary:
