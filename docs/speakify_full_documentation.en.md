@@ -1,7 +1,3 @@
-# Speakify – Unified Project Documentation
-
-## 1–9: Statement of Work (SOW)
-
 ## 📄 Documentation
 
 -    [Readme](https://github.com/BlackSheep-78/speakify/blob/main/README.md)
@@ -412,31 +408,14 @@ The next steps will be to complete the design prototypes, finalize UI identity, 
 
 ---
 
+# Speakify - Technical Specification Document
 
-
----
-
-## 10–19: Technical Specification Document
-
-## 📄 Documentation
-
--    [Readme](https://github.com/BlackSheep-78/speakify/blob/main/README.md)
-
-- 🇫🇷 [Cahier des Charges (FR)](https://github.com/BlackSheep-78/speakify/blob/main/docs/statement_of_work.fr.md)  
-- 🇬🇧 [Statement_of_Work  (EN)](https://github.com/BlackSheep-78/speakify/blob/main/docs/statement_of_work.en.md)
-  
-- 🇫🇷 [Document de Spécifications Techniques (FR)](https://github.com/BlackSheep-78/speakify/blob/main/docs/technical_specification_document.fr.md)  
-- 🇬🇧 [Technical Specification Document (EN)](https://github.com/BlackSheep-78/speakify/blob/main/docs/technical_specification_document.en.md)
-
----
-  
-🛠️ TECHNICAL SPECIFICATION DOCUMENT
-
-📌 Project Overview
-- Project Name: Speakify
-- Version: 1.0.0
-- Date: March 2025
-- Author(s): Jorge
+## 10. System Architecture
+### 10.1 Overview
+- **Project Name**: Speakify
+- **Version**: 1.0.0
+- **Date**: March 2025
+- **Author(s)**: Jorge
 
 Speakify is a cross-platform PWA designed to facilitate immersive language learning through structured multilingual audio playlists. It supports mobile, desktop, and TV usage, leveraging Translation Blocks (TBs) and user-defined playback schemas to deliver a customizable learning experience. 
 
@@ -620,4 +599,3 @@ All HTML pages:
   - Central stylesheet: `style.css` with transitions and global design
 
 ---
-
