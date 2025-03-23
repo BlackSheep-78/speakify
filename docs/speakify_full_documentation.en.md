@@ -377,24 +377,112 @@ Speakify will use a **lightweight Agile methodology** based on **Scrum**, with s
 
 ---
 
-### 7.3 Collaboration Philosophy
+## 7. Team & Workflow
 
-- **Ship fast, improve continuously**: MVP first, polish after validation  
-- **Document as we go**: Avoid silos and make handoff easier  
-- **User-first thinking**: Every sprint must result in tangible improvements for learners  
-- **Learning-friendly**: The dev culture reflects Speakify’s purpose — curiosity, clarity, and growth
+Speakify is developed to simulate a real development team structure, ensuring all roles are clearly defined and aligned with each project phase. This aligns with the certification requirement of showing how a candidate understands the full development lifecycle.
 
+### 7.1 Development Team Roles
+
+| Role                   | Responsibility                                                                                 |
+|------------------------|-----------------------------------------------------------------------------------------------|
+| **Project Owner**      | Defines the product vision, prioritizes features, and oversees overall progress                |
+| **Product Manager**    | Coordinates team members and ensures the project roadmap aligns with milestones               |
+| **Lead Developer**     | Designs core architecture, manages code quality, and provides technical direction             |
+| **Frontend Developer** | Develops UI, ensures responsiveness and accessibility across devices                          |
+| **Backend Developer**  | Manages database logic, API implementation, and server-side operations                        |
+| **UX/UI Designer**     | Designs user flows, wireframes, and maintains graphical identity across all platforms         |
+| **QA Tester**          | Validates features, runs tests, and ensures the final product meets all technical requirements |
+| **Content Curator**    | Prepares multilingual content and ensures linguistic quality in translation blocks             |
+| **DevOps (Optional)**  | Manages deployment, hosting, and local/staging setup                                          |
+
+> *Note: During the project’s early stages, these roles may be covered by the same person (e.g., Jorge as Full Stack Developer).*  
 
 ---
 
-## 8. Project Timeline & Phases  
-| Phase            | Task Description                         | Estimated Completion |
-|------------------|------------------------------------------|----------------------|
-| **Phase 1**       | Finalize database schema                 | March 29, 2025       |
-| **Phase 2**       | Develop core API endpoints               | April 5, 2025        |
-| **Phase 3**       | Implement frontend UI                    | April 12, 2025       |
-| **Phase 4**       | Conduct testing and optimizations        | April 19, 2025       |
-| **Phase 5**       | Prepare for deployment                   | April 23, 2025       |
+### 7.2 Role Allocation by Project Phase
+
+| Phase         | Date               | Tasks                                             | Responsible Roles                                  |
+|---------------|--------------------|---------------------------------------------------|----------------------------------------------------|
+| **Phase 1**   | March 25–29, 2025  | Finalize DB schema, create ER diagram             | Backend Dev, Lead Dev                              |
+| **Phase 2**   | March 30–April 5   | Build and test core APIs                          | Backend Dev, Lead Dev                              |
+| **Phase 3**   | April 6–12         | UI development (Playback, Smart Lists, Schema)    | Frontend Dev, UX/UI Designer                       |
+| **Phase 4**   | April 13–19        | Testing, bug fixing, optimization                 | QA Tester, Lead Dev                                |
+| **Phase 5**   | April 20–23        | Deployment, documentation                         | DevOps, Product Manager                            |
+
+---
+
+### 7.3 Workflow & Methodology
+
+Speakify uses a lightweight Agile approach with:
+- **1-week sprints**
+- **Daily stand-ups** (async OK)
+- **Weekly planning & reviews**
+- **Kanban board** for To Do → In Progress → Review → Done
+
+**Tools:** GitHub, Trello, Notion, Figma, Slack/Discord, VS Code
+
+Philosophy: Ship fast → validate → improve.
+
+---
+
+## 8. Integrated Technical Specifications (Certification Requirement)
+
+> In accordance with certification requirements, the following technical specifications are explicitly integrated within this document.
+
+### 8.1 System Architecture
+
+- **Frontend**: HTML, CSS, JS (ES6+), Bootstrap, AJAX
+- **Backend**: PHP 8.x APIs
+- **Database**: MySQL
+- **Structure**:
+    - Frontend fetches and renders playlists, schemas, and translation blocks.
+    - Backend serves dynamic content via API endpoints.
+    - Database stores all structured content (languages, sentences, translation pairs, sources).
+
+### 8.2 Database Schema Overview
+
+Planned relational tables:
+- `languages`: Available languages with ID/code/name
+- `sentences`: Base sentence data with language links
+- `translation_pairs`: Links two sentences as a translation pair
+- `sources`: Describes translation sources (manual, API, etc.)
+- `translation_pair_sources`: Links translation pairs to sources
+
+### 8.3 Technology Stack
+
+| Layer       | Tech         | Notes                              |
+|-------------|--------------|------------------------------------|
+| Frontend    | HTML/CSS/JS  | PWA structure, Bootstrap layout    |
+| Backend     | PHP 8.x      | REST API endpoints                 |
+| Database    | MySQL        | Normalized schema, indexed tables  |
+| Tools       | XAMPP        | Local dev, Apache + MySQL          |
+| Planned API | OpenAI       | Translation & TTS services (future)|
+
+### 8.4 API Design (Planned)
+
+Base URL: `http://localhost/speakify/backend/api.php`
+
+| Method | Endpoint         | Description                   |
+|--------|------------------|-------------------------------|
+| GET    | ?action=playlists| Retrieve playlists            |
+| GET    | ?action=schemas  | Retrieve schemas              |
+| GET    | ?action=tb&id=xx | Get specific translation block|
+| POST   | TBD              | Save playlist/schema          |
+
+### 8.5 Security Notes
+
+- MVP: No login yet
+- Future: Auth (JWT or session), access control
+- API sanitization planned (SQL injection/XSS prevention)
+
+### 8.6 Testing
+
+| Type            | Description                                 |
+|-----------------|---------------------------------------------|
+| Manual          | Playback, loop behavior, UI interactivity   |
+| Unit (planned)  | Backend API (PHPUnit)                       |
+| Frontend        | Playback logic (Jest/Cypress planned)       |
+| Device testing  | Phones, desktops, TVs                       |
 
 ---
 
@@ -604,3 +692,9 @@ All HTML pages:
   - Central stylesheet: `style.css` with transitions and global design
 
 ---
+
+## Appendix A: Visuals
+
+### A.1 Speakify Dashboard Preview
+
+![Speakify Dashboard](./dashboard.png)
