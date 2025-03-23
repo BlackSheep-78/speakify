@@ -696,7 +696,7 @@ All HTML pages:
 
 This screenshot shows the Speakify dashboard with quick access to Smart Lists, Playlists, and the Player.
 
-![Dashboard View](./dashboard.png)
+![Dashboard View](./images/dashboard.png)
 
 ---
 
@@ -704,12 +704,12 @@ This screenshot shows the Speakify dashboard with quick access to Smart Lists, P
 
 This screenshot demonstrates the playback view with translation blocks, repeat counters, and the floating play/pause control.
 
-![Playback Interface](./playback.png)
+![Playback Interface](./images/playback.png)
 
 ### A.3 Playlist Interface
 
 This screenshot displays the Playlist Library where users can browse, create, and manage their language learning playlists. Each playlist shows its title, associated schema, and the number of translation blocks it contains.
 
-![Playlist Interface](./playlist-library.png)
+![Playlist Interface](./images/playlist-library.png)
 
 
