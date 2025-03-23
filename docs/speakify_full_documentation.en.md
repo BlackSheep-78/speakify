@@ -154,7 +154,6 @@ Start App
 | Login & Profile View       | 🔲     |
 | Achievements & Stats View  | 🔲     |
 | Offline Mode View          | 🔲     |
-```
 
 ---
 
