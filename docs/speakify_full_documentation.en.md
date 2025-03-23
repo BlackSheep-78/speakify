@@ -63,90 +63,98 @@ Speakify is an interactive language learning platform that enables users to enga
 
 ---
 
+Perfect, Jorge. Here's your clean **Section 3 – Navigation & Wireframes** snippet, ready to copy-paste into your markdown document (VS Code, Notion, or anywhere else):
+
+---
+
+```markdown
 ## 3. Navigation & Wireframes
 
 ### 3.1 User Flow Diagram
 
-Start App  
-   ↓  
-[🏠 Dashboard]  
-   ├── Tap "Start New Session" → [🎧 Player]  
-   ├── Tap "Recent Playlist" → [🎧 Player]  
-   ├── Tap "Daily Word" → [🧠 Smart Lists > Word of the Day]  
-   └── Tap "Playlists" → [📚 Playlist Library]  
+```plaintext
+Start App
+   ↓
+[🏠 Dashboard]
+   ├── "Start New Session"   → [🎧 Player]
+   ├── "Recent Playlist"     → [🎧 Player]
+   ├── "Daily Word"          → [🧠 Smart Lists > Word of the Day]
+   └── "Playlists"           → [📚 Playlist Library]
 
-[📚 Playlist Library]  
-   ├── View Playlist Details → [🎧 Player]  
-   ├── Tap "+ Create Playlist" → [✏️ Playlist Editor]  
-   │     └── Tap "Assign Schema" → [🛠️ Schema Selector or ➕ Create New Schema]  
-   └── Tap "Edit Schema" → [🛠️ Schema Editor]  
+[📚 Playlist Library]
+   ├── "View Playlist"       → [🎧 Player]
+   ├── "+ Create Playlist"   → [✏️ Playlist Editor]
+   │     └── "Assign Schema" → [🛠 Schema Selector] or [➕ Create New Schema]
+   └── "Edit Schema"         → [🛠 Schema Editor]
 
-[🛠️ Schema Editor]  
-   ├── Define Playback Order (e.g., EN → FR → Pause → Repeat)  
-   ├── Set Repetitions per segment  
-   ├── Adjust Delay / Speed  
-   ├── Name the schema and Save  
-   └── Return to Playlist Editor or use it immediately  
+[🛠 Schema Editor]
+   ├── Define Playback Order (e.g., EN → FR → Pause → Repeat)
+   ├── Set Repetitions per segment
+   ├── Adjust Delay / Speed
+   └── Save Schema
 
-[🧠 Smart Lists]  
-   ├── Word of the Day → [List of contextual sentences]  
-   ├── Verb Conjugations → [List of verb-based sentences]  
-   ├── Thematic Contexts → [Airport, Restaurant, etc.]  
-   └── Dialogues / Stories → [Contextual audio flows]  
+[🧠 Smart Lists]
+   ├── Word of the Day        → Contextual Sentences
+   ├── Verb Conjugations      → Sentences with verb variations
+   ├── Thematic Contexts      → e.g., Airport, Restaurant
+   ├── Dialogues / Stories    → Contextual audio conversations
 
-[🎧 Player]  
-   ├── Uses selected playlist and schema  
-   └── Controls: Play, Pause, Loop, Next, Previous, Speed  
+[🎧 Player]
+   └── Controls: Play, Pause, Loop, Next, Previous, Speed
 
-[⚙️ Settings]  
-   ├── Audio Speed  
-   ├── Language Preferences  
-   └── Offline Mode Options  
+[⚙️ Settings]
+   ├── Audio Speed
+   ├── Language Preferences
+   └── Offline Mode Options
 
-Optional:  
-[🔐 Login]  
-   └── Sync data, save profile, enable cloud features 
+[🔐 Login (Optional)]
+   └── Sync Data, Save Profile, Enable Cloud Features
+```
 
-### 3.2 Wireframes
-This section provides **low-fidelity wireframes** for the core screens of Speakify. These wireframes illustrate layout, structure, and main UI components.
+---
 
-#### 🎧 **Playback View Wireframe**
-The **Playback View** is the primary interface where users interact with translation-based audio content. It follows a structured **playback sequence** while providing **user progress tracking and quick navigation**.
+### 3.2 Wireframes (Low-Fidelity)
 
-##### 🔹 **Header (User Stats)**
-| 👤 User | 🔥 Streak | 🌟 XP  |
-|---------|----------|--------|
-| Jorge   | 12 Days  | 2,450  |
+#### 🎧 **Playback View**
 
-##### 🔹 **Playback Sequence**
-- **Active Sentences** (Unfolded, showing controls)
-  - ▶ Play | ⏸ Pause | 🔄 Repeat x2, x3  
-- **Queued Sentences** (Collapsed, waiting in sequence)
-  - 🔽 FR sentence 2 text  
-  - 🔽 FR sentence 3 text  
+```plaintext
+┌──────────────────────────────────────────────┐
+│ 👤 Jorge     🔥 12 Days     🌟 2,450 XP       │   ← Header
+├──────────────────────────────────────────────┤
+│ ▶ Hello (EN)      → Bonjour (FR)             │
+│ ⏸ Pause   🔄 Repeat x3                       │   ← Active Sentence
+├──────────────────────────────────────────────┤
+│ 🔽 Sentence 2 (FR)                            │
+│ 🔽 Sentence 3 (FR)                            │   ← Queued Sentences
+├──────────────────────────────────────────────┤
+│ 🏠  🎧  📚  🧠  ⚙️                               │   ← Bottom Navigation
+└──────────────────────────────────────────────┘
+```
 
-##### 🔹 **Bottom Navigation**
-| 🏠 Home | 🎧 Playback | 📚 Playlists | 🧠 Smart Lists | ⚙️ Settings |
+---
 
-The **Playback View** enables structured listening and repetition using translation blocks, helping users absorb language naturally.
+### 3.3 UI Screens (MVP Roadmap)
 
-### 3.3 Wireframes Work in Progress
-The following UI views are in progress for Speakify. Each wireframe will be documented and iterated upon as development continues.
+| View                   | Status   | Description                                       |
+|------------------------|----------|---------------------------------------------------|
+| Playback View          | ✅ Done  | Audio playback with translation sequence         |
+| Schema Editor View     | 🔜 Next  | Create and customize playback logic              |
+| Playlist Library View  | 🔲 Todo  | Search, browse, and manage playlists             |
+| Playlist Editor View   | 🔲 Todo  | Create & assign schemas to playlists             |
+| Smart Lists View       | 🔲 Todo  | Auto-generated lists (verbs, contexts, etc.)     |
+| Settings View          | 🔲 Todo  | Speed, language, offline controls                |
 
-#### ✅ **Core Views (MVP)**
-- [x] **3.2 Playback View** (Playback sequence, audio controls, bottom nav)  
-- [ ] **3.4 Schema Editor View** *(Next priority - Defines playback rules & logic)*  
-- [ ] **3.5 Playlist Library View** *(Browse, search, select, and manage playlists)*  
-- [ ] **3.6 Playlist Editor View** *(Create & modify playlists, assign schemas)*  
-- [ ] **3.7 Smart Lists View** *(Prebuilt lists: verb conjugations, context-based, etc.)*  
-- [ ] **3.8 Settings View** *(Control playback speed, language preferences, offline mode, etc.)*  
+---
 
-#### 🔄 **Extra Features (Planned)**
-- [ ] **3.9 Word of the Day View** *(Daily word with example sentences)*  
-- [ ] **3.10 Login & Profile View** *(Optional login, progress tracking, cloud sync)*  
-- [ ] **3.11 Achievements & Stats View** *(Track XP, learning streaks, goals)*  
-- [ ] **3.12 Offline Mode View** *(Download and manage offline resources)*  
+### 🔮 Extra Features (Planned)
 
+| Feature                    | Status |
+|----------------------------|--------|
+| Word of the Day View       | 🔲     |
+| Login & Profile View       | 🔲     |
+| Achievements & Stats View  | 🔲     |
+| Offline Mode View          | 🔲     |
+```
 
 ---
 
