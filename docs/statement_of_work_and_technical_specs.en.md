@@ -63,11 +63,6 @@ Speakify is an interactive language learning platform that enables users to enga
 
 ---
 
-Perfect, Jorge. Here's your clean **Section 3 – Navigation & Wireframes** snippet, ready to copy-paste into your markdown document (VS Code, Notion, or anywhere else):
-
----
-
-```markdown
 ## 3. Navigation & Wireframes
 
 ### 3.1 User Flow Diagram
