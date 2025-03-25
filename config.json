@@ -1,0 +1,11 @@
+{
+    "env": "development",
+    "debug": true,
+    "db": {
+        "host": "127.0.0.1",
+        "name": "translate",
+        "user": "root",
+        "pass": ""
+    },
+    "admin_token": "change_this_token"
+}

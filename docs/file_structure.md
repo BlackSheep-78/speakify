@@ -16,7 +16,7 @@ speakify/
 │
 ├── backend/                   # API, PHP et logique serveur
 │   ├── api.php
-│   ├── config.php
+│   ├── config.php             # Fichier de configuration global
 │   ├── classes/
 │   │   ├── Database.php
 │   │   ├── Translate.php
@@ -26,7 +26,7 @@ speakify/
 │       ├── get_sentences.php
 │       └── run.php
 │
-├── model/                     # Maquettes HTML + style/script
+├── model/                     # Maquettes HTML + style/script (prototype UI)
 │   ├── *.html
 │   ├── style.css
 │   └── script.js
@@ -44,8 +44,16 @@ speakify/
 │   ├── insert_sentence_translation.sql
 │   └── reset_database.sql
 │
-├── goodies/                   # Fichiers utiles / ressources non essentielles
+├── resources/                 # Anciennement goodies/, fichiers non essentiels
 │   ├── wireframes/
 │   └── graph.html
+│
+├── tests/                     # (Optionnel) Fichiers de test backend/frontend
+│   ├── api/
+│   └── frontend/
+│
+├── env/                       # (Optionnel) Config d’environnement locale
+│   ├── local.env
+│   └── .env.example
 │
 └── README.md
