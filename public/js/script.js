@@ -1,5 +1,5 @@
 /*
-  file: script.js
+  file: /speakify/public/js/script.js 
 */
 
 document.addEventListener("DOMContentLoaded", () => {

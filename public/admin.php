@@ -29,6 +29,12 @@ $config = require __DIR__ . '/../config.php';
     button:hover {
       background-color: #00c667;
     }
+    input[type='number'] {
+      padding: 6px;
+      font-size: 14px;
+      width: 80px;
+      margin-right: 10px;
+    }
     code {
       background: #eee;
       padding: 2px 6px;
@@ -62,20 +68,43 @@ $config = require __DIR__ . '/../config.php';
     <h2>🛠️ Build Database</h2>
     <p>This will execute all SQL schema files in <code>/sql/schema/</code> to (re)build the database structure.</p>
     <button onclick="buildDatabase()">Run Build Script</button>
-    <pre id="output">Output will appear here...</pre>
   </section>
 
+  <section>
+    <h2>📥 Test Get Sentences</h2>
+    <label for="lang">Language ID:</label>
+    <input id="lang" type="number" value="1" min="1" />
+    <button onclick="getSentences()">Get Sentences</button>
+  </section>
+
+  <pre id="output">Ready to run actions…</pre>
+
   <script>
+    const token = <?= json_encode($config['admin_token']) ?>;
+
     function buildDatabase() {
       const output = document.getElementById('output');
       output.textContent = '⏳ Running build_database...';
-
-      const token = <?= json_encode($config['admin_token']) ?>;
       fetch(`api/index.php?action=build_db&token=${token}`)
         .then(response => response.text())
         .then(data => output.textContent = data)
         .catch(err => output.textContent = '❌ Error: ' + err);
     }
+
+    function getSentences() {
+      const output = document.getElementById('output');
+      const langId = document.getElementById('lang').value;
+      if (!langId) {
+        output.textContent = '⚠️ Please provide a valid language ID.';
+        return;
+      }
+      output.textContent = `⏳ Fetching sentences for language ID ${langId}...`;
+      fetch(`api/index.php?action=get_sentences&lang_id=${langId}&token=${token}`)
+        .then(res => res.text())
+        .then(data => output.textContent = data)
+        .catch(err => output.textContent = '❌ Error: ' + err);
+    }
   </script>
+
 </body>
 </html>
