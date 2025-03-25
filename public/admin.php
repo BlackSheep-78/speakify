@@ -1,4 +1,6 @@
 <?php
+// file: speakify/public/admin.php
+
 $config = require __DIR__ . '/../config.php';
 ?>
 <!DOCTYPE html>
@@ -77,6 +79,12 @@ $config = require __DIR__ . '/../config.php';
     <button onclick="getSentences()">Get Sentences</button>
   </section>
 
+  <section>
+    <h2>🧪 Check Database Schema</h2>
+    <p>This checks whether all required tables (<code>users</code>, <code>schemas</code>, <code>sessions</code>) exist in the database.</p>
+    <button onclick="checkSchema()">Run Schema Check</button>
+  </section>
+
   <pre id="output">Ready to run actions…</pre>
 
   <script>
@@ -102,6 +110,25 @@ $config = require __DIR__ . '/../config.php';
       fetch(`api/index.php?action=get_sentences&lang_id=${langId}&token=${token}`)
         .then(res => res.text())
         .then(data => output.textContent = data)
+        .catch(err => output.textContent = '❌ Error: ' + err);
+    }
+
+    function checkSchema() {
+      const output = document.getElementById('output');
+      output.textContent = '🔍 Checking database tables...';
+      fetch(`api/index.php?action=check_schema&token=${token}`)
+        .then(res => res.json())
+        .then(data => {
+          if (data.status === 'ok') {
+            output.textContent = `✅ All tables exist:\n` + JSON.stringify(data.existing, null, 2);
+          } else {
+            output.textContent =
+              `⚠️ Missing tables:\n` +
+              JSON.stringify(data.missing, null, 2) +
+              `\n\nExisting:\n` +
+              JSON.stringify(data.existing, null, 2);
+          }
+        })
         .catch(err => output.textContent = '❌ Error: ' + err);
     }
   </script>

@@ -1,5 +1,7 @@
 <?php
 
+	// file: /speakify/backend/php/get_sentences.php
+
     require_once BASEPATH."/classes/Database.php";
 
     $temp   = [];
