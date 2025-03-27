@@ -15,7 +15,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 -- Listage de la structure de table translate. languages
-DROP TABLE IF EXISTS `languages`;
 CREATE TABLE IF NOT EXISTS `languages` (
   `language_id` int(11) NOT NULL AUTO_INCREMENT,
   `language_name` varchar(100) NOT NULL,
@@ -128,7 +127,6 @@ INSERT INTO `languages` (`language_id`, `language_name`, `language_code`, `langu
 	(99, 'Zulu', 'zu', 0);
 
 -- Listage de la structure de table translate. schemas
-DROP TABLE IF EXISTS `schemas`;
 CREATE TABLE IF NOT EXISTS `schemas` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique schema ID',
   `user_id` int(11) NOT NULL COMMENT 'Owner of this schema (foreign key to users.id)',
@@ -146,7 +144,6 @@ CREATE TABLE IF NOT EXISTS `schemas` (
 -- Listage des données de la table translate.schemas : ~0 rows (environ)
 
 -- Listage de la structure de table translate. sentences
-DROP TABLE IF EXISTS `sentences`;
 CREATE TABLE IF NOT EXISTS `sentences` (
   `sentence_id` int(11) NOT NULL AUTO_INCREMENT,
   `sentence_text` text NOT NULL,
@@ -158,7 +155,7 @@ CREATE TABLE IF NOT EXISTS `sentences` (
   CONSTRAINT `sentences_ibfk_1` FOREIGN KEY (`language_id`) REFERENCES `languages` (`language_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=160 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Listage des données de la table translate.sentences : ~113 rows (environ)
+-- Listage des données de la table translate.sentences : ~132 rows (environ)
 INSERT INTO `sentences` (`sentence_id`, `sentence_text`, `language_id`, `created_at`, `updated_at`) VALUES
 	(1, 'the sun is shining brightly.', 39, '2024-12-09 14:52:11', '2024-12-09 14:52:11'),
 	(2, 'i have a dog named max.', 39, '2024-12-09 14:52:11', '2024-12-09 14:52:11'),
@@ -294,7 +291,6 @@ INSERT INTO `sentences` (`sentence_id`, `sentence_text`, `language_id`, `created
 	(159, 'ela tem um telefone novo.', 75, '2025-01-21 12:42:58', '2025-01-21 12:42:58');
 
 -- Listage de la structure de table translate. sentences_start_sample
-DROP TABLE IF EXISTS `sentences_start_sample`;
 CREATE TABLE IF NOT EXISTS `sentences_start_sample` (
   `sentence_id` int(11) NOT NULL AUTO_INCREMENT,
   `sentence_text` text NOT NULL,
@@ -409,25 +405,25 @@ INSERT INTO `sentences_start_sample` (`sentence_id`, `sentence_text`, `language_
 	(100, 'we are having a great time together.', 39, '2024-12-09 14:52:11', '2024-12-09 14:52:11');
 
 -- Listage de la structure de table translate. sessions
-DROP TABLE IF EXISTS `sessions`;
 CREATE TABLE IF NOT EXISTS `sessions` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Session ID',
-  `user_id` int(11) NOT NULL COMMENT 'Associated user (foreign key to users.id)',
+  `user_id` int(11) DEFAULT NULL,
   `token` varchar(255) NOT NULL COMMENT 'Random token string for session',
   `created_at` datetime DEFAULT current_timestamp() COMMENT 'Session creation time',
   `expires_at` datetime NOT NULL COMMENT 'Expiration time of the session',
+  `last_activity` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   UNIQUE KEY `token` (`token`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `sessions_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table translate.sessions : ~1 rows (environ)
-INSERT INTO `sessions` (`id`, `user_id`, `token`, `created_at`, `expires_at`) VALUES
-	(3, 1, 'debugtoken123', '2025-03-25 15:52:55', '2025-03-26 15:52:55');
+-- Listage des données de la table translate.sessions : ~2 rows (environ)
+INSERT INTO `sessions` (`id`, `user_id`, `token`, `created_at`, `expires_at`, `last_activity`) VALUES
+	(22, NULL, 'b6f260d27c9384a76628f73e263c32ff', '2025-03-27 14:13:42', '2025-04-03 13:13:42', '2025-03-27 14:56:05'),
+	(23, NULL, 'fdf583469a411559ab63eeb1eb9ec925', '2025-03-27 14:23:58', '2025-04-03 13:23:58', '2025-03-27 13:23:58');
 
 -- Listage de la structure de table translate. sources
-DROP TABLE IF EXISTS `sources`;
 CREATE TABLE IF NOT EXISTS `sources` (
   `source_id` int(11) NOT NULL AUTO_INCREMENT,
   `source_name` varchar(255) NOT NULL,
@@ -437,12 +433,11 @@ CREATE TABLE IF NOT EXISTS `sources` (
   PRIMARY KEY (`source_id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Listage des données de la table translate.sources : ~0 rows (environ)
+-- Listage des données de la table translate.sources : ~1 rows (environ)
 INSERT INTO `sources` (`source_id`, `source_name`, `source_description`, `source_url`, `created_at`) VALUES
 	(1, 'google_translate', NULL, NULL, '2025-01-08 15:05:52');
 
 -- Listage de la structure de table translate. translation_pairs
-DROP TABLE IF EXISTS `translation_pairs`;
 CREATE TABLE IF NOT EXISTS `translation_pairs` (
   `pair_id` int(11) NOT NULL AUTO_INCREMENT,
   `sentence_id_1` int(11) NOT NULL,
@@ -460,7 +455,7 @@ CREATE TABLE IF NOT EXISTS `translation_pairs` (
   CONSTRAINT `translation_pairs_ibfk_3` FOREIGN KEY (`source_id`) REFERENCES `sources` (`source_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Listage des données de la table translate.translation_pairs : ~30 rows (environ)
+-- Listage des données de la table translate.translation_pairs : ~32 rows (environ)
 INSERT INTO `translation_pairs` (`pair_id`, `sentence_id_1`, `sentence_id_2`, `translation_version`, `source_id`, `created_at`, `updated_at`) VALUES
 	(1, 1, 128, 1, 1, '2025-01-16 13:06:58', '2025-01-16 13:06:58'),
 	(2, 1, 129, 1, 1, '2025-01-16 13:07:03', '2025-01-16 13:07:03'),
@@ -496,7 +491,6 @@ INSERT INTO `translation_pairs` (`pair_id`, `sentence_id_1`, `sentence_id_2`, `t
 	(32, 16, 159, 1, 1, '2025-01-21 12:42:58', '2025-01-21 12:42:58');
 
 -- Listage de la structure de table translate. translation_pair_sources
-DROP TABLE IF EXISTS `translation_pair_sources`;
 CREATE TABLE IF NOT EXISTS `translation_pair_sources` (
   `pair_id` int(11) NOT NULL,
   `source_id` int(11) NOT NULL,
@@ -508,7 +502,7 @@ CREATE TABLE IF NOT EXISTS `translation_pair_sources` (
   CONSTRAINT `translation_pair_sources_ibfk_2` FOREIGN KEY (`source_id`) REFERENCES `sources` (`source_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Listage des données de la table translate.translation_pair_sources : ~30 rows (environ)
+-- Listage des données de la table translate.translation_pair_sources : ~32 rows (environ)
 INSERT INTO `translation_pair_sources` (`pair_id`, `source_id`, `added_at`) VALUES
 	(1, 1, '2025-01-16 13:06:58'),
 	(2, 1, '2025-01-16 13:07:03'),
@@ -544,7 +538,6 @@ INSERT INTO `translation_pair_sources` (`pair_id`, `source_id`, `added_at`) VALU
 	(32, 1, '2025-01-21 12:42:58');
 
 -- Listage de la structure de table translate. users
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique identifier for the user',
   `email` varchar(255) NOT NULL COMMENT 'User email (used for login)',
