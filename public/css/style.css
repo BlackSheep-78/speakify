@@ -1,5 +1,5 @@
 /*
-  file: style.css
+  file: speakify/public/css/style.css
 */
 
 body {
@@ -28,6 +28,7 @@ body {
   font-weight: 500;
   transition: color 0.3s ease;
 }
+
 .header a:hover {
   color: #0057B7;
 }
@@ -55,6 +56,7 @@ body {
   border-radius: 10px;
   transition: background 0.2s, transform 0.2s;
 }
+
 .footer-nav a:hover {
   background: #EEF3FA;
   transform: translateY(-2px);
@@ -73,6 +75,7 @@ body {
   display: block;
   margin-bottom: 12px;
 }
+
 .dashboard-links a:hover,
 .smart-lists .smart-item:hover {
   background-color: #EEF3FA;
@@ -159,6 +162,78 @@ body {
   background-color: #003e8a;
 }
 
+/* ==== START: Login Form Styles ====# */
+
+/* Card style for the login section */
+.card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+/* Form group with spacing */
+.form-group {
+  margin-bottom: 16px;
+}
+
+/* Label styling for inputs */
+label {
+  font-weight: 500;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Input fields for the form */
+.form-control {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: 'Segoe UI', sans-serif;
+  box-sizing: border-box;
+}
+
+/* Button styling */
+.button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.button.primary {
+  background-color: #0057B7;
+  color: white;
+}
+
+.button.primary:hover {
+  background-color: #003e8a;
+}
+
+.button.danger {
+  background-color: #FF5252;
+  color: white;
+}
+
+.button.danger:hover {
+  background-color: #e74c3c;
+}
+
+/* Info message styling */
+.info {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #2E2E2E;
+}
+
+/* ==== END: Login Form Styles ====# */
+
 /* Responsive Adjustments */
 @media (max-width: 600px) {
   .header,
@@ -201,4 +276,4 @@ body {
     background-color: #f0f4ff;
     color: #2d63cd;
   }
-  
+}

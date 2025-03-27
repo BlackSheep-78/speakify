@@ -1,37 +1,81 @@
 <!-- 
-  do not delete this:
-  file: login-profile.html
+  ============================================================================
+  File: speakify/public/login-profile.html
+  Project: Speakify
+  Description:
+    Login & Profile view:
+    - Authenticate with email/password
+    - Show profile info (name, email, last activity)
+    - Enable logout
+    - Mobile-first layout with unified UI/UX style
+  ============================================================================
 -->
-  
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login & Profile - Speakify</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="js/script.js" defer></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Connexion & Profil - Speakify</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/app.js" defer></script>
 </head>
+
 <body>
 
-<div class="header">
-  <div><a href="login-profile.html">👤 Jorge</a></div>
-  <div><a href="achievements.html">🔥 12 jours</a></div>
-  <div><a href="achievements.html">🌟 2 450 XP</a></div>
-</div>
+  <!-- Header -->
+  <div class="header">
+    <div><a href="login-profile.html">👤 Jorge</a></div>
+    <div><a href="achievements.html">🔥 12 jours</a></div>
+    <div><a href="achievements.html">🌟 2 450 XP</a></div>
+  </div>
 
-<div class="content">
-  <h1>Login & Profile</h1>
-  <div>Connexion, suivi du progrès et synchronisation cloud.</div>
-</div>
+  <!-- Content -->
+  <div class="content">
+    <h1 class="page-title">Mon Compte</h1>
+    <p class="subtext">Connexion, synchronisation et suivi du progrès</p>
 
-<div class="footer-nav">
-  <a href="dashboard.html">🏠</a>
-  <a href="playback.html">🎧</a>
-  <a href="playlist-library.html">📚</a>
-  <a href="smart-lists.html">🧠</a>
-  <a href="settings.html">⚙️</a>
-</div>
+    <!-- ==== START: Speakify Login Form ====# -->
+    <section class="card" id="login-section" aria-labelledby="login-title">
+      <h2 id="login-title">Connexion</h2>
+
+      <form id="login-form" autocomplete="on">
+        <div class="form-group">
+          <label for="email">Adresse e-mail</label>
+          <input type="email" id="email" name="email" class="form-control" placeholder="votre@email.com" required autocomplete="email" />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Mot de passe</label>
+          <input type="password" id="password" name="password" class="form-control" placeholder="********" required autocomplete="current-password" />
+        </div>
+
+        <button type="submit" class="button primary">Se connecter</button>
+      </form>
+
+      <div id="login-message" class="info" role="status" aria-live="polite"></div>
+    </section>
+    <!-- ==== END: Speakify Login Form ====# -->
+
+
+    <!-- Profile Info -->
+    <section class="card" id="profile-section" aria-labelledby="profile-title" hidden>
+      <h2 id="profile-title">Profil</h2>
+      <p><strong>Nom :</strong> <span id="profile-name">-</span></p>
+      <p><strong>Email :</strong> <span id="profile-email">-</span></p>
+      <p><strong>Dernière activité :</strong> <span id="profile-last-login">-</span></p>
+      <button id="logout-button" class="button danger">Se déconnecter</button>
+    </section>
+  </div>
+
+  <!-- Footer Navigation -->
+  <div class="footer-nav">
+    <a href="dashboard.html">🏠</a>
+    <a href="playback.html">🎧</a>
+    <a href="playlist-library.html">📚</a>
+    <a href="smart-lists.html">🧠</a>
+    <a href="settings.html">⚙️</a>
+  </div>
 
 </body>
 </html>

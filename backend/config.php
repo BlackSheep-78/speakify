@@ -4,12 +4,15 @@
 // Set timezone
 date_default_timezone_set('Europe/London');
 
-// Define base paths
 if (!defined('ROOT')) {
-    define('ROOT', realpath(__DIR__ . DIRECTORY_SEPARATOR . '..'));
+    define('ROOT', __DIR__ . DIRECTORY_SEPARATOR . '..');
 }
-define('BASEPATH', __DIR__);
-define('CLASSES', BASEPATH . DIRECTORY_SEPARATOR . 'classes');
+if (!defined('BASEPATH')) {
+    define('BASEPATH', __DIR__);
+}
+if (!defined('CLASSES')) {
+    define('CLASSES', BASEPATH . DIRECTORY_SEPARATOR . 'classes');
+}
 
 // Path to global JSON config
 $configFile = ROOT . DIRECTORY_SEPARATOR . 'config.json';

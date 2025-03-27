@@ -1,44 +1,29 @@
 <?php
-
-	// file: /speakify/backend/php/get_sentences.php
-
-    require_once BASEPATH."/classes/Database.php";
-
-    $temp   = [];
-    $result = [];
-
-    $db = new Database();
-    $db->connect();
-    $db->file("get_sentences.sql");
-    $db->replace("STARTING_LANGUAGE_ID",39,'i');
-    $rows = $db->result();
-
-
-
-    foreach($rows as $key => $value)
-    {
-        $id_1 = $value['original_sentence_id'];
-
-        $temp[$id_1]["original"]["sentence"]["id"]   = $value['original_sentence_id'];
-        $temp[$id_1]["original"]["sentence"]["text"] = $value['original_sentence'];
-        $temp[$id_1]["original"]["language"]["id"]   = $value['original_language_id'];
-        $temp[$id_1]["original"]["language"]["name"] = $value['original_language'];
-
-        $id_2 = $value['translated_sentence_id'];
-
-        $temp[$id_1]["translation"][$id_2]['pair']['id']       = $value['pair_id'];
-        $temp[$id_1]["translation"][$id_2]['sentence']['id']   = $value['translated_sentence_id'];
-        $temp[$id_1]["translation"][$id_2]['sentence']['text'] = $value['translated_sentence'];
-        $temp[$id_1]["translation"][$id_2]['language']['id']   = $value['translated_language_id'];
-        $temp[$id_1]["translation"][$id_2]['language']['name'] = $value['translated_language'];
-    }
-
-    foreach($temp as $key => $value)
-    {
-        $result[] = $value;
-    }
-
-
-
-    print json_encode($result);
-?>
+// ============================================================================
+// File: speakify/backend/php/get_sentences.php
+// Description:
+//     This script retrieves up to 50 translation pairs where the original
+//     sentence belongs to a specified source language (`lang_id`).
+//     For each pair, it fetches the original sentence and all associated
+//     translations from the `translation_pair_sources` table.
+//     The response is returned in a structured JSON format suitable for
+//     frontend playback and multilingual sequencing.
+//
+// Requirements:
+//     - `$config` and `$pdo` must be initialized (typically via init.php).
+//     - `lang_id` must be passed via GET (?lang_id=XX).
+//     - Uses `translation_pairs`, `sentences`, `languages`, and `translation_pair_sources`.
+//
+// Response format:
+//     [
+//       {
+//         "pair_id": 1,
+//         "original": { "sentence": { "text": "...", "lang_id": ..., "language": "..." } },
+//         "translation": {
+//           "French": { "sentence": { "text": "...", "lang_id": ... } },
+//           "Portuguese": { ... }
+//         }
+//       },
+//       ...
+//     ]
+// ============================================================================
