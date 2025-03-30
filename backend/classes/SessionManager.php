@@ -1,87 +1,131 @@
 <?php
-// ============================================================================
-// File: speakify/backend/classes/SessionManager.php
-// Description:
-//     Manages user session lifecycle for Speakify, including:
-//     - Creating anonymous sessions for every visitor (even without login)
-//     - Validating session tokens and updating last_activity
-//     - Upgrading to logged-in sessions by setting user_id
-// ============================================================================
-class SessionManager
-{
-    protected PDO $pdo;
-    protected array $config;
+/*
+  ============================================================================
+  📌 IMPORTANT: DO NOT REMOVE OR MODIFY THIS HEADER
+  ============================================================================
+  This block defines the core behavior of the Speakify session lifecycle.
+  It MUST always be enforced consistently across all session logic (create,
+  validate, touch, and expiration). Removing or altering these rules may
+  result in broken session handling, security issues, or invalid client states.
+  ============================================================================
+  
+  ============================================================================
+  SessionManager - Speakify Session Lifecycle Rules
+  ============================================================================
 
-    public function __construct(PDO $pdo, array $config)
-    {
-        $this->pdo = $pdo;
-        $this->config = $config;
+  🧠 Purpose:
+    Manages anonymous session lifecycle: creation, validation, expiration,
+    and touch (activity update).
+
+  ✅ Session Lifecycle Guidelines:
+
+  1. Session is identified by a 64-character random token (stored in `sessions.token`).
+  2. A session is valid if:
+     - It exists in the database.
+     - The `expires_at` datetime is in the future (if set).
+  3. On each request:
+     - `validate(token)` is called to check the session.
+     - If valid, it can be reused.
+     - `touch(token)` may be called to update `last_activity`.
+  4. If no valid session is found:
+     - `create()` or `createAnonymous()` is called to insert a new row.
+     - `created_at`, `last_activity`, and `expires_at` are set.
+  5. Session expiration defaults to 24 hours after creation unless otherwise configured.
+  6. All validation failures should fall back to session regeneration logic.
+  7. Only static methods are used in the application unless instance use is explicitly needed.
+  8. Session tokens are stored client-side in `localStorage` as `speakify_token`.
+
+  ============================================================================
+  File: speakify/backend/classes/SessionManager.php
+  Description: Handles session creation, validation, and touch updates.
+  Supports both static and instance-based usage.
+  ============================================================================
+*/
+
+class SessionManager {
+  private $pdo;
+  private $config;
+
+  public function __construct($pdo = null, $config = []) {
+    $this->pdo = $pdo ?? $GLOBALS['pdo'];
+    $this->config = $config;
+  }
+
+  // Static methods
+  public static function create() {
+    global $pdo;
+
+    $token = bin2hex(random_bytes(32));
+    $now = date('Y-m-d H:i:s');
+    $expires = date('Y-m-d H:i:s', strtotime('+24 hours'));
+
+    $stmt = $pdo->prepare("
+      INSERT INTO sessions (token, created_at, last_activity, expires_at)
+      VALUES (:token, :created, :activity, :expires)
+    ");
+
+    $stmt->execute([
+      'token' => $token,
+      'created' => $now,
+      'activity' => $now,
+      'expires' => $expires
+    ]);
+
+    return $token;
+  }
+
+  public static function createAnonymous() {
+    return self::create();
+  }
+
+  public static function validate($token) {
+    global $pdo;
+
+    if (!$token) return false;
+
+    $stmt = $pdo->prepare("SELECT id, last_activity, expires_at FROM sessions WHERE token = :token LIMIT 1");
+    $stmt->execute(['token' => $token]);
+    $session = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$session) return false;
+
+    $now = time();
+    $expiresAt = strtotime($session['expires_at']);
+    if ($expiresAt !== false && $now > $expiresAt) {
+      return false;
     }
 
-    public function createAnonymous(): array
-    {
-        $token = bin2hex(random_bytes(16));
-        $expires = date('Y-m-d H:i:s', strtotime('+7 days'));
-        $now = date('Y-m-d H:i:s');
+    return true;
+  }
 
-        $stmt = $this->pdo->prepare("
-            INSERT INTO sessions (token, user_id, expires_at, last_activity)
-            VALUES (:token, NULL, :expires, :last_activity)
-        ");
-        $stmt->execute([
-            'token' => $token,
-            'expires' => $expires,
-            'last_activity' => $now,
-        ]);
+  public static function touch($token) {
+    global $pdo;
 
-        return [
-            'token' => $token,
-            'expires_at' => $expires,
-            'user_id' => null,
-        ];
-    }
+    if (!$token) return;
 
-    public function validateToken(string $token, bool $touch = true): ?array
-    {
-        $stmt = $this->pdo->prepare("
-            SELECT * FROM sessions WHERE token = :token AND expires_at > NOW()
-        ");
-        $stmt->execute(['token' => $token]);
-        $session = $stmt->fetch();
+    $stmt = $pdo->prepare("UPDATE sessions SET last_activity = NOW() WHERE token = :token");
+    $stmt->execute(['token' => $token]);
+  }
 
-        if (!$session) return null;
-        if ($touch) $this->touch($token);
+  // Instance methods (optional)
+  public function createInstanceSession() {
+    $token = bin2hex(random_bytes(32));
+    $now = date('Y-m-d H:i:s');
+    $expires = date('Y-m-d H:i:s', strtotime('+24 hours'));
 
-        return $session;
-    }
+    $stmt = $this->pdo->prepare("
+      INSERT INTO sessions (token, created_at, last_activity, expires_at)
+      VALUES (:token, :created, :activity, :expires)
+    ");
 
-    public function touch(string $token): void
-    {
-        $stmt = $this->pdo->prepare("
-            UPDATE sessions SET last_activity = NOW() WHERE token = :token
-        ");
-        $stmt->execute(['token' => $token]);
-    }
+    $stmt->execute([
+      'token' => $token,
+      'created' => $now,
+      'activity' => $now,
+      'expires' => $expires
+    ]);
 
-    public function attachUser(string $token, int $userId): void
-    {
-        $stmt = $this->pdo->prepare("
-            UPDATE sessions SET user_id = :userId WHERE token = :token
-        ");
-        $stmt->execute([
-            'userId' => $userId,
-            'token' => $token
-        ]);
-    }
-
-    public function getUserId(string $token): ?int
-    {
-        $stmt = $this->pdo->prepare("
-            SELECT user_id FROM sessions WHERE token = :token
-        ");
-        $stmt->execute(['token' => $token]);
-        $row = $stmt->fetch();
-
-        return $row ? $row['user_id'] : null;
-    }
+    return $token;
+  }
 }
+?>

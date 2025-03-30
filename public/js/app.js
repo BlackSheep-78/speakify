@@ -1,11 +1,42 @@
 /*
-  file: /speakify/public/js/app.js
-  description: Main application script for Speakify.
-  - Ensures a valid session exists on every page load.
-  - Handles playback logic if on a playback-enabled page.
+  ============================================================================
+  📌 IMPORTANT: DO NOT REMOVE OR MODIFY THIS HEADER
+  ============================================================================
+  This header defines the expected behavior of the Speakify frontend session
+  and playback logic. These rules must be respected across all pages using
+  app.js to avoid invalid session states, inconsistent UI, or unexpected bugs.
+  ============================================================================
+  
+  ============================================================================
+  app.js – Speakify Frontend Session & Playback Manager
+  ============================================================================
+
+  🎯 Purpose:
+    Provides a consistent mechanism to initialize anonymous sessions,
+    validate and store session tokens, and manage playback behavior.
+
+  ✅ Session Behavior Rules:
+  1. `app.ensureToken()` must always run, even on non-playback pages.
+  2. Session token must be stored and reused via `localStorage.speakify_token`.
+  3. Token validation should occur via backend before reuse.
+  4. If no valid session exists, a new one must be created via API call.
+  5. Token must be attached to all backend API requests.
+
+  ✅ Playback Behavior Rules:
+  1. Playback is only initialized if `playloop-queue` and `toggle-playback` exist.
+  2. Playback runs through translation blocks using a defined schema.
+  3. Visual progress bars and repeat counters update in real-time.
+  4. Button is draggable and maintains control state across playback.
+
+  ============================================================================
+  File: speakify/public/js/app.js
+  Description: Frontend session & playback controller for Speakify.
+  ============================================================================
 */
 
-const App = {
+console.log("✅ app.js loaded");
+
+const app = {
   token: null,
   queueEl: null,
   playButton: null,
@@ -19,7 +50,8 @@ const App = {
   ],
 
   async init() {
-    await this.ensureToken();
+    console.log("👋 app.init() running");
+    await this.ensureToken(); // Always ensure session, even on non-playback pages
 
     this.queueEl = document.getElementById("playloop-queue");
     this.playButton = document.getElementById("toggle-playback");
@@ -179,8 +211,50 @@ const App = {
   }
 };
 
-document.addEventListener("DOMContentLoaded", () => App.init());
+document.addEventListener("DOMContentLoaded", () => {
+  app.init();
+  registerFormHandler();
+});
+
 
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function registerFormHandler() {
+  const form = document.getElementById("register-form");
+  const message = document.getElementById("register-message");
+
+  if (!form) return;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    message.textContent = "⏳ Enregistrement en cours...";
+
+    const payload = {
+      email: form.email.value.trim(),
+      password: form.password.value,
+      name: form.name.value.trim(),
+    };
+
+    try {
+      const res = await fetch("/speakify/public/api/index.php?action=register_user", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+
+      const result = await res.json();
+
+      if (result.success) {
+        message.textContent = "✅ Compte créé avec succès ! Redirection...";
+        setTimeout(() => window.location.href = "login-profile.html", 1500);
+      } else {
+        message.textContent = `❌ ${result.error || "Erreur inconnue."}`;
+      }
+    } catch (err) {
+      message.textContent = "❌ Erreur réseau.";
+      console.error("Registration failed:", err);
+    }
+  });
 }

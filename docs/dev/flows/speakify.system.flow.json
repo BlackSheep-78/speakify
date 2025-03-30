@@ -1,0 +1,32 @@
+{
+  "validate_session": {
+    "description": "Validates a user session via token",
+    "entry": "/public/api/index.php?action=validate_session",
+    "flow": [
+      {
+        "file": "public/api/index.php",
+        "action": "Reads `action` from $_GET, routes to validate_session"
+      },
+      {
+        "file": "backend/actions/validate_session.php",
+        "action": "Requires init.php and calls SessionManager::validateToken"
+      },
+      {
+        "file": "backend/init.php",
+        "action": "Loads config.php, sets up PDO connection"
+      },
+      {
+        "file": "backend/config.php",
+        "action": "Parses config.json and defines constants"
+      },
+      {
+        "file": "backend/classes/SessionManager.php",
+        "action": "validateToken(token) \u2192 Prepares SQL, fetches session, returns result"
+      },
+      {
+        "db": "sessions table",
+        "query": "SELECT * FROM sessions WHERE token = ?"
+      }
+    ]
+  }
+}

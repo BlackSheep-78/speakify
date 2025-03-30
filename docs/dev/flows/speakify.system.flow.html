@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Speakify – System Flow Viewer</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 2rem; background: #f9f9f9; }
+    h1 { color: #333; }
+    select { font-size: 1rem; padding: 0.5rem; margin-bottom: 1rem; }
+    .flow-box { background: white; padding: 1rem; margin-bottom: 1rem; border-left: 5px solid #007BFF; box-shadow: 0 1px 5px rgba(0,0,0,0.1); }
+    .flow-box .file { font-weight: bold; color: #007BFF; }
+    .flow-box .action { margin-top: 0.25rem; }
+  </style>
+</head>
+<body>
+  <h1>Speakify – System Flow Viewer</h1>
+  <label for="flow-select">Select endpoint:</label>
+  <select id="flow-select">
+    <option value="">-- Choose --</option>
+  </select>
+
+  <div id="flow-container">Please select an endpoint to view its flow.</div>
+
+  <script>
+    let flowData = {};
+
+    fetch('speakify.system.flow.json')
+      .then(res => res.json())
+      .then(data => {
+        flowData = data;
+        const select = document.getElementById('flow-select');
+        Object.keys(data).forEach(key => {
+          const option = document.createElement('option');
+          option.value = key;
+          option.textContent = key;
+          select.appendChild(option);
+        });
+      });
+
+    document.getElementById('flow-select').addEventListener('change', function() {
+      const selected = this.value;
+      const container = document.getElementById('flow-container');
+      container.innerHTML = '';
+
+      if (!selected || !flowData[selected]) {
+        container.innerHTML = 'Please select an endpoint to view its flow.';
+        return;
+      }
+
+      const flow = flowData[selected];
+      const title = document.createElement('h2');
+      title.textContent = selected + ' – ' + flow.description;
+      container.appendChild(title);
+
+      flow.flow.forEach((step, index) => {
+        const box = document.createElement('div');
+        box.className = 'flow-box';
+
+        if (step.file) {
+          box.innerHTML = `<div class="file">#${index + 1} → ${step.file}</div><div class="action">${step.action}</div>`;
+        } else if (step.db) {
+          box.innerHTML = `<div class="file">#${index + 1} → Database: ${step.db}</div><div class="action">Query: ${step.query}</div>`;
+        }
+
+        container.appendChild(box);
+      });
+    });
+  </script>
+</body>
+</html>

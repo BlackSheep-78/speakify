@@ -1,27 +1,48 @@
 <?php
-// file: speakify/backend/init.php
-// Purpose: Bootstraps the environment, session, and loads config
 
-// Load config array
-$config = require_once __DIR__ . '/config.php';
+/**
+ * =============================================================================
+ * 📌 IMPORTANT: DO NOT REMOVE OR MODIFY THIS HEADER
+ * =============================================================================
+ * File: speakify/backend/init.php
+ * Project: Speakify
+ *
+ * Description:
+ * Loads and initializes:
+ * - Full configuration from config.json
+ * - PDO database connection (MySQL)
+ * - Conditionally loads SessionManager and enforces session validation
+ * =============================================================================
+ */
 
-// Optional: Set timezone from config or default
-date_default_timezone_set('Europe/London');
+ file_put_contents(__DIR__ . '/token-check.log', "ACTION: " . ($_GET['action'] ?? 'none') . PHP_EOL, FILE_APPEND);
 
-// Register custom session handler
-require_once __DIR__ . '/classes/SessionManager.php';
 
-$handler = new SessionManager($config); // you may need DB credentials from $config
-session_set_save_handler($handler, true);
 
-// Start the session
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
 
-// Initialize session data if missing
-if (!isset($_SESSION['session_id'])) {
-    $_SESSION['session_id'] = uniqid('sess_', true);
-    $_SESSION['created_at'] = time();
-    $_SESSION['logged_in'] = false;
+$pdo = new PDO(
+  "mysql:host={$config['db']['host']};dbname={$config['db']['name']};charset=utf8mb4",
+  $config['db']['user'],
+  $config['db']['pass'],
+  [
+    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+  ]
+);
+
+// ✅ Conditionally load session manager only if needed
+$public_actions = ['register_user', 'create_session'];
+$current_action = $_GET['action'] ?? null;
+
+if (!in_array($current_action, $public_actions)) {
+  require_once __DIR__ . '/classes/SessionManager.php';
+
+  $token = $_GET['token'] ?? '';
+  if (!$token || !SessionManager::validateToken($token)) {
+    http_response_code(401);
+    echo json_encode(['error' => 'Missing session token']);
+    exit;
+  }
+} else {
+  require_once __DIR__ . '/classes/SessionManager.php';
 }

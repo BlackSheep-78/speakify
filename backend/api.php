@@ -1,4 +1,26 @@
 <?php
+
+/**
+ * =============================================================================
+ * 📌 IMPORTANT: DO NOT REMOVE OR MODIFY THIS HEADER
+ * =============================================================================
+ * File: speakify/backend/api.php (diagnostic version)
+ * Project: Speakify
+ *
+ * Description:
+ * Handles API routing for diagnostic and development purposes. This file includes:
+ * - CORS preflight handling
+ * - Anonymous session creation
+ * - Fallback loading of mock playlist JSON data
+ * - Router logging for incoming API actions
+ *
+ * ✅ Used during:
+ * - Local development
+ * - Frontend simulation before full backend is integrated
+ * - JSON API structure testing
+ * =============================================================================
+ */
+
 // ============================================================================
 // File: speakify/backend/api.php (diagnostic version)
 // ============================================================================

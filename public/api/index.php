@@ -4,14 +4,6 @@
 // Description:
 //     Central API router for Speakify. Routes frontend requests to matching
 //     backend action files and manages session validation via SessionManager.
-//
-// Usage:
-//     GET /api/index.php?action=get_sentences&token=abc123
-//
-// Notes:
-//     - Public actions bypass session check (e.g. create_session)
-//     - Sets $auth_user_id globally (null for anonymous sessions)
-//     - Action files live in /backend/actions/*.php
 // ============================================================================
 
 header("Access-Control-Allow-Origin: *");
@@ -20,18 +12,42 @@ header("Access-Control-Allow-Headers: Content-Type, Authorization");
 header("Content-Type: application/json");
 
 // 🔧 Load config and define base constants
-$config = require_once __DIR__ . '/../../backend/config.php';
+$config = require __DIR__ . '/../../backend/config.php';
 
 if (!defined('BASEPATH')) {
     define('BASEPATH', realpath(__DIR__ . '/../../backend'));
 }
+
+// 📦 Initialize DB connection
+try {
+    $pdo = new PDO(
+        "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8mb4",
+        DB_USER,
+        DB_PASS,
+        [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        ]
+    );
+} catch (Exception $e) {
+    http_response_code(500);
+    echo json_encode([
+        'error' => 'Database connection failed',
+        'details' => DEBUG ? $e->getMessage() : null
+    ]);
+    exit;
+}
+
+// 🧠 Load session manager
+require_once BASEPATH . '/classes/SessionManager.php';
+$sm = new SessionManager($pdo, $config);
 
 // 🧼 Parse request parameters
 $action = $_GET['action'] ?? null;
 $token  = $_GET['token'] ?? null;
 
 // 🔓 List of actions that bypass session check
-$publicActions = ['create_session', 'validate_session'];
+$publicActions = ['create_session', 'validate_session', 'register_user'];
 
 // 🛑 Handle missing action
 if (!$action) {
@@ -59,19 +75,6 @@ if (!file_exists($actionFile)) {
 
 // 🔐 Validate token if required
 try {
-    $pdo = new PDO(
-        "mysql:host={$config['db_host']};dbname={$config['db_name']};charset=utf8mb4",
-        $config['db_user'],
-        $config['db_pass'],
-        [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        ]
-    );
-
-    require_once BASEPATH . '/classes/SessionManager.php';
-    $sm = new SessionManager($pdo, $config);
-
     if (!in_array($action, $publicActions)) {
         if (!$token) {
             http_response_code(401);
@@ -80,13 +83,14 @@ try {
         }
 
         $session = $sm->validateToken($token);
-        if (!$session) {
+
+        if (!is_array($session)) {
             http_response_code(401);
             echo json_encode(['error' => 'Invalid or expired session']);
             exit;
         }
 
-        $auth_user_id = $session['user_id'];
+        $auth_user_id = $session['user_id'] ?? null;
     } else {
         $auth_user_id = null;
     }
@@ -97,7 +101,7 @@ try {
     http_response_code(500);
     echo json_encode([
         'error' => 'Session setup failed',
-        'details' => $config['debug'] ? $e->getMessage() : null
+        'details' => DEBUG ? $e->getMessage() : null
     ]);
     exit;
 }
