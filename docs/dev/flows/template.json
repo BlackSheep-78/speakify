@@ -1,0 +1,47 @@
+{
+    "file": "speakify/docs/dev/flows/speakify.system.flow.json",
+    "description": "Detailed flow documentation for core API endpoints in Speakify, including nodes and relationships",
+  
+    "your_api_action": {
+      "description": "Brief description of what this API action does",
+      "entry": "/public/api/index.php?action=your_api_action",
+  
+      "nodes": [
+        { "id": "entry_point", "type": "file", "file": "public/api/index.php" },
+        { "id": "action_handler", "type": "file", "file": "backend/actions/your_api_action.php" },
+        { "id": "initializer", "type": "file", "file": "backend/init.php" },
+        { "id": "logic_class", "type": "class_method", "file": "backend/classes/YourClass.php", "method": "yourMethod" },
+        { "id": "database_interaction", "type": "database", "table": "database_table" }
+      ],
+  
+      "relationships": [
+        { "from": "entry_point", "to": "action_handler", "action": "routes to" },
+        { "from": "action_handler", "to": "initializer", "action": "requires" },
+        { "from": "action_handler", "to": "logic_class", "action": "calls" },
+        { "from": "logic_class", "to": "database_interaction", "action": "queries" }
+      ],
+  
+      "flow": [
+        {
+          "file": "public/api/index.php",
+          "action": "Reads `action` from $_GET, routes to your_api_action"
+        },
+        {
+          "file": "backend/actions/your_api_action.php",
+          "action": "Requires init.php and calls YourClass::yourMethod"
+        },
+        {
+          "file": "backend/init.php",
+          "action": "Initializes database, configuration, and dependencies"
+        },
+        {
+          "file": "backend/classes/YourClass.php",
+          "action": "yourMethod(params) → Performs main logic, interacts with DB or services"
+        },
+        {
+          "db": "database_table",
+          "query": "SQL query to interact with the database"
+        }
+      ]
+    }
+  }

@@ -112,6 +112,23 @@ class SessionManager {
     $stmt->execute(['token' => $token]);
   }
 
+  public static function upgrade(string $token, int $user_id): bool {
+    global $pdo;
+
+    $stmt = $pdo->prepare("SELECT user_id FROM sessions WHERE token = :token");
+    $stmt->execute(['token' => $token]);
+    $row = $stmt->fetch();
+
+    if (!$row) return false;
+    if ($row['user_id']) return true; // already upgraded
+
+    $update = $pdo->prepare("UPDATE sessions SET user_id = :user_id WHERE token = :token");
+    return $update->execute([
+      'user_id' => $user_id,
+      'token' => $token
+    ]);
+  }
+
   // Instance methods (optional)
   public function createInstanceSession() {
     $token = bin2hex(random_bytes(32));

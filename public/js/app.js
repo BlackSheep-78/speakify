@@ -229,6 +229,37 @@ const app = {
 
 document.addEventListener("DOMContentLoaded", () => {
   app.init();
+
+  const form = document.getElementById("login-form");
+  if (form) {
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const payload = {
+        email: form.email.value.trim(),
+        password: form.password.value
+      };
+
+      const token = localStorage.getItem("speakify_token");
+
+      const res = await fetch(`/speakify/public/api/index.php?action=login&token=${token}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+
+      const result = await res.json();
+
+      if (result.success) {
+        alert("✅ Welcome back, " + result.name + "!");
+        await app.ensureToken();
+        window.location.href = "dashboard.html";
+      } else {
+        alert("❌ Login failed: " + (result.error || "unknown error"));
+      }
+    });
+  }
+
   registerFormHandler();
 });
 
