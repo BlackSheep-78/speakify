@@ -1,3 +1,4 @@
+
 /*
   file: speakify/public/css/style.css
 */
@@ -137,34 +138,46 @@ body {
   transition: width 0.6s ease-in-out;
 }
 
-/* Floating Play/Pause Button */
+/* Floating Play/Pause Button - Updated */
 .floating-play-button {
   position: fixed;
   bottom: 80px;
   right: 20px;
-  width: 60px;
-  height: 60px;
-  background-color: #0057B7;
-  color: white;
-  font-size: 24px;
-  border: none;
+  width: 64px;
+  height: 64px;
+  background-color: rgba(255, 255, 255, 0.85);
+  color: #0057B7;
+  border: 2px solid #0057B7;
   border-radius: 50%;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   cursor: grab;
   z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .floating-play-button:hover {
-  background-color: #003e8a;
+  background-color: #f0f4ff;
+  color: #003e8a;
+  border-color: #003e8a;
+}
+
+.floating-play-button svg {
+  width: 28px;
+  height: 28px;
+  fill: currentColor;
+  pointer-events: none;
+  transition: transform 0.2s ease;
+}
+
+.floating-play-button.playing svg {
+  transform: scale(1.1);
 }
 
 /* ==== START: Login Form Styles ====# */
 
-/* Card style for the login section */
 .card {
   background: #ffffff;
   border-radius: 16px;
@@ -173,19 +186,16 @@ body {
   margin-bottom: 24px;
 }
 
-/* Form group with spacing */
 .form-group {
   margin-bottom: 16px;
 }
 
-/* Label styling for inputs */
 label {
   font-weight: 500;
   display: block;
   margin-bottom: 6px;
 }
 
-/* Input fields for the form */
 .form-control {
   width: 100%;
   padding: 10px 14px;
@@ -196,7 +206,6 @@ label {
   box-sizing: border-box;
 }
 
-/* Button styling */
 .button {
   padding: 12px 20px;
   border: none;
@@ -225,7 +234,6 @@ label {
   background-color: #e74c3c;
 }
 
-/* Info message styling */
 .info {
   margin-top: 12px;
   font-size: 14px;
@@ -234,7 +242,6 @@ label {
 
 /* ==== END: Login Form Styles ====# */
 
-/* Responsive Adjustments */
 @media (max-width: 600px) {
   .header,
   .content,
@@ -252,28 +259,12 @@ label {
   }
 
   .floating-play-button {
-    position: fixed;
-    bottom: 80px;
-    right: 20px;
     width: 56px;
     height: 56px;
-    background-color: rgba(255, 255, 255, 0.9);
-    color: #4681f4;
-    font-size: 22px;
-    font-weight: bold;
-    border: 2px solid #4681f4;
-    border-radius: 50%;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-    cursor: grab;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
   }
-  
-  .floating-play-button:hover {
-    background-color: #f0f4ff;
-    color: #2d63cd;
+
+  .floating-play-button svg {
+    width: 24px;
+    height: 24px;
   }
 }

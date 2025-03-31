@@ -1,15 +1,24 @@
 <?php
-// ============================================================================
-// File: speakify/public/api/index.php
-// Description:
-//     Central API router for Speakify. Routes frontend requests to matching
-//     backend action files and manages session validation via SessionManager.
-// ============================================================================
+/**
+ * =============================================================================
+ * 📌 Speakify Central API Router
+ * =============================================================================
+ * File: speakify/public/api/index.php
+ *
+ * Description:
+ * - Handles all frontend API calls.
+ * - Dispatches requests to corresponding backend action files.
+ * - Manages session creation and validation via SessionManager.
+ * - Loads configuration, database, and routing environment.
+ * =============================================================================
+ */
 
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 header("Content-Type: application/json");
+
+error_log("api.php");
 
 // 🔧 Load config and define base constants
 $config = require __DIR__ . '/../../backend/config.php';
@@ -46,34 +55,32 @@ $sm = new SessionManager($pdo, $config);
 $action = $_GET['action'] ?? null;
 $token  = $_GET['token'] ?? null;
 
-// 🔓 List of actions that bypass session check
-$publicActions = ['create_session', 'validate_session', 'register_user'];
+// 🔓 Actions that bypass session validation
+$publicActions = ['create_session', 'validate_session', 'register_user', 'login'];
 
-// 🛑 Handle missing action
+// 🛑 Handle missing or invalid action
 if (!$action) {
     http_response_code(400);
     echo json_encode(['error' => 'Missing action']);
     exit;
 }
 
-// 🧼 Sanitize action string
 if (!preg_match('/^[a-z0-9_]+$/', $action)) {
     http_response_code(400);
     echo json_encode(['error' => 'Invalid action']);
     exit;
 }
 
-// 📂 Resolve backend action file path
+// 📂 Map to backend action file
 $actionFile = BASEPATH . "/actions/{$action}.php";
 
-// ❌ File not found
 if (!file_exists($actionFile)) {
     http_response_code(404);
     echo json_encode(['error' => 'Unknown action']);
     exit;
 }
 
-// 🔐 Validate token if required
+// 🔐 Token validation for protected actions
 try {
     if (!in_array($action, $publicActions)) {
         if (!$token) {
@@ -82,7 +89,7 @@ try {
             exit;
         }
 
-        $session = $sm->validateToken($token);
+        $session = $sm->validate($token);
 
         if (!is_array($session)) {
             http_response_code(401);
@@ -106,5 +113,5 @@ try {
     exit;
 }
 
-// ✅ Run the action script
+// ✅ Execute the backend action
 require_once $actionFile;

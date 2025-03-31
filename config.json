@@ -3,7 +3,7 @@
   "debug": true,
 
   "db": {
-    "host": "89.116.29.115",
+    "host": "127.0.0.1",
     "name": "speakify",
     "user": "speakify_user",
     "pass": "g_L!/.)Z*=jz8Bv7;nw6+W"

@@ -6,6 +6,8 @@
 
 require_once BASEPATH . '/utils/hash.php'; // For password_verify if needed
 
+error_log("login.php");
+
 $email = $_POST['email'] ?? '';
 $password = $_POST['password'] ?? '';
 

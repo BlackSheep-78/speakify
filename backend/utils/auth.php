@@ -39,7 +39,7 @@ try {
     }
 
     // ✅ Validate and touch session
-    $session = $sessionManager->validateToken($token);
+    $session = $sessionManager->validate($token);
     if (!$session) {
         http_response_code(401);
         echo json_encode([

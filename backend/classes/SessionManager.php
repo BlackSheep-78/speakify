@@ -83,19 +83,24 @@ class SessionManager {
 
     if (!$token) return false;
 
-    $stmt = $pdo->prepare("SELECT id, last_activity, expires_at FROM sessions WHERE token = :token LIMIT 1");
+    $stmt = $pdo->prepare("SELECT * FROM sessions WHERE token = :token LIMIT 1");
     $stmt->execute(['token' => $token]);
     $session = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$session) return false;
 
+    // Check expiration
     $now = time();
     $expiresAt = strtotime($session['expires_at']);
     if ($expiresAt !== false && $now > $expiresAt) {
       return false;
     }
 
-    return true;
+    // Touch session on success
+    $update = $pdo->prepare("UPDATE sessions SET last_activity = NOW() WHERE id = ?");
+    $update->execute([$session['id']]);
+
+    return $session; // return full session array
   }
 
   public static function touch($token) {

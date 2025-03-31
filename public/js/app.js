@@ -6,7 +6,7 @@
   and playback logic. These rules must be respected across all pages using
   app.js to avoid invalid session states, inconsistent UI, or unexpected bugs.
   ============================================================================
-  
+
   ============================================================================
   app.js – Speakify Frontend Session & Playback Manager
   ============================================================================
@@ -51,7 +51,7 @@ const app = {
 
   async init() {
     console.log("👋 app.init() running");
-    await this.ensureToken(); // Always ensure session, even on non-playback pages
+    await this.ensureToken();
 
     this.queueEl = document.getElementById("playloop-queue");
     this.playButton = document.getElementById("toggle-playback");
@@ -61,6 +61,7 @@ const app = {
       return;
     }
 
+    this.playButton.innerHTML = `<svg viewBox='0 0 24 24'><path d='M8 5v14l11-7z'/></svg>`;
     this.setupEvents();
     await this.fetchData();
   },
@@ -91,13 +92,19 @@ const app = {
   setupEvents() {
     this.playButton.addEventListener("click", () => {
       this.isPlaying = !this.isPlaying;
-      this.playButton.textContent = this.isPlaying ? "⏸️" : "▶️";
+      this.playButton.classList.toggle("playing", this.isPlaying);
+
+      const icon = this.playButton.querySelector("svg");
+      icon.innerHTML = this.isPlaying
+        ? `<path d='M6 19h4V5H6v14zm8-14v14h4V5h-4z'/>`
+        : `<path d='M8 5v14l11-7z'/>`;
 
       if (this.isPlaying && !this.playbackTask) {
         this.playbackTask = this.simulatePlayback().then(() => {
           this.isPlaying = false;
           this.playbackTask = null;
-          this.playButton.textContent = "▶️";
+          this.playButton.classList.remove("playing");
+          icon.innerHTML = `<path d='M8 5v14l11-7z'/>`;
         });
       }
     });
@@ -128,7 +135,6 @@ const app = {
 
   async fetchData() {
     const url = `/speakify/public/api/index.php?action=get_sentences&lang_id=39&token=${this.token}`;
-
     const res = await fetch(url);
     const data = await res.json();
 
@@ -138,15 +144,25 @@ const app = {
       return;
     }
 
-    this.data = data;
-    const max = Math.min(data.length, 50);
-    for (let i = 0; i < max; i++) {
-      const pairData = data[i];
-      const en = pairData.original.sentence.text;
-      const fr = Object.values(pairData.translation).find(t => t.language.name === "French")?.sentence.text;
-      const pt = Object.values(pairData.translation).find(t => t.language.name === "Portuguese")?.sentence.text;
+    const rawPairs = data.pairs;
+    const grouped = {};
+
+    rawPairs.forEach(pair => {
+      const en = pair.original_sentence.trim();
+      const lang = pair.translated_language;
+      const translated = pair.translated_sentence.trim();
+
+      if (!grouped[en]) grouped[en] = {};
+      grouped[en][lang] = translated;
+    });
+
+    let index = 0;
+    for (const [en, translations] of Object.entries(grouped)) {
+      const fr = translations["French"];
+      const pt = translations["Portuguese"];
       if (!fr || !pt) continue;
-      const loop = this.createPlayLoop({ en, fr, pt }, i);
+
+      const loop = this.createPlayLoop({ en, fr, pt }, index++);
       this.queueEl.appendChild(loop);
     }
   },
@@ -215,7 +231,6 @@ document.addEventListener("DOMContentLoaded", () => {
   app.init();
   registerFormHandler();
 });
-
 
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;

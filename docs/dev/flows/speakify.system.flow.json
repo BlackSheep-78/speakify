@@ -1,4 +1,7 @@
 {
+  "file": "speakify/docs/dev/flows/speakify.system.flow.json",
+  "description": "Flow documentation for core API endpoints in Speakify",
+
   "validate_session": {
     "description": "Validates a user session via token",
     "entry": "/public/api/index.php?action=validate_session",
@@ -21,11 +24,42 @@
       },
       {
         "file": "backend/classes/SessionManager.php",
-        "action": "validateToken(token) \u2192 Prepares SQL, fetches session, returns result"
+        "action": "validateToken(token) → Prepares SQL, fetches session, returns result"
       },
       {
         "db": "sessions table",
         "query": "SELECT * FROM sessions WHERE token = ?"
+      }
+    ]
+  },
+
+  "register_user": {
+    "description": "Registers a new user with email, password, and full name",
+    "entry": "/public/api/index.php?action=register",
+    "flow": [
+      {
+        "file": "public/api/index.php",
+        "action": "Reads `action` from $_GET, routes to register"
+      },
+      {
+        "file": "backend/actions/register.php",
+        "action": "Requires init.php and calls SessionManager::registerUser"
+      },
+      {
+        "file": "backend/init.php",
+        "action": "Initializes database and constants"
+      },
+      {
+        "file": "backend/classes/SessionManager.php",
+        "action": "registerUser(email, password, name) → Validates input, hashes password, inserts new user"
+      },
+      {
+        "file": "backend/utils/hash.php",
+        "action": "Uses password_hash to securely hash user password"
+      },
+      {
+        "db": "users table",
+        "query": "INSERT INTO users (email, password, name) VALUES (?, ?, ?)"
       }
     ]
   }
