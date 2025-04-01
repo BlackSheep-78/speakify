@@ -1,5 +1,5 @@
 {
-    "file": "speakify/docs/dev/flows/speakify.system.flow.json",
+    "file": "speakify/docs/dev/flows/template.json",
     "description": "Detailed flow documentation for core API endpoints in Speakify, including nodes and relationships",
   
     "your_api_action": {
@@ -45,3 +45,4 @@
       ]
     }
   }
+  
