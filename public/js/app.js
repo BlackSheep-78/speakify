@@ -20,16 +20,10 @@ const app = {
   async ensureToken() {
     let token = localStorage.getItem('speakify_token');
 
-    const isValid = async (token) => {
-      const check = await fetch(`/speakify/public/api/index.php?action=validate_session&token=${token}`);
-      const result = await check.json();
-      return !result.error && result.user !== undefined;
-    };
-
-    if (token && await isValid(token)) {
-      console.log("✅ Valid session reused:", token);
+    if (token) {
+      console.log("✅ Found token:", token);
     } else {
-      console.warn("⚠️ No valid session, creating new...");
+      console.warn("⚠️ No valid session, creating new anonymous session...");
       const res = await fetch('/speakify/public/api/index.php?action=create_session');
       const data = await res.json();
       token = data.token;
@@ -40,50 +34,34 @@ const app = {
     this.token = token;
   },
 
-  async handleAuthVisibility() {
+  async handleAuthVisibility(forcedToken = null) {
     const loginSection = document.getElementById('login-section');
     const profileSection = document.getElementById('profile-section');
     const profileName = document.getElementById('profile-name');
-    const profileEmail = document.getElementById('profile-email');
-    const profileLastLogin = document.getElementById('profile-last-login');
-    const logoutButton = document.getElementById('logout-button');
     const headerUserLink = document.querySelector('.header a[href="login-profile.html"]');
+    const logoutButton = document.getElementById('logout-button');
 
-    console.log("🔍 Checking token...");
-    const token = localStorage.getItem('speakify_token');
-    if (!token) {
-      console.warn("⚠️ No token found.");
-      if (loginSection) loginSection.hidden = false;
-      if (profileSection) profileSection.hidden = true;
-      if (headerUserLink) headerUserLink.textContent = "👤 Connexion";
-      return;
-    }
+    // Default UI
+    if (loginSection) loginSection.hidden = false;
+    if (profileSection) profileSection.hidden = true;
+    if (headerUserLink) headerUserLink.textContent = "👤 Connexion";
+
+    const token = forcedToken || localStorage.getItem('speakify_token');
+    if (!token) return;
 
     try {
       const res = await fetch(`/speakify/public/api/index.php?action=validate_session&token=${token}`);
       const result = await res.json();
       console.log("🧠 validate_session result:", result);
 
-      if (result.error || !result.user || !result.user.name) {
-        console.warn("❌ Invalid or anonymous session");
-        if (loginSection) loginSection.hidden = false;
-        if (profileSection) profileSection.hidden = true;
-        if (headerUserLink) headerUserLink.textContent = "👤 Connexion";
-        return;
-      }
+      if (!result.success || !result.name) return;
 
-      console.log("✅ Logged in as:", result.user.name);
-
+      // Valid session with user
       if (loginSection) loginSection.hidden = true;
       if (profileSection) profileSection.hidden = false;
 
-      if (profileName) profileName.textContent = result.user.name;
-      if (profileEmail) profileEmail.textContent = result.user.email;
-      if (profileLastLogin) profileLastLogin.textContent = result.user.last_activity;
-
-      if (headerUserLink) {
-        headerUserLink.textContent = `👤 ${result.user.name}`;
-      }
+      if (profileName) profileName.textContent = result.name;
+      if (headerUserLink) headerUserLink.textContent = `👤 ${result.name}`;
 
       if (logoutButton) {
         logoutButton.onclick = () => {
@@ -91,12 +69,8 @@ const app = {
           location.reload();
         };
       }
-
     } catch (error) {
-      console.error('❌ Error fetching user session:', error);
-      if (loginSection) loginSection.hidden = false;
-      if (profileSection) profileSection.hidden = true;
-      if (headerUserLink) headerUserLink.textContent = "👤 Connexion";
+      console.error('❌ Error validating session:', error);
     }
   },
 
@@ -129,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (result.success) {
         localStorage.setItem('speakify_token', result.token);
-        await app.handleAuthVisibility();
+        await app.handleAuthVisibility(result.token);
       } else {
         alert("❌ Login failed: " + (result.error || "unknown error"));
       }
