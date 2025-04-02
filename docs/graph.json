@@ -1,0 +1,3390 @@
+{
+  "version": "1.0.0",
+  "generated": "2025-04-02T06:57:54.591328Z",
+  "file": "/speakify/docs/graph.json",
+  "description": "This file works in conformity with graph.md and should be viewed using graph-viewer.html.",
+  "entities": [
+    {
+      "id": "speakify-root",
+      "type": "folder",
+      "name": "speakify",
+      "path": "/speakify",
+      "meta": {
+        "created": "2025-03-01T08:00:00Z",
+        "tags": [
+          "root"
+        ]
+      }
+    },
+    {
+      "id": "baab1885-folder-speakify.",
+      "type": "folder",
+      "name": "",
+      "path": "/speakify.",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "8992c812-folder-backend",
+      "type": "folder",
+      "name": "backend",
+      "path": "/speakify/backend",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "853284c4-folder-actions",
+      "type": "folder",
+      "name": "actions",
+      "path": "/speakify/backend/actions",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "e908f4a2-folder-classes",
+      "type": "folder",
+      "name": "classes",
+      "path": "/speakify/backend/classes",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "4fa91aad-folder-php",
+      "type": "folder",
+      "name": "php",
+      "path": "/speakify/backend/php",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "8b0b864a-folder-sql",
+      "type": "folder",
+      "name": "sql",
+      "path": "/speakify/backend/sql",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "16191bdf-folder-schema",
+      "type": "folder",
+      "name": "schema",
+      "path": "/speakify/backend/sql/schema",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "2cbfdcb0-folder-utils",
+      "type": "folder",
+      "name": "utils",
+      "path": "/speakify/backend/utils",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "c62ea513-folder-docs",
+      "type": "folder",
+      "name": "docs",
+      "path": "/speakify/docs",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "20cc3bd2-folder-images",
+      "type": "folder",
+      "name": "images",
+      "path": "/speakify/docs/images",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "5e799ff2-folder-model",
+      "type": "folder",
+      "name": "model",
+      "path": "/speakify/model",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "07e2dedc-folder-public",
+      "type": "folder",
+      "name": "public",
+      "path": "/speakify/public",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "8f85c3eb-folder-api",
+      "type": "folder",
+      "name": "api",
+      "path": "/speakify/public/api",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "19e84201-folder-assets",
+      "type": "folder",
+      "name": "assets",
+      "path": "/speakify/public/assets",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "a6883244-folder-audio",
+      "type": "folder",
+      "name": "audio",
+      "path": "/speakify/public/assets/audio",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "cc8fd512-folder-flags",
+      "type": "folder",
+      "name": "flags",
+      "path": "/speakify/public/assets/flags",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "bd6641ba-folder-icons",
+      "type": "folder",
+      "name": "icons",
+      "path": "/speakify/public/assets/icons",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "920ae035-folder-css",
+      "type": "folder",
+      "name": "css",
+      "path": "/speakify/public/css",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "249b5274-folder-html",
+      "type": "folder",
+      "name": "html",
+      "path": "/speakify/public/html",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "4a907098-folder-template",
+      "type": "folder",
+      "name": "template",
+      "path": "/speakify/public/html/template",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "904a8263-folder-js",
+      "type": "folder",
+      "name": "js",
+      "path": "/speakify/public/js",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "7e5a5da4-folder-libs",
+      "type": "folder",
+      "name": "libs",
+      "path": "/speakify/public/js/libs",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "c8c1dbb8-folder-resources",
+      "type": "folder",
+      "name": "resources",
+      "path": "/speakify/resources",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "b6aa8586-folder-public_",
+      "type": "folder",
+      "name": "public_",
+      "path": "/speakify/resources/public_",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "a42a93ff-folder-css",
+      "type": "folder",
+      "name": "css",
+      "path": "/speakify/resources/public_/css",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "65d6880c-folder-data",
+      "type": "folder",
+      "name": "data",
+      "path": "/speakify/resources/public_/data",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "e5770284-folder-js",
+      "type": "folder",
+      "name": "js",
+      "path": "/speakify/resources/public_/js",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "9e99505e-folder-stuff",
+      "type": "folder",
+      "name": "stuff",
+      "path": "/speakify/resources/stuff",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "1801e06f-folder-wireframes",
+      "type": "folder",
+      "name": "wireframes",
+      "path": "/speakify/resources/wireframes",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "a740a440-file-check_schema.php",
+      "type": "file",
+      "name": "check_schema.php",
+      "path": "/speakify/backend/actions/check_schema.php",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "97ec7c30-file-check_session.php",
+      "type": "file",
+      "name": "check_session.php",
+      "path": "/speakify/backend/actions/check_session.php",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "f48d948d-file-create_session.php",
+      "type": "file",
+      "name": "create_session.php",
+      "path": "/speakify/backend/actions/create_session.php",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "a6f6455f-file-get_sentences.php",
+      "type": "file",
+      "name": "get_sentences.php",
+      "path": "/speakify/backend/actions/get_sentences.php",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "6d569bd8-file-login.php",
+      "type": "file",
+      "name": "login.php",
+      "path": "/speakify/backend/actions/login.php",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "42ace532-file-logout.php",
+      "type": "file",
+      "name": "logout.php",
+      "path": "/speakify/backend/actions/logout.php",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "fd4a4075-file-ping_session.php",
+      "type": "file",
+      "name": "ping_session.php",
+      "path": "/speakify/backend/actions/ping_session.php",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "7a47a25a-file-register.php",
+      "type": "file",
+      "name": "register.php",
+      "path": "/speakify/backend/actions/register.php",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "d11c2472-file-validate_session.php",
+      "type": "file",
+      "name": "validate_session.php",
+      "path": "/speakify/backend/actions/validate_session.php",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "36fdfb50-file-api.php",
+      "type": "file",
+      "name": "api.php",
+      "path": "/speakify/backend/api.php",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "66ea2c8f-file-Database.php",
+      "type": "file",
+      "name": "Database.php",
+      "path": "/speakify/backend/classes/Database.php",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "a52841d3-file-GoogleTranslateAPi.php",
+      "type": "file",
+      "name": "GoogleTranslateAPi.php",
+      "path": "/speakify/backend/classes/GoogleTranslateAPi.php",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "7a5de135-file-GoogleTTSApi.php",
+      "type": "file",
+      "name": "GoogleTTSApi.php",
+      "path": "/speakify/backend/classes/GoogleTTSApi.php",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "ea6ef082-file-OpenAiApi.php",
+      "type": "file",
+      "name": "OpenAiApi.php",
+      "path": "/speakify/backend/classes/OpenAiApi.php",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "c7f3abe2-file-SessionManager.php",
+      "type": "file",
+      "name": "SessionManager.php",
+      "path": "/speakify/backend/classes/SessionManager.php",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "367f3677-file-Translate.php",
+      "type": "file",
+      "name": "Translate.php",
+      "path": "/speakify/backend/classes/Translate.php",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "ad8f909d-file-Utilities.php",
+      "type": "file",
+      "name": "Utilities.php",
+      "path": "/speakify/backend/classes/Utilities.php",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "db6aa1fd-file-config.php",
+      "type": "file",
+      "name": "config.php",
+      "path": "/speakify/backend/config.php",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "f974f9bf-file-init.php",
+      "type": "file",
+      "name": "init.php",
+      "path": "/speakify/backend/init.php",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "0b6b6a8d-file-build_database.php",
+      "type": "file",
+      "name": "build_database.php",
+      "path": "/speakify/backend/php/build_database.php",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "f9746c9b-file-get_sentences.php",
+      "type": "file",
+      "name": "get_sentences.php",
+      "path": "/speakify/backend/php/get_sentences.php",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "9bbabb58-file-mysqlschema.php",
+      "type": "file",
+      "name": "mysqlschema.php",
+      "path": "/speakify/backend/php/mysqlschema.php",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "eb3149c7-file-mysqltruncate.php",
+      "type": "file",
+      "name": "mysqltruncate.php",
+      "path": "/speakify/backend/php/mysqltruncate.php",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "632df059-file-run.php",
+      "type": "file",
+      "name": "run.php",
+      "path": "/speakify/backend/php/run.php",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "c4d4e111-file-reached.log",
+      "type": "file",
+      "name": "reached.log",
+      "path": "/speakify/backend/reached.log",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "1aa941a9-file-request.log",
+      "type": "file",
+      "name": "request.log",
+      "path": "/speakify/backend/request.log",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "ffb06975-file-dump.sql",
+      "type": "file",
+      "name": "dump.sql",
+      "path": "/speakify/backend/sql/dump.sql",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "583e4fc3-file-get_one_for_translation.sql",
+      "type": "file",
+      "name": "get_one_for_translation.sql",
+      "path": "/speakify/backend/sql/get_one_for_translation.sql",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "fee34b13-file-get_sentences.sql",
+      "type": "file",
+      "name": "get_sentences.sql",
+      "path": "/speakify/backend/sql/get_sentences.sql",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "3a87214e-file-insert_sentence_translation.sql",
+      "type": "file",
+      "name": "insert_sentence_translation.sql",
+      "path": "/speakify/backend/sql/insert_sentence_translation.sql",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "d929be61-file-reset_database.sql",
+      "type": "file",
+      "name": "reset_database.sql",
+      "path": "/speakify/backend/sql/reset_database.sql",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "1d221213-file-01_users.sql",
+      "type": "file",
+      "name": "01_users.sql",
+      "path": "/speakify/backend/sql/schema/01_users.sql",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "2511874c-file-02_schemas.sql",
+      "type": "file",
+      "name": "02_schemas.sql",
+      "path": "/speakify/backend/sql/schema/02_schemas.sql",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "215b71db-file-03_sessions.sql",
+      "type": "file",
+      "name": "03_sessions.sql",
+      "path": "/speakify/backend/sql/schema/03_sessions.sql",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "4f284a3d-file-languages.sql",
+      "type": "file",
+      "name": "languages.sql",
+      "path": "/speakify/backend/sql/schema/languages.sql",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "83bc2094-file-sentences.sql",
+      "type": "file",
+      "name": "sentences.sql",
+      "path": "/speakify/backend/sql/schema/sentences.sql",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "b1f1181c-file-sentences_start_sample.sql",
+      "type": "file",
+      "name": "sentences_start_sample.sql",
+      "path": "/speakify/backend/sql/schema/sentences_start_sample.sql",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "55654962-file-sources.sql",
+      "type": "file",
+      "name": "sources.sql",
+      "path": "/speakify/backend/sql/schema/sources.sql",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "1b8666ea-file-translation_pairs.sql",
+      "type": "file",
+      "name": "translation_pairs.sql",
+      "path": "/speakify/backend/sql/schema/translation_pairs.sql",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "23c736d4-file-translation_pair_sources.sql",
+      "type": "file",
+      "name": "translation_pair_sources.sql",
+      "path": "/speakify/backend/sql/schema/translation_pair_sources.sql",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "0e333838-file-auth.php",
+      "type": "file",
+      "name": "auth.php",
+      "path": "/speakify/backend/utils/auth.php",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "55ce1fe8-file-db.php",
+      "type": "file",
+      "name": "db.php",
+      "path": "/speakify/backend/utils/db.php",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "ddd42203-file-hash.php",
+      "type": "file",
+      "name": "hash.php",
+      "path": "/speakify/backend/utils/hash.php",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "5fc9b446-file-config.json",
+      "type": "file",
+      "name": "config.json",
+      "path": "/speakify/config.json",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "80ac29d4-file-config.php",
+      "type": "file",
+      "name": "config.php",
+      "path": "/speakify/config.php",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "ce75c64c-file-cdc.md",
+      "type": "file",
+      "name": "cdc.md",
+      "path": "/speakify/docs/cdc.md",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "5fc87e51-file-file_structure.md",
+      "type": "file",
+      "name": "file_structure.md",
+      "path": "/speakify/docs/file_structure.md",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "bdb518b3-file-dashboard.png",
+      "type": "file",
+      "name": "dashboard.png",
+      "path": "/speakify/docs/images/dashboard.png",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "20f5313d-file-playback.png",
+      "type": "file",
+      "name": "playback.png",
+      "path": "/speakify/docs/images/playback.png",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "4e2d1f0c-file-playlist-library.png",
+      "type": "file",
+      "name": "playlist-library.png",
+      "path": "/speakify/docs/images/playlist-library.png",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "266e1a73-file-model.project.md",
+      "type": "file",
+      "name": "model.project.md",
+      "path": "/speakify/docs/model.project.md",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "f9ede2e6-file-navigation_logic.md",
+      "type": "file",
+      "name": "navigation_logic.md",
+      "path": "/speakify/docs/navigation_logic.md",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "46f06e32-file-project.md",
+      "type": "file",
+      "name": "project.md",
+      "path": "/speakify/docs/project.md",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "83babf0b-file-statement_of_work.en.md",
+      "type": "file",
+      "name": "statement_of_work.en.md",
+      "path": "/speakify/docs/statement_of_work.en.md",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "c0bf04ca-file-statement_of_work.fr.md",
+      "type": "file",
+      "name": "statement_of_work.fr.md",
+      "path": "/speakify/docs/statement_of_work.fr.md",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "a78de03b-file-statement_of_work_and_technical_specs.en.md",
+      "type": "file",
+      "name": "statement_of_work_and_technical_specs.en.md",
+      "path": "/speakify/docs/statement_of_work_and_technical_specs.en.md",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "59e5ac74-file-statement_of_work_and_technical_specs.fr.md",
+      "type": "file",
+      "name": "statement_of_work_and_technical_specs.fr.md",
+      "path": "/speakify/docs/statement_of_work_and_technical_specs.fr.md",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "a97b9d00-file-statement_of_work_and_technical_specs.fr.pdf",
+      "type": "file",
+      "name": "statement_of_work_and_technical_specs.fr.pdf",
+      "path": "/speakify/docs/statement_of_work_and_technical_specs.fr.pdf",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "8325c74f-file-technical_specification_document.en.md",
+      "type": "file",
+      "name": "technical_specification_document.en.md",
+      "path": "/speakify/docs/technical_specification_document.en.md",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "fb55055e-file-technical_specification_document.fr.md",
+      "type": "file",
+      "name": "technical_specification_document.fr.md",
+      "path": "/speakify/docs/technical_specification_document.fr.md",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "526c4e7a-file-file_structure.json",
+      "type": "file",
+      "name": "file_structure.json",
+      "path": "/speakify/file_structure.json",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "15e02a53-file-generate_file_structure.sh",
+      "type": "file",
+      "name": "generate_file_structure.sh",
+      "path": "/speakify/generate_file_structure.sh",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "99fd4735-file-index.php",
+      "type": "file",
+      "name": "index.php",
+      "path": "/speakify/index.php",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "ade09071-file-achievements.html",
+      "type": "file",
+      "name": "achievements.html",
+      "path": "/speakify/public/achievements.html",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "60c1c6f4-file-admin.php",
+      "type": "file",
+      "name": "admin.php",
+      "path": "/speakify/public/admin.php",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "687b3cce-file-index.php",
+      "type": "file",
+      "name": "index.php",
+      "path": "/speakify/public/api/index.php",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "2d97bdb1-file-1.wav",
+      "type": "file",
+      "name": "1.wav",
+      "path": "/speakify/public/assets/audio/1.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "a4589b57-file-10.wav",
+      "type": "file",
+      "name": "10.wav",
+      "path": "/speakify/public/assets/audio/10.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "d5501a91-file-11.wav",
+      "type": "file",
+      "name": "11.wav",
+      "path": "/speakify/public/assets/audio/11.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "73e5f774-file-12.wav",
+      "type": "file",
+      "name": "12.wav",
+      "path": "/speakify/public/assets/audio/12.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "08d7500f-file-13.wav",
+      "type": "file",
+      "name": "13.wav",
+      "path": "/speakify/public/assets/audio/13.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "088463ca-file-14.wav",
+      "type": "file",
+      "name": "14.wav",
+      "path": "/speakify/public/assets/audio/14.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "b8e8ed55-file-15.wav",
+      "type": "file",
+      "name": "15.wav",
+      "path": "/speakify/public/assets/audio/15.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "95967bcd-file-16.wav",
+      "type": "file",
+      "name": "16.wav",
+      "path": "/speakify/public/assets/audio/16.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "18b3564d-file-17.wav",
+      "type": "file",
+      "name": "17.wav",
+      "path": "/speakify/public/assets/audio/17.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "79441cd0-file-18.wav",
+      "type": "file",
+      "name": "18.wav",
+      "path": "/speakify/public/assets/audio/18.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "10e5b195-file-19.wav",
+      "type": "file",
+      "name": "19.wav",
+      "path": "/speakify/public/assets/audio/19.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "f1a76933-file-2.wav",
+      "type": "file",
+      "name": "2.wav",
+      "path": "/speakify/public/assets/audio/2.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "f33e9308-file-20.wav",
+      "type": "file",
+      "name": "20.wav",
+      "path": "/speakify/public/assets/audio/20.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "25050724-file-21.wav",
+      "type": "file",
+      "name": "21.wav",
+      "path": "/speakify/public/assets/audio/21.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "421933ce-file-22.wav",
+      "type": "file",
+      "name": "22.wav",
+      "path": "/speakify/public/assets/audio/22.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "017d355a-file-23.wav",
+      "type": "file",
+      "name": "23.wav",
+      "path": "/speakify/public/assets/audio/23.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "0d2e408e-file-24.wav",
+      "type": "file",
+      "name": "24.wav",
+      "path": "/speakify/public/assets/audio/24.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "b6de43fb-file-25.wav",
+      "type": "file",
+      "name": "25.wav",
+      "path": "/speakify/public/assets/audio/25.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "446d0758-file-26.wav",
+      "type": "file",
+      "name": "26.wav",
+      "path": "/speakify/public/assets/audio/26.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "e389d94d-file-27.wav",
+      "type": "file",
+      "name": "27.wav",
+      "path": "/speakify/public/assets/audio/27.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "a52e8c67-file-28.wav",
+      "type": "file",
+      "name": "28.wav",
+      "path": "/speakify/public/assets/audio/28.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "f54efb7a-file-29.wav",
+      "type": "file",
+      "name": "29.wav",
+      "path": "/speakify/public/assets/audio/29.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "a1e2092c-file-3.wav",
+      "type": "file",
+      "name": "3.wav",
+      "path": "/speakify/public/assets/audio/3.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "ddd5e798-file-30.wav",
+      "type": "file",
+      "name": "30.wav",
+      "path": "/speakify/public/assets/audio/30.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "97511543-file-31.wav",
+      "type": "file",
+      "name": "31.wav",
+      "path": "/speakify/public/assets/audio/31.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "e8e770ae-file-32.wav",
+      "type": "file",
+      "name": "32.wav",
+      "path": "/speakify/public/assets/audio/32.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "8c58237d-file-33.wav",
+      "type": "file",
+      "name": "33.wav",
+      "path": "/speakify/public/assets/audio/33.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "84671196-file-34.wav",
+      "type": "file",
+      "name": "34.wav",
+      "path": "/speakify/public/assets/audio/34.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "a2a327bf-file-35.wav",
+      "type": "file",
+      "name": "35.wav",
+      "path": "/speakify/public/assets/audio/35.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "1c939f99-file-36.wav",
+      "type": "file",
+      "name": "36.wav",
+      "path": "/speakify/public/assets/audio/36.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "8dc7f37c-file-37.wav",
+      "type": "file",
+      "name": "37.wav",
+      "path": "/speakify/public/assets/audio/37.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "41b932c3-file-38.wav",
+      "type": "file",
+      "name": "38.wav",
+      "path": "/speakify/public/assets/audio/38.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "b7082a8c-file-39.wav",
+      "type": "file",
+      "name": "39.wav",
+      "path": "/speakify/public/assets/audio/39.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "3064ea92-file-4.wav",
+      "type": "file",
+      "name": "4.wav",
+      "path": "/speakify/public/assets/audio/4.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "02939cbe-file-40.wav",
+      "type": "file",
+      "name": "40.wav",
+      "path": "/speakify/public/assets/audio/40.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "1b9afb29-file-41.wav",
+      "type": "file",
+      "name": "41.wav",
+      "path": "/speakify/public/assets/audio/41.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "fa5c6be3-file-42.wav",
+      "type": "file",
+      "name": "42.wav",
+      "path": "/speakify/public/assets/audio/42.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "362c1b7a-file-43.wav",
+      "type": "file",
+      "name": "43.wav",
+      "path": "/speakify/public/assets/audio/43.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "6c485a57-file-44.wav",
+      "type": "file",
+      "name": "44.wav",
+      "path": "/speakify/public/assets/audio/44.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "0f3ae5f6-file-45.wav",
+      "type": "file",
+      "name": "45.wav",
+      "path": "/speakify/public/assets/audio/45.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "f3a34880-file-46.wav",
+      "type": "file",
+      "name": "46.wav",
+      "path": "/speakify/public/assets/audio/46.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "605ef662-file-47.wav",
+      "type": "file",
+      "name": "47.wav",
+      "path": "/speakify/public/assets/audio/47.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "aa71af75-file-48.wav",
+      "type": "file",
+      "name": "48.wav",
+      "path": "/speakify/public/assets/audio/48.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "3186f4bb-file-49.wav",
+      "type": "file",
+      "name": "49.wav",
+      "path": "/speakify/public/assets/audio/49.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "309a9090-file-5.wav",
+      "type": "file",
+      "name": "5.wav",
+      "path": "/speakify/public/assets/audio/5.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "77a373d9-file-50.wav",
+      "type": "file",
+      "name": "50.wav",
+      "path": "/speakify/public/assets/audio/50.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "230fb813-file-51.wav",
+      "type": "file",
+      "name": "51.wav",
+      "path": "/speakify/public/assets/audio/51.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "02ebd907-file-52.wav",
+      "type": "file",
+      "name": "52.wav",
+      "path": "/speakify/public/assets/audio/52.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "ad4200e6-file-53.wav",
+      "type": "file",
+      "name": "53.wav",
+      "path": "/speakify/public/assets/audio/53.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "dff94547-file-54.wav",
+      "type": "file",
+      "name": "54.wav",
+      "path": "/speakify/public/assets/audio/54.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "05c447be-file-55.wav",
+      "type": "file",
+      "name": "55.wav",
+      "path": "/speakify/public/assets/audio/55.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "3c1dd820-file-56.wav",
+      "type": "file",
+      "name": "56.wav",
+      "path": "/speakify/public/assets/audio/56.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "a0d33d1f-file-57.wav",
+      "type": "file",
+      "name": "57.wav",
+      "path": "/speakify/public/assets/audio/57.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "1570eff0-file-58.wav",
+      "type": "file",
+      "name": "58.wav",
+      "path": "/speakify/public/assets/audio/58.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "9be78471-file-59.wav",
+      "type": "file",
+      "name": "59.wav",
+      "path": "/speakify/public/assets/audio/59.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "cab2d1c9-file-6.wav",
+      "type": "file",
+      "name": "6.wav",
+      "path": "/speakify/public/assets/audio/6.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "553a7e44-file-60.wav",
+      "type": "file",
+      "name": "60.wav",
+      "path": "/speakify/public/assets/audio/60.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "a4f64d08-file-61.wav",
+      "type": "file",
+      "name": "61.wav",
+      "path": "/speakify/public/assets/audio/61.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "0f03ff74-file-62.wav",
+      "type": "file",
+      "name": "62.wav",
+      "path": "/speakify/public/assets/audio/62.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "8e10b6d6-file-63.wav",
+      "type": "file",
+      "name": "63.wav",
+      "path": "/speakify/public/assets/audio/63.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "47b7a90a-file-64.wav",
+      "type": "file",
+      "name": "64.wav",
+      "path": "/speakify/public/assets/audio/64.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "d68c8bc8-file-65.wav",
+      "type": "file",
+      "name": "65.wav",
+      "path": "/speakify/public/assets/audio/65.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "4279c393-file-66.wav",
+      "type": "file",
+      "name": "66.wav",
+      "path": "/speakify/public/assets/audio/66.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "2ebe211c-file-67.wav",
+      "type": "file",
+      "name": "67.wav",
+      "path": "/speakify/public/assets/audio/67.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "e2e3065b-file-68.wav",
+      "type": "file",
+      "name": "68.wav",
+      "path": "/speakify/public/assets/audio/68.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "b18b0e4c-file-69.wav",
+      "type": "file",
+      "name": "69.wav",
+      "path": "/speakify/public/assets/audio/69.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "8268a2b4-file-7.wav",
+      "type": "file",
+      "name": "7.wav",
+      "path": "/speakify/public/assets/audio/7.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "a4bbb567-file-70.wav",
+      "type": "file",
+      "name": "70.wav",
+      "path": "/speakify/public/assets/audio/70.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "493a2caf-file-71.wav",
+      "type": "file",
+      "name": "71.wav",
+      "path": "/speakify/public/assets/audio/71.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "b662c49e-file-72.wav",
+      "type": "file",
+      "name": "72.wav",
+      "path": "/speakify/public/assets/audio/72.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "8b55cf80-file-73.wav",
+      "type": "file",
+      "name": "73.wav",
+      "path": "/speakify/public/assets/audio/73.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "d48cac6d-file-74.wav",
+      "type": "file",
+      "name": "74.wav",
+      "path": "/speakify/public/assets/audio/74.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "e8d60865-file-75.wav",
+      "type": "file",
+      "name": "75.wav",
+      "path": "/speakify/public/assets/audio/75.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "319e1ef1-file-76.wav",
+      "type": "file",
+      "name": "76.wav",
+      "path": "/speakify/public/assets/audio/76.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "fa72eab4-file-77.wav",
+      "type": "file",
+      "name": "77.wav",
+      "path": "/speakify/public/assets/audio/77.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "f7524fdd-file-78.wav",
+      "type": "file",
+      "name": "78.wav",
+      "path": "/speakify/public/assets/audio/78.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "d5d1f965-file-79.wav",
+      "type": "file",
+      "name": "79.wav",
+      "path": "/speakify/public/assets/audio/79.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "0cbd8285-file-8.wav",
+      "type": "file",
+      "name": "8.wav",
+      "path": "/speakify/public/assets/audio/8.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "956835ed-file-80.wav",
+      "type": "file",
+      "name": "80.wav",
+      "path": "/speakify/public/assets/audio/80.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "4890fa75-file-81.wav",
+      "type": "file",
+      "name": "81.wav",
+      "path": "/speakify/public/assets/audio/81.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "993b86fb-file-82.wav",
+      "type": "file",
+      "name": "82.wav",
+      "path": "/speakify/public/assets/audio/82.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "3d8c1ed7-file-83.wav",
+      "type": "file",
+      "name": "83.wav",
+      "path": "/speakify/public/assets/audio/83.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "757bb3fe-file-84.wav",
+      "type": "file",
+      "name": "84.wav",
+      "path": "/speakify/public/assets/audio/84.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "21dc5c5f-file-85.wav",
+      "type": "file",
+      "name": "85.wav",
+      "path": "/speakify/public/assets/audio/85.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "84f8b10d-file-86.wav",
+      "type": "file",
+      "name": "86.wav",
+      "path": "/speakify/public/assets/audio/86.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "27b16dfc-file-87.wav",
+      "type": "file",
+      "name": "87.wav",
+      "path": "/speakify/public/assets/audio/87.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "cf08ec09-file-88.wav",
+      "type": "file",
+      "name": "88.wav",
+      "path": "/speakify/public/assets/audio/88.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "abe2c9d6-file-89.wav",
+      "type": "file",
+      "name": "89.wav",
+      "path": "/speakify/public/assets/audio/89.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "3a025119-file-9.wav",
+      "type": "file",
+      "name": "9.wav",
+      "path": "/speakify/public/assets/audio/9.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "d574a365-file-90.wav",
+      "type": "file",
+      "name": "90.wav",
+      "path": "/speakify/public/assets/audio/90.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "8c57f713-file-91.wav",
+      "type": "file",
+      "name": "91.wav",
+      "path": "/speakify/public/assets/audio/91.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "a7b3c588-file-92.wav",
+      "type": "file",
+      "name": "92.wav",
+      "path": "/speakify/public/assets/audio/92.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "1bc41276-file-93.wav",
+      "type": "file",
+      "name": "93.wav",
+      "path": "/speakify/public/assets/audio/93.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "5f31ecbb-file-94.wav",
+      "type": "file",
+      "name": "94.wav",
+      "path": "/speakify/public/assets/audio/94.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "88b61434-file-95.wav",
+      "type": "file",
+      "name": "95.wav",
+      "path": "/speakify/public/assets/audio/95.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "0196d0d8-file-96.wav",
+      "type": "file",
+      "name": "96.wav",
+      "path": "/speakify/public/assets/audio/96.wav",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "7a5c4572-file-audio.mp3",
+      "type": "file",
+      "name": "audio.mp3",
+      "path": "/speakify/public/assets/audio/audio.mp3",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "0c390ff0-file-file_example_MP3_700KB.mp3",
+      "type": "file",
+      "name": "file_example_MP3_700KB.mp3",
+      "path": "/speakify/public/assets/audio/file_example_MP3_700KB.mp3",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "9ac4617b-file-fr.png",
+      "type": "file",
+      "name": "fr.png",
+      "path": "/speakify/public/assets/flags/fr.png",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "6058f042-file-fr.svg",
+      "type": "file",
+      "name": "fr.svg",
+      "path": "/speakify/public/assets/flags/fr.svg",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "5adaddab-file-gb-eng.png",
+      "type": "file",
+      "name": "gb-eng.png",
+      "path": "/speakify/public/assets/flags/gb-eng.png",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "82284824-file-gb-eng.svg",
+      "type": "file",
+      "name": "gb-eng.svg",
+      "path": "/speakify/public/assets/flags/gb-eng.svg",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "171e1b31-file-pt.png",
+      "type": "file",
+      "name": "pt.png",
+      "path": "/speakify/public/assets/flags/pt.png",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "20dccd89-file-pt.svg",
+      "type": "file",
+      "name": "pt.svg",
+      "path": "/speakify/public/assets/flags/pt.svg",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "399fe429-file-dessin.svg",
+      "type": "file",
+      "name": "dessin.svg",
+      "path": "/speakify/public/assets/icons/dessin.svg",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "681e7023-file-pause.png",
+      "type": "file",
+      "name": "pause.png",
+      "path": "/speakify/public/assets/icons/pause.png",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "beaf8ac6-file-play.png",
+      "type": "file",
+      "name": "play.png",
+      "path": "/speakify/public/assets/icons/play.png",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "8cba3d28-file-style.css",
+      "type": "file",
+      "name": "style.css",
+      "path": "/speakify/public/css/style.css",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "2660ac0c-file-dashboard.html",
+      "type": "file",
+      "name": "dashboard.html",
+      "path": "/speakify/public/dashboard.html",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "f3ace505-file-app.html",
+      "type": "file",
+      "name": "app.html",
+      "path": "/speakify/public/html/app.html",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "86f77724-file-index.html",
+      "type": "file",
+      "name": "index.html",
+      "path": "/speakify/public/html/index.html",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "24b63227-file-menu.html",
+      "type": "file",
+      "name": "menu.html",
+      "path": "/speakify/public/html/menu.html",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "8bb5c6b1-file-translation.html",
+      "type": "file",
+      "name": "translation.html",
+      "path": "/speakify/public/html/template/translation.html",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "11db9e15-file-index.html",
+      "type": "file",
+      "name": "index.html",
+      "path": "/speakify/public/index.html",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "a39beb51-file-index.php",
+      "type": "file",
+      "name": "index.php",
+      "path": "/speakify/public/index.php",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "416bcc34-file-app.js",
+      "type": "file",
+      "name": "app.js",
+      "path": "/speakify/public/js/app.js",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "d7a46e90-file-jquery-3.7.1.min.js",
+      "type": "file",
+      "name": "jquery-3.7.1.min.js",
+      "path": "/speakify/public/js/libs/jquery-3.7.1.min.js",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "e8ed220a-file-login-profile.html",
+      "type": "file",
+      "name": "login-profile.html",
+      "path": "/speakify/public/login-profile.html",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "04f8b137-file-offline-mode.html",
+      "type": "file",
+      "name": "offline-mode.html",
+      "path": "/speakify/public/offline-mode.html",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "6ed65195-file-playback.html",
+      "type": "file",
+      "name": "playback.html",
+      "path": "/speakify/public/playback.html",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "e2adc1d8-file-playlist-editor.html",
+      "type": "file",
+      "name": "playlist-editor.html",
+      "path": "/speakify/public/playlist-editor.html",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "7c43c334-file-playlist-library.html",
+      "type": "file",
+      "name": "playlist-library.html",
+      "path": "/speakify/public/playlist-library.html",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "5d631fb0-file-register.html",
+      "type": "file",
+      "name": "register.html",
+      "path": "/speakify/public/register.html",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "c4bcd8e3-file-schema-editor.html",
+      "type": "file",
+      "name": "schema-editor.html",
+      "path": "/speakify/public/schema-editor.html",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "72f2aad3-file-settings.html",
+      "type": "file",
+      "name": "settings.html",
+      "path": "/speakify/public/settings.html",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "25317752-file-smart-lists.html",
+      "type": "file",
+      "name": "smart-lists.html",
+      "path": "/speakify/public/smart-lists.html",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "c629aa07-file-README.md",
+      "type": "file",
+      "name": "README.md",
+      "path": "/speakify/README.md",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "04281b8c-file-dependencies.json",
+      "type": "file",
+      "name": "dependencies.json",
+      "path": "/speakify/resources/dependencies.json",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "1f42716a-file-file_structure.json",
+      "type": "file",
+      "name": "file_structure.json",
+      "path": "/speakify/resources/file_structure.json",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "ed2d7344-file-graph.html",
+      "type": "file",
+      "name": "graph.html",
+      "path": "/speakify/resources/graph.html",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "f77ac9e9-file-maquet.png",
+      "type": "file",
+      "name": "maquet.png",
+      "path": "/speakify/resources/maquet.png",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "97137582-file-maquet.webp",
+      "type": "file",
+      "name": "maquet.webp",
+      "path": "/speakify/resources/maquet.webp",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "9e99ac35-file-navigation.json",
+      "type": "file",
+      "name": "navigation.json",
+      "path": "/speakify/resources/navigation.json",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "976540ef-file-styles.bootstrap.css",
+      "type": "file",
+      "name": "styles.bootstrap.css",
+      "path": "/speakify/resources/public_/css/styles.bootstrap.css",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "706a4ea0-file-styles.futuristic.css",
+      "type": "file",
+      "name": "styles.futuristic.css",
+      "path": "/speakify/resources/public_/css/styles.futuristic.css",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "566f7848-file-styles.light.css",
+      "type": "file",
+      "name": "styles.light.css",
+      "path": "/speakify/resources/public_/css/styles.light.css",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "4d17d776-file-playlists.json",
+      "type": "file",
+      "name": "playlists.json",
+      "path": "/speakify/resources/public_/data/playlists.json",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "04adfd20-file-schemas.json",
+      "type": "file",
+      "name": "schemas.json",
+      "path": "/speakify/resources/public_/data/schemas.json",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "62a50706-file-index.html",
+      "type": "file",
+      "name": "index.html",
+      "path": "/speakify/resources/public_/index.html",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "4f925d5f-file-script.js",
+      "type": "file",
+      "name": "script.js",
+      "path": "/speakify/resources/public_/js/script.js",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "e77f2377-file-api_list.txt",
+      "type": "file",
+      "name": "api_list.txt",
+      "path": "/speakify/resources/stuff/api_list.txt",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "5d8758a9-file-playback_view.json",
+      "type": "file",
+      "name": "playback_view.json",
+      "path": "/speakify/resources/wireframes/playback_view.json",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "39e31f80-file-playback_view.md",
+      "type": "file",
+      "name": "playback_view.md",
+      "path": "/speakify/resources/wireframes/playback_view.md",
+      "meta": {
+        "created": "2025-04-01T12:00:00Z"
+      }
+    },
+    {
+      "id": "action_register_user",
+      "type": "action",
+      "label": "Register User"
+    },
+    {
+      "id": "event_submit_register_form",
+      "type": "event",
+      "label": "Submit Register Form"
+    },
+    {
+      "id": "endpoint_register_user_php",
+      "type": "endpoint",
+      "label": "register_user.php"
+    }
+  ],
+  "links": [
+    {
+      "source": "speakify-root",
+      "target": "8992c812-folder-backend",
+      "relation": "contains"
+    },
+    {
+      "source": "8992c812-folder-backend",
+      "target": "853284c4-folder-actions",
+      "relation": "contains"
+    },
+    {
+      "source": "8992c812-folder-backend",
+      "target": "e908f4a2-folder-classes",
+      "relation": "contains"
+    },
+    {
+      "source": "8992c812-folder-backend",
+      "target": "4fa91aad-folder-php",
+      "relation": "contains"
+    },
+    {
+      "source": "8992c812-folder-backend",
+      "target": "8b0b864a-folder-sql",
+      "relation": "contains"
+    },
+    {
+      "source": "8b0b864a-folder-sql",
+      "target": "16191bdf-folder-schema",
+      "relation": "contains"
+    },
+    {
+      "source": "8992c812-folder-backend",
+      "target": "2cbfdcb0-folder-utils",
+      "relation": "contains"
+    },
+    {
+      "source": "speakify-root",
+      "target": "c62ea513-folder-docs",
+      "relation": "contains"
+    },
+    {
+      "source": "c62ea513-folder-docs",
+      "target": "20cc3bd2-folder-images",
+      "relation": "contains"
+    },
+    {
+      "source": "speakify-root",
+      "target": "5e799ff2-folder-model",
+      "relation": "contains"
+    },
+    {
+      "source": "speakify-root",
+      "target": "07e2dedc-folder-public",
+      "relation": "contains"
+    },
+    {
+      "source": "07e2dedc-folder-public",
+      "target": "8f85c3eb-folder-api",
+      "relation": "contains"
+    },
+    {
+      "source": "07e2dedc-folder-public",
+      "target": "19e84201-folder-assets",
+      "relation": "contains"
+    },
+    {
+      "source": "19e84201-folder-assets",
+      "target": "a6883244-folder-audio",
+      "relation": "contains"
+    },
+    {
+      "source": "19e84201-folder-assets",
+      "target": "cc8fd512-folder-flags",
+      "relation": "contains"
+    },
+    {
+      "source": "19e84201-folder-assets",
+      "target": "bd6641ba-folder-icons",
+      "relation": "contains"
+    },
+    {
+      "source": "07e2dedc-folder-public",
+      "target": "920ae035-folder-css",
+      "relation": "contains"
+    },
+    {
+      "source": "07e2dedc-folder-public",
+      "target": "249b5274-folder-html",
+      "relation": "contains"
+    },
+    {
+      "source": "249b5274-folder-html",
+      "target": "4a907098-folder-template",
+      "relation": "contains"
+    },
+    {
+      "source": "07e2dedc-folder-public",
+      "target": "904a8263-folder-js",
+      "relation": "contains"
+    },
+    {
+      "source": "904a8263-folder-js",
+      "target": "7e5a5da4-folder-libs",
+      "relation": "contains"
+    },
+    {
+      "source": "speakify-root",
+      "target": "c8c1dbb8-folder-resources",
+      "relation": "contains"
+    },
+    {
+      "source": "c8c1dbb8-folder-resources",
+      "target": "b6aa8586-folder-public_",
+      "relation": "contains"
+    },
+    {
+      "source": "b6aa8586-folder-public_",
+      "target": "a42a93ff-folder-css",
+      "relation": "contains"
+    },
+    {
+      "source": "b6aa8586-folder-public_",
+      "target": "65d6880c-folder-data",
+      "relation": "contains"
+    },
+    {
+      "source": "b6aa8586-folder-public_",
+      "target": "e5770284-folder-js",
+      "relation": "contains"
+    },
+    {
+      "source": "c8c1dbb8-folder-resources",
+      "target": "9e99505e-folder-stuff",
+      "relation": "contains"
+    },
+    {
+      "source": "c8c1dbb8-folder-resources",
+      "target": "1801e06f-folder-wireframes",
+      "relation": "contains"
+    },
+    {
+      "source": "853284c4-folder-actions",
+      "target": "a740a440-file-check_schema.php",
+      "relation": "contains"
+    },
+    {
+      "source": "853284c4-folder-actions",
+      "target": "97ec7c30-file-check_session.php",
+      "relation": "contains"
+    },
+    {
+      "source": "853284c4-folder-actions",
+      "target": "f48d948d-file-create_session.php",
+      "relation": "contains"
+    },
+    {
+      "source": "853284c4-folder-actions",
+      "target": "a6f6455f-file-get_sentences.php",
+      "relation": "contains"
+    },
+    {
+      "source": "853284c4-folder-actions",
+      "target": "6d569bd8-file-login.php",
+      "relation": "contains"
+    },
+    {
+      "source": "853284c4-folder-actions",
+      "target": "42ace532-file-logout.php",
+      "relation": "contains"
+    },
+    {
+      "source": "853284c4-folder-actions",
+      "target": "fd4a4075-file-ping_session.php",
+      "relation": "contains"
+    },
+    {
+      "source": "853284c4-folder-actions",
+      "target": "7a47a25a-file-register.php",
+      "relation": "contains"
+    },
+    {
+      "source": "853284c4-folder-actions",
+      "target": "d11c2472-file-validate_session.php",
+      "relation": "contains"
+    },
+    {
+      "source": "8992c812-folder-backend",
+      "target": "36fdfb50-file-api.php",
+      "relation": "contains"
+    },
+    {
+      "source": "e908f4a2-folder-classes",
+      "target": "66ea2c8f-file-Database.php",
+      "relation": "contains"
+    },
+    {
+      "source": "e908f4a2-folder-classes",
+      "target": "a52841d3-file-GoogleTranslateAPi.php",
+      "relation": "contains"
+    },
+    {
+      "source": "e908f4a2-folder-classes",
+      "target": "7a5de135-file-GoogleTTSApi.php",
+      "relation": "contains"
+    },
+    {
+      "source": "e908f4a2-folder-classes",
+      "target": "ea6ef082-file-OpenAiApi.php",
+      "relation": "contains"
+    },
+    {
+      "source": "e908f4a2-folder-classes",
+      "target": "c7f3abe2-file-SessionManager.php",
+      "relation": "contains"
+    },
+    {
+      "source": "e908f4a2-folder-classes",
+      "target": "367f3677-file-Translate.php",
+      "relation": "contains"
+    },
+    {
+      "source": "e908f4a2-folder-classes",
+      "target": "ad8f909d-file-Utilities.php",
+      "relation": "contains"
+    },
+    {
+      "source": "8992c812-folder-backend",
+      "target": "db6aa1fd-file-config.php",
+      "relation": "contains"
+    },
+    {
+      "source": "8992c812-folder-backend",
+      "target": "f974f9bf-file-init.php",
+      "relation": "contains"
+    },
+    {
+      "source": "4fa91aad-folder-php",
+      "target": "0b6b6a8d-file-build_database.php",
+      "relation": "contains"
+    },
+    {
+      "source": "4fa91aad-folder-php",
+      "target": "f9746c9b-file-get_sentences.php",
+      "relation": "contains"
+    },
+    {
+      "source": "4fa91aad-folder-php",
+      "target": "9bbabb58-file-mysqlschema.php",
+      "relation": "contains"
+    },
+    {
+      "source": "4fa91aad-folder-php",
+      "target": "eb3149c7-file-mysqltruncate.php",
+      "relation": "contains"
+    },
+    {
+      "source": "4fa91aad-folder-php",
+      "target": "632df059-file-run.php",
+      "relation": "contains"
+    },
+    {
+      "source": "8992c812-folder-backend",
+      "target": "c4d4e111-file-reached.log",
+      "relation": "contains"
+    },
+    {
+      "source": "8992c812-folder-backend",
+      "target": "1aa941a9-file-request.log",
+      "relation": "contains"
+    },
+    {
+      "source": "8b0b864a-folder-sql",
+      "target": "ffb06975-file-dump.sql",
+      "relation": "contains"
+    },
+    {
+      "source": "8b0b864a-folder-sql",
+      "target": "583e4fc3-file-get_one_for_translation.sql",
+      "relation": "contains"
+    },
+    {
+      "source": "8b0b864a-folder-sql",
+      "target": "fee34b13-file-get_sentences.sql",
+      "relation": "contains"
+    },
+    {
+      "source": "8b0b864a-folder-sql",
+      "target": "3a87214e-file-insert_sentence_translation.sql",
+      "relation": "contains"
+    },
+    {
+      "source": "8b0b864a-folder-sql",
+      "target": "d929be61-file-reset_database.sql",
+      "relation": "contains"
+    },
+    {
+      "source": "16191bdf-folder-schema",
+      "target": "1d221213-file-01_users.sql",
+      "relation": "contains"
+    },
+    {
+      "source": "16191bdf-folder-schema",
+      "target": "2511874c-file-02_schemas.sql",
+      "relation": "contains"
+    },
+    {
+      "source": "16191bdf-folder-schema",
+      "target": "215b71db-file-03_sessions.sql",
+      "relation": "contains"
+    },
+    {
+      "source": "16191bdf-folder-schema",
+      "target": "4f284a3d-file-languages.sql",
+      "relation": "contains"
+    },
+    {
+      "source": "16191bdf-folder-schema",
+      "target": "83bc2094-file-sentences.sql",
+      "relation": "contains"
+    },
+    {
+      "source": "16191bdf-folder-schema",
+      "target": "b1f1181c-file-sentences_start_sample.sql",
+      "relation": "contains"
+    },
+    {
+      "source": "16191bdf-folder-schema",
+      "target": "55654962-file-sources.sql",
+      "relation": "contains"
+    },
+    {
+      "source": "16191bdf-folder-schema",
+      "target": "1b8666ea-file-translation_pairs.sql",
+      "relation": "contains"
+    },
+    {
+      "source": "16191bdf-folder-schema",
+      "target": "23c736d4-file-translation_pair_sources.sql",
+      "relation": "contains"
+    },
+    {
+      "source": "2cbfdcb0-folder-utils",
+      "target": "0e333838-file-auth.php",
+      "relation": "contains"
+    },
+    {
+      "source": "2cbfdcb0-folder-utils",
+      "target": "55ce1fe8-file-db.php",
+      "relation": "contains"
+    },
+    {
+      "source": "2cbfdcb0-folder-utils",
+      "target": "ddd42203-file-hash.php",
+      "relation": "contains"
+    },
+    {
+      "source": "speakify-root",
+      "target": "5fc9b446-file-config.json",
+      "relation": "contains"
+    },
+    {
+      "source": "speakify-root",
+      "target": "80ac29d4-file-config.php",
+      "relation": "contains"
+    },
+    {
+      "source": "c62ea513-folder-docs",
+      "target": "ce75c64c-file-cdc.md",
+      "relation": "contains"
+    },
+    {
+      "source": "c62ea513-folder-docs",
+      "target": "5fc87e51-file-file_structure.md",
+      "relation": "contains"
+    },
+    {
+      "source": "20cc3bd2-folder-images",
+      "target": "bdb518b3-file-dashboard.png",
+      "relation": "contains"
+    },
+    {
+      "source": "20cc3bd2-folder-images",
+      "target": "20f5313d-file-playback.png",
+      "relation": "contains"
+    },
+    {
+      "source": "20cc3bd2-folder-images",
+      "target": "4e2d1f0c-file-playlist-library.png",
+      "relation": "contains"
+    },
+    {
+      "source": "c62ea513-folder-docs",
+      "target": "266e1a73-file-model.project.md",
+      "relation": "contains"
+    },
+    {
+      "source": "c62ea513-folder-docs",
+      "target": "f9ede2e6-file-navigation_logic.md",
+      "relation": "contains"
+    },
+    {
+      "source": "c62ea513-folder-docs",
+      "target": "46f06e32-file-project.md",
+      "relation": "contains"
+    },
+    {
+      "source": "c62ea513-folder-docs",
+      "target": "83babf0b-file-statement_of_work.en.md",
+      "relation": "contains"
+    },
+    {
+      "source": "c62ea513-folder-docs",
+      "target": "c0bf04ca-file-statement_of_work.fr.md",
+      "relation": "contains"
+    },
+    {
+      "source": "c62ea513-folder-docs",
+      "target": "a78de03b-file-statement_of_work_and_technical_specs.en.md",
+      "relation": "contains"
+    },
+    {
+      "source": "c62ea513-folder-docs",
+      "target": "59e5ac74-file-statement_of_work_and_technical_specs.fr.md",
+      "relation": "contains"
+    },
+    {
+      "source": "c62ea513-folder-docs",
+      "target": "a97b9d00-file-statement_of_work_and_technical_specs.fr.pdf",
+      "relation": "contains"
+    },
+    {
+      "source": "c62ea513-folder-docs",
+      "target": "8325c74f-file-technical_specification_document.en.md",
+      "relation": "contains"
+    },
+    {
+      "source": "c62ea513-folder-docs",
+      "target": "fb55055e-file-technical_specification_document.fr.md",
+      "relation": "contains"
+    },
+    {
+      "source": "speakify-root",
+      "target": "526c4e7a-file-file_structure.json",
+      "relation": "contains"
+    },
+    {
+      "source": "speakify-root",
+      "target": "15e02a53-file-generate_file_structure.sh",
+      "relation": "contains"
+    },
+    {
+      "source": "speakify-root",
+      "target": "99fd4735-file-index.php",
+      "relation": "contains"
+    },
+    {
+      "source": "07e2dedc-folder-public",
+      "target": "ade09071-file-achievements.html",
+      "relation": "contains"
+    },
+    {
+      "source": "07e2dedc-folder-public",
+      "target": "60c1c6f4-file-admin.php",
+      "relation": "contains"
+    },
+    {
+      "source": "8f85c3eb-folder-api",
+      "target": "687b3cce-file-index.php",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "2d97bdb1-file-1.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "a4589b57-file-10.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "d5501a91-file-11.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "73e5f774-file-12.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "08d7500f-file-13.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "088463ca-file-14.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "b8e8ed55-file-15.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "95967bcd-file-16.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "18b3564d-file-17.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "79441cd0-file-18.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "10e5b195-file-19.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "f1a76933-file-2.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "f33e9308-file-20.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "25050724-file-21.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "421933ce-file-22.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "017d355a-file-23.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "0d2e408e-file-24.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "b6de43fb-file-25.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "446d0758-file-26.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "e389d94d-file-27.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "a52e8c67-file-28.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "f54efb7a-file-29.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "a1e2092c-file-3.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "ddd5e798-file-30.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "97511543-file-31.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "e8e770ae-file-32.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "8c58237d-file-33.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "84671196-file-34.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "a2a327bf-file-35.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "1c939f99-file-36.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "8dc7f37c-file-37.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "41b932c3-file-38.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "b7082a8c-file-39.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "3064ea92-file-4.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "02939cbe-file-40.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "1b9afb29-file-41.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "fa5c6be3-file-42.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "362c1b7a-file-43.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "6c485a57-file-44.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "0f3ae5f6-file-45.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "f3a34880-file-46.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "605ef662-file-47.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "aa71af75-file-48.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "3186f4bb-file-49.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "309a9090-file-5.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "77a373d9-file-50.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "230fb813-file-51.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "02ebd907-file-52.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "ad4200e6-file-53.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "dff94547-file-54.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "05c447be-file-55.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "3c1dd820-file-56.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "a0d33d1f-file-57.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "1570eff0-file-58.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "9be78471-file-59.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "cab2d1c9-file-6.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "553a7e44-file-60.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "a4f64d08-file-61.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "0f03ff74-file-62.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "8e10b6d6-file-63.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "47b7a90a-file-64.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "d68c8bc8-file-65.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "4279c393-file-66.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "2ebe211c-file-67.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "e2e3065b-file-68.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "b18b0e4c-file-69.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "8268a2b4-file-7.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "a4bbb567-file-70.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "493a2caf-file-71.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "b662c49e-file-72.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "8b55cf80-file-73.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "d48cac6d-file-74.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "e8d60865-file-75.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "319e1ef1-file-76.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "fa72eab4-file-77.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "f7524fdd-file-78.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "d5d1f965-file-79.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "0cbd8285-file-8.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "956835ed-file-80.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "4890fa75-file-81.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "993b86fb-file-82.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "3d8c1ed7-file-83.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "757bb3fe-file-84.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "21dc5c5f-file-85.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "84f8b10d-file-86.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "27b16dfc-file-87.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "cf08ec09-file-88.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "abe2c9d6-file-89.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "3a025119-file-9.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "d574a365-file-90.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "8c57f713-file-91.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "a7b3c588-file-92.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "1bc41276-file-93.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "5f31ecbb-file-94.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "88b61434-file-95.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "0196d0d8-file-96.wav",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "7a5c4572-file-audio.mp3",
+      "relation": "contains"
+    },
+    {
+      "source": "a6883244-folder-audio",
+      "target": "0c390ff0-file-file_example_MP3_700KB.mp3",
+      "relation": "contains"
+    },
+    {
+      "source": "cc8fd512-folder-flags",
+      "target": "9ac4617b-file-fr.png",
+      "relation": "contains"
+    },
+    {
+      "source": "cc8fd512-folder-flags",
+      "target": "6058f042-file-fr.svg",
+      "relation": "contains"
+    },
+    {
+      "source": "cc8fd512-folder-flags",
+      "target": "5adaddab-file-gb-eng.png",
+      "relation": "contains"
+    },
+    {
+      "source": "cc8fd512-folder-flags",
+      "target": "82284824-file-gb-eng.svg",
+      "relation": "contains"
+    },
+    {
+      "source": "cc8fd512-folder-flags",
+      "target": "171e1b31-file-pt.png",
+      "relation": "contains"
+    },
+    {
+      "source": "cc8fd512-folder-flags",
+      "target": "20dccd89-file-pt.svg",
+      "relation": "contains"
+    },
+    {
+      "source": "bd6641ba-folder-icons",
+      "target": "399fe429-file-dessin.svg",
+      "relation": "contains"
+    },
+    {
+      "source": "bd6641ba-folder-icons",
+      "target": "681e7023-file-pause.png",
+      "relation": "contains"
+    },
+    {
+      "source": "bd6641ba-folder-icons",
+      "target": "beaf8ac6-file-play.png",
+      "relation": "contains"
+    },
+    {
+      "source": "920ae035-folder-css",
+      "target": "8cba3d28-file-style.css",
+      "relation": "contains"
+    },
+    {
+      "source": "07e2dedc-folder-public",
+      "target": "2660ac0c-file-dashboard.html",
+      "relation": "contains"
+    },
+    {
+      "source": "249b5274-folder-html",
+      "target": "f3ace505-file-app.html",
+      "relation": "contains"
+    },
+    {
+      "source": "249b5274-folder-html",
+      "target": "86f77724-file-index.html",
+      "relation": "contains"
+    },
+    {
+      "source": "249b5274-folder-html",
+      "target": "24b63227-file-menu.html",
+      "relation": "contains"
+    },
+    {
+      "source": "4a907098-folder-template",
+      "target": "8bb5c6b1-file-translation.html",
+      "relation": "contains"
+    },
+    {
+      "source": "07e2dedc-folder-public",
+      "target": "11db9e15-file-index.html",
+      "relation": "contains"
+    },
+    {
+      "source": "07e2dedc-folder-public",
+      "target": "a39beb51-file-index.php",
+      "relation": "contains"
+    },
+    {
+      "source": "904a8263-folder-js",
+      "target": "416bcc34-file-app.js",
+      "relation": "contains"
+    },
+    {
+      "source": "7e5a5da4-folder-libs",
+      "target": "d7a46e90-file-jquery-3.7.1.min.js",
+      "relation": "contains"
+    },
+    {
+      "source": "07e2dedc-folder-public",
+      "target": "e8ed220a-file-login-profile.html",
+      "relation": "contains"
+    },
+    {
+      "source": "07e2dedc-folder-public",
+      "target": "04f8b137-file-offline-mode.html",
+      "relation": "contains"
+    },
+    {
+      "source": "07e2dedc-folder-public",
+      "target": "6ed65195-file-playback.html",
+      "relation": "contains"
+    },
+    {
+      "source": "07e2dedc-folder-public",
+      "target": "e2adc1d8-file-playlist-editor.html",
+      "relation": "contains"
+    },
+    {
+      "source": "07e2dedc-folder-public",
+      "target": "7c43c334-file-playlist-library.html",
+      "relation": "contains"
+    },
+    {
+      "source": "07e2dedc-folder-public",
+      "target": "5d631fb0-file-register.html",
+      "relation": "contains"
+    },
+    {
+      "source": "07e2dedc-folder-public",
+      "target": "c4bcd8e3-file-schema-editor.html",
+      "relation": "contains"
+    },
+    {
+      "source": "07e2dedc-folder-public",
+      "target": "72f2aad3-file-settings.html",
+      "relation": "contains"
+    },
+    {
+      "source": "07e2dedc-folder-public",
+      "target": "25317752-file-smart-lists.html",
+      "relation": "contains"
+    },
+    {
+      "source": "speakify-root",
+      "target": "c629aa07-file-README.md",
+      "relation": "contains"
+    },
+    {
+      "source": "c8c1dbb8-folder-resources",
+      "target": "04281b8c-file-dependencies.json",
+      "relation": "contains"
+    },
+    {
+      "source": "c8c1dbb8-folder-resources",
+      "target": "1f42716a-file-file_structure.json",
+      "relation": "contains"
+    },
+    {
+      "source": "c8c1dbb8-folder-resources",
+      "target": "ed2d7344-file-graph.html",
+      "relation": "contains"
+    },
+    {
+      "source": "c8c1dbb8-folder-resources",
+      "target": "f77ac9e9-file-maquet.png",
+      "relation": "contains"
+    },
+    {
+      "source": "c8c1dbb8-folder-resources",
+      "target": "97137582-file-maquet.webp",
+      "relation": "contains"
+    },
+    {
+      "source": "c8c1dbb8-folder-resources",
+      "target": "9e99ac35-file-navigation.json",
+      "relation": "contains"
+    },
+    {
+      "source": "a42a93ff-folder-css",
+      "target": "976540ef-file-styles.bootstrap.css",
+      "relation": "contains"
+    },
+    {
+      "source": "a42a93ff-folder-css",
+      "target": "706a4ea0-file-styles.futuristic.css",
+      "relation": "contains"
+    },
+    {
+      "source": "a42a93ff-folder-css",
+      "target": "566f7848-file-styles.light.css",
+      "relation": "contains"
+    },
+    {
+      "source": "65d6880c-folder-data",
+      "target": "4d17d776-file-playlists.json",
+      "relation": "contains"
+    },
+    {
+      "source": "65d6880c-folder-data",
+      "target": "04adfd20-file-schemas.json",
+      "relation": "contains"
+    },
+    {
+      "source": "b6aa8586-folder-public_",
+      "target": "62a50706-file-index.html",
+      "relation": "contains"
+    },
+    {
+      "source": "e5770284-folder-js",
+      "target": "4f925d5f-file-script.js",
+      "relation": "contains"
+    },
+    {
+      "source": "9e99505e-folder-stuff",
+      "target": "e77f2377-file-api_list.txt",
+      "relation": "contains"
+    },
+    {
+      "source": "1801e06f-folder-wireframes",
+      "target": "5d8758a9-file-playback_view.json",
+      "relation": "contains"
+    },
+    {
+      "source": "1801e06f-folder-wireframes",
+      "target": "39e31f80-file-playback_view.md",
+      "relation": "contains"
+    },
+    {
+      "source": "event_submit_register_form",
+      "target": "action_register_user",
+      "label": "triggers"
+    },
+    {
+      "source": "action_register_user",
+      "target": "endpoint_register_user_php",
+      "label": "calls"
+    }
+  ],
+  "views": {
+    "register.html": {
+      "triggers": [
+        {
+          "event": "submit_register_form",
+          "action": "register_user"
+        }
+      ],
+      "endpoint": "register_user.php",
+      "backend_flow": [
+        "validate_input",
+        "create_user_record",
+        "send_confirmation_email"
+      ]
+    }
+  }
+}
