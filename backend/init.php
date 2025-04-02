@@ -16,7 +16,9 @@
  */
 
 // Debug log
-file_put_contents(__DIR__ . '/token-check.log', "ACTION: " . ($_GET['action'] ?? 'none') . PHP_EOL, FILE_APPEND);
+//file_put_contents(__DIR__ . '/token-check.log', "ACTION: " . ($_GET['action'] ?? 'none') . PHP_EOL, FILE_APPEND);
+
+require_once __DIR__ . '/classes/Database.php';
 
 // ✅ Load configuration from config.json
 $configPath = __DIR__ . '/../config.json';
