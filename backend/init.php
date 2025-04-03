@@ -11,14 +11,12 @@
  * Loads and initializes:
  * - Full configuration from config.json
  * - PDO database connection (MySQL)
- * - Conditionally loads SessionManager and enforces session validation
+ * - Conditionally loads SessionManager and enforces session validation.
+ * - Automatically creates a new anonymous session if none is valid.
  * =============================================================================
  */
 
- error_log("📥 ENTERING #1 init.php");
-
-// Debug log
-//file_put_contents(__DIR__ . '/token-check.log', "ACTION: " . ($_GET['action'] ?? 'none') . PHP_EOL, FILE_APPEND);
+error_log("📥 ENTERING #1 init.php");
 
 require_once __DIR__ . '/classes/Database.php';
 
@@ -50,35 +48,27 @@ try {
       PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
     ]
   );
+  $GLOBALS['pdo'] = $pdo;
 } catch (PDOException $e) {
   http_response_code(500);
   echo json_encode(['error' => 'Database connection failed', 'details' => $e->getMessage()]);
   exit;
 }
 
-// ✅ Conditionally load session manager only if needed
+// ✅ Load SessionManager and autoloader
 require_once __DIR__ . '/classes/SessionManager.php';
 
-$public_actions = ['register_user', 'create_session'];
+$public_actions = ['register_user', 'create_session', 'validate_session', 'login'];
 $current_action = $_GET['action'] ?? null;
 
 // ✅ If no action (e.g., frontend index.php), skip session check
 if (!$current_action) return;
 
-if (!in_array($current_action, $public_actions)) {
-  $token = $_GET['token'] ?? '';
-
-  $session = SessionManager::validate($token);
-  if (!$token || !$session) {
-    http_response_code(401);
-    echo json_encode(['error' => 'Missing or invalid session token']);
-    exit;
-  }
-
-  // Optional: set user ID globally
-  $GLOBALS['auth_user_id'] = $session['user_id'] ?? null;
-}
-
+// ✅ Always ensure a valid session (auto-create if needed)
+$token = $_GET['token'] ?? '';
+$session = SessionManager::validateOrCreate($token);
+$_GET['token'] = $token; // update in case it was regenerated
+$GLOBALS['auth_user_id'] = $session['user_id'] ?? null;
 
 spl_autoload_register(function ($class) {
   $file = __DIR__ . '/../classes/' . $class . '.php';

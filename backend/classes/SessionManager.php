@@ -1,46 +1,23 @@
 <?php
-/*
-  ============================================================================
-  📌 IMPORTANT: DO NOT REMOVE OR MODIFY THIS HEADER
-  ============================================================================
-  This block defines the core behavior of the Speakify session lifecycle.
-  It MUST always be enforced consistently across all session logic (create,
-  validate, touch, and expiration). Removing or altering these rules may
-  result in broken session handling, security issues, or invalid client states.
-  ============================================================================
-  
-  ============================================================================
-  SessionManager - Speakify Session Lifecycle Rules
-  ============================================================================
 
-  🧠 Purpose:
-    Manages anonymous session lifecycle: creation, validation, expiration,
-    and touch (activity update).
-
-  ✅ Session Lifecycle Guidelines:
-
-  1. Session is identified by a 64-character random token (stored in `sessions.token`).
-  2. A session is valid if:
-     - It exists in the database.
-     - The `expires_at` datetime is in the future (if set).
-  3. On each request:
-     - `validate(token)` is called to check the session.
-     - If valid, it can be reused.
-     - `touch(token)` may be called to update `last_activity`.
-  4. If no valid session is found:
-     - `create()` or `createAnonymous()` is called to insert a new row.
-     - `created_at`, `last_activity`, and `expires_at` are set.
-  5. Session expiration defaults to 24 hours after creation unless otherwise configured.
-  6. All validation failures should fall back to session regeneration logic.
-  7. Only static methods are used in the application unless instance use is explicitly needed.
-  8. Session tokens are stored client-side in `localStorage` as `speakify_token`.
-
-  ============================================================================
-  File: speakify/backend/classes/SessionManager.php
-  Description: Handles session creation, validation, and touch updates.
-  Supports both static and instance-based usage.
-  ============================================================================
-*/
+/**
+ * ==============================================================================
+ * 📌 SessionManager Class – Session Logic Rules (Speakify)
+ * ==============================================================================
+ *
+ * Handles all session-related logic including validation, creation, updating,
+ * and purging for both anonymous and logged-in users.
+ *
+ * ✅ Core Rules:
+ * 1. All sessions begin as anonymous.
+ * 2. Session tokens are reused as long as valid.
+ * 3. Expired/inactive sessions result in a new token being generated.
+ * 4. Logged-in users retain the same session (upgraded with user_id).
+ * 5. All API calls must pass the token as `GET` or `POST`.
+ *
+ * 💡 Used by: validate_session.php, create_session.php, login.php, etc.
+ * ==============================================================================
+ */
 
 class SessionManager {
   private $pdo;
@@ -51,8 +28,10 @@ class SessionManager {
     $this->config = $config;
   }
 
-  // Static methods
-  public static function create() {
+  /**
+   * 🔄 Create a new anonymous session
+   */
+  public static function create(): string {
     global $pdo;
 
     $token = bin2hex(random_bytes(32));
@@ -63,7 +42,6 @@ class SessionManager {
       INSERT INTO sessions (token, created_at, last_activity, expires_at)
       VALUES (:token, :created, :activity, :expires)
     ");
-
     $stmt->execute([
       'token' => $token,
       'created' => $now,
@@ -74,12 +52,23 @@ class SessionManager {
     return $token;
   }
 
-  public static function createAnonymous() {
+  /**
+   * 👤 Alias for clarity – Create anonymous session
+   */
+  public static function createAnonymous(): string {
     return self::create();
   }
 
-  public static function validate($token) {
+  /**
+   * ✅ Validate token and update session activity
+   */
+  public static function validate(?string $token): array|false {
     global $pdo;
+
+    // 1 in 1000 chance to clean up expired sessions
+    if (random_int(1, 1000) === 1) {
+      self::purgeExpired();
+    }
 
     if (!$token) return false;
 
@@ -89,21 +78,41 @@ class SessionManager {
 
     if (!$session) return false;
 
-    // Check expiration
     $now = time();
     $expiresAt = strtotime($session['expires_at']);
-    if ($expiresAt !== false && $now > $expiresAt) {
+    $lastActivity = strtotime($session['last_activity']);
+    $idleLimit = 600; // 10 minutes
+
+    // Session expired due to lifetime or inactivity
+    if (($expiresAt && $now > $expiresAt) || ($lastActivity && ($now - $lastActivity) > $idleLimit)) {
       return false;
     }
 
-    // Touch session on success
+    // Update last activity timestamp
     $update = $pdo->prepare("UPDATE sessions SET last_activity = NOW() WHERE id = ?");
     $update->execute([$session['id']]);
 
-    return $session; // return full session array
+    return $session;
   }
 
-  public static function touch($token) {
+  /**
+   * 🔁 Validate or create a new session if invalid
+   */
+  public static function validateOrCreate(string &$token): array {
+    $session = self::validate($token);
+
+    if (!$session) {
+      $token = self::create();
+      $session = self::validate($token);
+    }
+
+    return $session;
+  }
+
+  /**
+   * 🔄 Manual "touch" to keep session alive
+   */
+  public static function touch(string $token): void {
     global $pdo;
 
     if (!$token) return;
@@ -112,6 +121,9 @@ class SessionManager {
     $stmt->execute(['token' => $token]);
   }
 
+  /**
+   * ⬆️ Upgrade anonymous session to logged-in by setting user_id
+   */
   public static function upgrade(string $token, int $user_id): bool {
     global $pdo;
 
@@ -120,7 +132,7 @@ class SessionManager {
     $row = $stmt->fetch();
 
     if (!$row) return false;
-    if ($row['user_id']) return true; // already upgraded
+    if ($row['user_id']) return true; // Already upgraded
 
     $update = $pdo->prepare("UPDATE sessions SET user_id = :user_id WHERE token = :token");
     return $update->execute([
@@ -129,8 +141,10 @@ class SessionManager {
     ]);
   }
 
-  // Instance methods (optional)
-  public function createInstanceSession() {
+  /**
+   * 🧪 Instance method version of session creation
+   */
+  public function createInstanceSession(): string {
     $token = bin2hex(random_bytes(32));
     $now = date('Y-m-d H:i:s');
     $expires = date('Y-m-d H:i:s', strtotime('+24 hours'));
@@ -139,7 +153,6 @@ class SessionManager {
       INSERT INTO sessions (token, created_at, last_activity, expires_at)
       VALUES (:token, :created, :activity, :expires)
     ");
-
     $stmt->execute([
       'token' => $token,
       'created' => $now,
@@ -149,5 +162,16 @@ class SessionManager {
 
     return $token;
   }
+
+  /**
+   * 🧹 Delete expired sessions
+   */
+  public static function purgeExpired(): bool {
+    global $pdo;
+
+    $stmt = $pdo->prepare("DELETE FROM sessions WHERE expires_at < NOW()");
+    return $stmt->execute();
+  }
 }
+
 ?>

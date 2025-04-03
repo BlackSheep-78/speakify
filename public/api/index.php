@@ -12,11 +12,11 @@ header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 header("Content-Type: application/json");
 
-error_log("🚦 ENTERING /public/api/index.php");
+
 
 // 🔧 Load config and define base constants
 $config = require __DIR__ . '/../../backend/config.php';
-error_log("⚙️ Config loaded");
+
 
 if (!defined('BASEPATH')) {
     define('BASEPATH', realpath(__DIR__ . '/../../backend'));
