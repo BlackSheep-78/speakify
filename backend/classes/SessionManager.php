@@ -62,38 +62,41 @@ class SessionManager {
   /**
    * ✅ Validate token and update session activity
    */
-  public static function validate(?string $token): array|false {
-    global $pdo;
-
-    // 1 in 1000 chance to clean up expired sessions
-    if (random_int(1, 1000) === 1) {
-      self::purgeExpired();
-    }
-
-    if (!$token) return false;
-
-    $stmt = $pdo->prepare("SELECT * FROM sessions WHERE token = :token LIMIT 1");
-    $stmt->execute(['token' => $token]);
-    $session = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if (!$session) return false;
-
-    $now = time();
-    $expiresAt = strtotime($session['expires_at']);
-    $lastActivity = strtotime($session['last_activity']);
-    $idleLimit = 600; // 10 minutes
-
-    // Session expired due to lifetime or inactivity
-    if (($expiresAt && $now > $expiresAt) || ($lastActivity && ($now - $lastActivity) > $idleLimit)) {
-      return false;
-    }
-
-    // Update last activity timestamp
-    $update = $pdo->prepare("UPDATE sessions SET last_activity = NOW() WHERE id = ?");
-    $update->execute([$session['id']]);
-
-    return $session;
+  public static function validate(string $token): ?array
+  {
+      global $pdo;
+  
+      if (!$token) {
+          error_log("SessionManager::validate called with no token");
+          return null;
+      }
+  
+      if (!($pdo instanceof PDO)) {
+          error_log("❌ \$pdo is not an instance of PDO. Got: " . gettype($pdo));
+          return null;
+      }
+  
+      try {
+          $stmt = $pdo->prepare("SELECT * FROM sessions WHERE token = :token LIMIT 1");
+          $stmt->execute(['token' => $token]);
+          $session = $stmt->fetch();
+  
+          if (!$session) {
+              return null;
+          }
+  
+          $pdo->prepare("UPDATE sessions SET last_activity = NOW() WHERE id = :id")
+              ->execute(['id' => $session['id']]);
+  
+          return $session;
+  
+      } catch (Exception $e) {
+          error_log("SessionManager::validate error: " . $e->getMessage());
+          return null;
+      }
   }
+  
+  
 
   /**
    * 🔁 Validate or create a new session if invalid

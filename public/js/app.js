@@ -18,21 +18,33 @@ const app = {
   },
 
   async ensureToken() {
+    // Retrieve the token from localStorage
     let token = localStorage.getItem('speakify_token');
-
+    console.log("✅ Token retrieved from localStorage:", token); // Debugging line to check the retrieved token
+  
     if (token) {
-      console.log("✅ Found token:", token);
+      console.log("✅ Found token:", token); // Show if token exists in localStorage
     } else {
       console.warn("⚠️ No valid session, creating new anonymous session...");
+      
+      // Create a new session if no token exists
       const res = await fetch('/speakify/public/api/index.php?action=create_session');
       const data = await res.json();
-      token = data.token;
+      token = data.token; // Set the new token from the response
+  
+      // Save the new token to localStorage
       localStorage.setItem('speakify_token', token);
-      console.log("✅ New anonymous session created:", token);
+      console.log("✅ New anonymous session created:", token); // Log new token creation
     }
-
-    this.token = token;
-  },
+  
+    // Force token update by directly re-fetching from localStorage
+    token = localStorage.getItem('speakify_token'); // Explicitly fetch updated token
+    console.log("✅ Final token used:", token); // Show the final token that will be used in the app
+  
+    this.token = token; // Store token in the app's state
+  }
+  ,
+  
 
   async handleAuthVisibility(forcedToken = null) {
     const loginSection = document.getElementById('login-section');
@@ -40,39 +52,63 @@ const app = {
     const profileName = document.getElementById('profile-name');
     const headerUserLink = document.querySelector('.header a[href="login-profile.html"]');
     const logoutButton = document.getElementById('logout-button');
-
-    // Default UI
+  
+    // Default UI - show login section, hide profile section
     if (loginSection) loginSection.hidden = false;
     if (profileSection) profileSection.hidden = true;
     if (headerUserLink) headerUserLink.textContent = "👤 Connexion";
-
-    const token = forcedToken || localStorage.getItem('speakify_token');
-    if (!token) return;
-
+  
+    // Retrieve token from localStorage or use forced token if provided
+    let token = forcedToken || localStorage.getItem('speakify_token');
+    console.log("✅ Current token from localStorage:", token); // Log token before validation
+  
+    if (!token) return; // If no token found, exit
+  
     try {
+      // Make API request to validate session
       const res = await fetch(`/speakify/public/api/index.php?action=validate_session&token=${token}`);
       const result = await res.json();
       console.log("🧠 validate_session result:", result);
-
-      if (!result.success || !result.name) return;
-
-      // Valid session with user
+  
+      // If the backend provides a new token (different from the old token), update localStorage
+      if (result.token && result.token !== token) {
+        console.log("⚠️ Old token:", token); // Log old token
+        console.log("✅ New token received from backend:", result.token); // Log new token from backend
+  
+        // If the tokens differ, update the localStorage with the new token
+        localStorage.setItem('speakify_token', result.token); // Save the new token in localStorage
+        token = result.token; // Update local variable token with the new value
+        console.log("✅ Token updated in localStorage:", token); // Log token update
+      }
+  
+      // If the session is valid (even if it's anonymous, the token is valid)
       if (loginSection) loginSection.hidden = true;
       if (profileSection) profileSection.hidden = false;
-
-      if (profileName) profileName.textContent = result.name;
-      if (headerUserLink) headerUserLink.textContent = `👤 ${result.name}`;
-
+  
+      // Handle the user name (if available) or default to "Guest"
+      if (result.name) {
+        if (profileName) profileName.textContent = result.name;
+        if (headerUserLink) headerUserLink.textContent = `👤 ${result.name}`;
+      } else {
+        // If name is null (for anonymous session), show default
+        if (profileName) profileName.textContent = "Guest";
+        if (headerUserLink) headerUserLink.textContent = "👤 Guest";
+      }
+  
+      // Set up logout functionality
       if (logoutButton) {
         logoutButton.onclick = () => {
-          localStorage.removeItem('speakify_token');
-          location.reload();
+          localStorage.removeItem('speakify_token'); // Remove token on logout
+          location.reload(); // Reload page to reset UI
         };
       }
     } catch (error) {
-      console.error('❌ Error validating session:', error);
+      console.error('❌ Error validating session:', error); // Handle any errors in session validation
     }
-  },
+  }
+  
+  ,
+  
 
   delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -102,6 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const result = await res.json();
 
       if (result.success) {
+        // Save the new token to localStorage after successful login
         localStorage.setItem('speakify_token', result.token);
         await app.handleAuthVisibility(result.token);
       } else {

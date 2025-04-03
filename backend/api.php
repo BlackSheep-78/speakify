@@ -11,19 +11,12 @@
  * Handles API routing for diagnostic and development purposes. This file includes:
  * - CORS preflight handling
  * - Anonymous session creation
+ * - Routing to backend controllers
  * - Fallback loading of mock playlist JSON data
  * - Router logging for incoming API actions
- *
- * ✅ Used during:
- * - Local development
- * - Frontend simulation before full backend is integrated
- * - JSON API structure testing
  * =============================================================================
  */
 
-// ============================================================================
-// File: speakify/backend/api.php (diagnostic version)
-// ============================================================================
 require_once __DIR__ . '/init.php';
 
 header("Content-Type: application/json");
@@ -41,14 +34,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit;
 }
 
-// ✅ Handle session creation
-if (isset($_GET['action']) && $_GET['action'] === 'create_session') {
+// ✅ Define base controller path
+define('CONTROLLER_PATH', BASEPATH . '/controllers');
+
+// ✅ Handle API routing
+$action = $_GET['action'] ?? null;
+
+if ($action === 'create_session') {
     file_put_contents(__DIR__ . '/router.log', "➡ Routing to create_session.php\n", FILE_APPEND);
-    require_once __DIR__ . '/actions/create_session.php';
+    require_once BASEPATH . '/controllers/create_session.php';
     exit;
 }
 
-// 🔁 Fallback: return static JSON
+if ($action) {
+    $controllerFile = CONTROLLER_PATH . "/{$action}.php";
+    if (file_exists($controllerFile)) {
+        file_put_contents(__DIR__ . '/router.log', "✅ Controller found: {$controllerFile}\n", FILE_APPEND);
+        require_once $controllerFile;
+        exit;
+    } else {
+        file_put_contents(__DIR__ . '/router.log', "❌ Controller NOT found: {$controllerFile}\n", FILE_APPEND);
+        echo json_encode(["error" => "Invalid action or controller file missing"]);
+        exit;
+    }
+}
+
+// 🔁 Fallback: return static mock JSON (playlists)
 $data_file = __DIR__ . '/../public/data/playlists.json';
 
 if (!file_exists($data_file)) {
