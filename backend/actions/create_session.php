@@ -1,47 +1,61 @@
 <?php
-// ============================================================================
-// File: speakify/backend/actions/create_session.php
-// Description: Creates a new anonymous session using SessionManager.
-// ============================================================================
+/*
+  ==============================================================================
+  📌 IMPORTANT: DO NOT REMOVE OR MODIFY THIS HEADER
+  ==============================================================================
+  This header defines the expected behavior of the Speakify session creation
+  logic. These rules must be enforced consistently across session management.
 
-header("Content-Type: application/json");
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: GET, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type, Authorization");
+  ==============================================================================
+  create_session.php – Speakify Anonymous Session Creation
+  ==============================================================================
 
-file_put_contents(__DIR__ . '/../_debug_create_session.log', "Running create_session at " . date('c') . "\\n", FILE_APPEND);
+  🎯 Purpose:
+    Creates an anonymous session in the database and returns a secure token.
+    This session is later upgradeable to a logged-in user session.
 
+  ✅ Session Creation Rules:
+  1. A 64-character secure token is generated.
+  2. The token is inserted into the database with a timestamp.
+  3. The session starts as anonymous (no user_id).
+  4. Response is always in JSON format.
 
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    http_response_code(200);
-    echo json_encode(['status' => 'OK (preflight)']);
-    exit;
-}
+  ==============================================================================
+  File: speakify/backend/actions/create_session.php
+  Description: Creates an anonymous session for the frontend.
+  ==============================================================================
+*/
 
-// 🔧 Load config and session class
-$config = require __DIR__ . '/../config.php';
-require_once __DIR__ . '/../classes/SessionManager.php';
-require_once __DIR__ . '/../utils/db.php'; // this sets $pdo globally
+require_once __DIR__ . '/../init.php';
+require_once __DIR__ . '/../utils/db.php';
+
+header('Content-Type: application/json');
+error_log("📥 create_session.php called");
 
 try {
-    if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
-        http_response_code(403);
-        echo json_encode([
-            'error' => 'Unauthorized',
-            'details' => isset($config['debug']) && $config['debug'] ? 'Only GET allowed' : null
-        ]);
-        exit;
-    }
+  $token = bin2hex(random_bytes(32)); // Secure token
+  error_log("🔐 Generated token: $token");
 
-    // ✅ Call static session creation method
-    $token = SessionManager::createAnonymous();
+  $db = Database::getConnection();
+  if (!$db) {
+    error_log("❌ Database connection failed (null returned)");
+    throw new Exception("Database connection not established.");
+  }
 
-    echo json_encode(['token' => $token]);
+  $stmt = $db->prepare("INSERT INTO sessions (token, created_at, last_activity) VALUES (:token, NOW(), NOW())");
+  $stmt->execute([':token' => $token]);
 
+  error_log("✅ Session inserted into database successfully.");
+
+  echo json_encode([
+    'success' => true,
+    'token' => $token
+  ]);
 } catch (Exception $e) {
-    http_response_code(500);
-    echo json_encode([
-        'error' => 'Session creation failed',
-        'details' => isset($config['debug']) && $config['debug'] ? $e->getMessage() : null
-    ]);
+  error_log("❌ Error creating session: " . $e->getMessage());
+  echo json_encode([
+    'error' => 'Could not create session.',
+    'details' => $e->getMessage()
+  ]);
+  exit;
 }

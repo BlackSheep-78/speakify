@@ -15,6 +15,8 @@
  * =============================================================================
  */
 
+ error_log("📥 ENTERING #1 init.php");
+
 // Debug log
 //file_put_contents(__DIR__ . '/token-check.log', "ACTION: " . ($_GET['action'] ?? 'none') . PHP_EOL, FILE_APPEND);
 
@@ -76,3 +78,13 @@ if (!in_array($current_action, $public_actions)) {
   // Optional: set user ID globally
   $GLOBALS['auth_user_id'] = $session['user_id'] ?? null;
 }
+
+
+spl_autoload_register(function ($class) {
+  $file = __DIR__ . '/../classes/' . $class . '.php';
+  if (file_exists($file)) {
+    require_once $file;
+  }
+});
+
+error_log("📥 EXITING init.php");
