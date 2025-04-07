@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Speakify</title>
+  <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="/speakify/public/css/style.css" />
   <script src="/speakify/public/js/app.js" defer></script>
 </head>
