@@ -7,7 +7,7 @@ require_once BASEPATH . "/backend/classes/Utilities.php";
 class Database extends Utilities
 {
     private static $instance = null;
-    public $connection = null;
+    private static $connection = null;  // Make the connection static
     public $query = null;
     public $replace_list = [];
     public $results = [];
@@ -20,7 +20,7 @@ class Database extends Utilities
         global $pdo;
 
         if ($pdo instanceof PDO) {
-            $this->connection = $pdo;
+            self::$connection = $pdo;  // Store the connection statically
         } else {
             error_log("❌ PDO not found");
         }
@@ -35,21 +35,22 @@ class Database extends Utilities
         return self::$instance;
     }
 
-    public function connect()
+    // ✅ Static method to access the connection
+    public static function getConnection()
     {
-        if (!$this->connection) {
-            error_log("❌ No PDO connection available");
-        }
-        return $this;
-    }
-
-    public function getConnection()
-    {
-        if (!$this->connection) {
+        if (!self::$connection) {
             error_log("❌ No valid PDO connection");
             return null;
         }
-        return $this->connection;
+        return self::$connection;
+    }
+
+    public function connect()
+    {
+        if (!self::$connection) {
+            error_log("❌ No PDO connection available");
+        }
+        return $this;
     }
 
     public function file($file)
@@ -75,7 +76,7 @@ class Database extends Utilities
 
     public function result($ammount = null)
     {
-        if (!$this->connection) {
+        if (!self::$connection) {
             trigger_error("Not connected to PDO database");
             return $this;
         }
@@ -83,7 +84,7 @@ class Database extends Utilities
         $this->replace_execute();
 
         try {
-            $stmt = $this->connection->prepare($this->query);
+            $stmt = self::$connection->prepare($this->query);
             $stmt->execute();
 
             if ($ammount == 1) {
@@ -93,7 +94,7 @@ class Database extends Utilities
             }
 
             if ($ammount !== 1) {
-                $stmt = $this->connection->query("SELECT FOUND_ROWS()");
+                $stmt = self::$connection->query("SELECT FOUND_ROWS()");
                 $this->total = $stmt->fetchColumn();
             }
 
@@ -114,7 +115,7 @@ class Database extends Utilities
 
             switch ($validation) {
                 case "s":
-                    $this->query = str_replace("{" . $search . "}", $this->connection->quote($replace), $this->query);
+                    $this->query = str_replace("{" . $search . "}", self::$connection->quote($replace), $this->query);
                     break;
                 case "i":
                     $this->query = str_replace("{" . $search . "}", $replace, $this->query);

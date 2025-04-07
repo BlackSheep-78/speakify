@@ -7,7 +7,7 @@
  * =============================================================================
  */
 
-require_once __DIR__ . '/../../backend/init.php';
+ require_once __DIR__ . '/../../init.php';
 
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
@@ -21,7 +21,10 @@ $sm  = new SessionManager($pdo);
 $action = $_GET['action'] ?? null;
 $token  = $_GET['token'] ?? null;
 
-$publicActions = ['create_session', 'validate_session', 'register_user', 'login'];
+Logger::info("api called",__FILE__,__LINE__);
+
+$publicActions = ['create_session', 'validate_session', 'register_user', 'login', 'logout'];
+
 
 if (!$action || !preg_match('/^[a-z0-9_]+$/', $action)) {
     http_response_code(400);

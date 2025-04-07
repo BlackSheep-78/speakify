@@ -1,0 +1,528 @@
+[2025-04-04 13:21:18][WARNING] require_once(C:\xampp\htdocs\speakify\backend\controllers/../init.php): Failed to open stream: No such file or directory @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:29
+[2025-04-04 13:21:19][EXCEPTION] Failed opening required 'C:\xampp\htdocs\speakify\backend\controllers/../init.php' (include_path='C:\xampp\php\PEAR') @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:29
+[2025-04-04 13:21:26][WARNING] require_once(C:\xampp\htdocs\speakify\backend\controllers/../init.php): Failed to open stream: No such file or directory @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:29
+[2025-04-04 13:21:26][EXCEPTION] Failed opening required 'C:\xampp\htdocs\speakify\backend\controllers/../init.php' (include_path='C:\xampp\php\PEAR') @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:29
+[2025-04-04 13:21:31][WARNING] require_once(C:\xampp\htdocs\speakify\backend\controllers/../init.php): Failed to open stream: No such file or directory @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:29
+[2025-04-04 13:21:31][EXCEPTION] Failed opening required 'C:\xampp\htdocs\speakify\backend\controllers/../init.php' (include_path='C:\xampp\php\PEAR') @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:29
+[2025-04-04 13:21:33][WARNING] require_once(C:\xampp\htdocs\speakify\backend\controllers/../init.php): Failed to open stream: No such file or directory @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:29
+[2025-04-04 13:21:33][EXCEPTION] Failed opening required 'C:\xampp\htdocs\speakify\backend\controllers/../init.php' (include_path='C:\xampp\php\PEAR') @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:29
+[2025-04-04 13:23:26][WARNING] require_once(C:\xampp\htdocs\speakify\backend\controllers/../init.php): Failed to open stream: No such file or directory @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:29
+[2025-04-04 13:23:26][EXCEPTION] Failed opening required 'C:\xampp\htdocs\speakify\backend\controllers/../init.php' (include_path='C:\xampp\php\PEAR') @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:29
+[2025-04-04 13:23:29][WARNING] require_once(C:\xampp\htdocs\speakify\backend\controllers/../init.php): Failed to open stream: No such file or directory @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:29
+[2025-04-04 13:23:29][EXCEPTION] Failed opening required 'C:\xampp\htdocs\speakify\backend\controllers/../init.php' (include_path='C:\xampp\php\PEAR') @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:29
+[2025-04-04 13:23:39][WARNING] require_once(C:\xampp\htdocs\speakify\backend\controllers/../init.php): Failed to open stream: No such file or directory @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:29
+[2025-04-04 13:23:39][EXCEPTION] Failed opening required 'C:\xampp\htdocs\speakify\backend\controllers/../init.php' (include_path='C:\xampp\php\PEAR') @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:29
+[2025-04-04 13:24:38][WARNING] require_once(C:\xampp\htdocs\speakify\backend\controllers/../init.php): Failed to open stream: No such file or directory @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:29
+[2025-04-04 13:24:38][EXCEPTION] Failed opening required 'C:\xampp\htdocs\speakify\backend\controllers/../init.php' (include_path='C:\xampp\php\PEAR') @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:29
+[2025-04-04 13:24:44][WARNING] require_once(C:\xampp\htdocs\speakify\backend\controllers/../init.php): Failed to open stream: No such file or directory @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:29
+[2025-04-04 13:24:44][EXCEPTION] Failed opening required 'C:\xampp\htdocs\speakify\backend\controllers/../init.php' (include_path='C:\xampp\php\PEAR') @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:29
+[2025-04-04 13:24:47][WARNING] require_once(C:\xampp\htdocs\speakify\backend\controllers/../init.php): Failed to open stream: No such file or directory @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:29
+[2025-04-04 13:24:47][EXCEPTION] Failed opening required 'C:\xampp\htdocs\speakify\backend\controllers/../init.php' (include_path='C:\xampp\php\PEAR') @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:29
+[2025-04-04 13:25:28][WARNING] require_once(C:\xampp\htdocs\speakify\backend\controllers/../init.php): Failed to open stream: No such file or directory @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:29
+[2025-04-04 13:25:28][EXCEPTION] Failed opening required 'C:\xampp\htdocs\speakify\backend\controllers/../init.php' (include_path='C:\xampp\php\PEAR') @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:29
+[2025-04-04 13:25:51][WARNING] require_once(C:\xampp\htdocs\speakify\backend\controllers/../init.php): Failed to open stream: No such file or directory @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:29
+[2025-04-04 13:25:52][EXCEPTION] Failed opening required 'C:\xampp\htdocs\speakify\backend\controllers/../init.php' (include_path='C:\xampp\php\PEAR') @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:29
+[2025-04-04 13:26:01][WARNING] require_once(C:\xampp\htdocs\speakify\backend\controllers/../init.php): Failed to open stream: No such file or directory @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:29
+[2025-04-04 13:26:01][EXCEPTION] Failed opening required 'C:\xampp\htdocs\speakify\backend\controllers/../init.php' (include_path='C:\xampp\php\PEAR') @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:29
+[2025-04-04 13:27:44][WARNING] require_once(C:\xampp\htdocs\speakify\backend\controllers/init.php): Failed to open stream: No such file or directory @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:29
+[2025-04-04 13:27:44][EXCEPTION] Failed opening required 'C:\xampp\htdocs\speakify\backend\controllers/init.php' (include_path='C:\xampp\php\PEAR') @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:29
+[2025-04-04 13:27:53][WARNING] require_once(C:\xampp\htdocs\speakify\backend\controllers/init.php): Failed to open stream: No such file or directory @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:29
+[2025-04-04 13:27:53][EXCEPTION] Failed opening required 'C:\xampp\htdocs\speakify\backend\controllers/init.php' (include_path='C:\xampp\php\PEAR') @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:29
+[2025-04-04 13:28:01][WARNING] require_once(C:\xampp\htdocs\speakify\backend\controllers/init.php): Failed to open stream: No such file or directory @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:29
+[2025-04-04 13:28:01][EXCEPTION] Failed opening required 'C:\xampp\htdocs\speakify\backend\controllers/init.php' (include_path='C:\xampp\php\PEAR') @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:29
+[2025-04-04 13:28:04][WARNING] require_once(C:\xampp\htdocs\speakify\backend\controllers/init.php): Failed to open stream: No such file or directory @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:29
+[2025-04-04 13:28:04][EXCEPTION] Failed opening required 'C:\xampp\htdocs\speakify\backend\controllers/init.php' (include_path='C:\xampp\php\PEAR') @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:29
+[2025-04-04 13:28:12][WARNING] require_once(C:\xampp\htdocs\speakify\backend\controllers/init.php): Failed to open stream: No such file or directory @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:29
+[2025-04-04 13:28:12][EXCEPTION] Failed opening required 'C:\xampp\htdocs\speakify\backend\controllers/init.php' (include_path='C:\xampp\php\PEAR') @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:29
+[2025-04-04 13:28:16][WARNING] require_once(C:\xampp\htdocs\speakify\backend\controllers/init.php): Failed to open stream: No such file or directory @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:29
+[2025-04-04 13:28:16][EXCEPTION] Failed opening required 'C:\xampp\htdocs\speakify\backend\controllers/init.php' (include_path='C:\xampp\php\PEAR') @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:29
+[2025-04-04 13:30:04][EXCEPTION] Non-static method Database::getConnection() cannot be called statically @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:38
+[2025-04-04 13:30:10][EXCEPTION] Non-static method Database::getConnection() cannot be called statically @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:38
+[2025-04-04 13:30:28][EXCEPTION] Non-static method Database::getConnection() cannot be called statically @ C:\xampp\htdocs\speakify\backend\controllers\create_session.php:38
+[2025-04-04 14:20:25][EXCEPTION] syntax error, unexpected token "<", expecting end of file @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:2
+[2025-04-04 14:20:26][EXCEPTION] syntax error, unexpected token "<", expecting end of file @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:2
+[2025-04-04 14:20:26][EXCEPTION] syntax error, unexpected token "<", expecting end of file @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:2
+[2025-04-04 14:20:30][EXCEPTION] syntax error, unexpected token "<", expecting end of file @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:2
+[2025-04-04 14:20:31][EXCEPTION] syntax error, unexpected token "<", expecting end of file @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:2
+[2025-04-04 14:20:31][EXCEPTION] syntax error, unexpected token "<", expecting end of file @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:2
+[2025-04-04 14:20:33][EXCEPTION] syntax error, unexpected token "<", expecting end of file @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:2
+[2025-04-04 14:20:33][EXCEPTION] syntax error, unexpected token "<", expecting end of file @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:2
+[2025-04-04 14:20:33][EXCEPTION] syntax error, unexpected token "<", expecting end of file @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:2
+[2025-04-04 14:20:36][EXCEPTION] syntax error, unexpected token "<", expecting end of file @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:2
+[2025-04-04 14:20:37][EXCEPTION] syntax error, unexpected token "<", expecting end of file @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:2
+[2025-04-04 14:20:37][EXCEPTION] syntax error, unexpected token "<", expecting end of file @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:2
+[2025-04-04 14:20:38][EXCEPTION] syntax error, unexpected token "<", expecting end of file @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:2
+[2025-04-04 14:20:39][EXCEPTION] syntax error, unexpected token "<", expecting end of file @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:2
+[2025-04-04 14:20:39][EXCEPTION] syntax error, unexpected token "<", expecting end of file @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:2
+[2025-04-04 14:20:40][EXCEPTION] syntax error, unexpected token "<", expecting end of file @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:2
+[2025-04-04 14:20:40][EXCEPTION] syntax error, unexpected token "<", expecting end of file @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:2
+[2025-04-04 14:20:41][EXCEPTION] syntax error, unexpected token "<", expecting end of file @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:2
+[2025-04-04 14:20:44][EXCEPTION] syntax error, unexpected token "<", expecting end of file @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:2
+[2025-04-04 14:20:51][EXCEPTION] syntax error, unexpected token "<", expecting end of file @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:2
+[2025-04-04 14:43:21][EXCEPTION] Too few arguments to function Logger::log(), 1 passed in C:\xampp\htdocs\speakify\public\api\index.php on line 24 and at least 2 expected @ C:\xampp\htdocs\speakify\backend\classes\Logger.php:53
+[2025-04-04 14:46:23][INFO] User profile loaded @ :0
+[2025-04-04 14:46:25][INFO] User profile loaded @ :0
+[2025-04-04 14:47:02][INFO] User profile loaded @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:47:39][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:47:51][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:47:55][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:48:01][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:48:02][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:48:43][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:48:46][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:48:48][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:48:51][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:48:51][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:49:06][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:49:09][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:49:10][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:49:12][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:49:13][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:49:30][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:49:34][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:49:37][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:49:38][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:49:44][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:49:45][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:54:01][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:54:05][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:54:08][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:54:10][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:54:12][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:54:13][INFO] logout.php called @ C:\xampp\htdocs\speakify\backend\controllers\logout.php:9
+[2025-04-04 14:54:13][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:54:33][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:54:36][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:54:39][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:54:45][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:54:45][INFO] logout.php called @ C:\xampp\htdocs\speakify\backend\controllers\logout.php:9
+[2025-04-04 14:54:46][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:54:54][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:54:57][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:55:09][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:55:11][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:55:11][INFO] logout.php called @ C:\xampp\htdocs\speakify\backend\controllers\logout.php:9
+[2025-04-04 14:55:11][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:57:10][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:57:12][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:57:19][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:57:21][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:57:21][INFO] logout.php called @ C:\xampp\htdocs\speakify\backend\controllers\logout.php:9
+[2025-04-04 14:57:21][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:57:25][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 14:57:27][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:00:50][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:00:53][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:00:53][INFO] logout.php called @ C:\xampp\htdocs\speakify\backend\controllers\logout.php:9
+[2025-04-04 15:00:53][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:01:01][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:01:03][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:01:07][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:01:10][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:01:10][INFO] logout.php called @ C:\xampp\htdocs\speakify\backend\controllers\logout.php:9
+[2025-04-04 15:01:10][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:01:20][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:01:22][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:16:34][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:16:41][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:16:41][INFO] logout.php called @ C:\xampp\htdocs\speakify\backend\controllers\logout.php:9
+[2025-04-04 15:16:41][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:16:50][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:16:53][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:17:47][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:17:49][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:17:49][INFO] logout.php called @ C:\xampp\htdocs\speakify\backend\controllers\logout.php:9
+[2025-04-04 15:17:49][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:19:45][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:19:45][INFO] LoginService @ :0
+[2025-04-04 15:19:47][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:19:47][INFO] LoginService @ :0
+[2025-04-04 15:20:18][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:20:18][INFO] LoginService @ :0
+[2025-04-04 15:20:25][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:20:25][INFO] logout.php called @ C:\xampp\htdocs\speakify\backend\controllers\logout.php:9
+[2025-04-04 15:20:26][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:20:27][INFO] LoginService @ :0
+[2025-04-04 15:20:30][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:20:30][INFO] LoginService @ :0
+[2025-04-04 15:20:33][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:20:34][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:20:34][INFO] LoginService @ :0
+[2025-04-04 15:22:21][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:22:21][INFO] LoginService @ :0
+[2025-04-04 15:22:21][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:22:21][INFO] LoginService @ :0
+[2025-04-04 15:22:37][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:22:37][INFO] logout.php called @ C:\xampp\htdocs\speakify\backend\controllers\logout.php:9
+[2025-04-04 15:22:38][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:22:38][INFO] LoginService @ :0
+[2025-04-04 15:22:41][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:22:41][INFO] login.php @ :0
+[2025-04-04 15:22:41][INFO] LoginService @ :0
+[2025-04-04 15:22:44][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:22:44][INFO] LoginService @ :0
+[2025-04-04 15:24:59][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:24:59][INFO] LoginService @ :0
+[2025-04-04 15:24:59][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:24:59][INFO] LoginService @ :0
+[2025-04-04 15:25:07][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:25:07][INFO] logout.php called @ C:\xampp\htdocs\speakify\backend\controllers\logout.php:9
+[2025-04-04 15:25:08][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:25:08][INFO] LoginService @ :0
+[2025-04-04 15:25:14][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:25:14][INFO] login.php @ :0
+[2025-04-04 15:25:14][INFO] LoginService @ :0
+[2025-04-04 15:25:15][INFO] 🔄 Session upgraded for user 3 @ :0
+[2025-04-04 15:25:17][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:25:17][INFO] LoginService @ :0
+[2025-04-04 15:26:42][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:26:42][INFO] LoginService @ :0
+[2025-04-04 15:26:46][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:26:46][INFO] logout.php called @ C:\xampp\htdocs\speakify\backend\controllers\logout.php:9
+[2025-04-04 15:26:47][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:26:47][INFO] LoginService @ :0
+[2025-04-04 15:26:54][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:26:54][INFO] login.php @ :0
+[2025-04-04 15:26:54][INFO] LoginService @ :0
+[2025-04-04 15:26:54][INFO] 🔄 Session upgraded for user 3 @ :0
+[2025-04-04 15:26:57][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:26:57][INFO] LoginService @ :0
+[2025-04-04 15:27:18][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:27:18][INFO] LoginService @ :0
+[2025-04-04 15:27:21][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:27:21][INFO] logout.php called @ C:\xampp\htdocs\speakify\backend\controllers\logout.php:9
+[2025-04-04 15:27:21][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:27:22][INFO] LoginService @ :0
+[2025-04-04 15:27:24][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:27:24][INFO] login.php @ :0
+[2025-04-04 15:27:24][INFO] LoginService @ :0
+[2025-04-04 15:27:25][INFO] 🔄 Session upgraded for user 3 @ :0
+[2025-04-04 15:27:27][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:27:27][INFO] LoginService @ :0
+[2025-04-04 15:31:59][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:31:59][INFO] LoginService @ :0
+[2025-04-04 15:32:00][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:32:01][INFO] logout.php called @ C:\xampp\htdocs\speakify\backend\controllers\logout.php:9
+[2025-04-04 15:32:01][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:32:01][INFO] LoginService @ :0
+[2025-04-04 15:33:01][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:33:01][INFO] login.php @ :0
+[2025-04-04 15:33:01][INFO] LoginService @ :0
+[2025-04-04 15:33:01][INFO] 🔄 Session upgraded for user 3 @ :0
+[2025-04-04 15:33:03][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:33:04][INFO] LoginService @ :0
+[2025-04-04 15:33:08][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:33:08][INFO] LoginService @ :0
+[2025-04-04 15:33:09][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:33:09][INFO] logout.php called @ C:\xampp\htdocs\speakify\backend\controllers\logout.php:9
+[2025-04-04 15:33:10][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:33:10][INFO] LoginService @ :0
+[2025-04-04 15:34:02][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:34:02][INFO] login.php @ :0
+[2025-04-04 15:34:02][INFO] LoginService @ :0
+[2025-04-04 15:34:02][INFO] 🔄 Session upgraded for user 3 @ :0
+[2025-04-04 15:34:04][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:34:04][INFO] LoginService @ :0
+[2025-04-04 15:34:06][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:34:06][INFO] LoginService @ :0
+[2025-04-04 15:34:08][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:34:08][EXCEPTION] Unclosed '(' on line 22 @ C:\xampp\htdocs\speakify\backend\controllers\logout.php:30
+[2025-04-04 15:34:08][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:34:08][INFO] LoginService @ :0
+[2025-04-04 15:34:23][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:34:23][INFO] logout.php called @ C:\xampp\htdocs\speakify\backend\controllers\logout.php:9
+[2025-04-04 15:34:23][INFO] here #4! @ :0
+[2025-04-04 15:34:24][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:34:24][INFO] LoginService @ :0
+[2025-04-04 15:34:27][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:34:27][INFO] login.php @ :0
+[2025-04-04 15:34:27][INFO] LoginService @ :0
+[2025-04-04 15:34:28][INFO] 🔄 Session upgraded for user 3 @ :0
+[2025-04-04 15:34:31][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:34:31][INFO] LoginService @ :0
+[2025-04-04 15:34:32][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:34:32][INFO] LoginService @ :0
+[2025-04-04 15:34:34][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:34:34][INFO] logout.php called @ C:\xampp\htdocs\speakify\backend\controllers\logout.php:9
+[2025-04-04 15:34:34][INFO] here #4! @ :0
+[2025-04-04 15:34:35][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:34:35][INFO] LoginService @ :0
+[2025-04-04 15:37:52][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:37:52][INFO] login.php @ :0
+[2025-04-04 15:37:52][INFO] LoginService @ :0
+[2025-04-04 15:37:52][INFO] 🔄 Session upgraded for user 3 @ :0
+[2025-04-04 15:37:55][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:37:55][INFO] LoginService @ :0
+[2025-04-04 15:37:56][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:37:56][INFO] LoginService @ :0
+[2025-04-04 15:37:58][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:37:58][INFO] logout.php called @ C:\xampp\htdocs\speakify\backend\controllers\logout.php:9
+[2025-04-04 15:37:58][INFO] here #4! @ :0
+[2025-04-04 15:37:59][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:37:59][INFO] LoginService @ :0
+[2025-04-04 15:38:33][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:38:33][INFO] login.php @ :0
+[2025-04-04 15:38:33][INFO] LoginService @ :0
+[2025-04-04 15:38:33][INFO] 🔄 Session upgraded for user 3 @ :0
+[2025-04-04 15:38:36][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:38:36][INFO] LoginService @ :0
+[2025-04-04 15:38:43][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:38:43][INFO] LoginService @ :0
+[2025-04-04 15:38:46][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:38:46][INFO] logout.php called @ C:\xampp\htdocs\speakify\backend\controllers\logout.php:9
+[2025-04-04 15:38:47][INFO] here #4! @ :0
+[2025-04-04 15:38:47][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:38:47][INFO] LoginService @ :0
+[2025-04-04 15:39:27][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:39:27][INFO] login.php @ :0
+[2025-04-04 15:39:27][INFO] LoginService @ :0
+[2025-04-04 15:39:28][INFO] 🔄 Session upgraded for user 3 @ :0
+[2025-04-04 15:39:31][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:39:31][INFO] LoginService @ :0
+[2025-04-04 15:39:39][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:39:39][INFO] LoginService @ :0
+[2025-04-04 15:39:41][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:39:41][INFO] logout.php called @ C:\xampp\htdocs\speakify\backend\controllers\logout.php:9
+[2025-04-04 15:39:41][INFO] here #4! @ :0
+[2025-04-04 15:39:41][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:39:41][INFO] LoginService @ :0
+[2025-04-04 15:41:06][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:41:06][INFO] login.php @ :0
+[2025-04-04 15:41:06][INFO] LoginService @ :0
+[2025-04-04 15:41:06][INFO] 🔄 Session upgraded for user 3 @ :0
+[2025-04-04 15:41:09][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:41:09][INFO] LoginService @ :0
+[2025-04-04 15:46:52][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:46:52][INFO] LoginService @ :0
+[2025-04-04 15:47:01][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:47:01][INFO] logout.php called @ C:\xampp\htdocs\speakify\backend\controllers\logout.php:9
+[2025-04-04 15:47:01][INFO] here #4! @ :0
+[2025-04-04 15:47:02][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:47:02][INFO] LoginService @ :0
+[2025-04-04 15:47:09][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:47:10][INFO] login.php @ :0
+[2025-04-04 15:47:10][INFO] LoginService @ :0
+[2025-04-04 15:47:10][INFO] Session upgraded for token: 46c05152f0ab04b06fe7ff397fdaf5411c86ec8bc3d6566ab8ec221e0cb7c233 @ :0
+[2025-04-04 15:47:10][INFO] 🔄 Session is already logged in or invalid for token: 46c05152f0ab04b06fe7ff397fdaf5411c86ec8bc3d6566ab8ec221e0cb7c233 @ :0
+[2025-04-04 15:47:13][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:47:13][INFO] LoginService @ :0
+[2025-04-04 15:48:39][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:48:39][INFO] LoginService @ :0
+[2025-04-04 15:48:45][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:48:45][INFO] logout.php called @ C:\xampp\htdocs\speakify\backend\controllers\logout.php:9
+[2025-04-04 15:48:46][INFO] here #4! @ :0
+[2025-04-04 15:48:46][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:48:46][INFO] LoginService @ :0
+[2025-04-04 15:48:53][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:48:53][INFO] login.php @ :0
+[2025-04-04 15:48:53][INFO] LoginService @ :0
+[2025-04-04 15:48:53][INFO] Session upgraded for token: da96500768a8b3d78f7561a03c93d869edbd296e1aba054fce50cf6a05c97ec4 @ :0
+[2025-04-04 15:48:53][INFO] 🔄 Session is already logged in or invalid for token: da96500768a8b3d78f7561a03c93d869edbd296e1aba054fce50cf6a05c97ec4 @ :0
+[2025-04-04 15:48:56][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:48:56][INFO] LoginService @ :0
+[2025-04-04 15:55:33][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:55:33][INFO] LoginService @ :0
+[2025-04-04 15:55:45][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:55:45][INFO] logout.php called @ C:\xampp\htdocs\speakify\backend\controllers\logout.php:9
+[2025-04-04 15:55:45][INFO] here #4! @ :0
+[2025-04-04 15:55:46][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:55:46][INFO] LoginService @ :0
+[2025-04-04 15:55:55][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:55:55][INFO] login.php @ :0
+[2025-04-04 15:55:55][INFO] LoginService @ :0
+[2025-04-04 15:55:55][INFO] Session upgraded for token: edca24a6a8ad83b16c651ed9162566efa4bc54f513394e97e18b9e12d05381f7 @ :0
+[2025-04-04 15:55:56][INFO] 🔄 Session is already logged in or invalid for token: edca24a6a8ad83b16c651ed9162566efa4bc54f513394e97e18b9e12d05381f7 @ :0
+[2025-04-04 15:55:58][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:55:58][INFO] LoginService @ :0
+[2025-04-04 15:56:00][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:56:00][INFO] LoginService @ :0
+[2025-04-04 15:56:02][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:56:02][INFO] logout.php called @ C:\xampp\htdocs\speakify\backend\controllers\logout.php:9
+[2025-04-04 15:56:02][INFO] here #4! @ :0
+[2025-04-04 15:56:02][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:56:03][INFO] LoginService @ :0
+[2025-04-04 15:59:08][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:59:08][INFO] login.php @ :0
+[2025-04-04 15:59:08][INFO] LoginService @ :0
+[2025-04-04 15:59:09][INFO] Session upgraded for token: 0ff23cdfc50605aa8f3d8b1ed45a3f87c74e36fc58a3929e15c939a7557f1661 @ :0
+[2025-04-04 15:59:09][INFO] 🔄 Session is already logged in or invalid for token: 0ff23cdfc50605aa8f3d8b1ed45a3f87c74e36fc58a3929e15c939a7557f1661 @ :0
+[2025-04-04 15:59:11][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:59:11][INFO] LoginService @ :0
+[2025-04-04 15:59:19][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:59:19][INFO] LoginService @ :0
+[2025-04-04 15:59:20][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:59:20][INFO] logout.php called @ C:\xampp\htdocs\speakify\backend\controllers\logout.php:9
+[2025-04-04 15:59:21][INFO] here #4! @ :0
+[2025-04-04 15:59:21][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:59:21][INFO] LoginService @ :0
+[2025-04-04 15:59:25][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:59:25][INFO] login.php @ :0
+[2025-04-04 15:59:25][INFO] LoginService @ :0
+[2025-04-04 15:59:26][INFO] Session upgraded for token: cecfca6a9576cbba9f84735ed15bc624a3ef92f2b2e088b02e5b19667700845d @ :0
+[2025-04-04 15:59:26][INFO] 🔄 Session is already logged in or invalid for token: cecfca6a9576cbba9f84735ed15bc624a3ef92f2b2e088b02e5b19667700845d @ :0
+[2025-04-04 15:59:28][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 15:59:28][INFO] LoginService @ :0
+[2025-04-04 16:01:46][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:01:46][INFO] LoginService @ :0
+[2025-04-04 16:01:48][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:01:48][INFO] logout.php called @ C:\xampp\htdocs\speakify\backend\controllers\logout.php:9
+[2025-04-04 16:01:48][INFO] here #4! @ :0
+[2025-04-04 16:01:48][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:01:48][INFO] LoginService @ :0
+[2025-04-04 16:01:55][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:01:55][INFO] login.php @ :0
+[2025-04-04 16:01:55][INFO] LoginService @ :0
+[2025-04-04 16:01:56][INFO] Session upgraded for token: 1e57a9ab2467953e62dea097c5121fb48b506a016e2413a7d349eb310c4b3a0f @ :0
+[2025-04-04 16:01:56][INFO] 🔄 Session is already logged in for token: 1e57a9ab2467953e62dea097c5121fb48b506a016e2413a7d349eb310c4b3a0f @ :0
+[2025-04-04 16:01:58][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:01:58][INFO] LoginService @ :0
+[2025-04-04 16:04:03][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:04:03][INFO] LoginService @ :0
+[2025-04-04 16:04:04][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:04:04][INFO] logout.php called @ C:\xampp\htdocs\speakify\backend\controllers\logout.php:9
+[2025-04-04 16:04:05][INFO] here #4! @ :0
+[2025-04-04 16:04:05][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:04:05][INFO] LoginService @ :0
+[2025-04-04 16:04:08][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:04:08][INFO] login.php @ :0
+[2025-04-04 16:04:08][INFO] LoginService @ :0
+[2025-04-04 16:04:08][INFO] Session upgraded for token: cbed55111eb22cc4bb66740cc3ed1a7de43f7115b74cf14885d4ad92a464082f @ :0
+[2025-04-04 16:04:09][EXCEPTION] Call to undefined function info() @ C:\xampp\htdocs\speakify\backend\controllers\login.php:38
+[2025-04-04 16:04:31][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:04:31][INFO] login.php @ :0
+[2025-04-04 16:04:31][INFO] LoginService @ :0
+[2025-04-04 16:04:31][INFO] Session upgraded for token: 533cf8fac85754e63e4eb57129fbdc593b6aeaf5261496a1e07135b95d47182f @ :0
+[2025-04-04 16:04:31][EXCEPTION] Logger::info(): Argument #1 ($msg) must be of type string, array given, called in C:\xampp\htdocs\speakify\backend\controllers\login.php on line 38 @ C:\xampp\htdocs\speakify\backend\classes\Logger.php:96
+[2025-04-04 16:04:51][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:04:51][INFO] LoginService @ :0
+[2025-04-04 16:04:52][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:04:52][INFO] LoginService @ :0
+[2025-04-04 16:05:07][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:05:07][INFO] login.php @ :0
+[2025-04-04 16:05:07][INFO] LoginService @ :0
+[2025-04-04 16:05:08][INFO] Session upgraded for token: 36bca93b43d42b2476cb8fd5c22f1871226d02c4de50e6d92950808b9e13c899 @ :0
+[2025-04-04 16:05:08][EXCEPTION] Logger::info(): Argument #1 ($msg) must be of type string, array given, called in C:\xampp\htdocs\speakify\backend\controllers\login.php on line 38 @ C:\xampp\htdocs\speakify\backend\classes\Logger.php:96
+[2025-04-04 16:05:29][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:05:29][INFO] LoginService @ :0
+[2025-04-04 16:05:29][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:05:29][INFO] LoginService @ :0
+[2025-04-04 16:05:48][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:05:48][INFO] login.php @ :0
+[2025-04-04 16:05:48][INFO] LoginService @ :0
+[2025-04-04 16:05:48][INFO] Session upgraded for token: 372a8463ceabe1d94c894e41e3538966ae6cff0fdc682ad1b2ea7e5bf1ace8e4 @ :0
+[2025-04-04 16:05:48][EXCEPTION] Logger::info(): Argument #1 ($msg) must be of type string, array given, called in C:\xampp\htdocs\speakify\backend\controllers\login.php on line 38 @ C:\xampp\htdocs\speakify\backend\classes\Logger.php:96
+[2025-04-04 16:11:21][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:11:21][INFO] LoginService @ :0
+[2025-04-04 16:11:30][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:11:30][INFO] login.php @ :0
+[2025-04-04 16:11:30][WARNING] Undefined variable $response @ C:\xampp\htdocs\speakify\backend\controllers\login.php:31
+[2025-04-04 16:11:30][WARNING] Trying to access array offset on value of type null @ C:\xampp\htdocs\speakify\backend\controllers\login.php:31
+[2025-04-04 16:11:30][INFO] Session upgraded for token: ca4c2f196a4a3503b91d11cd475b962c52728c384890bb4790274b3a58723917 @ :0
+[2025-04-04 16:11:30][INFO] 🔄 Session upgraded for token: ca4c2f196a4a3503b91d11cd475b962c52728c384890bb4790274b3a58723917 @ :0
+[2025-04-04 16:11:30][INFO] LoginService @ :0
+[2025-04-04 16:11:31][INFO] Session upgraded for token: ca4c2f196a4a3503b91d11cd475b962c52728c384890bb4790274b3a58723917 @ :0
+[2025-04-04 16:11:33][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:11:33][INFO] LoginService @ :0
+[2025-04-04 16:11:36][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:11:36][INFO] LoginService @ :0
+[2025-04-04 16:11:38][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:11:39][INFO] logout.php called @ C:\xampp\htdocs\speakify\backend\controllers\logout.php:9
+[2025-04-04 16:11:39][INFO] here #4! @ :0
+[2025-04-04 16:11:39][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:11:39][INFO] LoginService @ :0
+[2025-04-04 16:11:49][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:11:49][INFO] LoginService @ :0
+[2025-04-04 16:11:54][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:11:54][INFO] login.php @ :0
+[2025-04-04 16:11:54][WARNING] Undefined variable $response @ C:\xampp\htdocs\speakify\backend\controllers\login.php:31
+[2025-04-04 16:11:54][WARNING] Trying to access array offset on value of type null @ C:\xampp\htdocs\speakify\backend\controllers\login.php:31
+[2025-04-04 16:11:54][INFO] Session upgraded for token: 19df91a9f46cefdb7b40fe115f75264f796cec293adbfe1e66e2efe7547a11a3 @ :0
+[2025-04-04 16:11:54][INFO] 🔄 Session upgraded for token: 19df91a9f46cefdb7b40fe115f75264f796cec293adbfe1e66e2efe7547a11a3 @ :0
+[2025-04-04 16:11:54][INFO] LoginService @ :0
+[2025-04-04 16:11:55][INFO] Session upgraded for token: 19df91a9f46cefdb7b40fe115f75264f796cec293adbfe1e66e2efe7547a11a3 @ :0
+[2025-04-04 16:11:57][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:11:57][INFO] LoginService @ :0
+[2025-04-04 16:13:07][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:13:07][INFO] LoginService @ :0
+[2025-04-04 16:13:09][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:13:09][INFO] logout.php called @ C:\xampp\htdocs\speakify\backend\controllers\logout.php:9
+[2025-04-04 16:13:09][INFO] here #4! @ :0
+[2025-04-04 16:13:09][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:13:09][INFO] LoginService @ :0
+[2025-04-04 16:13:12][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:13:12][INFO] login.php @ :0
+[2025-04-04 16:13:13][WARNING] Undefined variable $response @ C:\xampp\htdocs\speakify\backend\controllers\login.php:31
+[2025-04-04 16:13:13][WARNING] Trying to access array offset on value of type null @ C:\xampp\htdocs\speakify\backend\controllers\login.php:31
+[2025-04-04 16:13:13][INFO] Session upgraded for token: 19b129f38a93fdeb6763df71523e4712f76dc783e36b8e89d54aad6e11e3722d @ :0
+[2025-04-04 16:13:13][INFO] upgrade @ :0
+[2025-04-04 16:13:13][INFO] 🔄 Session upgraded for token: 19b129f38a93fdeb6763df71523e4712f76dc783e36b8e89d54aad6e11e3722d @ :0
+[2025-04-04 16:13:13][INFO] LoginService @ :0
+[2025-04-04 16:13:14][INFO] Session upgraded for token: 19b129f38a93fdeb6763df71523e4712f76dc783e36b8e89d54aad6e11e3722d @ :0
+[2025-04-04 16:13:16][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:13:16][INFO] LoginService @ :0
+[2025-04-04 16:13:40][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:13:40][INFO] LoginService @ :0
+[2025-04-04 16:13:42][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:13:42][INFO] logout.php called @ C:\xampp\htdocs\speakify\backend\controllers\logout.php:9
+[2025-04-04 16:13:42][INFO] here #4! @ :0
+[2025-04-04 16:13:43][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:13:43][INFO] LoginService @ :0
+[2025-04-04 16:13:50][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:13:51][INFO] login.php @ :0
+[2025-04-04 16:13:51][WARNING] Undefined variable $response @ C:\xampp\htdocs\speakify\backend\controllers\login.php:31
+[2025-04-04 16:13:51][WARNING] Trying to access array offset on value of type null @ C:\xampp\htdocs\speakify\backend\controllers\login.php:31
+[2025-04-04 16:13:51][INFO] Session upgraded for token: 92a344e76cdded2daf08552b8f4d9e24171591f9964c5730abde347df10802b8 @ :0
+[2025-04-04 16:13:51][INFO] upgrade @ :0
+[2025-04-04 16:13:51][INFO] 🔄 Session upgraded for token: 92a344e76cdded2daf08552b8f4d9e24171591f9964c5730abde347df10802b8 @ :0
+[2025-04-04 16:13:51][INFO] LoginService @ :0
+[2025-04-04 16:13:52][INFO] Session upgraded for token: 92a344e76cdded2daf08552b8f4d9e24171591f9964c5730abde347df10802b8 @ :0
+[2025-04-04 16:13:54][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:13:54][INFO] LoginService @ :0
+[2025-04-04 16:15:49][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:15:49][INFO] LoginService @ :0
+[2025-04-04 16:15:50][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:15:50][INFO] LoginService @ :0
+[2025-04-04 16:17:06][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:17:06][INFO] logout.php called @ C:\xampp\htdocs\speakify\backend\controllers\logout.php:9
+[2025-04-04 16:17:06][INFO] here #4! @ :0
+[2025-04-04 16:17:06][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:17:06][INFO] LoginService @ :0
+[2025-04-04 16:17:10][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:17:10][INFO] login.php @ :0
+[2025-04-04 16:17:10][INFO] Token received: b59e8b918c43eff3f69a6dfcf0c57c30913cb3516cdd6e858176e9571c9289c2 @ :0
+[2025-04-04 16:17:10][INFO] Session validation result: {"valid":true,"token":"b59e8b918c43eff3f69a6dfcf0c57c30913cb3516cdd6e858176e9571c9289c2","user_id":null,"name":null,"last_activity":"2025-04-04 16:17:10","expires_at":"2025-04-05 00:17:10","logged_in":false} @ :0
+[2025-04-04 16:17:10][INFO] Upgrading session for token: b59e8b918c43eff3f69a6dfcf0c57c30913cb3516cdd6e858176e9571c9289c2 @ :0
+[2025-04-04 16:17:10][WARNING] Undefined variable $response @ C:\xampp\htdocs\speakify\backend\controllers\login.php:46
+[2025-04-04 16:17:10][WARNING] Trying to access array offset on value of type null @ C:\xampp\htdocs\speakify\backend\controllers\login.php:46
+[2025-04-04 16:17:10][INFO] Session upgraded for token: b59e8b918c43eff3f69a6dfcf0c57c30913cb3516cdd6e858176e9571c9289c2 @ :0
+[2025-04-04 16:17:11][WARNING] Undefined variable $response @ C:\xampp\htdocs\speakify\backend\controllers\login.php:47
+[2025-04-04 16:17:11][WARNING] Trying to access array offset on value of type null @ C:\xampp\htdocs\speakify\backend\controllers\login.php:47
+[2025-04-04 16:17:11][INFO] 🔄 Session upgraded for user  @ :0
+[2025-04-04 16:17:11][INFO] LoginService @ :0
+[2025-04-04 16:17:11][INFO] Session upgraded for token: b59e8b918c43eff3f69a6dfcf0c57c30913cb3516cdd6e858176e9571c9289c2 @ :0
+[2025-04-04 16:17:13][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:17:13][INFO] LoginService @ :0
+[2025-04-04 16:19:08][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:19:08][INFO] LoginService @ :0
+[2025-04-04 16:19:09][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:19:09][INFO] LoginService @ :0
+[2025-04-04 16:19:46][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:19:46][INFO] logout.php called @ C:\xampp\htdocs\speakify\backend\controllers\logout.php:9
+[2025-04-04 16:19:47][INFO] here #4! @ :0
+[2025-04-04 16:19:47][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:19:47][INFO] LoginService @ :0
+[2025-04-04 16:19:51][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:19:51][INFO] login.php @ :0
+[2025-04-04 16:19:51][INFO] Token received: 02314ccc6229ceb4ff920bc2a3fcfb30bac54b8d1ffe40cc3d9735bc1cfe6ea6 @ :0
+[2025-04-04 16:19:51][INFO] Session validation result: {"valid":true,"token":"02314ccc6229ceb4ff920bc2a3fcfb30bac54b8d1ffe40cc3d9735bc1cfe6ea6","user_id":null,"name":null,"last_activity":"2025-04-04 16:19:51","expires_at":"2025-04-05 00:19:51","logged_in":false} @ :0
+[2025-04-04 16:19:52][INFO] Upgrading session for token: 02314ccc6229ceb4ff920bc2a3fcfb30bac54b8d1ffe40cc3d9735bc1cfe6ea6 @ :0
+[2025-04-04 16:19:52][WARNING] Undefined variable $response @ C:\xampp\htdocs\speakify\backend\controllers\login.php:46
+[2025-04-04 16:19:52][WARNING] Trying to access array offset on value of type null @ C:\xampp\htdocs\speakify\backend\controllers\login.php:46
+[2025-04-04 16:19:52][INFO] Session upgraded for token: 02314ccc6229ceb4ff920bc2a3fcfb30bac54b8d1ffe40cc3d9735bc1cfe6ea6 @ :0
+[2025-04-04 16:19:52][WARNING] Undefined variable $response @ C:\xampp\htdocs\speakify\backend\controllers\login.php:47
+[2025-04-04 16:19:52][WARNING] Trying to access array offset on value of type null @ C:\xampp\htdocs\speakify\backend\controllers\login.php:47
+[2025-04-04 16:19:52][INFO] 🔄 Session upgraded for user  @ :0
+[2025-04-04 16:19:52][INFO] LoginService @ :0
+[2025-04-04 16:19:52][INFO] Session upgraded for token: 02314ccc6229ceb4ff920bc2a3fcfb30bac54b8d1ffe40cc3d9735bc1cfe6ea6 @ :0
+[2025-04-04 16:19:55][INFO] api called @ C:\xampp\htdocs\speakify\public\api\index.php:24
+[2025-04-04 16:19:55][INFO] LoginService @ :0
