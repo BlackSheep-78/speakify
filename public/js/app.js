@@ -402,9 +402,6 @@ const app = {
       </div>
     `).join('');
   }
-  
-  
-  
 };
 
 app.startPlaybackLoop = function() {
@@ -461,7 +458,6 @@ app.renderPlaybackUI = function () {
     queue.appendChild(groupDiv);
   });
 };
-
 
 document.addEventListener("DOMContentLoaded", () => {
   app.init();
