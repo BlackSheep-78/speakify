@@ -1,6 +1,6 @@
 <!-- 
   ========================================================================
-  File: speakify/public/login-profile.html
+  File: speakify/public/login-profile.php
   Project: Speakify
   Description:
     Login & Profile view:
@@ -10,25 +10,6 @@
     - Mobile-first layout with unified UI/UX style
   ========================================================================
 -->
-
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Connexion & Profil - Speakify</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <script src="js/app.js" defer></script>
-</head>
-
-<body>
-
-  <!-- Header -->
-  <div class="header">
-    <div><a href="login-profile.html">👤 Jorge</a></div>
-    <div><a href="achievements.html">🔥 12 jours</a></div>
-    <div><a href="achievements.html">🌟 2 450 XP</a></div>
-  </div>
 
   <!-- Content -->
   <div class="content">
@@ -57,7 +38,7 @@
       
       <!-- Link to Register Page -->
       <div class="register-link">
-        <p>Pas encore de compte ? <a href="register.html">Créez un compte ici</a>.</p>
+        <p>Pas encore de compte ? <a href="register">Créez un compte ici</a>.</p>
       </div>
     </section>
     <!-- ==== END: Speakify Login Form ====# -->
@@ -72,15 +53,3 @@
       <button id="logout-button" class="button danger">Se déconnecter</button>
     </section>
   </div>
-
-  <!-- Footer Navigation -->
-  <div class="footer-nav">
-    <a href="dashboard.html">🏠</a>
-    <a href="playback.html">🎧</a>
-    <a href="playlist-library.html">📚</a>
-    <a href="smart-lists.html">🧠</a>
-    <a href="settings.html">⚙️</a>
-  </div>
-
-</body>
-</html>

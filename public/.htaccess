@@ -1,0 +1,11 @@
+RewriteEngine On
+
+# Skip actual files and folders
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Route all other requests to index.php with ?page=value
+RewriteRule ^([a-zA-Z0-9_-]+)$ index.php?page=$1 [L]
+
+# Optional 404
+ErrorDocument 404 /speakify/public/views/404.php

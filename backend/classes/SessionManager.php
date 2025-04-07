@@ -65,6 +65,17 @@ class SessionManager {
 
         if (!$row) return null;
 
+        // 🔁 Occasionally clean up old sessions (1/1000 chance)
+        if (random_int(1, 1000) === 1) {
+            self::cleanupOldSessions($db); // Call with same DB handle
+        }
+
+        // 🧹 Occasionally delete oldest session (1/1000)
+        if (random_int(1, 1000) === 1) {
+            self::deleteOldestLogs($db);
+        }
+
+
         // Update last activity
         $stmt = $db->prepare("UPDATE sessions SET last_activity = NOW() WHERE token = :token");
         $stmt->execute([':token' => $token]);
@@ -91,6 +102,34 @@ class SessionManager {
             'logged_in' => !empty($user_id)
         ];
     }
+
+    public static function cleanupOldSessions($db = null) {
+        if (!$db) {
+            $db = Database::getInstance()->getConnection();
+        }
+    
+        $stmt = $db->prepare("DELETE FROM sessions WHERE expires_at < NOW()");
+        $stmt->execute();
+    
+        error_log("🧹 Old sessions cleaned up.");
+    }
+
+    public static function deleteOldestLogs($db = null) {
+        if (!$db) {
+            $db = Database::getInstance()->getConnection();
+        }
+    
+        $stmt = $db->query("SELECT id FROM logs ORDER BY id ASC LIMIT 1");
+        $oldest = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        if ($oldest) {
+            $stmt = $db->prepare("DELETE FROM logs WHERE id = :id");
+            $stmt->execute([':id' => $oldest['id']]);
+            error_log("🗑️ Oldest log ID {$oldest['id']} deleted.");
+        }
+    }
+    
+    
 
     // validateOrCreate
     public static function validateOrCreate(&$token) 

@@ -53,12 +53,34 @@ const app = {
   async init() {
     console.log("👋 app.init() running");
 
+    const view = this.getCurrentView();
+    console.log("🔍 Current View:", view);
+
     await this.ensureToken();
-    await this.updateUI();
-    await this.setupPageElements();
+
+    // ✅ Universal UI updates (if needed across all views)
+    if (["login-profile", "register", "dashboard", "playback"].includes(view)) {
+      await this.updateUI();
+      await this.setupPageElements();
+    }
+
+    // ✅ View-specific logic
+    switch (view) {
+      case "playback":
+        await this.initPlayback();
+        break;
+      case "dashboard":
+        await this.initDashboard?.(); // if defined
+        break;
+      // ...add more
+    }
   },
 
-  
+  getCurrentView() {
+    const path = window.location.pathname;
+    return path.split('/').pop().replace('.php', '').replace('.html', '');
+  },
+
   async ensureToken() {
     let token = localStorage.getItem('speakify_token');
     console.log("🧠 Step 1: Token from localStorage:", token);
@@ -127,7 +149,7 @@ const app = {
     const profileName = document.getElementById('profile-name');
     const profileEmail = document.getElementById('profile-email');
     const profileLastLogin = document.getElementById('profile-last-login');
-    const headerUserLink = document.querySelector('.header a[href="login-profile.html"]');
+    const headerUserLink = document.querySelector('.header a[href="login-profile"]');
     const logoutButton = document.getElementById('logout-button');
 
     if (!loginSection || !profileSection) return;
@@ -235,7 +257,7 @@ const app = {
         if (result.success) {
           localStorage.setItem("speakify_token", result.token);
           message.textContent = "✅ Connexion réussie ! Redirection...";
-          setTimeout(() => window.location.href = "dashboard.html", 1500);
+          setTimeout(() => window.location.href = "dashboard", 1500);
         } else {
           message.textContent = `❌ ${result.error || "Erreur inconnue."}`;
         }
@@ -273,7 +295,7 @@ const app = {
 
         if (result.success) {
           message.textContent = "✅ Compte créé avec succès ! Redirection...";
-          setTimeout(() => window.location.href = "login-profile.html", 1500);
+          setTimeout(() => window.location.href = "login-profile", 1500);
         } else {
           message.textContent = `❌ ${result.error || "Erreur inconnue."}`;
         }
@@ -287,7 +309,159 @@ const app = {
   delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   },
+
+  initPlayback() {
+    console.log("🎧 initPlayback() called");
+  
+    const active = document.getElementById("active-sentence");
+    const queue = document.getElementById("playloop-queue");
+    const played = document.getElementById("played-items");
+  
+    if (!active || !queue || !played) {
+      console.warn("⚠️ One or more playback sections are missing.");
+      return;
+    }
+  
+    fetch('/speakify/public/api/index.php?action=get_sentences')
+    .then(res => res.json())
+    .then(data => {
+      if (!data.items || !Array.isArray(data.items) || data.items.length === 0) {
+        queue.innerHTML = "<p>⚠️ Aucune donnée à lire.</p>";
+        return;
+      }
+  
+      console.log("📦 Loaded sentence items:", data.items);
+  
+      // 🔁 Pre-process each item into a fully assembled object
+      const template = data.template;
+      const assembledItems = data.items.map((item, index) => {
+        const group = {};
+        template.group.forEach((key, i) => {
+          group[key] = item.group?.[i] ?? null;
+        });
+      
+        const translations = item.translations.map((row, tIndex) => {
+          const t = {};
+          template.translation.forEach((key, i) => {
+            t[key] = row?.[i] ?? null;
+          });
+          return t;
+        });
+      
+        return { ...group, translations };
+      });
+  
+      app.state.playbackQueue = assembledItems;
+      app.state.playedItems = [];
+      app.state.currentIndex = 0;
+      app.state.isPlaying = true;
+  
+      app.renderPlaybackUI();
+      app.startPlaybackLoop();
+    })
+    .catch(err => {
+      console.error("❌ Erreur lors du chargement de la lecture:", err);
+      queue.innerHTML = "<p>Erreur lors du chargement.</p>";
+    });
+
+  },
+  
+  renderPlaybackUI() {
+    const active = document.getElementById("active-sentence");
+    const queue = document.getElementById("playloop-queue");
+    const played = document.getElementById("played-items");
+  
+    const items = app.state.playbackQueue || [];
+    const history = app.state.playedItems || [];
+  
+    // Played items
+    played.innerHTML = history.map(pair => `
+      <div class="sentence-pair faded">
+        <span class="original">${pair.original_sentence}</span>
+        <span class="arrow">→</span>
+        <span class="translated">${pair.translated_sentence}</span>
+      </div>
+    `).join('');
+  
+    // Active sentence
+    const current = items[app.state.currentIndex];
+    active.innerHTML = current ? `
+      <div class="sentence-pair highlight">
+        <span class="original">${current.original_sentence}</span>
+        <span class="arrow">→</span>
+        <span class="translated">${current.translated_sentence}</span>
+      </div>
+    ` : `<p>Fin de la lecture</p>`;
+  
+    // Remaining queue
+    queue.innerHTML = items.slice(app.state.currentIndex + 1).map(pair => `
+      <div class="sentence-pair">
+        <span class="original">${pair.original_sentence}</span>
+        <span class="arrow">→</span>
+        <span class="translated">${pair.translated_sentence}</span>
+      </div>
+    `).join('');
+  }
+  
+  
+  
 };
+
+app.startPlaybackLoop = function() {
+  console.log("▶️ Starting playback loop");
+
+  const step = () => {
+    if (!app.state.isPlaying) return;
+
+    const queue = app.state.playbackQueue;
+    const i = app.state.currentIndex;
+
+    if (!queue || i >= queue.length) {
+      console.log("🛑 Playback finished.");
+      return;
+    }
+
+    const current = queue[i];
+    app.state.playedItems.push(current);
+
+    app.renderPlaybackUI();
+    app.state.currentIndex++;
+
+    // 🔁 Loop every 4 seconds
+    app.state.playbackTimeout = setTimeout(step, 4000);
+  };
+
+  step();
+};
+
+app.renderPlaybackUI = function () {
+  const queue = document.getElementById("playloop-queue");
+  if (!queue || !Array.isArray(app.state.playbackQueue)) return;
+
+  queue.innerHTML = "";
+
+  app.state.playbackQueue.forEach(entry => {
+    const groupDiv = document.createElement("div");
+    groupDiv.className = "sentence-group";
+
+    groupDiv.innerHTML = `
+      <div class="original"><strong>🗣 ${entry.orig_lang}:</strong> ${entry.orig_txt}</div>
+    `;
+
+    const transList = document.createElement("ul");
+    transList.className = "translations";
+
+    entry.translations.forEach(trans => {
+      const li = document.createElement("li");
+      li.innerHTML = `<strong>🌍 ${trans.trans_lang}:</strong> ${trans.trans_txt}`;
+      transList.appendChild(li);
+    });
+
+    groupDiv.appendChild(transList);
+    queue.appendChild(groupDiv);
+  });
+};
+
 
 document.addEventListener("DOMContentLoaded", () => {
   app.init();
