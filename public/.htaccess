@@ -1,11 +1,15 @@
 RewriteEngine On
+Options -MultiViews
 
-# Skip actual files and folders
+# Redirect .php URLs to extensionless versions
+RewriteRule ^([a-zA-Z0-9_-]+)\.php$ /$1 [R=301,L]
+
+# Prevent internal rewrites from triggering the clean URL rule
+RewriteCond %{REQUEST_URI} !^/index\.php$
+
+# Skip rewriting if the request corresponds to an existing file or directory
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
-# Route all other requests to index.php with ?page=value
+# Clean URLs: Rewrite /page to index.php?page=page without appending existing query strings
 RewriteRule ^([a-zA-Z0-9_-]+)$ index.php?page=$1 [L]
-
-# Optional 404
-ErrorDocument 404 /speakify/public/views/404.php

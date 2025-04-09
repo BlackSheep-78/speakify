@@ -13,7 +13,7 @@ require_once BASEPATH . '/backend/classes/SessionManager.php'; // ✅ REQUIRED
 Logger::info("login.php");
 
 header('Content-Type: application/json');
-error_log("🔐 login.php called");
+Logger::log("🔐 login.php called");
 
 $input = json_decode(file_get_contents('php://input'), true);
 $email = $input['email'] ?? '';

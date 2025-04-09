@@ -21,7 +21,7 @@ $sm  = new SessionManager($pdo);
 $action = $_GET['action'] ?? null;
 $token  = $_GET['token'] ?? null;
 
-Logger::info("api called",__FILE__,__LINE__);
+//Logger::info("api called",__FILE__,__LINE__);
 
 $publicActions = ['create_session', 'validate_session', 'register_user', 'login', 'logout'];
 
@@ -32,10 +32,12 @@ if (!$action || !preg_match('/^[a-z0-9_]+$/', $action)) {
     exit;
 }
 
+Logger::info($action);
+
 $actionFile = BASEPATH . "/backend/controllers/{$action}.php";
 
 if (!file_exists($actionFile)) {
-    error_log("❌ Action file NOT FOUND");
+    Logger::log("❌ Action file NOT FOUND",__FILE__, __LINE__);
     http_response_code(404);
     echo json_encode(['error' => 'Unknown action']);
     exit;
@@ -62,7 +64,7 @@ try {
         $GLOBALS['auth_user_id'] = null;
     }
 } catch (Exception $e) {
-    error_log("🔥 Session validation error: " . $e->getMessage());
+    Logger::log("🔥 Session validation error: " . $e->getMessage(), __FILE__, __LINE__);
     http_response_code(500);
     echo json_encode([
         'error' => 'Session setup failed',

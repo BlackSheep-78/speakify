@@ -111,7 +111,7 @@ class SessionManager {
         $stmt = $db->prepare("DELETE FROM sessions WHERE expires_at < NOW()");
         $stmt->execute();
     
-        error_log("🧹 Old sessions cleaned up.");
+        Logger::log("🧹 Old sessions cleaned up.");
     }
 
     public static function deleteOldestLogs($db = null) {
@@ -125,7 +125,7 @@ class SessionManager {
         if ($oldest) {
             $stmt = $db->prepare("DELETE FROM logs WHERE id = :id");
             $stmt->execute([':id' => $oldest['id']]);
-            error_log("🗑️ Oldest log ID {$oldest['id']} deleted.");
+            Logger::log("🗑️ Oldest log ID {$oldest['id']} deleted.");
         }
     }
     
@@ -180,7 +180,7 @@ class SessionManager {
     // logout
     public static function logout($token) 
     {
-        error_log("#### logout");
+        Logger::log("#### logout");
 
         $db = Database::getInstance()->getConnection();
         $stmt = $db->prepare("UPDATE sessions SET user_id = NULL WHERE token = :token");

@@ -1,6 +1,8 @@
 <!-- 
-  do not delete this:
-  file: dashboard.html
+  ========================================================================
+  File: speakify/public/views/dashboard.php
+  Project: Speakify
+  ========================================================================
 -->
 
 <div class="content">

@@ -9,7 +9,7 @@ function log_error_to_db($level, $message, $file = null, $line = null, $context 
         $db = Database::getInstance()->getConnection();
 
         if (!$db || !($db instanceof mysqli)) {
-            error_log("❌ DB not initialized for error logging.");
+            Logger::log("❌ DB not initialized for error logging.");
             return;
         }
 
@@ -22,7 +22,7 @@ function log_error_to_db($level, $message, $file = null, $line = null, $context 
             $context ? json_encode($context) : null
         ]);
     } catch (Throwable $e) {
-        error_log("🛑 Failed to log error to DB: " . $e->getMessage());
+        Logger::log("🛑 Failed to log error to DB: " . $e->getMessage());
     }
 }
 

@@ -11,7 +11,7 @@ class LoginService {
   public function __construct($pdo) {
     $this->pdo = $pdo;
 
-    Logger::info("LoginService");
+    //Logger::info("LoginService");
   }
 
   public function authenticate($email, $password, $existingToken = null): array {

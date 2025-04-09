@@ -22,7 +22,7 @@ class Database extends Utilities
         if ($pdo instanceof PDO) {
             self::$connection = $pdo;  // Store the connection statically
         } else {
-            error_log("❌ PDO not found");
+            Logger::log("❌ PDO not found");
         }
     }
 
@@ -39,7 +39,7 @@ class Database extends Utilities
     public static function getConnection()
     {
         if (!self::$connection) {
-            error_log("❌ No valid PDO connection");
+            Logger::log("❌ No valid PDO connection");
             return null;
         }
         return self::$connection;
@@ -48,7 +48,7 @@ class Database extends Utilities
     public function connect()
     {
         if (!self::$connection) {
-            error_log("❌ No PDO connection available");
+            Logger::log("❌ No PDO connection available");
         }
         return $this;
     }
@@ -99,7 +99,7 @@ class Database extends Utilities
             }
 
         } catch (PDOException $e) {
-            error_log("PDO Error: " . $e->getMessage());
+            Logger::log("PDO Error: " . $e->getMessage());
             $this->error = $e->getMessage();
         }
 

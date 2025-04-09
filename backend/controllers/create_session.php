@@ -29,29 +29,29 @@
 require_once BASEPATH . '/backend/utils/db.php';
 
 header('Content-Type: application/json');
-error_log("📥 create_session.php called");
+Logger::log("📥 create_session.php called");
 
 try {
   $token = bin2hex(random_bytes(32)); // Secure token
-  error_log("🔐 Generated token: $token");
+  Logger::log("🔐 Generated token: $token");
 
   $db = Database::getConnection();
   if (!$db) {
-    error_log("❌ Database connection failed (null returned)");
+    Logger::log("❌ Database connection failed (null returned)");
     throw new Exception("Database connection not established.");
   }
 
   $stmt = $db->prepare("INSERT INTO sessions (token, created_at, last_activity) VALUES (:token, NOW(), NOW())");
   $stmt->execute([':token' => $token]);
 
-  error_log("✅ Session inserted into database successfully.");
+  Logger::log("✅ Session inserted into database successfully.");
 
   echo json_encode([
     'success' => true,
     'token' => $token
   ]);
 } catch (Exception $e) {
-  error_log("❌ Error creating session: " . $e->getMessage());
+  Logger::log("❌ Error creating session: " . $e->getMessage());
   echo json_encode([
     'error' => 'Could not create session.',
     'details' => $e->getMessage()
