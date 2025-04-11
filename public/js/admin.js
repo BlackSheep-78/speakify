@@ -8,7 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
       output.textContent = '⏳ Exécution du script...';
   
       try {
-        const res = await fetch('/speakify/public/api/index.php?action=admin_tool&tool=generate_file_structure');const data = await res.json();
+        const res = await fetch(`/api/index.php?action=admin_tool&tool=generate_file_structure&token=${app.token}`);
+        const data = await res.json();
   
         if (data.success) {
           output.textContent = `✅ Succès :\n${data.output}`;

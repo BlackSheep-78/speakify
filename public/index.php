@@ -32,8 +32,8 @@ $allowedViews = [
     'admin'
 ];
 
-// Determine the view
-$page = $_GET['page'] ?? basename($_SERVER['REQUEST_URI']) ?: 'dashboard';
+// ✅ Clean fallback logic — only use `?page=...`, no basename fallback
+$page = $_GET['page'] ?? 'dashboard';
 $page = basename($page);
 
 // Fallback to 404 if not allowed

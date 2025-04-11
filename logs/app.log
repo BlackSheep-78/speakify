@@ -1272,3 +1272,647 @@
 [2025-04-09 16:06:51][INFO] create_session @ :0
 [2025-04-09 16:06:51][EXCEPTION] Too few arguments to function Logger::log(), 1 passed in C:\xampp\htdocs\speakify\backend\controllers\create_session.php on line 32 and at least 2 expected @ C:\xampp\htdocs\speakify\backend\classes\Logger.php:53
 [2025-04-09 16:06:51][INFO] validate_session @ :0
+[2025-04-09 16:24:43][INFO] Incoming request: {"URI":"\/speakify\/public\/","SCRIPT_NAME":"\/speakify\/public\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/speakify\/public\/index.php","QUERY_STRING":"","GET":[]} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-09 16:24:44][INFO] create_session @ :0
+[2025-04-09 16:24:45][EXCEPTION] Too few arguments to function Logger::log(), 1 passed in C:\xampp\htdocs\speakify\backend\controllers\create_session.php on line 32 and at least 2 expected @ C:\xampp\htdocs\speakify\backend\classes\Logger.php:53
+[2025-04-09 16:24:46][INFO] validate_session @ :0
+[2025-04-11 08:58:00][INFO] Incoming request: {"URI":"\/speakify\/public\/","SCRIPT_NAME":"\/speakify\/public\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/speakify\/public\/index.php","QUERY_STRING":"","GET":[]} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 08:58:01][INFO] create_session @ :0
+[2025-04-11 08:58:01][EXCEPTION] Too few arguments to function Logger::log(), 1 passed in C:\xampp\htdocs\speakify\backend\controllers\create_session.php on line 32 and at least 2 expected @ C:\xampp\htdocs\speakify\backend\classes\Logger.php:53
+[2025-04-11 08:58:02][INFO] validate_session @ :0
+[2025-04-11 08:58:59][INFO] Incoming request: {"URI":"\/speakify\/public\/","SCRIPT_NAME":"\/speakify\/public\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/speakify\/public\/index.php","QUERY_STRING":"","GET":[]} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 08:58:59][INFO] create_session @ :0
+[2025-04-11 08:59:00][EXCEPTION] Too few arguments to function Logger::log(), 1 passed in C:\xampp\htdocs\speakify\backend\controllers\create_session.php on line 32 and at least 2 expected @ C:\xampp\htdocs\speakify\backend\classes\Logger.php:53
+[2025-04-11 08:59:00][INFO] validate_session @ :0
+[2025-04-11 10:38:29][INFO] Incoming request: {"URI":"\/speakify\/public\/","SCRIPT_NAME":"\/speakify\/public\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/speakify\/public\/index.php","QUERY_STRING":"","GET":[]} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 10:38:29][INFO] create_session @ :0
+[2025-04-11 10:38:29][EXCEPTION] Too few arguments to function Logger::log(), 1 passed in C:\xampp\htdocs\speakify\backend\controllers\create_session.php on line 32 and at least 2 expected @ C:\xampp\htdocs\speakify\backend\classes\Logger.php:53
+[2025-04-11 10:38:30][INFO] validate_session @ :0
+[2025-04-11 10:39:01][INFO] Incoming request: {"URI":"\/speakify\/public\/","SCRIPT_NAME":"\/speakify\/public\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/speakify\/public\/index.php","QUERY_STRING":"","GET":[]} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 10:39:03][INFO] create_session @ :0
+[2025-04-11 10:39:04][EXCEPTION] Too few arguments to function Logger::log(), 1 passed in C:\xampp\htdocs\speakify\backend\controllers\create_session.php on line 32 and at least 2 expected @ C:\xampp\htdocs\speakify\backend\classes\Logger.php:53
+[2025-04-11 10:39:05][INFO] validate_session @ :0
+[2025-04-11 10:40:59][INFO] Incoming request: {"URI":"\/speakify\/public\/","SCRIPT_NAME":"\/speakify\/public\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/speakify\/public\/index.php","QUERY_STRING":"","GET":[]} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 10:41:00][INFO] create_session @ :0
+[2025-04-11 10:41:00][EXCEPTION] Too few arguments to function Logger::log(), 1 passed in C:\xampp\htdocs\speakify\backend\controllers\create_session.php on line 32 and at least 2 expected @ C:\xampp\htdocs\speakify\backend\classes\Logger.php:53
+[2025-04-11 10:41:01][INFO] validate_session @ :0
+[2025-04-11 10:55:38][INFO] Incoming request: {"URI":"\/","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"","GET":[]} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 10:55:41][INFO] Incoming request: {"URI":"\/","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"","GET":[]} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 10:55:43][INFO] Incoming request: {"URI":"\/","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"","GET":[]} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 10:55:44][INFO] Incoming request: {"URI":"\/","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"","GET":[]} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 10:55:56][INFO] Incoming request: {"URI":"\/","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"","GET":[]} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 10:56:51][INFO] Incoming request: {"URI":"\/","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"","GET":[]} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 10:56:55][INFO] Incoming request: {"URI":"\/","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"","GET":[]} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 11:08:46][INFO] Incoming request: {"URI":"\/","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"","GET":[]} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 11:11:25][INFO] Incoming request: {"URI":"\/","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"","GET":[]} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 11:11:38][INFO] Incoming request: {"URI":"\/","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"","GET":[]} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 11:12:38][INFO] Incoming request: {"URI":"\/","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"","GET":[]} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 11:15:08][INFO] Incoming request: {"URI":"\/","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"","GET":[]} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 11:15:09][INFO] create_session @ :0
+[2025-04-11 11:15:09][EXCEPTION] Too few arguments to function Logger::log(), 1 passed in C:\xampp\htdocs\speakify\backend\controllers\create_session.php on line 32 and at least 2 expected @ C:\xampp\htdocs\speakify\backend\classes\Logger.php:53
+[2025-04-11 11:19:44][INFO] Incoming request: {"URI":"\/","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"","GET":[]} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 11:19:45][INFO] create_session @ :0
+[2025-04-11 11:19:45][EXCEPTION] Too few arguments to function Logger::log(), 1 passed in C:\xampp\htdocs\speakify\backend\controllers\create_session.php on line 32 and at least 2 expected @ C:\xampp\htdocs\speakify\backend\classes\Logger.php:53
+[2025-04-11 11:19:46][INFO] validate_session @ :0
+[2025-04-11 11:20:10][INFO] Incoming request: {"URI":"\/","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"","GET":[]} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 11:20:10][INFO] create_session @ :0
+[2025-04-11 11:20:11][EXCEPTION] Too few arguments to function Logger::log(), 1 passed in C:\xampp\htdocs\speakify\backend\controllers\create_session.php on line 32 and at least 2 expected @ C:\xampp\htdocs\speakify\backend\classes\Logger.php:53
+[2025-04-11 11:20:11][INFO] validate_session @ :0
+[2025-04-11 11:23:23][INFO] Incoming request: {"URI":"\/","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"","GET":[]} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 11:23:24][INFO] create_session @ :0
+[2025-04-11 11:23:24][EXCEPTION] Too few arguments to function Logger::log(), 1 passed in C:\xampp\htdocs\speakify\backend\controllers\create_session.php on line 32 and at least 2 expected @ C:\xampp\htdocs\speakify\backend\classes\Logger.php:53
+[2025-04-11 11:23:25][INFO] validate_session @ :0
+[2025-04-11 11:24:30][INFO] create_session @ :0
+[2025-04-11 11:24:31][EXCEPTION] Too few arguments to function Logger::log(), 1 passed in C:\xampp\htdocs\speakify\backend\controllers\create_session.php on line 32 and at least 2 expected @ C:\xampp\htdocs\speakify\backend\classes\Logger.php:53
+[2025-04-11 11:25:08][INFO] create_session @ :0
+[2025-04-11 11:25:08][EXCEPTION] Too few arguments to function Logger::log(), 1 passed in C:\xampp\htdocs\speakify\backend\controllers\create_session.php on line 32 and at least 2 expected @ C:\xampp\htdocs\speakify\backend\classes\Logger.php:53
+[2025-04-11 11:31:59][INFO] Incoming request: {"URI":"\/","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"","GET":[]} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 11:32:00][INFO] create_session @ :0
+[Logger DB fail] SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'level' at row 1
+[2025-04-11 11:32:00][📥 create_session.php called] C:\xampp\htdocs\speakify\backend\controllers\create_session.php @ 32:0
+[2025-04-11 11:32:00][EXCEPTION] Too few arguments to function Logger::log(), 1 passed in C:\xampp\htdocs\speakify\backend\controllers\create_session.php on line 36 and at least 2 expected @ C:\xampp\htdocs\speakify\backend\classes\Logger.php:53
+[2025-04-11 11:32:01][INFO] validate_session @ :0
+[2025-04-11 11:32:56][INFO] Incoming request: {"URI":"\/","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"","GET":[]} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 11:32:57][INFO] create_session @ :0
+[Logger DB fail] SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'level' at row 1
+[2025-04-11 11:32:57][📥 create_session.php called] C:\xampp\htdocs\speakify\backend\controllers\create_session.php @ 32:0
+[Logger DB fail] SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'level' at row 1
+[2025-04-11 11:32:57][🔐 Generated token: a99e1c669258c1e55b94225060ed5cf41740382d96d24c7c43b23ab577f0d3f0] C:\xampp\htdocs\speakify\backend\controllers\create_session.php @ 36:0
+[2025-04-11 11:32:57][EXCEPTION] Too few arguments to function Logger::log(), 1 passed in C:\xampp\htdocs\speakify\backend\controllers\create_session.php on line 47 and at least 2 expected @ C:\xampp\htdocs\speakify\backend\classes\Logger.php:53
+[2025-04-11 11:32:58][INFO] validate_session @ :0
+[2025-04-11 11:33:38][INFO] Incoming request: {"URI":"\/","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"","GET":[]} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 11:33:40][INFO] create_session @ :0
+[Logger DB fail] SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'level' at row 1
+[2025-04-11 11:33:40][📥 create_session.php called] C:\xampp\htdocs\speakify\backend\controllers\create_session.php @ 32:0
+[Logger DB fail] SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'level' at row 1
+[2025-04-11 11:33:40][🔐 Generated token: 1bc4cdf3292359c07d1a287c57d5f20bd02c955ba39b2b55220a193dee553447] C:\xampp\htdocs\speakify\backend\controllers\create_session.php @ 36:0
+[Logger DB fail] SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'level' at row 1
+[2025-04-11 11:33:40][✅ Session inserted into database successfully.] C:\xampp\htdocs\speakify\backend\controllers\create_session.php @ 47:0
+[2025-04-11 11:33:41][INFO] validate_session @ :0
+[2025-04-11 11:58:13][INFO] create_session @ :0
+[Logger DB fail] SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'level' at row 1
+[2025-04-11 11:58:13][📥 create_session.php called] C:\xampp\htdocs\speakify\backend\controllers\create_session.php @ 32:0
+[Logger DB fail] SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'level' at row 1
+[2025-04-11 11:58:13][🔐 Generated token: a9f800e80e3a553b05a0c1f37075a819a4648c5447d79ca6148e761a4e91055d] C:\xampp\htdocs\speakify\backend\controllers\create_session.php @ 36:0
+[Logger DB fail] SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'level' at row 1
+[2025-04-11 11:58:13][✅ Session inserted into database successfully.] C:\xampp\htdocs\speakify\backend\controllers\create_session.php @ 47:0
+[2025-04-11 11:58:18][INFO] Incoming request: {"URI":"\/","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"","GET":[]} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 11:58:19][INFO] validate_session @ :0
+[2025-04-11 12:00:17][INFO] Incoming request: {"URI":"\/","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"","GET":[]} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:00:17][INFO] validate_session @ :0
+[2025-04-11 12:00:35][INFO] Incoming request: {"URI":"\/","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"","GET":[]} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:00:35][INFO] validate_session @ :0
+[2025-04-11 12:00:52][INFO] Incoming request: {"URI":"\/","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"","GET":[]} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:00:52][INFO] validate_session @ :0
+[2025-04-11 12:03:36][INFO] Incoming request: {"URI":"\/","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"","GET":[]} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:03:37][INFO] validate_session @ :0
+[2025-04-11 12:04:10][INFO] Incoming request: {"URI":"\/","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"","GET":[]} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:04:11][INFO] validate_session @ :0
+[2025-04-11 12:10:22][INFO] Incoming request: {"URI":"\/","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"","GET":[]} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:10:23][INFO] validate_session @ :0
+[2025-04-11 12:10:27][INFO] Incoming request: {"URI":"\/index?page=dashboard","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=index","GET":{"page":"index"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:10:28][INFO] validate_session @ :0
+[2025-04-11 12:10:36][INFO] Incoming request: {"URI":"\/playback","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playback","GET":{"page":"playback"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:10:37][INFO] validate_session @ :0
+[2025-04-11 12:10:38][INFO] get_sentences @ :0
+[2025-04-11 12:10:41][INFO] Incoming request: {"URI":"\/playlist-library","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playlist-library","GET":{"page":"playlist-library"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:10:42][INFO] validate_session @ :0
+[2025-04-11 12:10:42][INFO] Incoming request: {"URI":"\/index?page=dashboard","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=index","GET":{"page":"index"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:10:43][INFO] validate_session @ :0
+[2025-04-11 12:10:48][INFO] Incoming request: {"URI":"\/playlist-library","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playlist-library","GET":{"page":"playlist-library"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:10:49][INFO] validate_session @ :0
+[2025-04-11 12:10:51][INFO] Incoming request: {"URI":"\/smart-lists","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=smart-lists","GET":{"page":"smart-lists"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:10:52][INFO] validate_session @ :0
+[2025-04-11 12:10:56][INFO] Incoming request: {"URI":"\/playback","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playback","GET":{"page":"playback"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:10:57][INFO] validate_session @ :0
+[2025-04-11 12:10:58][INFO] get_sentences @ :0
+[2025-04-11 12:10:58][INFO] Incoming request: {"URI":"\/playlist-library","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playlist-library","GET":{"page":"playlist-library"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:10:59][INFO] validate_session @ :0
+[2025-04-11 12:11:01][INFO] Incoming request: {"URI":"\/index?page=dashboard","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=index","GET":{"page":"index"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:11:01][INFO] validate_session @ :0
+[2025-04-11 12:11:11][INFO] Incoming request: {"URI":"\/index?page=dashboard","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=index","GET":{"page":"index"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:11:12][INFO] validate_session @ :0
+[2025-04-11 12:11:13][INFO] Incoming request: {"URI":"\/playback","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playback","GET":{"page":"playback"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:11:14][INFO] validate_session @ :0
+[2025-04-11 12:11:14][INFO] get_sentences @ :0
+[2025-04-11 12:11:16][INFO] Incoming request: {"URI":"\/index?page=dashboard","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=index","GET":{"page":"index"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:11:17][INFO] validate_session @ :0
+[2025-04-11 12:11:19][INFO] Incoming request: {"URI":"\/playback","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playback","GET":{"page":"playback"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:11:19][INFO] validate_session @ :0
+[2025-04-11 12:11:20][INFO] get_sentences @ :0
+[2025-04-11 12:11:26][INFO] Incoming request: {"URI":"\/achievements","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=achievements","GET":{"page":"achievements"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:11:27][INFO] validate_session @ :0
+[2025-04-11 12:11:28][INFO] Incoming request: {"URI":"\/login-profile","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=login-profile","GET":{"page":"login-profile"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:11:29][INFO] validate_session @ :0
+[2025-04-11 12:11:31][INFO] Incoming request: {"URI":"\/index?page=dashboard","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=index","GET":{"page":"index"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:11:31][INFO] validate_session @ :0
+[2025-04-11 12:14:21][INFO] Incoming request: {"URI":"\/index?page=dashboard","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=index","GET":{"page":"index"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:14:21][INFO] validate_session @ :0
+[2025-04-11 12:14:56][INFO] Incoming request: {"URI":"\/index?page=dashboard","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=index","GET":{"page":"index"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:14:57][INFO] validate_session @ :0
+[2025-04-11 12:15:05][INFO] Incoming request: {"URI":"\/playback","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playback","GET":{"page":"playback"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:15:06][INFO] validate_session @ :0
+[2025-04-11 12:15:07][INFO] get_sentences @ :0
+[2025-04-11 12:15:08][INFO] Incoming request: {"URI":"\/index?page=dashboard","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=index","GET":{"page":"index"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:15:08][INFO] validate_session @ :0
+[2025-04-11 12:15:43][INFO] Incoming request: {"URI":"\/index?page=dashboard","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=index","GET":{"page":"index"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:15:44][INFO] validate_session @ :0
+[2025-04-11 12:16:00][INFO] Incoming request: {"URI":"\/playback","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playback","GET":{"page":"playback"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:16:01][INFO] validate_session @ :0
+[2025-04-11 12:16:02][INFO] get_sentences @ :0
+[2025-04-11 12:18:39][INFO] Incoming request: {"URI":"\/index?page=dashboard","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=index","GET":{"page":"index"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:18:40][INFO] validate_session @ :0
+[2025-04-11 12:18:42][INFO] Incoming request: {"URI":"\/index?page=dashboard","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=index","GET":{"page":"index"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:18:43][INFO] validate_session @ :0
+[2025-04-11 12:19:02][INFO] Incoming request: {"URI":"\/dashboard","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=dashboard","GET":{"page":"dashboard"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:19:03][INFO] create_session @ :0
+[Logger DB fail] SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'level' at row 1
+[2025-04-11 12:19:03][📥 create_session.php called] C:\xampp\htdocs\speakify\backend\controllers\create_session.php @ 32:0
+[Logger DB fail] SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'level' at row 1
+[2025-04-11 12:19:03][🔐 Generated token: a3aad87562e1bf80a5f0507556309ea03f443ea41fe4a078acdc6f4a81c5d75f] C:\xampp\htdocs\speakify\backend\controllers\create_session.php @ 36:0
+[Logger DB fail] SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'level' at row 1
+[2025-04-11 12:19:03][✅ Session inserted into database successfully.] C:\xampp\htdocs\speakify\backend\controllers\create_session.php @ 47:0
+[2025-04-11 12:19:04][INFO] validate_session @ :0
+[2025-04-11 12:19:13][INFO] Incoming request: {"URI":"\/dashboard","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=dashboard","GET":{"page":"dashboard"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:19:14][INFO] validate_session @ :0
+[2025-04-11 12:19:15][INFO] Incoming request: {"URI":"\/dashboard","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=dashboard","GET":{"page":"dashboard"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:19:16][INFO] validate_session @ :0
+[2025-04-11 12:19:18][INFO] Incoming request: {"URI":"\/playback","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playback","GET":{"page":"playback"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:19:19][INFO] validate_session @ :0
+[2025-04-11 12:19:20][INFO] get_sentences @ :0
+[2025-04-11 12:19:20][INFO] Incoming request: {"URI":"\/dashboard","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=dashboard","GET":{"page":"dashboard"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:19:21][INFO] validate_session @ :0
+[2025-04-11 12:19:31][INFO] Incoming request: {"URI":"\/index?page=dashboard","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=index","GET":{"page":"index"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:19:31][INFO] validate_session @ :0
+[2025-04-11 12:19:35][INFO] Incoming request: {"URI":"\/dashboard","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=dashboard","GET":{"page":"dashboard"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:19:36][INFO] validate_session @ :0
+[2025-04-11 12:19:38][INFO] Incoming request: {"URI":"\/playback","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playback","GET":{"page":"playback"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:19:38][INFO] validate_session @ :0
+[2025-04-11 12:19:39][INFO] get_sentences @ :0
+[2025-04-11 12:19:39][INFO] Incoming request: {"URI":"\/playlist-library","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playlist-library","GET":{"page":"playlist-library"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:19:40][INFO] validate_session @ :0
+[2025-04-11 12:19:41][INFO] Incoming request: {"URI":"\/playback","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playback","GET":{"page":"playback"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:19:42][INFO] validate_session @ :0
+[2025-04-11 12:19:43][INFO] get_sentences @ :0
+[2025-04-11 12:19:45][INFO] Incoming request: {"URI":"\/dashboard","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=dashboard","GET":{"page":"dashboard"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:19:45][INFO] validate_session @ :0
+[2025-04-11 12:19:46][INFO] Incoming request: {"URI":"\/playback","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playback","GET":{"page":"playback"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:19:47][INFO] validate_session @ :0
+[2025-04-11 12:19:47][INFO] Incoming request: {"URI":"\/playlist-library","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playlist-library","GET":{"page":"playlist-library"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:19:47][INFO] get_sentences @ :0
+[2025-04-11 12:19:47][INFO] validate_session @ :0
+[2025-04-11 12:19:48][INFO] Incoming request: {"URI":"\/achievements","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=achievements","GET":{"page":"achievements"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:19:49][INFO] validate_session @ :0
+[2025-04-11 12:19:50][INFO] Incoming request: {"URI":"\/achievements","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=achievements","GET":{"page":"achievements"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:19:50][INFO] validate_session @ :0
+[2025-04-11 12:19:51][INFO] Incoming request: {"URI":"\/login-profile","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=login-profile","GET":{"page":"login-profile"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:19:52][INFO] validate_session @ :0
+[2025-04-11 12:20:03][INFO] login @ :0
+[2025-04-11 12:20:03][INFO] login.php @ :0
+[2025-04-11 12:20:03][EXCEPTION] Too few arguments to function Logger::log(), 1 passed in C:\xampp\htdocs\speakify\backend\controllers\login.php on line 16 and at least 2 expected @ C:\xampp\htdocs\speakify\backend\classes\Logger.php:53
+[2025-04-11 12:22:44][INFO] login @ :0
+[2025-04-11 12:22:44][INFO] login.php @ :0
+[2025-04-11 12:22:44][🔐 login.php called] C:\xampp\htdocs\speakify\backend\controllers\login.php @ 16:0
+[2025-04-11 12:22:44][INFO] Token received: 3985e99a13f0dbdf8038ddc72b31638970a00c6c414945ab95e33eecf1b86162 @ :0
+[2025-04-11 12:22:45][INFO] Session validation result: {"valid":true,"token":"3985e99a13f0dbdf8038ddc72b31638970a00c6c414945ab95e33eecf1b86162","user_id":null,"name":null,"last_activity":"2025-04-11 12:22:44","expires_at":"2025-04-11 20:22:44","logged_in":false} @ :0
+[2025-04-11 12:22:45][INFO] Upgrading session for token: 3985e99a13f0dbdf8038ddc72b31638970a00c6c414945ab95e33eecf1b86162 @ :0
+[2025-04-11 12:22:45][WARNING] Undefined variable $response @ C:\xampp\htdocs\speakify\backend\controllers\login.php:46
+[2025-04-11 12:22:45][WARNING] Trying to access array offset on value of type null @ C:\xampp\htdocs\speakify\backend\controllers\login.php:46
+[2025-04-11 12:22:45][INFO] Session upgraded for token: 3985e99a13f0dbdf8038ddc72b31638970a00c6c414945ab95e33eecf1b86162 @ :0
+[2025-04-11 12:22:45][WARNING] Undefined variable $response @ C:\xampp\htdocs\speakify\backend\controllers\login.php:47
+[2025-04-11 12:22:45][WARNING] Trying to access array offset on value of type null @ C:\xampp\htdocs\speakify\backend\controllers\login.php:47
+[2025-04-11 12:22:45][INFO] 🔄 Session upgraded for user  @ :0
+[2025-04-11 12:22:46][INFO] Session upgraded for token: 3985e99a13f0dbdf8038ddc72b31638970a00c6c414945ab95e33eecf1b86162 @ :0
+[2025-04-11 12:22:47][INFO] Incoming request: {"URI":"\/dashboard","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=dashboard","GET":{"page":"dashboard"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:22:48][INFO] validate_session @ :0
+[2025-04-11 12:24:47][INFO] Incoming request: {"URI":"\/playback","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playback","GET":{"page":"playback"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:24:47][INFO] validate_session @ :0
+[2025-04-11 12:24:48][INFO] Incoming request: {"URI":"\/playlist-library","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playlist-library","GET":{"page":"playlist-library"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:24:48][INFO] get_sentences @ :0
+[2025-04-11 12:24:48][INFO] validate_session @ :0
+[2025-04-11 12:24:49][INFO] Incoming request: {"URI":"\/smart-lists","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=smart-lists","GET":{"page":"smart-lists"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:24:50][INFO] validate_session @ :0
+[2025-04-11 12:24:51][INFO] Incoming request: {"URI":"\/settings","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=settings","GET":{"page":"settings"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:24:51][INFO] validate_session @ :0
+[2025-04-11 12:24:53][INFO] Incoming request: {"URI":"\/dashboard","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=dashboard","GET":{"page":"dashboard"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:24:53][INFO] validate_session @ :0
+[2025-04-11 12:24:54][INFO] Incoming request: {"URI":"\/playback","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playback","GET":{"page":"playback"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:24:55][INFO] validate_session @ :0
+[2025-04-11 12:24:56][INFO] get_sentences @ :0
+[2025-04-11 12:24:56][INFO] Incoming request: {"URI":"\/playlist-library","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playlist-library","GET":{"page":"playlist-library"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:24:57][INFO] validate_session @ :0
+[2025-04-11 12:25:00][INFO] Incoming request: {"URI":"\/smart-lists","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=smart-lists","GET":{"page":"smart-lists"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:25:01][INFO] validate_session @ :0
+[2025-04-11 12:25:01][INFO] Incoming request: {"URI":"\/settings","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=settings","GET":{"page":"settings"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:25:02][INFO] validate_session @ :0
+[2025-04-11 12:25:03][INFO] Incoming request: {"URI":"\/dashboard","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=dashboard","GET":{"page":"dashboard"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:25:04][INFO] validate_session @ :0
+[2025-04-11 12:25:05][INFO] Incoming request: {"URI":"\/playback","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playback","GET":{"page":"playback"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:25:06][INFO] validate_session @ :0
+[2025-04-11 12:25:06][INFO] get_sentences @ :0
+[2025-04-11 12:25:07][INFO] Incoming request: {"URI":"\/playlist-library","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playlist-library","GET":{"page":"playlist-library"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:25:08][INFO] validate_session @ :0
+[2025-04-11 12:25:09][INFO] Incoming request: {"URI":"\/smart-lists","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=smart-lists","GET":{"page":"smart-lists"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:25:09][INFO] validate_session @ :0
+[2025-04-11 12:25:11][INFO] Incoming request: {"URI":"\/settings","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=settings","GET":{"page":"settings"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:25:11][INFO] validate_session @ :0
+[2025-04-11 12:25:13][INFO] Incoming request: {"URI":"\/dashboard","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=dashboard","GET":{"page":"dashboard"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:25:13][INFO] validate_session @ :0
+[2025-04-11 12:25:34][INFO] Incoming request: {"URI":"\/dashboard","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=dashboard","GET":{"page":"dashboard"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:25:35][INFO] validate_session @ :0
+[2025-04-11 12:25:36][INFO] Incoming request: {"URI":"\/playback","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playback","GET":{"page":"playback"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:25:37][INFO] validate_session @ :0
+[2025-04-11 12:25:37][INFO] get_sentences @ :0
+[2025-04-11 12:25:40][INFO] Incoming request: {"URI":"\/dashboard","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=dashboard","GET":{"page":"dashboard"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:25:41][INFO] validate_session @ :0
+[2025-04-11 12:25:41][INFO] Incoming request: {"URI":"\/login-profile","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=login-profile","GET":{"page":"login-profile"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:25:42][INFO] validate_session @ :0
+[2025-04-11 12:26:33][INFO] logout @ :0
+[2025-04-11 12:26:33][INFO] logout.php called @ C:\xampp\htdocs\speakify\backend\controllers\logout.php:9
+[2025-04-11 12:26:33][EXCEPTION] Too few arguments to function Logger::log(), 1 passed in C:\xampp\htdocs\speakify\backend\classes\SessionManager.php on line 183 and at least 2 expected @ C:\xampp\htdocs\speakify\backend\classes\Logger.php:53
+[2025-04-11 12:26:33][INFO] Incoming request: {"URI":"\/login-profile","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=login-profile","GET":{"page":"login-profile"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:26:34][INFO] validate_session @ :0
+[2025-04-11 12:29:08][INFO] Incoming request: {"URI":"\/settings","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=settings","GET":{"page":"settings"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:29:09][INFO] validate_session @ :0
+[2025-04-11 12:29:09][INFO] Incoming request: {"URI":"\/smart-lists","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=smart-lists","GET":{"page":"smart-lists"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:29:10][INFO] validate_session @ :0
+[2025-04-11 12:29:11][INFO] Incoming request: {"URI":"\/playlist-library","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playlist-library","GET":{"page":"playlist-library"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:29:11][INFO] validate_session @ :0
+[2025-04-11 12:29:13][INFO] Incoming request: {"URI":"\/playback","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playback","GET":{"page":"playback"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:29:13][INFO] validate_session @ :0
+[2025-04-11 12:29:14][INFO] get_sentences @ :0
+[2025-04-11 12:29:15][INFO] Incoming request: {"URI":"\/dashboard","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=dashboard","GET":{"page":"dashboard"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:29:15][INFO] validate_session @ :0
+[2025-04-11 12:29:17][INFO] Incoming request: {"URI":"\/playlist-library","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playlist-library","GET":{"page":"playlist-library"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:29:17][INFO] validate_session @ :0
+[2025-04-11 12:29:18][INFO] Incoming request: {"URI":"\/playback","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playback","GET":{"page":"playback"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 12:29:18][INFO] validate_session @ :0
+[2025-04-11 12:29:19][INFO] get_sentences @ :0
+[2025-04-11 13:01:19][INFO] Incoming request: {"URI":"\/smart-lists","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=smart-lists","GET":{"page":"smart-lists"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 13:01:21][INFO] validate_session @ :0
+[2025-04-11 13:06:14][INFO] Incoming request: {"URI":"\/playback","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playback","GET":{"page":"playback"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 13:06:15][INFO] validate_session @ :0
+[2025-04-11 13:06:15][INFO] get_sentences @ :0
+[2025-04-11 13:06:23][INFO] Incoming request: {"URI":"\/login-profile","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=login-profile","GET":{"page":"login-profile"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 13:06:24][INFO] validate_session @ :0
+[2025-04-11 13:06:41][INFO] Incoming request: {"URI":"\/achievements","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=achievements","GET":{"page":"achievements"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 13:06:42][INFO] validate_session @ :0
+[2025-04-11 13:06:47][INFO] Incoming request: {"URI":"\/playback","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playback","GET":{"page":"playback"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 13:06:47][INFO] validate_session @ :0
+[2025-04-11 13:06:48][INFO] get_sentences @ :0
+[2025-04-11 13:07:53][INFO] Incoming request: {"URI":"\/dashboard","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=dashboard","GET":{"page":"dashboard"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 13:07:54][INFO] validate_session @ :0
+[2025-04-11 13:08:02][INFO] Incoming request: {"URI":"\/login-profile","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=login-profile","GET":{"page":"login-profile"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 13:08:03][INFO] validate_session @ :0
+[2025-04-11 13:08:10][INFO] Incoming request: {"URI":"\/playlist-library","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playlist-library","GET":{"page":"playlist-library"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 13:08:11][INFO] validate_session @ :0
+[2025-04-11 13:08:14][INFO] Incoming request: {"URI":"\/playback","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playback","GET":{"page":"playback"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 13:08:15][INFO] validate_session @ :0
+[2025-04-11 13:08:16][INFO] get_sentences @ :0
+[2025-04-11 13:09:47][INFO] Incoming request: {"URI":"\/playback","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playback","GET":{"page":"playback"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 13:09:48][INFO] validate_session @ :0
+[2025-04-11 13:09:49][INFO] get_sentences @ :0
+[2025-04-11 13:10:18][INFO] get_sentences @ :0
+[2025-04-11 13:10:27][INFO] get_sentences @ :0
+[2025-04-11 13:10:47][INFO] Incoming request: {"URI":"\/dashboard","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=dashboard","GET":{"page":"dashboard"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 13:10:48][INFO] validate_session @ :0
+[2025-04-11 13:10:54][INFO] Incoming request: {"URI":"\/playback","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playback","GET":{"page":"playback"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 13:10:54][INFO] validate_session @ :0
+[2025-04-11 13:10:55][INFO] get_sentences @ :0
+[2025-04-11 13:11:47][INFO] Incoming request: {"URI":"\/playback","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playback","GET":{"page":"playback"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 13:11:47][INFO] validate_session @ :0
+[2025-04-11 13:11:48][INFO] get_sentences @ :0
+[2025-04-11 13:11:58][INFO] Incoming request: {"URI":"\/achievements","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=achievements","GET":{"page":"achievements"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 13:11:59][INFO] validate_session @ :0
+[2025-04-11 13:12:00][INFO] Incoming request: {"URI":"\/login-profile","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=login-profile","GET":{"page":"login-profile"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 13:12:01][INFO] validate_session @ :0
+[2025-04-11 13:12:10][INFO] get_sentences @ :0
+[2025-04-11 13:12:13][INFO] get_sentences @ :0
+[2025-04-11 13:12:16][INFO] get_sentences @ :0
+[2025-04-11 13:12:45][INFO] Incoming request: {"URI":"\/playback","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playback","GET":{"page":"playback"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 13:12:45][INFO] validate_session @ :0
+[2025-04-11 13:12:46][INFO] get_sentences @ :0
+[2025-04-11 13:12:54][INFO] get_sentences @ :0
+[2025-04-11 13:16:44][INFO] Incoming request: {"URI":"\/playback","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playback","GET":{"page":"playback"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 13:16:45][INFO] validate_session @ :0
+[2025-04-11 13:16:46][INFO] get_sentences @ :0
+[2025-04-11 13:17:04][INFO] Incoming request: {"URI":"\/playlist-library","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playlist-library","GET":{"page":"playlist-library"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 13:17:05][INFO] validate_session @ :0
+[2025-04-11 13:17:08][INFO] Incoming request: {"URI":"\/smart-lists","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=smart-lists","GET":{"page":"smart-lists"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 13:17:09][INFO] validate_session @ :0
+[2025-04-11 13:17:12][INFO] Incoming request: {"URI":"\/playback","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playback","GET":{"page":"playback"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 13:17:13][INFO] validate_session @ :0
+[2025-04-11 13:17:14][INFO] get_sentences @ :0
+[2025-04-11 13:17:49][INFO] Incoming request: {"URI":"\/dashboard","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=dashboard","GET":{"page":"dashboard"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 13:17:50][INFO] validate_session @ :0
+[2025-04-11 13:17:52][INFO] Incoming request: {"URI":"\/playback","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playback","GET":{"page":"playback"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 13:17:53][INFO] validate_session @ :0
+[2025-04-11 13:17:53][INFO] get_sentences @ :0
+[2025-04-11 13:17:54][INFO] Incoming request: {"URI":"\/playlist-library","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playlist-library","GET":{"page":"playlist-library"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 13:17:55][INFO] validate_session @ :0
+[2025-04-11 13:17:56][INFO] Incoming request: {"URI":"\/smart-lists","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=smart-lists","GET":{"page":"smart-lists"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 13:17:57][INFO] validate_session @ :0
+[2025-04-11 13:17:59][INFO] Incoming request: {"URI":"\/settings","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=settings","GET":{"page":"settings"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 13:17:59][INFO] validate_session @ :0
+[2025-04-11 13:18:13][INFO] Incoming request: {"URI":"\/admin","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=admin","GET":{"page":"admin"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 13:18:14][INFO] validate_session @ :0
+[2025-04-11 13:18:27][INFO] Incoming request: {"URI":"\/admin","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=admin","GET":{"page":"admin"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 13:18:28][INFO] validate_session @ :0
+[2025-04-11 13:49:36][INFO] Incoming request: {"URI":"\/admin","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=admin","GET":{"page":"admin"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 13:49:37][INFO] validate_session @ :0
+[2025-04-11 13:49:53][INFO] Incoming request: {"URI":"\/admin","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=admin","GET":{"page":"admin"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 13:49:54][INFO] validate_session @ :0
+[2025-04-11 13:49:56][INFO] admin_tool @ :0
+[2025-04-11 13:49:56][INFO] admin tool @ :0
+[2025-04-11 13:49:56][EXCEPTION] Call to undefined method SessionManager::getCurrentUser() @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:26
+[2025-04-11 13:51:09][INFO] admin_tool @ :0
+[2025-04-11 13:51:09][INFO] admin tool @ :0
+[2025-04-11 13:51:09][EXCEPTION] Call to undefined method SessionManager::getCurrentUser() @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:26
+[2025-04-11 14:07:31][INFO] admin_tool @ :0
+[2025-04-11 14:07:31][INFO] admin tool @ :0
+[2025-04-11 14:07:31][EXCEPTION] Call to undefined method SessionManager::getCurrentUser() @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:26
+[2025-04-11 14:12:38][INFO] admin_tool @ :0
+[2025-04-11 14:12:39][INFO] admin tool @ :0
+[2025-04-11 14:12:39][EXCEPTION] Too few arguments to function SessionManager::getCurrentUser(), 0 passed in C:\xampp\htdocs\speakify\backend\classes\AdminService.php on line 26 and exactly 1 expected @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:192
+[2025-04-11 14:12:43][INFO] admin_tool @ :0
+[2025-04-11 14:12:44][INFO] admin tool @ :0
+[2025-04-11 14:12:44][EXCEPTION] Too few arguments to function SessionManager::getCurrentUser(), 0 passed in C:\xampp\htdocs\speakify\backend\classes\AdminService.php on line 26 and exactly 1 expected @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:192
+[2025-04-11 14:12:48][INFO] Incoming request: {"URI":"\/admin","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=admin","GET":{"page":"admin"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 14:12:49][INFO] validate_session @ :0
+[2025-04-11 14:21:10][INFO] admin_tool @ :0
+[2025-04-11 14:21:10][INFO] admin tool @ :0
+[2025-04-11 14:21:15][INFO] admin_tool @ :0
+[2025-04-11 14:21:16][INFO] admin tool @ :0
+[2025-04-11 14:25:13][INFO] Incoming request: {"URI":"\/dashboard","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=dashboard","GET":{"page":"dashboard"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 14:25:14][INFO] validate_session @ :0
+[2025-04-11 14:25:14][INFO] Incoming request: {"URI":"\/login-profile","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=login-profile","GET":{"page":"login-profile"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 14:25:15][INFO] validate_session @ :0
+[2025-04-11 14:26:07][INFO] Incoming request: {"URI":"\/admin","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=admin","GET":{"page":"admin"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 14:26:08][INFO] validate_session @ :0
+[2025-04-11 14:26:18][INFO] admin_tool @ :0
+[2025-04-11 14:26:19][INFO] admin tool @ :0
+[2025-04-11 14:26:19][INFO] isAdmin @ :0
+[2025-04-11 14:27:39][INFO] admin_tool @ :0
+[2025-04-11 14:27:39][INFO] admin tool @ :0
+[2025-04-11 14:27:39][EXCEPTION] Logger::log(): Argument #3 ($file) must be of type string, int given, called in C:\xampp\htdocs\speakify\backend\classes\AdminService.php on line 26 @ C:\xampp\htdocs\speakify\backend\classes\Logger.php:53
+[2025-04-11 14:30:05][INFO] admin_tool @ :0
+[2025-04-11 14:30:05][INFO] admin tool @ :0
+[2025-04-11 14:30:05][EXCEPTION] Logger::log(): Argument #3 ($file) must be of type string, int given, called in C:\xampp\htdocs\speakify\backend\classes\AdminService.php on line 26 @ C:\xampp\htdocs\speakify\backend\classes\Logger.php:53
+[2025-04-11 14:31:42][INFO] admin_tool @ :0
+[2025-04-11 14:31:42][INFO] admin tool @ :0
+[2025-04-11 14:31:43][DEBUG] isAdmin @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:26
+[2025-04-11 14:31:55][INFO] admin_tool @ :0
+[2025-04-11 14:31:56][INFO] admin tool @ :0
+[2025-04-11 14:31:56][DEBUG] isAdmin @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:26
+[2025-04-11 14:32:05][INFO] admin_tool @ :0
+[2025-04-11 14:32:05][INFO] admin tool @ :0
+[2025-04-11 14:32:05][DEBUG] isAdmin @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:26
+[2025-04-11 14:32:51][INFO] admin_tool @ :0
+[2025-04-11 14:32:51][INFO] admin tool @ :0
+[2025-04-11 14:32:51][DEBUG] isAdmin bb8181d7292fdb61ec98968c2361b343b8b071c78b7bd1d858f500c3e4c25e5d @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:26
+[2025-04-11 14:34:39][INFO] admin_tool @ :0
+[2025-04-11 14:34:40][INFO] admin tool @ :0
+[2025-04-11 14:34:40][DEBUG] isAdmin 7698a41d8859500928293a2a435a9f6c092844b3df9b0b972841030be9de8ad5 @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:26
+[2025-04-11 14:34:40][DEBUG]  @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:33
+[2025-04-11 14:39:36][INFO] admin_tool @ :0
+[2025-04-11 14:39:36][INFO] admin tool @ :0
+[2025-04-11 14:39:36][DEBUG] isAdmin 16c12eb8fcf367c0e32cad8264f9a1f01e63eaacc759bb0bb634766c235f0c6a @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:26
+[2025-04-11 14:39:37][DEBUG]  @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:33
+[2025-04-11 14:40:35][INFO] admin_tool @ :0
+[2025-04-11 14:40:35][INFO] admin tool @ :0
+[2025-04-11 14:40:35][DEBUG] isAdmin d4f53230eafb4fa29606a80f75b920b4989b7191911983c8b6e2dcbce0bf4c18 @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:26
+[2025-04-11 14:40:35][DEBUG]  @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:35
+[2025-04-11 14:40:35][WARNING] Trying to access array offset on value of type null @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:36
+[2025-04-11 14:40:35][EXCEPTION] Logger::debug(): Argument #1 ($msg) must be of type string, null given, called in C:\xampp\htdocs\speakify\backend\classes\AdminService.php on line 36 @ C:\xampp\htdocs\speakify\backend\classes\Logger.php:108
+[2025-04-11 14:49:18][INFO] admin_tool @ :0
+[2025-04-11 14:49:18][INFO] admin tool @ :0
+[2025-04-11 14:49:18][DEBUG] isAdmin 1e300d9275258d77d3e7fb6a0c08cd2d27d1a8bd916d7fac61716b4dbafcbed7 @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:26
+[2025-04-11 14:49:18][DEBUG] null @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:35
+[2025-04-11 14:49:18][WARNING] Trying to access array offset on value of type null @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:36
+[2025-04-11 14:49:18][EXCEPTION] Logger::debug(): Argument #1 ($msg) must be of type string, null given, called in C:\xampp\htdocs\speakify\backend\classes\AdminService.php on line 36 @ C:\xampp\htdocs\speakify\backend\classes\Logger.php:108
+[2025-04-11 14:53:03][INFO] admin_tool @ :0
+[2025-04-11 14:53:03][INFO] admin tool @ :0
+[2025-04-11 14:53:03][DEBUG] isAdmin 1363eb224a2782330bd624b35c11a7c589c7d7e6b1ed1e94dd54346d158cc9b6 @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:26
+[2025-04-11 14:53:03][DEBUG] {
+    "valid": true,
+    "token": "1363eb224a2782330bd624b35c11a7c589c7d7e6b1ed1e94dd54346d158cc9b6",
+    "user_id": null,
+    "name": null,
+    "last_activity": "2025-04-11 14:53:03",
+    "expires_at": "2025-04-11 22:53:02",
+    "logged_in": false
+} @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:199
+[2025-04-11 14:53:03][DEBUG] null @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:33
+[2025-04-11 14:53:03][WARNING] Trying to access array offset on value of type null @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:34
+[2025-04-11 14:53:03][EXCEPTION] Logger::debug(): Argument #1 ($msg) must be of type string, null given, called in C:\xampp\htdocs\speakify\backend\classes\AdminService.php on line 34 @ C:\xampp\htdocs\speakify\backend\classes\Logger.php:108
+[2025-04-11 14:54:09][INFO] Incoming request: {"URI":"\/dashboard","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=dashboard","GET":{"page":"dashboard"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 14:54:10][INFO] validate_session @ :0
+[2025-04-11 14:54:10][INFO] Incoming request: {"URI":"\/login-profile","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=login-profile","GET":{"page":"login-profile"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 14:54:11][INFO] validate_session @ :0
+[2025-04-11 14:54:46][INFO] Incoming request: {"URI":"\/playback","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=playback","GET":{"page":"playback"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 14:54:46][INFO] validate_session @ :0
+[2025-04-11 14:54:47][INFO] get_sentences @ :0
+[2025-04-11 14:55:04][INFO] Incoming request: {"URI":"\/dashboard","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=dashboard","GET":{"page":"dashboard"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 14:55:05][INFO] validate_session @ :0
+[2025-04-11 14:55:26][INFO] Incoming request: {"URI":"\/admin","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=admin","GET":{"page":"admin"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 14:55:26][INFO] validate_session @ :0
+[2025-04-11 14:55:39][INFO] admin_tool @ :0
+[2025-04-11 14:55:39][INFO] admin tool @ :0
+[2025-04-11 14:55:40][DEBUG] isAdmin 925398976408b07a4a4994bece9e0c170cfbd677c4538c4f9ca7a9af2f3df03e @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:26
+[2025-04-11 14:55:40][DEBUG] {
+    "valid": true,
+    "token": "925398976408b07a4a4994bece9e0c170cfbd677c4538c4f9ca7a9af2f3df03e",
+    "user_id": null,
+    "name": null,
+    "last_activity": "2025-04-11 14:55:39",
+    "expires_at": "2025-04-11 22:55:39",
+    "logged_in": false
+} @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:199
+[2025-04-11 14:55:40][DEBUG] null @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:33
+[2025-04-11 14:55:40][WARNING] Trying to access array offset on value of type null @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:34
+[2025-04-11 14:55:40][EXCEPTION] Logger::debug(): Argument #1 ($msg) must be of type string, null given, called in C:\xampp\htdocs\speakify\backend\classes\AdminService.php on line 34 @ C:\xampp\htdocs\speakify\backend\classes\Logger.php:108
+[2025-04-11 14:58:00][INFO] Incoming request: {"URI":"\/admin","SCRIPT_NAME":"\/index.php","SCRIPT_FILENAME":"C:\/xampp\/htdocs\/speakify\/public\/index.php","PHP_SELF":"\/index.php","QUERY_STRING":"page=admin","GET":{"page":"admin"}} @ C:\xampp\htdocs\speakify\public\index.php:17
+[2025-04-11 14:58:01][INFO] validate_session @ :0
+[2025-04-11 14:58:05][INFO] admin_tool @ :0
+[2025-04-11 14:58:05][INFO] admin tool @ :0
+[2025-04-11 14:58:05][DEBUG] isAdmin 3985e99a13f0dbdf8038ddc72b31638970a00c6c414945ab95e33eecf1b86162 @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:26
+[2025-04-11 14:58:06][DEBUG] {
+    "valid": true,
+    "token": "3985e99a13f0dbdf8038ddc72b31638970a00c6c414945ab95e33eecf1b86162",
+    "user_id": 3,
+    "name": "Jorge Alves",
+    "last_activity": "2025-04-11 14:58:05",
+    "expires_at": "2025-04-11 20:22:44",
+    "logged_in": true
+} @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:199
+[2025-04-11 14:58:06][EXCEPTION] Call to private Database::__construct() from scope SessionManager @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:204
+[2025-04-11 14:58:27][INFO] admin_tool @ :0
+[2025-04-11 14:58:28][INFO] admin tool @ :0
+[2025-04-11 14:58:28][DEBUG] isAdmin 3985e99a13f0dbdf8038ddc72b31638970a00c6c414945ab95e33eecf1b86162 @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:26
+[2025-04-11 14:58:28][DEBUG] {
+    "valid": true,
+    "token": "3985e99a13f0dbdf8038ddc72b31638970a00c6c414945ab95e33eecf1b86162",
+    "user_id": 3,
+    "name": "Jorge Alves",
+    "last_activity": "2025-04-11 14:58:28",
+    "expires_at": "2025-04-11 20:22:44",
+    "logged_in": true
+} @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:199
+[2025-04-11 14:58:28][EXCEPTION] Call to private Database::__construct() from scope SessionManager @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:204
+[2025-04-11 14:59:56][INFO] admin_tool @ :0
+[2025-04-11 14:59:56][INFO] admin tool @ :0
+[2025-04-11 14:59:56][DEBUG] isAdmin 3985e99a13f0dbdf8038ddc72b31638970a00c6c414945ab95e33eecf1b86162 @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:26
+[2025-04-11 14:59:56][DEBUG] {
+    "valid": true,
+    "token": "3985e99a13f0dbdf8038ddc72b31638970a00c6c414945ab95e33eecf1b86162",
+    "user_id": 3,
+    "name": "Jorge Alves",
+    "last_activity": "2025-04-11 14:59:56",
+    "expires_at": "2025-04-11 20:22:44",
+    "logged_in": true
+} @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:199
+[2025-04-11 14:59:56][EXCEPTION] Call to private Database::__construct() from scope SessionManager @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:204
+[2025-04-11 15:02:30][INFO] admin_tool @ :0
+[2025-04-11 15:02:30][INFO] admin tool @ :0
+[2025-04-11 15:02:31][DEBUG] isAdmin 3985e99a13f0dbdf8038ddc72b31638970a00c6c414945ab95e33eecf1b86162 @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:26
+[2025-04-11 15:02:31][DEBUG] {
+    "valid": true,
+    "token": "3985e99a13f0dbdf8038ddc72b31638970a00c6c414945ab95e33eecf1b86162",
+    "user_id": 3,
+    "name": "Jorge Alves",
+    "last_activity": "2025-04-11 15:02:30",
+    "expires_at": "2025-04-11 20:22:44",
+    "logged_in": true
+} @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:199
+[2025-04-11 15:02:31][EXCEPTION] Call to undefined method Database::prepare() @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:205
+[2025-04-11 15:04:35][INFO] admin_tool @ :0
+[2025-04-11 15:04:36][INFO] admin tool @ :0
+[2025-04-11 15:04:36][DEBUG] isAdmin 3985e99a13f0dbdf8038ddc72b31638970a00c6c414945ab95e33eecf1b86162 @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:26
+[2025-04-11 15:04:36][DEBUG] {
+    "valid": true,
+    "token": "3985e99a13f0dbdf8038ddc72b31638970a00c6c414945ab95e33eecf1b86162",
+    "user_id": 3,
+    "name": "Jorge Alves",
+    "last_activity": "2025-04-11 15:04:35",
+    "expires_at": "2025-04-11 20:22:44",
+    "logged_in": true
+} @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:199
+[2025-04-11 15:04:36][DEBUG] {
+    "id": 3,
+    "name": "Jorge Alves",
+    "email": "jorge.mnf.alves@gmail.com"
+} @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:33
+[2025-04-11 15:04:36][DEBUG] jorge.mnf.alves@gmail.com @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:34
+[2025-04-11 15:05:10][INFO] admin_tool @ :0
+[2025-04-11 15:05:10][INFO] admin tool @ :0
+[2025-04-11 15:05:11][DEBUG] isAdmin 3985e99a13f0dbdf8038ddc72b31638970a00c6c414945ab95e33eecf1b86162 @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:26
+[2025-04-11 15:05:11][DEBUG] {
+    "valid": true,
+    "token": "3985e99a13f0dbdf8038ddc72b31638970a00c6c414945ab95e33eecf1b86162",
+    "user_id": 3,
+    "name": "Jorge Alves",
+    "last_activity": "2025-04-11 15:05:10",
+    "expires_at": "2025-04-11 20:22:44",
+    "logged_in": true
+} @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:199
+[2025-04-11 15:05:11][DEBUG] {
+    "id": 3,
+    "name": "Jorge Alves",
+    "email": "jorge.mnf.alves@gmail.com"
+} @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:33
+[2025-04-11 15:05:11][DEBUG] jorge.mnf.alves@gmail.com @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:34
+[2025-04-11 15:57:54][INFO] admin_tool @ :0
+[2025-04-11 15:57:54][INFO] admin tool @ :0
+[2025-04-11 15:57:54][DEBUG] isAdmin 3985e99a13f0dbdf8038ddc72b31638970a00c6c414945ab95e33eecf1b86162 @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:26
+[2025-04-11 15:57:55][DEBUG] {
+    "valid": true,
+    "token": "3985e99a13f0dbdf8038ddc72b31638970a00c6c414945ab95e33eecf1b86162",
+    "user_id": 3,
+    "name": "Jorge Alves",
+    "last_activity": "2025-04-11 15:57:54",
+    "expires_at": "2025-04-11 20:22:44",
+    "logged_in": true
+} @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:199
+[2025-04-11 15:57:55][DEBUG] {
+    "id": 3,
+    "name": "Jorge Alves",
+    "email": "jorge.mnf.alves@gmail.com"
+} @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:33
+[2025-04-11 15:57:55][DEBUG] jorge.mnf.alves@gmail.com @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:34
+[2025-04-11 15:57:55][DEBUG] C:\xampp\htdocs\speakify @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:54
+[2025-04-11 15:59:31][INFO] admin_tool @ :0
+[2025-04-11 15:59:31][INFO] admin tool @ :0
+[2025-04-11 15:59:31][DEBUG] isAdmin 3985e99a13f0dbdf8038ddc72b31638970a00c6c414945ab95e33eecf1b86162 @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:26
+[2025-04-11 15:59:32][DEBUG] {
+    "valid": true,
+    "token": "3985e99a13f0dbdf8038ddc72b31638970a00c6c414945ab95e33eecf1b86162",
+    "user_id": 3,
+    "name": "Jorge Alves",
+    "last_activity": "2025-04-11 15:59:31",
+    "expires_at": "2025-04-11 20:22:44",
+    "logged_in": true
+} @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:199
+[2025-04-11 15:59:32][DEBUG] {
+    "id": 3,
+    "name": "Jorge Alves",
+    "email": "jorge.mnf.alves@gmail.com"
+} @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:33
+[2025-04-11 15:59:32][DEBUG] jorge.mnf.alves@gmail.com @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:34
+[2025-04-11 15:59:32][DEBUG] bash 'C:\xampp\htdocs\speakify/resources/generate_file_structure.sh' 2>&1 @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:58
+[2025-04-11 16:02:52][INFO] admin_tool @ :0
+[2025-04-11 16:02:52][INFO] admin tool @ :0
+[2025-04-11 16:02:52][DEBUG] isAdmin 3985e99a13f0dbdf8038ddc72b31638970a00c6c414945ab95e33eecf1b86162 @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:26
+[2025-04-11 16:02:52][DEBUG] {
+    "valid": true,
+    "token": "3985e99a13f0dbdf8038ddc72b31638970a00c6c414945ab95e33eecf1b86162",
+    "user_id": 3,
+    "name": "Jorge Alves",
+    "last_activity": "2025-04-11 16:02:52",
+    "expires_at": "2025-04-11 20:22:44",
+    "logged_in": true
+} @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:199
+[2025-04-11 16:02:52][DEBUG] {
+    "id": 3,
+    "name": "Jorge Alves",
+    "email": "jorge.mnf.alves@gmail.com"
+} @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:33
+[2025-04-11 16:02:52][DEBUG] jorge.mnf.alves@gmail.com @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:34
+[2025-04-11 16:02:52][DEBUG] bash 'C:\xampp\htdocs\speakify\resources/generate_file_structure.sh' 2>&1 @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:58
+[2025-04-11 16:06:49][INFO] admin_tool @ :0
+[2025-04-11 16:06:49][INFO] admin tool @ :0
+[2025-04-11 16:06:49][DEBUG] isAdmin 3985e99a13f0dbdf8038ddc72b31638970a00c6c414945ab95e33eecf1b86162 @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:26
+[2025-04-11 16:06:50][DEBUG] {
+    "valid": true,
+    "token": "3985e99a13f0dbdf8038ddc72b31638970a00c6c414945ab95e33eecf1b86162",
+    "user_id": 3,
+    "name": "Jorge Alves",
+    "last_activity": "2025-04-11 16:06:49",
+    "expires_at": "2025-04-11 20:22:44",
+    "logged_in": true
+} @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:199
+[2025-04-11 16:06:50][DEBUG] {
+    "id": 3,
+    "name": "Jorge Alves",
+    "email": "jorge.mnf.alves@gmail.com"
+} @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:33
+[2025-04-11 16:06:50][DEBUG] jorge.mnf.alves@gmail.com @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:34
+[2025-04-11 16:06:50][DEBUG] bash "C:\xampp\htdocs\speakify/resources/generate_file_structure.sh" 2>&1 @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:58
+[2025-04-11 16:09:33][INFO] admin_tool @ :0
+[2025-04-11 16:09:33][INFO] admin tool @ :0
+[2025-04-11 16:09:33][DEBUG] isAdmin 3985e99a13f0dbdf8038ddc72b31638970a00c6c414945ab95e33eecf1b86162 @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:26
+[2025-04-11 16:09:33][DEBUG] {
+    "valid": true,
+    "token": "3985e99a13f0dbdf8038ddc72b31638970a00c6c414945ab95e33eecf1b86162",
+    "user_id": 3,
+    "name": "Jorge Alves",
+    "last_activity": "2025-04-11 16:09:33",
+    "expires_at": "2025-04-11 20:22:44",
+    "logged_in": true
+} @ C:\xampp\htdocs\speakify\backend\classes\SessionManager.php:199
+[2025-04-11 16:09:33][DEBUG] {
+    "id": 3,
+    "name": "Jorge Alves",
+    "email": "jorge.mnf.alves@gmail.com"
+} @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:33
+[2025-04-11 16:09:34][DEBUG] jorge.mnf.alves@gmail.com @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:34
+[2025-04-11 16:09:34][DEBUG] bash C:/xampp/htdocs/speakify/resources/generate_file_structure.sh 2>&1 @ C:\xampp\htdocs\speakify\backend\classes\AdminService.php:58

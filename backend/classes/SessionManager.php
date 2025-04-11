@@ -29,6 +29,7 @@
 // • upgrade($token, $user_id) → Links a session to a user (marks as logged in)
 // • destroy($token)           → Deletes a session completely from the DB
 // • logout($token)            → Removes user_id from the session, keeps token
+// • getCurrentUser($token)
 // ============================================================================
 
 
@@ -180,11 +181,35 @@ class SessionManager {
     // logout
     public static function logout($token) 
     {
-        Logger::log("#### logout");
+        //Logger::log("SessionManager->logout()", __FILE__, __LINE__);
 
         $db = Database::getInstance()->getConnection();
         $stmt = $db->prepare("UPDATE sessions SET user_id = NULL WHERE token = :token");
         $stmt->execute([':token' => $token]);
         return ['success' => true];
     }
+
+    public static function getCurrentUser(?string $token): ?array
+    {
+        if (!$token) return null;
+    
+        $session = self::validate($token);
+
+        $str = json_encode($session, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+        Logger::debug($str, __FILE__, __LINE__);
+
+        if (!$session || empty($session['user_id'])) return null;
+    
+        try {
+            $db = Database::getInstance()->getConnection();
+            $stmt = $db->prepare("SELECT id, name, email FROM users WHERE id = :id");
+            $stmt->execute([':id' => $session['user_id']]);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            Logger::error("Failed to load user from session: " . $e->getMessage(), __FILE__, __LINE__);
+            return null;
+        }
+    }
+    
+    
 }

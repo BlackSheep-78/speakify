@@ -118,7 +118,7 @@ const app = {
 
   async validateToken(token) {
     try {
-      const res = await fetch(`/speakify/public/api/index.php?action=validate_session&token=${token}`);
+      const res = await fetch(`/api/index.php?action=validate_session&token=${token}`);
       const data = await res.json();
       console.log("🔍 Token validation result:", data);
 
@@ -135,7 +135,7 @@ const app = {
 
   async createNewSession() {
     try {
-      const res = await fetch('/speakify/public/api/index.php?action=create_session');
+      const res = await fetch('/api/index.php?action=create_session');
       const data = await res.json();
 
       if (data.success && data.token) {
@@ -206,7 +206,7 @@ const app = {
     
         // ✅ Call backend to remove user_id, keep session token alive
         if (token) {
-          await fetch(`/speakify/public/api/index.php?action=logout&token=${token}`);
+          await fetch(`/api/index.php?action=logout&token=${token}`);
         }
     
         // ✅ Keep token, but clear user identity info
@@ -258,7 +258,7 @@ const app = {
       };
 
       try {
-        const res = await fetch("/speakify/public/api/index.php?action=login", {
+        const res = await fetch("/api/index.php?action=login", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload)
@@ -297,7 +297,7 @@ const app = {
       };
 
       try {
-        const res = await fetch("/speakify/public/api/index.php?action=register_user", {
+        const res = await fetch("/api/index.php?action=register_user", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),
@@ -334,7 +334,7 @@ const app = {
       return;
     }
   
-    fetch('/speakify/public/api/index.php?action=get_sentences')
+    fetch(`/api/index.php?action=get_sentences&lang_id=39&token=${this.token}`)
     .then(res => res.json())
     .then(data => {
       if (!data.items || !Array.isArray(data.items) || data.items.length === 0) {

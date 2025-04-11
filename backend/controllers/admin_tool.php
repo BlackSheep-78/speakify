@@ -14,7 +14,7 @@ Logger::info("admin tool");
 
 require_once dirname(__DIR__) . '/classes/AdminService.php';
 
-if (!AdminService::isAdmin()) {
+if (!AdminService::isAdmin($token)) {
     echo json_encode(['error' => 'Access denied']);
     exit;
 }

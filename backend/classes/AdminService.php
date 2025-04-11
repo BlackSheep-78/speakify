@@ -21,11 +21,23 @@ class AdminService
      * Checks if the current user has admin privileges.
      * You can replace this logic with a role/flag check later.
      */
-    public static function isAdmin(): bool
+    public static function isAdmin(string $token): bool
     {
-        $session = SessionManager::getCurrentUser();
-        return isset($session['email']) && $session['email'] === 'admin@example.com';
+        Logger::debug("isAdmin ".$token, __FILE__, __LINE__);
+
+
+
+        $session = SessionManager::getCurrentUser($token);
+
+        $str = json_encode($session, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+        Logger::debug($str, __FILE__, __LINE__);
+        Logger::debug($session['email'], __FILE__, __LINE__);
+
+
+
+        return isset($session['email']) && $session['email'] === 'jorge.mnf.alves@gmail.com';
     }
+    
 
     /**
      * Executes the generate_file_structure.sh script.
@@ -37,7 +49,15 @@ class AdminService
         $returnCode = 0;
 
         // Run the script and capture output
-        exec('bash generate_file_structure.sh 2>&1', $output, $returnCode);
+
+        $scriptPath = BASEPATH . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'generate_file_structure.sh';
+        $scriptPath = str_replace(['\\', '//'], '/', $scriptPath); // normalize for bash
+        
+        $cmd = "bash {$scriptPath} 2>&1";
+        
+        Logger::debug($cmd, __FILE__, __LINE__);
+        
+        exec($cmd, $output, $returnCode);
 
         return [
             'success' => $returnCode === 0,

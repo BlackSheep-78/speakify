@@ -1,10 +1,10 @@
 </div> <!-- end content -->
   <div class="footer-nav">
-    <a href="/speakify/public/dashboard">🏠</a>
-    <a href="/speakify/public/playback">🎧</a>
-    <a href="/speakify/public/playlist-library">📚</a>
-    <a href="/speakify/public/smart-lists">🧠</a>
-    <a href="/speakify/public/settings">⚙️</a>
+    <a href="<?= $_SERVER['BASE_URL'] ?? '' ?>/dashboard">🏠</a>
+    <a href="<?= $_SERVER['BASE_URL'] ?? '' ?>/playback">🎧</a>
+    <a href="<?= $_SERVER['BASE_URL'] ?? '' ?>/playlist-library">📚</a>
+    <a href="<?= $_SERVER['BASE_URL'] ?? '' ?>/smart-lists">🧠</a>
+    <a href="<?= $_SERVER['BASE_URL'] ?? '' ?>/settings">⚙️</a>
   </div>
 </body>
 </html>
