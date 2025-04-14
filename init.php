@@ -25,12 +25,10 @@ if (!defined('BASEPATH')) {
 }
 
 // ✅ Load core backend components
-require_once BASEPATH . '/backend/init/config.php';
-require_once BASEPATH . '/backend/classes/Logger.php';
-require_once BASEPATH . '/backend/classes/Database.php';
+require BASEPATH . '/backend/init/config.php';
+require BASEPATH . '/backend/classes/Logger.php';
+require BASEPATH . '/backend/classes/Database.php';
 
-// ✅ Initialize Logger (after config + before PDO is used)
-Logger::init($GLOBALS['pdo'] ?? null);  // Safe to call early
 
 // ✅ Create PDO connection and expose globally
 try {

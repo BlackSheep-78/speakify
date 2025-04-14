@@ -43,27 +43,40 @@ class AdminService
      * Executes the generate_file_structure.sh script.
      * Returns output and success flag.
      */
-    public static function generateFileStructure(): array
+    public static function generateFileStructure(?string $rootDir = null, ?string $outputFile = null): array
     {
         $output = [];
         $returnCode = 0;
-
-        // Run the script and capture output
-
-        $scriptPath = BASEPATH . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'generate_file_structure.sh';
-        $scriptPath = str_replace(['\\', '//'], '/', $scriptPath); // normalize for bash
-        
-        $cmd = "bash {$scriptPath} 2>&1";
-        
-        Logger::debug($cmd, __FILE__, __LINE__);
-        
+    
+        // Step 1: Define paths
+        $bashExe = '"C:\\Program Files\\Git\\bin\\bash.exe"'; // Adjust if your Git is installed elsewhere
+    
+        $scriptPath = BASEPATH . '/resources/generate_file_structure.sh';
+        $rootPath   = $rootDir ?? BASEPATH;
+        $outputPath = $outputFile ?? BASEPATH . '/docs/file_structure.json';
+    
+        // Step 2: Convert to Git Bash–compatible paths
+        $scriptBashPath = Utilities::toGitBashPath($scriptPath);
+        $rootBashPath   = Utilities::toGitBashPath($rootPath);
+        $outputBashPath = Utilities::toGitBashPath($outputPath);
+    
+        // Step 3: Build and run command
+        $cmd = "$bashExe $scriptBashPath $rootBashPath $outputBashPath 2>&1";
+        Logger::debug("Running file structure generator: $cmd", __FILE__, __LINE__);
+    
         exec($cmd, $output, $returnCode);
-
+    
+        // Step 4: Return results
         return [
-            'success' => $returnCode === 0,
-            'output' => implode("\n", $output)
+            'success'  => $returnCode === 0,
+            'output'   => implode("\n", $output),
+            'cmd'      => $cmd,
+            'file'     => $outputPath
         ];
     }
+    
+    
+    
 
     // 🔧 More admin tools can be defined here.
 }

@@ -49,10 +49,28 @@
 **Frontend**:
 - [ ] Playlist card layout
 - [ ] Playback/Edit links
+- [ ] Add link/button to create new playlist
+- [ ] Fetch playlist data via API
+- [ ] Render playlist cards with:
+  - [ ] Playlist name
+  - [ ] Translation block count
+  - [ ] Schema name
+  - [ ] Links to Playback + Edit
 
 **Backend**:
 - [ ] `/api?action=playlists`
-- [ ] Optional: filter by user
+- [ ] Optional: filter by user token
+- [ ] Create `PlaylistModel.php` in `backend/classes/`
+  - [ ] `getPlaylists($user_id = null)`
+  - [ ] `getPlaylistDetails($playlist_id)`
+- [ ] Add controller: `get_playlists.php`
+- [ ] Connect controller to API action
+
+**Database**:
+- [x] Create `playlists` table with: `id`, `name`, `user_id`, `schema_id`, `created_at`, `updated_at`
+- [x] Create `playlist_tb_link` table with: `id`, `playlist_id`, `tb_id`, `order_index`
+- [x] Add SQL files: `04_playlists.sql`, `05_playlist_tb_link.sql`
+- [ ] Insert sample data for playlists and TBs
 
 ---
 
@@ -171,4 +189,27 @@
 - [ ] None yet (future Service Worker)
 
 ---
+
+## 🌐 11. External API Integration (Translation & TTS)
+
+**Functionalities**:
+- [ ] Translate user text using external API (e.g., OpenAI, DeepL, Google Translate)
+- [ ] Generate audio (TTS) for given text in target language
+- [ ] Handle fallback mechanisms for missing API responses
+- [ ] Cache or store results to avoid repeated API calls
+
+**Backend**:
+- [ ] `/api?action=translate_text`
+- [ ] `/api?action=text_to_speech`
+- [ ] Add `GoogleTranslateApi.php`, `GoogleTTSApi.php` classes
+- [ ] Update `Translate.php` to support multiple providers
+- [ ] Add config for API keys in `config.json`
+- [ ] Optional: Logging for external API requests
+
+**Frontend**:
+- [ ] Optional trigger for on-demand translation/TTS
+- [ ] Display status messages or loading indicators
+
+---
+
 

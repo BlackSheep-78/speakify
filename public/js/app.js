@@ -42,8 +42,10 @@
 
 console.log("✅ app.js loaded");
 
-const app = {
-  state: {
+const app = 
+{
+  state: 
+  {
     validated: false,
     validatedTokenData: null,
     isPlaying: false,         // 🔒 Explicitly off by default
@@ -58,11 +60,21 @@ const app = {
     mainLang: "en"
   },
 
+  viewHandlers: 
+  {
+    dashboard: "initDashboard",
+    playback: "initPlayback",
+    "playlist-library": "initPlaylistLibrary",
+    settings: "initSettings",
+    "smart-lists": "initSmartLists"
+  },
+
 
   token: null,
   authChecked: false,
 
-  async init() {
+  async init() 
+  {
     console.log("👋 app.init() running");
 
     const view = this.getCurrentView();
@@ -71,22 +83,116 @@ const app = {
     await this.ensureToken();
 
     // ✅ Universal UI updates (if needed across all views)
-    if (["login-profile", "register", "dashboard", "playback"].includes(view)) {
+    if (["login-profile", "register", "dashboard", "playback"].includes(view)) 
+    {
       await this.updateUI();
       await this.setupPageElements();
     }
 
-    // ✅ View-specific logic
-    switch (view) {
-      case "playback":
-        await this.initPlayback();
-        break;
-      case "dashboard":
-        await this.initDashboard?.(); // if defined
-        break;
-      // ...add more
+    // 🔍 Get the name of the handler function for the current view
+    const handler = this.viewHandlers?.[view];
+    // ✅ If a handler exists and it's defined as a function, call it
+    if (handler && typeof this[handler] === "function") 
+    {
+      await this[handler]();
+    }
+
+  },
+
+  initPlayback() 
+  {
+    console.log("🎧 initPlayback() called");
+  
+    const active = document.getElementById("active-sentence");
+    const queue = document.getElementById("playloop-queue");
+    const played = document.getElementById("played-items");
+  
+    if (!active || !queue || !played) {
+      console.warn("⚠️ One or more playback sections are missing.");
+      return;
+    }
+  
+    fetch(`/api/index.php?action=get_sentences&lang_id=39&token=${this.token}`)
+    .then(res => res.json())
+    .then(data => {
+      if (!data.items || !Array.isArray(data.items) || data.items.length === 0) {
+        queue.innerHTML = "<p>⚠️ Aucune donnée à lire.</p>";
+        return;
+      }
+  
+      console.log("📦 Loaded sentence items:", data.items);
+  
+      // 🔁 Pre-process each item into a fully assembled object
+      const template = data.template;
+      const assembledItems = data.items.map((item, index) => {
+        const group = {};
+        template.group.forEach((key, i) => {
+          group[key] = item.group?.[i] ?? null;
+        });
+      
+        const translations = item.translations.map((row, tIndex) => {
+          const t = {};
+          template.translation.forEach((key, i) => {
+            t[key] = row?.[i] ?? null;
+          });
+          return t;
+        });
+      
+        return { ...group, translations };
+      });
+  
+      app.state.playbackQueue = assembledItems;
+      app.state.playedItems = [];
+      app.state.currentIndex = 0;
+      app.state.isPlaying = false;
+  
+      app.renderPlaybackUI();
+      app.startPlaybackLoop();
+    })
+    .catch(err => {
+      console.error("❌ Erreur lors du chargement de la lecture:", err);
+      queue.innerHTML = "<p>Erreur lors du chargement.</p>";
+    });
+
+  },
+
+  async initPlaylistLibrary() 
+  {
+    console.log("📚 initPlaylistLibrary() called");
+  
+    const container = document.getElementById("playlist-list");
+    if (!container) {
+      console.warn("⚠️ No #playlist-list container found.");
+      return;
+    }
+  
+    try {
+      const res = await fetch(`/api/index.php?action=get_playlists&token=${this.token}`);
+      const data = await res.json();
+
+      console.log(data);
+  
+      if (!data.success || !Array.isArray(data.playlists)) {
+        container.innerHTML = `<p>❌ Erreur lors du chargement des playlists.</p>`;
+        return;
+      }
+  
+      // ✅ Render each playlist as a card
+      container.innerHTML = data.playlists.map(pl => `
+        <div class="card playlist-card">
+          <h3>${pl.name}</h3>
+          <p>${pl.description || "Sans description."}</p>
+          <button onclick="location.href='playback.html?playlist_id=${pl.id}'">▶️ Lire</button>
+          <button onclick="location.href='playlist-editor.html?id=${pl.id}'">✏️ Modifier</button>
+        </div>
+      `).join('');
+  
+    } catch (err) {
+      console.error("❌ Failed to load playlists:", err);
+      container.innerHTML = `<p>❌ Erreur réseau.</p>`;
     }
   },
+  
 
   getCurrentView() {
     const path = window.location.pathname;
@@ -322,61 +428,7 @@ const app = {
     return new Promise(resolve => setTimeout(resolve, ms));
   },
 
-  initPlayback() {
-    console.log("🎧 initPlayback() called");
-  
-    const active = document.getElementById("active-sentence");
-    const queue = document.getElementById("playloop-queue");
-    const played = document.getElementById("played-items");
-  
-    if (!active || !queue || !played) {
-      console.warn("⚠️ One or more playback sections are missing.");
-      return;
-    }
-  
-    fetch(`/api/index.php?action=get_sentences&lang_id=39&token=${this.token}`)
-    .then(res => res.json())
-    .then(data => {
-      if (!data.items || !Array.isArray(data.items) || data.items.length === 0) {
-        queue.innerHTML = "<p>⚠️ Aucune donnée à lire.</p>";
-        return;
-      }
-  
-      console.log("📦 Loaded sentence items:", data.items);
-  
-      // 🔁 Pre-process each item into a fully assembled object
-      const template = data.template;
-      const assembledItems = data.items.map((item, index) => {
-        const group = {};
-        template.group.forEach((key, i) => {
-          group[key] = item.group?.[i] ?? null;
-        });
-      
-        const translations = item.translations.map((row, tIndex) => {
-          const t = {};
-          template.translation.forEach((key, i) => {
-            t[key] = row?.[i] ?? null;
-          });
-          return t;
-        });
-      
-        return { ...group, translations };
-      });
-  
-      app.state.playbackQueue = assembledItems;
-      app.state.playedItems = [];
-      app.state.currentIndex = 0;
-      app.state.isPlaying = false;
-  
-      app.renderPlaybackUI();
-      app.startPlaybackLoop();
-    })
-    .catch(err => {
-      console.error("❌ Erreur lors du chargement de la lecture:", err);
-      queue.innerHTML = "<p>Erreur lors du chargement.</p>";
-    });
 
-  },
   
   renderPlaybackUI() {
     const active = document.getElementById("active-sentence");

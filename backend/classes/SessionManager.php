@@ -115,18 +115,36 @@ class SessionManager {
         Logger::log("🧹 Old sessions cleaned up.");
     }
 
-    public static function deleteOldestLogs($db = null) {
+    public static function deleteOldestLogs($db = null): void
+    {
         if (!$db) {
             $db = Database::getInstance()->getConnection();
         }
     
-        $stmt = $db->query("SELECT id FROM logs ORDER BY id ASC LIMIT 1");
-        $oldest = $stmt->fetch(PDO::FETCH_ASSOC);
+        // Step 1: Count total logs
+        $stmt = $db->query("SELECT COUNT(*) as total FROM logs");
+        $countResult = $stmt->fetch(PDO::FETCH_ASSOC);
+        $total = (int) $countResult['total'];
     
-        if ($oldest) {
-            $stmt = $db->prepare("DELETE FROM logs WHERE id = :id");
-            $stmt->execute([':id' => $oldest['id']]);
-            Logger::log("🗑️ Oldest log ID {$oldest['id']} deleted.");
+        if ($total <= 0) return;
+    
+        // Step 2: Calculate 10% (rounded up, minimum 1)
+        $limit = max(1, (int) ceil($total * 0.10));
+    
+        // Step 3: Get the oldest log IDs
+        $stmt = $db->prepare("SELECT id FROM logs ORDER BY id ASC LIMIT :limit");
+        $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+        $stmt->execute();
+    
+        $ids = $stmt->fetchAll(PDO::FETCH_COLUMN);
+    
+        if (count($ids) > 0) {
+            // Step 4: Delete them
+            $in = implode(',', array_fill(0, count($ids), '?'));
+            $stmt = $db->prepare("DELETE FROM logs WHERE id IN ($in)");
+            $stmt->execute($ids);
+    
+            Logger::log("🗑️ Deleted {$limit} oldest logs (IDs: " . implode(',', $ids) . ").");
         }
     }
     
@@ -209,6 +227,17 @@ class SessionManager {
             Logger::error("Failed to load user from session: " . $e->getMessage(), __FILE__, __LINE__);
             return null;
         }
+    }
+
+    public static function getUserIdFromToken(?string $token): ?int {
+        if (!$token) return null;
+    
+        $session = self::validate($token);
+        if (!is_array($session) || isset($session['error']) || !isset($session['user_id'])) {
+            return null;
+        }
+    
+        return (int) $session['user_id'];
     }
     
     

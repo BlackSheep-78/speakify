@@ -133,5 +133,14 @@
 			
 			return $this->output;
 		}
+
+        public static function toGitBashPath(string $winPath): string
+        {
+            $path = str_replace('\\', '/', $winPath);                     // normalize slashes
+            $path = preg_replace('/^([A-Za-z]):/', '/$1', $path);         // C:/ → /c/
+            return strtolower($path);
+        }
+              
+
     }
 ?>
