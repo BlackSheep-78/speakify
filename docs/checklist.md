@@ -42,29 +42,29 @@
 ## 📚 3. Playlist Library View (`playlist-library.php`)
 
 **Functionalities**:
-- [ ] Display list of playlists
+- [x] Display list of playlists
 - [ ] Link to playback + edit
-- [ ] Link to create new playlist
+- [x] Link to create new playlist
 
 **Frontend**:
-- [ ] Playlist card layout
-- [ ] Playback/Edit links
-- [ ] Add link/button to create new playlist
+- [x] Playlist card layout
+- [x] Playback/Edit links
+- [x] Add link/button to create new playlist
 - [ ] Fetch playlist data via API
-- [ ] Render playlist cards with:
+- [x] Render playlist cards with:
   - [ ] Playlist name
   - [ ] Translation block count
   - [ ] Schema name
   - [ ] Links to Playback + Edit
 
 **Backend**:
-- [ ] `/api?action=playlists`
-- [ ] Optional: filter by user token
-- [ ] Create `PlaylistModel.php` in `backend/classes/`
-  - [ ] `getPlaylists($user_id = null)`
+- [x] `/api?action=get_playlists`
+- [x] Optional: filter by user token
+- [x] Create `PlaylistModel.php` in `backend/classes/`
+  - [x] `getPlaylists($user_id = null)`
   - [ ] `getPlaylistDetails($playlist_id)`
-- [ ] Add controller: `get_playlists.php`
-- [ ] Connect controller to API action
+- [x] Add controller: `get_playlists.php`
+- [x] Connect controller to API action
 
 **Database**:
 - [x] Create `playlists` table with: `id`, `name`, `user_id`, `schema_id`, `created_at`, `updated_at`
