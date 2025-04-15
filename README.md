@@ -9,4 +9,10 @@
 - 🇬🇧 [Technical Specification Document (EN)](https://github.com/BlackSheep-78/speakify/blob/main/docs/technical_specification_document.en.md)
 
 ---
+
+## 🌐 Deployment URL
+
+Once deployed, Speakify is available at:
+
+👉 <a href="http://89.116.29.115/" target="_blank">http://89.116.29.115/</a>
   
