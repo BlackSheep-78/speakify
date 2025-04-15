@@ -16,9 +16,6 @@
      
      $model = new ModelPlaylist($pdo);
      $user_id = SessionManager::getUserIdFromToken($_GET['token'] ?? null);
-     
-     Logger::debug($user_id);
-
 
      $playlists = $model->getPlaylists($user_id);
 

@@ -43,8 +43,15 @@
 
 **Functionalities**:
 - [x] Display list of playlists
-- [ ] Link to playback + edit
+- [x] Link to playback + edit
 - [x] Link to create new playlist
+- [ ] Create/Edit playlist
+- [ ] Add/Remove translation blocks
+- [ ] Assign schema
+- [ ] Rearrange block order (drag & drop or up/down buttons)
+- [ ] Show block previews (original + translated sentences)
+- [ ] Display total TB count in real-time
+- [ ] Persist changes to backend
 
 **Frontend**:
 - [x] Playlist card layout
@@ -56,6 +63,13 @@
   - [ ] Translation block count
   - [ ] Schema name
   - [ ] Links to Playback + Edit
+  - [ ] Playback link, selects and activates playlist
+- [ ] Form fields + TB selector
+- [ ] Schema dropdown
+- [ ] Sortable TB list component
+- [ ] Buttons: Add, Remove, Save
+- [ ] Confirmation or toast message on Save
+- [ ] Redirect to Playlist Library after save (optional)
 
 **Backend**:
 - [x] `/api?action=get_playlists`
@@ -65,6 +79,11 @@
   - [ ] `getPlaylistDetails($playlist_id)`
 - [x] Add controller: `get_playlists.php`
 - [x] Connect controller to API action
+- [ ] `/api?action=save_playlist` (accepts name, schema, TB list with order)
+- [ ] `/api?action=tb_list` (returns TBs with preview info)
+- [ ] `/api?action=schemas` (returns available schemas)
+- [ ] `ModelPlaylist::save()` — stores playlist & TB links
+- [ ] `ModelPlaylist::getById($id)` — for editing existing playlists
 
 **Database**:
 - [x] Create `playlists` table with: `id`, `name`, `user_id`, `schema_id`, `created_at`, `updated_at`
@@ -209,6 +228,43 @@
 **Frontend**:
 - [ ] Optional trigger for on-demand translation/TTS
 - [ ] Display status messages or loading indicators
+
+---
+
+## 🧾 12. Certification Improvements – Based on 3W Academy Feedback
+
+**Goal**: Strengthen clarity, technical argumentation, accessibility, and collaboration tools based on feedback from the Cahier des Charges evaluation.
+
+**✅ To Improve – Based on Official Comments:**
+
+**Documentation & Clarity**:
+- [ ] Replace bullet lists with detailed explanations in `statement_of_work.*.md`
+- [ ] Clearly define the **problem statement** (problématique)
+- [ ] Provide details about the **target audience** (context, language level, needs)
+- [ ] Include **accessibility, security, SEO, and responsive** priorities in the intro
+- [ ] Include a **realistic budget** estimate (even if fictional)
+- [ ] Add at least **one future evolution**, explained clearly (not just listed)
+- [ ] Add **Deadlines (dates)** to the retro-planning section
+
+**Technical Enhancements**:
+- [ ] Add a **visual MCD (data model)** to the project
+- [ ] Mention **responsiveness concepts**: mobile-first, breakpoints, etc.
+- [ ] Detail **security choices** (XSS, SQL injection prevention, session management)
+- [ ] Provide examples of **accessibility design**:
+  - [ ] Text alternatives for images
+  - [ ] Sufficient contrast
+  - [ ] Keyboard navigation
+  - [ ] Font legibility
+- [ ] Propose at least **one tool or concept from technical watch in English**
+
+**Team & Workflow**:
+- [ ] Clarify **interaction between team roles**
+- [ ] Link tools (Git, Trello, Discord, Figma…) to **concrete use cases**
+- [ ] Add example of how tasks are tracked in Trello or Notion
+
+**Bonus**:
+- [ ] Prepare an **MCD diagram** for the oral defense (PDF or PNG)
+- [ ] Re-read your CDC and **develop explanations** instead of bullet lists
 
 ---
 
