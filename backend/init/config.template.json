@@ -1,0 +1,28 @@
+{
+    "env": "development",
+    "debug": true,
+    "base_url": "/speakify/public",
+    "db": {
+      "host": "127.0.0.1",
+      "name": "speakify",
+      "user": "root",
+      "pass": ""
+    },
+    "api_keys": {
+      "admin": "change_this_token",
+      "frontend": "change_this_frontend_key"
+    },
+    "session": {
+      "expiry_days": 7
+    },
+    "api": {
+      "rate_limit": false,
+      "default_lang_id": 39
+    },
+    "frontend": {
+      "allow_origins": ["*"],
+      "allow_methods": ["GET", "POST", "OPTIONS"],
+      "allow_headers": ["Content-Type", "Authorization"]
+    }
+  }
+  

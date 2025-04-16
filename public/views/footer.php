@@ -1,10 +1,16 @@
 </div> <!-- end content -->
   <div class="footer-nav">
-    <a href="<?= $_SERVER['BASE_URL'] ?? '' ?>/dashboard">🏠</a>
-    <a href="<?= $_SERVER['BASE_URL'] ?? '' ?>/playback">🎧</a>
-    <a href="<?= $_SERVER['BASE_URL'] ?? '' ?>/playlist-library">📚</a>
-    <a href="<?= $_SERVER['BASE_URL'] ?? '' ?>/smart-lists">🧠</a>
-    <a href="<?= $_SERVER['BASE_URL'] ?? '' ?>/settings">⚙️</a>
+
+    <!-- <a href="<?= $_SERVER['BASE_URL'] ?? '' ?>/dashboard">🏠</a>-->
+
+    <a href="dashboard">🏠</a>
+    <a href="playback">🎧</a>
+    <a href="playlist-library">📚</a>
+    <a href="smart-lists">🧠</a>
+    <a href="settings">⚙️</a>
+
+
+
   </div>
 </body>
 </html>

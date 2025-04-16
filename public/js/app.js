@@ -39,9 +39,6 @@
  * - docs/project.md
  */
 
-
-console.log("✅ app.js loaded");
-
 const app = 
 {
   state: 
@@ -62,10 +59,10 @@ const app =
 
   viewHandlers: 
   {
-    dashboard: "initDashboard",
-    playback: "initPlayback",
+    "dashboard": "initDashboard",
+    "playback": "initPlayback",
     "playlist-library": "initPlaylistLibrary",
-    settings: "initSettings",
+    "settings": "initSettings",
     "smart-lists": "initSmartLists"
   },
 
@@ -77,8 +74,17 @@ const app =
   {
     console.log("👋 app.init() running");
 
+    this.config = { base_url: document.querySelector("base")?.getAttribute("href") || "/" };
+
+    const configData = await this.api("api/index.php?action=get_config");
+    if (!configData?.success) {
+      console.error("❌ Failed to load config from API:", configData?.error || configData);
+      return;
+    }
+    Object.assign(this.config, configData);
+    console.log("✅ Final config:", this.config);
+
     const view = this.getCurrentView();
-    console.log("🔍 Current View:", view);
 
     await this.ensureToken();
 
@@ -112,8 +118,8 @@ const app =
       return;
     }
   
-    fetch(`/api/index.php?action=get_sentences&lang_id=39&token=${this.token}`)
-    .then(res => res.json())
+    const langId = this.getLangId(this.state.mainLang);
+    app.api(`api/index.php?action=get_sentences&lang_id=${langId}&token=${this.token}`)
     .then(data => {
       if (!data.items || !Array.isArray(data.items) || data.items.length === 0) {
         queue.innerHTML = "<p>⚠️ Aucune donnée à lire.</p>";
@@ -122,14 +128,14 @@ const app =
   
       console.log("📦 Loaded sentence items:", data.items);
   
-      // 🔁 Pre-process each item into a fully assembled object
+      // ⤵️ keep the rest unchanged
       const template = data.template;
       const assembledItems = data.items.map((item, index) => {
         const group = {};
         template.group.forEach((key, i) => {
           group[key] = item.group?.[i] ?? null;
         });
-      
+  
         const translations = item.translations.map((row, tIndex) => {
           const t = {};
           template.translation.forEach((key, i) => {
@@ -137,7 +143,7 @@ const app =
           });
           return t;
         });
-      
+  
         return { ...group, translations };
       });
   
@@ -153,6 +159,7 @@ const app =
       console.error("❌ Erreur lors du chargement de la lecture:", err);
       queue.innerHTML = "<p>Erreur lors du chargement.</p>";
     });
+  
 
   },
 
@@ -167,8 +174,7 @@ const app =
     }
   
     try {
-      const res = await fetch(`/api/index.php?action=get_playlists&token=${this.token}`);
-      const data = await res.json();
+      const data = await app.api(`api/index.php?action=get_playlists&token=${this.token}`);
 
       console.log(data);
   
@@ -224,7 +230,7 @@ const app =
 
   async validateToken(token) {
     try {
-      const res = await fetch(`/api/index.php?action=validate_session&token=${token}`);
+      const res = await fetch(`api/index.php?action=validate_session&token=${token}`);
       const data = await res.json();
       console.log("🔍 Token validation result:", data);
 
@@ -241,7 +247,7 @@ const app =
 
   async createNewSession() {
     try {
-      const res = await fetch('/api/index.php?action=create_session');
+      const res = await fetch('api/index.php?action=create_session');
       const data = await res.json();
 
       if (data.success && data.token) {
@@ -364,14 +370,12 @@ const app =
       };
 
       try {
-        const res = await fetch("/api/index.php?action=login", {
+        const result = await app.api("api/index.php?action=login", {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
+          body: JSON.stringify(payload),
+          headers: { "Content-Type": "application/json" }
         });
-
-        const result = await res.json();
-
+      
         if (result.success) {
           localStorage.setItem("speakify_token", result.token);
           message.textContent = "✅ Connexion réussie ! Redirection...";
@@ -383,6 +387,7 @@ const app =
         message.textContent = "❌ Erreur réseau.";
         console.error("Login failed:", err);
       }
+      
     });
   },
 
@@ -426,46 +431,44 @@ const app =
 
   delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
-  },
-
-
-  
-  renderPlaybackUI() {
-    const active = document.getElementById("active-sentence");
-    const queue = document.getElementById("playloop-queue");
-    const played = document.getElementById("played-items");
-  
-    const items = app.state.playbackQueue || [];
-    const history = app.state.playedItems || [];
-  
-    // Played items
-    played.innerHTML = history.map(pair => `
-      <div class="sentence-pair faded">
-        <span class="original">${pair.original_sentence}</span>
-        <span class="arrow">→</span>
-        <span class="translated">${pair.translated_sentence}</span>
-      </div>
-    `).join('');
-  
-    // Active sentence
-    const current = items[app.state.currentIndex];
-    active.innerHTML = current ? `
-      <div class="sentence-pair highlight">
-        <span class="original">${current.original_sentence}</span>
-        <span class="arrow">→</span>
-        <span class="translated">${current.translated_sentence}</span>
-      </div>
-    ` : `<p>Fin de la lecture</p>`;
-  
-    // Remaining queue
-    queue.innerHTML = items.slice(app.state.currentIndex + 1).map(pair => `
-      <div class="sentence-pair">
-        <span class="original">${pair.original_sentence}</span>
-        <span class="arrow">→</span>
-        <span class="translated">${pair.translated_sentence}</span>
-      </div>
-    `).join('');
   }
+};
+
+app.renderPlaybackUI = function() {
+  const active = document.getElementById("active-sentence");
+  const queue = document.getElementById("playloop-queue");
+  const played = document.getElementById("played-items");
+
+  const items = app.state.playbackQueue || [];
+  const history = app.state.playedItems || [];
+
+  // Played items
+  played.innerHTML = history.map(pair => `
+    <div class="sentence-pair faded">
+      <span class="original">${pair.original_sentence}</span>
+      <span class="arrow">→</span>
+      <span class="translated">${pair.translated_sentence}</span>
+    </div>
+  `).join('');
+
+  // Active sentence
+  const current = items[app.state.currentIndex];
+  active.innerHTML = current ? `
+    <div class="sentence-pair highlight">
+      <span class="original">${current.original_sentence}</span>
+      <span class="arrow">→</span>
+      <span class="translated">${current.translated_sentence}</span>
+    </div>
+  ` : `<p>Fin de la lecture</p>`;
+
+  // Remaining queue
+  queue.innerHTML = items.slice(app.state.currentIndex + 1).map(pair => `
+    <div class="sentence-pair">
+      <span class="original">${pair.original_sentence}</span>
+      <span class="arrow">→</span>
+      <span class="translated">${pair.translated_sentence}</span>
+    </div>
+  `).join('');
 };
 
 app.state.mainLang = 'en'; // used for collapsed display
@@ -608,6 +611,65 @@ app.renderPlaybackUI = function () {
     queue.appendChild(groupDiv);
   });
 };
+
+app.config = {};
+app.api = function(endpoint, options = {}) {
+  return (async function () {
+    // Load config if needed
+    if (!app.config || !app.config.base_url) {
+      try {
+        const res = await fetch("/api/index.php?action=get_config");
+        const data = await res.json();
+        if (data.success) {
+          app.config = data;
+          console.log("✅ Config loaded in app.api()", app.config);
+        } else {
+          throw new Error("❌ Failed to load config.");
+        }
+      } catch (e) {
+        console.error("❌ Failed to load initial config:", e);
+        return { success: false, error: "Network error during config fetch" };
+      }
+    }
+
+    const base = app.config.base_url || "";
+    const safeBase = base.replace(/\/+$/, "");
+    const safeEndpoint = endpoint.replace(/^\/+/, "");
+    const url = `${window.location.origin}${safeBase}/${safeEndpoint}`;
+
+    const defaultHeaders = {
+      "Content-Type": "application/json"
+    };
+
+    try {
+      const response = await fetch(url, {
+        method: "GET",
+        headers: defaultHeaders,
+        ...options
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        return {
+          success: false,
+          status: response.status,
+          error: errorText || "Server returned an error"
+        };
+      }
+
+      return await response.json();
+    } catch (err) {
+      console.error("❌ API request failed:", err);
+      return {
+        success: false,
+        error: "Network or server unreachable",
+        details: err.message
+      };
+    }
+  })();
+};
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
   app.init();

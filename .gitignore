@@ -1,0 +1,23 @@
+# ⛔ Prevent committing machine-specific or sensitive configs
+/config.json
+
+# 📁 Ignore local environment files
+/.env
+/.env.local
+
+# 🧪 Ignore logs and debug artifacts
+*.log
+
+# 💻 OS-specific
+.DS_Store
+Thumbs.db
+
+# 💡 IDEs and editors
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# 📦 Composer or Node modules (if used in future)
+/vendor/
+/node_modules/
