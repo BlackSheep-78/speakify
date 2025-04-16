@@ -15,4 +15,14 @@
 Once deployed, Speakify is available at:
 
 👉 <a href="http://89.116.29.115/" target="_blank">http://89.116.29.115/</a>
+
+---
+
+## 🚀 Run Deployment
+
+To deploy Speakify to the production server, run the following command:
+
+👉 `ansible-playbook playbooks/deploy.yml --ask-vault-pass`
+
+
   
