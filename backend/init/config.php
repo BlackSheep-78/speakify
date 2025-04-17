@@ -36,7 +36,6 @@ if (file_exists($templatePath)) {
 // 4️⃣ Create config.json if missing
 if (!file_exists($configPath)) {
   file_put_contents($configPath, json_encode($defaultConfig, JSON_PRETTY_PRINT));
-  die("⚠️ Configuration file 'config.json' was created. Please update it with your project values.");
 }
 
 // 5️⃣ Basic checks and loading
@@ -68,10 +67,6 @@ if (($config['db']['user'] ?? '') === 'root') $warnings[] = "⚠️ DB user is s
 if (($config['db']['pass'] ?? '') === '') $warnings[] = "⚠️ DB password is empty";
 if (str_starts_with($config['api_keys']['admin'], 'change_this')) $warnings[] = "⚠️ Admin API key is still a placeholder";
 if (str_starts_with($config['api_keys']['frontend'], 'change_this')) $warnings[] = "⚠️ Frontend API key is still a placeholder";
-
-if (!empty($warnings)) {
-  echo implode("\n", $warnings) . "\n";
-}
 
 // 8️⃣ Define global constants
 defined('ENV')                  || define('ENV', $config['env']);

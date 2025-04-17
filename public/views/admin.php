@@ -11,6 +11,14 @@
   <pre id="output-generate" class="info" style="white-space: pre-wrap; margin-top: 12px;"></pre>
 </section>
 
+<!-- 🗣 Test de synthèse vocale (TTS) -->
+<section class="card">
+  <h2>Test TTS</h2>
+  <p>Cliquez pour déclencher une synthèse vocale via l’API Google.</p>
+  <button id="btn-tts-trigger" class="button primary">🔊 Générer un échantillon</button>
+  <pre id="output-tts" class="info" style="white-space: pre-wrap; margin-top: 12px;"></pre>
+</section>
+
 <!-- 🧩 Zone pour d'autres outils -->
 <section class="card">
   <h2>À venir</h2>

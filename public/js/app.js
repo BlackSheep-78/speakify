@@ -63,7 +63,8 @@ const app =
     "playback": "initPlayback",
     "playlist-library": "initPlaylistLibrary",
     "settings": "initSettings",
-    "smart-lists": "initSmartLists"
+    "smart-lists": "initSmartLists",
+    "admin": "initAdmin"
   },
 
 
@@ -427,12 +428,12 @@ const app =
         console.error("Registration failed:", err);
       }
     });
-  },
-
-  delay(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
   }
 };
+
+app.delay = function(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 app.renderPlaybackUI = function() {
   const active = document.getElementById("active-sentence");
@@ -669,14 +670,64 @@ app.api = function(endpoint, options = {}) {
   })();
 };
 
+app.initAdmin = function() {
+    // 🔧 Génération de la structure
+    const btnStructure = document.getElementById('btn-generate-structure');
+    const outputStructure = document.getElementById('output-generate');
+  
+    if (btnStructure && outputStructure) {
+      btnStructure.addEventListener('click', async () => {
+        outputStructure.textContent = '⏳ Exécution du script...';
+  
+        try {
+          const res = await app.api(`api/index.php?action=admin_tool&tool=generate_file_structure&token=${app.token}`);
+          if (res.success) {
+            outputStructure.textContent = `✅ Succès :\n${res.output}`;
+          } else {
+            outputStructure.textContent = `❌ Échec :\n${res.output || res.error}`;
+          }
+        } catch (err) {
+          outputStructure.textContent = '❌ Erreur réseau ou interne.';
+          console.error(err);
+        }
+      });
+    }
+  
+    // 🔊 TTS test
+    const btnTTS = document.getElementById('btn-tts-trigger');
+    const outputTTS = document.getElementById('output-tts');
+  
+    if (btnTTS && outputTTS) {
+      btnTTS.addEventListener('click', async () => {
+        outputTTS.textContent = "⏳ Requête en cours...";
+  
+        try {
+          const result = await app.api(`api/index.php?action=tts_generate&admin_key=${app.token}`);
+          if (result.success) {
+            outputTTS.textContent = `✅ Audio généré : ${result.file}`;
+          } else {
+            outputTTS.textContent = `❌ ${result.error || "Erreur inconnue"}`;
+          }
+        } catch (err) {
+          outputTTS.textContent = "❌ Erreur réseau ou interne.";
+          console.error(err);
+        }
+      });
+    }
+  };
+  
+
+
 
 
 document.addEventListener("DOMContentLoaded", () => {
   app.init();
 });
 
-const playBtn = document.getElementById("toggle-playback");
 
+console.log("WE NEED TO SORT THIS BUTTON EVENTUALLY");
+
+const playBtn = document.getElementById("toggle-playback");
 if (playBtn) {
   playBtn.addEventListener("click", () => {
     app.state.isPlaying = !app.state.isPlaying;

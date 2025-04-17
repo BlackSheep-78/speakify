@@ -1,0 +1,14 @@
+{
+    "name": "speakify/core",
+    "description": "Speakify backend dependencies",
+    "type": "project",
+    "require": {
+      "google/auth": "^1.25"
+    },
+    "autoload": {
+      "psr-4": {
+        "Speakify\\": "backend/classes/"
+      }
+    }
+  }
+  

@@ -20,14 +20,66 @@
 // =============================================================================
 
 // ✅ Define BASEPATH
-if (!defined('BASEPATH')) {
-  define('BASEPATH', realpath(__DIR__));
+define('BASEPATH', realpath(__DIR__));
+
+// ✅ Composer autoloader check
+$autoload = BASEPATH . '/vendor/autoload.php';
+if (!file_exists($autoload)) {
+  http_response_code(500);
+  echo json_encode([
+    'error' => '🚫 Missing Composer dependencies',
+    'hint' => 'Run `composer install` from project root to restore vendor folder.'
+  ]);
+  exit;
 }
+require_once $autoload;
+
+// ✅ Autoloader for backend/classes/
+spl_autoload_register(function ($class) 
+{
+  $paths = [
+    BASEPATH . '/backend/classes/core/',
+    BASEPATH . '/backend/classes/logic/',
+    BASEPATH . '/backend/classes/models/',
+    BASEPATH . '/backend/classes/services/',
+    BASEPATH . '/backend/classes/auth/'
+  ];
+
+  foreach ($paths as $path) {
+    $file = $path . $class . '.php';
+    if (file_exists($file)) {
+      require_once $file;
+      return;
+    }
+  }
+});
 
 // ✅ Load core backend components
-require BASEPATH . '/backend/init/config.php';
-require BASEPATH . '/backend/classes/Logger.php';
-require BASEPATH . '/backend/classes/Database.php';
+$config = require BASEPATH . '/backend/init/config.php';
+
+// ⛔ Stop if config is still a template
+if (!empty($config['template'])) 
+{
+  $msg = <<<HTML
+  <h2>⚠️ Speakify Configuration Required</h2>
+  <p>Your <code>config.json</code> was just created from the template.</p>
+  <p>Please update it with your database and API credentials, then set <code>"template": false</code>.</p>
+  HTML;
+
+  if (str_contains($_SERVER['HTTP_ACCEPT'] ?? '', 'text/html')) {
+    echo $msg;
+  } else {
+    header('Content-Type: application/json');
+    http_response_code(500);
+    echo json_encode([
+      'error' => 'Configuration template detected',
+      'hint' => 'Update config.json and set "template": false'
+    ]);
+  }
+  exit;
+}
+
+
 
 
 // ✅ Create PDO connection and expose globally
@@ -54,22 +106,26 @@ try {
 }
 
 // ✅ Session Manager
-require_once BASEPATH . '/backend/classes/SessionManager.php';
 
 $public_actions = ['register_user', 'create_session', 'validate_session', 'login'];
 $current_action = $_GET['action'] ?? null;
 
-if (!$current_action) return;
+if (basename($_SERVER['SCRIPT_NAME']) === 'index.php' && strpos($_SERVER['REQUEST_URI'], '/api/') !== false) 
+{
+  $current_action = $_GET['action'] ?? null;
 
-$token = $_GET['token'] ?? '';
-$session = SessionManager::validateOrCreate($token);
-$_GET['token'] = $token;
-$GLOBALS['auth_user_id'] = $session['user_id'] ?? null;
-
-// ✅ Autoloader for backend/classes/
-spl_autoload_register(function ($class) {
-  $file = BASEPATH . '/backend/classes/' . $class . '.php';
-  if (file_exists($file)) {
-    require_once $file;
+  if (!$current_action) {
+    header('Content-Type: application/json');
+    echo json_encode([
+      'success' => false,
+      'error' => 'Api action not allowed',
+      'hint' => 'Add this action to public_actions @init.php'
+    ]);
+    exit;
   }
-});
+
+  $token = $_GET['token'] ?? '';
+  $session = SessionManager::validateOrCreate($token);
+  $_GET['token'] = $token;
+  $GLOBALS['auth_user_id'] = $session['user_id'] ?? null;
+}

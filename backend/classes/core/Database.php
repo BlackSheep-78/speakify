@@ -2,7 +2,6 @@
 /*
     file: /speakify/backend/classes/Database.php
 */
-require_once BASEPATH . "/backend/classes/Utilities.php";
 
 class Database extends Utilities
 {

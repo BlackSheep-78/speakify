@@ -1,28 +1,50 @@
 {
-    "env": "development",
-    "debug": true,
-    "base_url": "/speakify/public",
-    "db": {
-      "host": "127.0.0.1",
-      "name": "speakify",
-      "user": "root",
-      "pass": ""
-    },
-    "api_keys": {
-      "admin": "change_this_token",
-      "frontend": "change_this_frontend_key"
-    },
-    "session": {
-      "expiry_days": 7
-    },
-    "api": {
-      "rate_limit": false,
-      "default_lang_id": 39
-    },
-    "frontend": {
-      "allow_origins": ["*"],
-      "allow_methods": ["GET", "POST", "OPTIONS"],
-      "allow_headers": ["Content-Type", "Authorization"]
+  "_meta": {
+    "file": "config.template.json",
+    "project": "Speakify",
+    "version": "1.0.0",
+    "generated": "Do not use in production until filled",
+    "note": "Set 'template' to false once configured"
+  },
+  "template": true,
+  "env": "development",
+  "debug": true,
+  "base_url": "/speakify/public",
+  "db": {
+    "host": "127.0.0.1",
+    "name": "speakify",
+    "user": "root",
+    "pass": ""
+  },
+  "api_keys": {
+    "admin": "change_this_token",
+    "frontend": "change_this_frontend_key"
+  },
+  "session": {
+    "expiry_days": 7
+  },
+  "api": {
+    "rate_limit": false,
+    "default_lang_id": 39
+  },
+  "frontend": {
+    "allow_origins": ["*"],
+    "allow_methods": ["GET", "POST", "OPTIONS"],
+    "allow_headers": ["Content-Type", "Authorization"]
+  },
+  "google": 
+  {
+    "credentials": {
+      "type": "service_account",
+      "project_id": "your-project-id",
+      "private_key_id": "your-private-key-id",
+      "private_key": "-----BEGIN PRIVATE KEY-----\\nYOUR_KEY\\n-----END PRIVATE KEY-----\\n",
+      "client_email": "your-service-account@project-id.iam.gserviceaccount.com",
+      "client_id": "your-client-id",
+      "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+      "token_uri": "https://oauth2.googleapis.com/token",
+      "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+      "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/your-service-account%40project-id.iam.gserviceaccount.com"
     }
   }
-  
+}

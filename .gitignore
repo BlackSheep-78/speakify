@@ -20,4 +20,5 @@ Thumbs.db
 
 # 📦 Composer or Node modules (if used in future)
 /vendor/
+/composer.lock
 /node_modules/

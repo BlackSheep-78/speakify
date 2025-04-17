@@ -7,8 +7,6 @@
 // 📤 Output: JSON with success, token, loggedin, (optional) user info
 // =============================================================================
 
-require_once BASEPATH . '/backend/classes/LoginService.php';
-
 header('Content-Type: application/json');
 
 $token = $_GET['token'] ?? null;
