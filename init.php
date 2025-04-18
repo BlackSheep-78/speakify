@@ -9,9 +9,9 @@
 // Description:
 // Initializes the Speakify backend environment and request lifecycle.
 //
-// 🧾 Responsibilities:
+// 📜 Responsibilities:
 //  1. Define BASEPATH constant (project root)
-//  2. Load config via backend/init/config.php
+//  2. Load config via backend/core/ConfigLoader.php
 //  3. Expose global $CREDENTIALS
 //  4. Initialize PDO connection and set $GLOBALS['pdo']
 //  5. Initialize Logger (with error/exception handlers)
@@ -35,8 +35,7 @@ if (!file_exists($autoload)) {
 require_once $autoload;
 
 // ✅ Autoloader for backend/classes/
-spl_autoload_register(function ($class) 
-{
+spl_autoload_register(function ($class) {
   $paths = [
     BASEPATH . '/backend/classes/core/',
     BASEPATH . '/backend/classes/logic/',
@@ -54,12 +53,12 @@ spl_autoload_register(function ($class)
   }
 });
 
-// ✅ Load core backend components
-$config = require BASEPATH . '/backend/init/config.php';
+// ✅ Load config using ConfigLoader
+//require_once BASEPATH . '/backend/core/ConfigLoader.php';
+$config = ConfigLoader::load();
 
-// ⛔ Stop if config is still a template
-if (!empty($config['template'])) 
-{
+// ❌ Stop if config is still a template
+if (!empty($config['template'])) {
   $msg = <<<HTML
   <h2>⚠️ Speakify Configuration Required</h2>
   <p>Your <code>config.json</code> was just created from the template.</p>
@@ -78,9 +77,6 @@ if (!empty($config['template']))
   }
   exit;
 }
-
-
-
 
 // ✅ Create PDO connection and expose globally
 try {
@@ -106,12 +102,10 @@ try {
 }
 
 // ✅ Session Manager
-
 $public_actions = ['register_user', 'create_session', 'validate_session', 'login'];
 $current_action = $_GET['action'] ?? null;
 
-if (basename($_SERVER['SCRIPT_NAME']) === 'index.php' && strpos($_SERVER['REQUEST_URI'], '/api/') !== false) 
-{
+if (basename($_SERVER['SCRIPT_NAME']) === 'index.php' && strpos($_SERVER['REQUEST_URI'], '/api/') !== false) {
   $current_action = $_GET['action'] ?? null;
 
   if (!$current_action) {

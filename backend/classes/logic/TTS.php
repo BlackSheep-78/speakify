@@ -14,6 +14,20 @@ class TTS
     // future: 'amazon' => AmazonTTSApi::class
   ];
 
+  public static function getVoices(string $provider): array
+  {
+    switch (strtolower($provider)) {
+      case 'google':
+        return GoogleTTSApi::listVoices();
+      // case 'openai':
+      //   return OpenAITTS::listVoices();
+      // case 'aws':
+      //   return AmazonTTS::listVoices();
+      default:
+        throw new Exception("Unsupported TTS provider: $provider");
+    }
+  }
+
   public static function generateSample()
   {
     $text = "Bonjour et bienvenue sur Speakify.";
@@ -23,9 +37,13 @@ class TTS
     return self::synthesize($text, $lang, $provider);
   }
 
-  public static function synthesize($text, $lang = 'en', $provider = 'google')
+  public static function synthesize(array $options)
   {
-    if (trim($text) === '' || !isset(self::$providers[$provider])) {
+    $text     = trim($options['text'] ?? '');
+    $lang     = $options['lang'] ?? 'en-US';
+    $provider = $options['provider'] ?? 'google';
+
+    if ($text === '' || !isset(self::$providers[$provider])) {
       throw new Exception("Invalid request: missing text or unsupported provider.");
     }
 
@@ -38,19 +56,29 @@ class TTS
       throw new Exception("TTS provider did not return valid audio data.");
     }
 
-    // 📁 Save the audio file
-    $filename = self::generateFilename($text, $lang, $provider);
-    $outputDir = BASEPATH . '/public/assets/audio/tts/';
+    // 📁 Determine secure storage path
+    $date = date('Y-m');
+    $outputDir = BASEPATH . "/backend/storage/tts/{$lang}/{$provider}/{$date}/";
     if (!is_dir($outputDir)) mkdir($outputDir, 0777, true);
-    file_put_contents($outputDir . $filename, $binary);
 
-    // Optional: store metadata in DB (future)
+    // 🎩 Generate safe random filename
+    $id = bin2hex(random_bytes(8));
+    $slug = strtolower(trim(preg_replace('/[^a-z0-9]+/i', '-', substr($text, 0, 30)), '-'));
+    $filename = $slug . '--' . $id . '.mp3';
+    $fullPath = $outputDir . $filename;
 
+    // 📂 Write audio file to storage
+    file_put_contents($fullPath, $binary);
+
+    // 🔐 Return metadata for tracking
     return [
-      'success' => true,
-      'file' => 'assets/audio/tts/' . $filename,
-      'provider' => $provider,
-      'lang' => $lang
+      'success'     => true,
+      'id'          => $id,
+      'path'        => $fullPath,
+      'file'        => "/api?action=get_tts_file&id=$id", // future-safe
+      'provider'    => $provider,
+      'lang'        => $lang,
+      'created_at'  => date('Y-m-d H:i:s')
     ];
   }
 

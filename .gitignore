@@ -1,5 +1,6 @@
 # ⛔ Prevent committing machine-specific or sensitive configs
-/config.json
+/backend/secrets/*
+!/backend/secrets/.gitkeep
 
 # 📁 Ignore local environment files
 /.env
