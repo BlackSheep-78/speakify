@@ -1,0 +1,1 @@
+SELECT * FROM users WHERE email = :EMAIL LIMIT 1;

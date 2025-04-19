@@ -4,9 +4,7 @@
 // Description: Unlinks user_id from a session, but keeps session active
 // =============================================================================
 
-require_once BASEPATH . '/backend/classes/SessionManager.php';
-
-Logger::info("logout.php called",__FILE__,__LINE__);
+Logger::info("logout.php called");
 
 $token = $_GET['token'] ?? '';
 

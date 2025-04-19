@@ -209,22 +209,29 @@ const app =
   async ensureToken() {
     let token = localStorage.getItem('speakify_token');
     console.log("🧠 Step 1: Token from localStorage:", token);
-
+  
     let result = null;
-
+  
     if (token) {
       result = await this.validateToken(token);
     }
-
+  
     if (!result || !result.success || !result.token) {
       console.warn("⚠️ No valid token. Creating new anonymous session...");
       token = await this.createNewSession();
       result = await this.validateToken(token);
     }
-
+  
+    // 🧠 Ensure latest token is always stored and used
+    if (result?.token && result.token !== token) {
+      localStorage.setItem('speakify_token', result.token);
+      token = result.token;
+      console.log("🔁 Updated token from backend:", token);
+    }
+  
     this.token = token;
     this.state.validatedTokenData = result;
-
+  
     console.log("🆗 Final session token in app state:", this.token);
   },
 
@@ -313,13 +320,16 @@ const app =
       profileLastLogin.textContent = this.formatLastLogin(result.last_login || "");
     }
 
-    if (logoutButton) {
-      logoutButton.onclick = async () => {
+    if (logoutButton) 
+    {
+      logoutButton.onclick = async () => 
+      {
         const token = localStorage.getItem("speakify_token");
     
         // ✅ Call backend to remove user_id, keep session token alive
-        if (token) {
-          await fetch(`/api/index.php?action=logout&token=${token}`);
+        if (token) 
+        {
+          await app.api(`api/index.php?action=logout&token=${token}`);
         }
     
         // ✅ Keep token, but clear user identity info
@@ -350,12 +360,14 @@ const app =
     return `${diffInDays} day${diffInDays > 1 ? 's' : ''} ago`;
   },
 
-  async setupPageElements() {
+  async setupPageElements() 
+  {
     this.registerFormHandler();
     this.loginFormHandler();
   },
 
-  loginFormHandler() {
+  loginFormHandler() 
+  {
     const form = document.getElementById("login-form");
     const message = document.getElementById("login-message");
 
@@ -371,7 +383,9 @@ const app =
       };
 
       try {
-        const result = await app.api("api/index.php?action=login", {
+        const token = localStorage.getItem("speakify_token") || "";
+
+        const result = await app.api(`api/index.php?action=login&token=${token}`, {
           method: "POST",
           body: JSON.stringify(payload),
           headers: { "Content-Type": "application/json" }
@@ -390,52 +404,53 @@ const app =
       }
       
     });
-  },
-
-  registerFormHandler() {
-    const form = document.getElementById("register-form");
-    const message = document.getElementById("register-message");
-
-    if (!form) return;
-
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      message.textContent = "⏳ Enregistrement en cours...";
-
-      const payload = {
-        email: form.email.value.trim(),
-        password: form.password.value,
-        name: form.name.value.trim(),
-      };
-
-      try {
-        const res = await fetch("/api/index.php?action=register_user", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        });
-
-        const result = await res.json();
-
-        if (result.success) {
-          message.textContent = "✅ Compte créé avec succès ! Redirection...";
-          setTimeout(() => window.location.href = "login-profile", 1500);
-        } else {
-          message.textContent = `❌ ${result.error || "Erreur inconnue."}`;
-        }
-      } catch (err) {
-        message.textContent = "❌ Erreur réseau.";
-        console.error("Registration failed:", err);
-      }
-    });
   }
 };
 
-app.delay = function(ms) {
+app.registerFormHandler = function () 
+{
+  const form = document.getElementById("register-form");
+  const message = document.getElementById("register-message");
+
+  if (!form) return;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    message.textContent = "⏳ Enregistrement en cours...";
+
+    const payload = {
+      email: form.email.value.trim(),
+      password: form.password.value,
+      name: form.name.value.trim(),
+    };
+
+    try {
+      const result = await app.api("api/index.php?action=register_user", {
+        method: "POST",
+        body: JSON.stringify(payload),
+        headers: { "Content-Type": "application/json" }
+      });
+
+      if (result.success) {
+        message.textContent = "✅ Compte créé avec succès ! Redirection...";
+        setTimeout(() => window.location.href = "login-profile", 1500);
+      } else {
+        message.textContent = `❌ ${result.error || "Erreur inconnue."}`;
+      }
+    } catch (err) {
+      message.textContent = "❌ Erreur réseau.";
+      console.error("Registration failed:", err);
+    }
+  });
+};
+
+app.delay = function(ms) 
+{
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-app.renderPlaybackUI = function() {
+app.renderPlaybackUI = function() 
+{
   const active = document.getElementById("active-sentence");
   const queue = document.getElementById("playloop-queue");
   const played = document.getElementById("played-items");

@@ -1,127 +1,120 @@
 <?php
-/*
-    file: /speakify/backend/classes/Database.php
-*/
+// 📁 File: backend/core/Database.php
+// 📦 Project: Speakify
+// 🧠 Description: Centralized PDO-based database class with clean SQL file loading,
+// variable replacement, query execution, and optional raw PDO access.
 
-class Database extends Utilities
-{
+class Database {
     private static $instance = null;
-    private static $connection = null;  // Make the connection static
-    public $query = null;
-    public $replace_list = [];
-    public $results = [];
-    public $total = null;
-    public $error = null;
+    private PDO $pdo;
+    private string $query = '';
+    private array $bindings = [];
 
-    // ✅ Private constructor for singleton
-    private function __construct()
+    /**
+     * 🔁 Constructor (private): Establish PDO connection using config.json.
+     */
+    private function __construct() 
     {
-        global $pdo;
+        $config = ConfigLoader::load();
 
-        if ($pdo instanceof PDO) {
-            self::$connection = $pdo;  // Store the connection statically
-        } else {
-            Logger::log("❌ PDO not found");
-        }
+        $dsn = "mysql:host={$config['db']['host']};dbname={$config['db']['name']};charset=utf8mb4";
+        $this->pdo = new PDO($dsn, $config['db']['user'], $config['db']['pass'], [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        ]);
     }
 
-    // ✅ Singleton accessor
-    public static function getInstance(): self
+    // Static init: Return singleton instance of Database.
+    public static function init(): self 
     {
         if (!self::$instance) {
-            self::$instance = new self();
+            try {
+                self::$instance = new self();
+            } catch (PDOException $e) {
+                Logger::error("❌ Database connection failed: " . $e->getMessage(), __FILE__, __LINE__);
+                http_response_code(500);
+                echo json_encode([
+                    'error' => 'Database connection failed',
+                    'details' => defined('DEBUG') && DEBUG ? $e->getMessage() : 'See server logs'
+                ]);
+                exit;
+            }
         }
         return self::$instance;
     }
 
-    // ✅ Static method to access the connection
-    public static function getConnection()
+    /**
+     * 📄 Load SQL file from relative path.
+     */
+    public function file(string $relativePath): self 
     {
-        if (!self::$connection) {
-            Logger::log("❌ No valid PDO connection");
-            return null;
+        $path = BASEPATH . '/backend/sql' . $relativePath;
+        if (!file_exists($path)) {
+            throw new Exception("SQL file not found: $path");
         }
-        return self::$connection;
-    }
-
-    public function connect()
-    {
-        if (!self::$connection) {
-            Logger::log("❌ No PDO connection available");
-        }
+        $this->query = file_get_contents($path);
+        $this->bindings = []; // 🧹 Clear old bindings before reusing
         return $this;
     }
 
-    public function file($file)
-    {
-        $this->query = file_get_contents(BASEPATH . "/sql/" . $file);
+    /**
+     * 🧬 Replace tokens in query with sanitized values.
+     * @param string $token  Token format: {PLACEHOLDER:TYPE}
+     * @param mixed  $value  Value to inject
+     * @param string $type   'i'=int, 's'=string, 'e'=email, 'b'=bool
+     */
+    public function replace(string $token, $value, string $type = 's'): self {
+        $placeholder = ':' . strtoupper(trim($token, '{}'));
+        $this->bindings[$placeholder] = [$value, $type];
         return $this;
     }
 
-    public function query($query)
-    {
-        $this->query = $query;
-        return $this;
-    }
+    /**
+     * 📤 Execute query and return result with custom fetch options.
+     * Options: 'fetch' => 'assoc' | 'column' | 'object'
+     */
+    public function result(array $options = []): mixed {
+        $stmt = $this->pdo->prepare($this->query);
 
-    public function replace($search, $replace, $validation)
-    {
-        $this->replace_list[] = [
-            'search' => $search,
-            'replace' => $replace,
-            'validation' => $validation
-        ];
-    }
-
-    public function result($ammount = null)
-    {
-        if (!self::$connection) {
-            trigger_error("Not connected to PDO database");
-            return $this;
+        foreach ($this->bindings as $key => [$value, $type]) {
+            $stmt->bindValue($key, $value, $this->mapPDOType($type));
         }
 
-        $this->replace_execute();
+        //error_log('[SQL] ' . $this->query);
+        //error_log('[Bindings] ' . print_r($this->bindings, true));
 
-        try {
-            $stmt = self::$connection->prepare($this->query);
-            $stmt->execute();
+        $stmt->execute();
 
-            if ($ammount == 1) {
-                $this->results = $stmt->fetch(PDO::FETCH_ASSOC);
-            } else {
-                $this->results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            }
-
-            if ($ammount !== 1) {
-                $stmt = self::$connection->query("SELECT FOUND_ROWS()");
-                $this->total = $stmt->fetchColumn();
-            }
-
-        } catch (PDOException $e) {
-            Logger::log("PDO Error: " . $e->getMessage());
-            $this->error = $e->getMessage();
-        }
-
-        return $this->results;
+        return match ($options['fetch'] ?? 'assoc') {
+            'column' => $stmt->fetchAll(PDO::FETCH_COLUMN),
+            'object' => $stmt->fetchAll(PDO::FETCH_OBJ),
+            default => $stmt->fetchAll(PDO::FETCH_ASSOC),
+        };
     }
 
-    private function replace_execute()
-    {
-        foreach ($this->replace_list as $value) {
-            $search     = $value['search'];
-            $replace    = $value['replace'];
-            $validation = $value['validation'];
+    /**
+     * 🔒 Internal: Map custom type codes to PDO::PARAM constants.
+     */
+    private function mapPDOType(string $type): int {
+        return match ($type) {
+            'i' => PDO::PARAM_INT,
+            'b' => PDO::PARAM_BOOL,
+            'e', 's' => PDO::PARAM_STR,
+            default => PDO::PARAM_STR,
+        };
+    }
 
-            switch ($validation) {
-                case "s":
-                    $this->query = str_replace("{" . $search . "}", self::$connection->quote($replace), $this->query);
-                    break;
-                case "i":
-                    $this->query = str_replace("{" . $search . "}", $replace, $this->query);
-                    break;
-            }
-        }
+    /**
+     * 🪪 Get the raw SQL query string (for debugging).
+     */
+    public function raw(): string {
+        return $this->query;
+    }
 
-        return $this;
+    /**
+     * 🔌 Direct access to raw PDO instance (use sparingly).
+     */
+    public function getPDO(): PDO {
+        return $this->pdo;
     }
 }

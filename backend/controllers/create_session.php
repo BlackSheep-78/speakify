@@ -26,35 +26,34 @@
   ==============================================================================
 */
 
-require_once BASEPATH . '/backend/utils/db.php';
-
-header('Content-Type: application/json');
-Logger::log("📥 create_session.php called", __FILE__, __LINE__);
+header('Content-Type: application/json'); // [1]
+Logger::log("📥 create_session.php called", __FILE__, __LINE__); // [2]
 
 try {
-  $token = bin2hex(random_bytes(32)); // Secure token
-  Logger::log("🔐 Generated token: $token", __FILE__, __LINE__);
+  $token   = bin2hex(random_bytes(32)); // [3]
+  $now     = date('Y-m-d H:i:s'); // [4]
+  $expires = date('Y-m-d H:i:s', strtotime('+8 hours')); // [5]
 
-  $db = Database::getConnection();
-  if (!$db) {
-    Logger::log("❌ Database connection failed (null returned)", __FILE__, __LINE__);
-    throw new Exception("Database connection not established.");
-  }
+  Logger::log("🔐 Generated token: $token", __FILE__, __LINE__); // [6]
 
-  $stmt = $db->prepare("INSERT INTO sessions (token, created_at, last_activity) VALUES (:token, NOW(), NOW())");
-  $stmt->execute([':token' => $token]);
+  Database::init()
+    ->file('/session/insert_session.sql') // [7]
+    ->replace('{TOKEN}', $token, 's')
+    ->replace('{NOW}', $now, 's')
+    ->replace('{EXPIRES}', $expires, 's')
+    ->result(); // [8]
 
-  Logger::log("✅ Session inserted into database successfully.", __FILE__, __LINE__);
+  Logger::log("✅ Session inserted into database successfully.", __FILE__, __LINE__); // [9]
 
-  echo json_encode([
+  echo json_encode([ // [10]
     'success' => true,
     'token' => $token
   ]);
 } catch (Exception $e) {
-  Logger::log("❌ Error creating session: " . $e->getMessage());
-  echo json_encode([
+  Logger::log("❌ Error creating session: " . $e->getMessage()); // [11]
+  echo json_encode([ // [12]
     'error' => 'Could not create session.',
     'details' => $e->getMessage()
   ]);
-  exit;
+  exit; // [13]
 }

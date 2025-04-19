@@ -29,45 +29,38 @@
 
 require_once __DIR__ . '/../../init.php';
 
-// 🌐 CORS Headers
+// [1] CORS Headers
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 header("Content-Type: application/json");
 
-// 🚫 Handle CORS Preflight
+// [2] Handle CORS Preflight
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
     echo json_encode(["status" => "CORS preflight OK"]);
     exit;
 }
 
-// 📦 Initialize dependencies
-$pdo = Database::getInstance()->getConnection();
+// [3] Initialize dependencies
+$pdo = Database::init()->getPDO();
 $sm  = new SessionManager($pdo);
 
-// 🧾 Get parameters
+// [4] Get parameters
 $action = $_GET['action'] ?? null;
 $token  = $_GET['token'] ?? null;
 
-// 🎯 Valid public endpoints that don't require authentication
-$publicActions = [
-    'create_session',
-    'validate_session',
-    'register_user',
-    'login',
-    'logout',
-    'playlists' // optional if `get_playlists.php` does not enforce auth
-];
+// [5] Valid public endpoints that don't require authentication
+$publicActions = PublicActions::get();
 
-// 🚫 Validate action
+// [6] Validate action
 if (!$action || !preg_match('/^[a-z0-9_]+$/', $action)) {
     http_response_code(400);
     echo json_encode(['error' => 'Invalid or missing action']);
     exit;
 }
 
-// 📄 Locate controller file
+// [7] Locate controller file
 $actionFile = BASEPATH . "/backend/controllers/{$action}.php";
 if (!file_exists($actionFile)) {
     Logger::log("❌ Action file NOT FOUND: {$actionFile}", __FILE__, __LINE__);
@@ -76,7 +69,7 @@ if (!file_exists($actionFile)) {
     exit;
 }
 
-// 🔒 Auth validation (only for protected routes)
+// [8] Auth validation (only for protected routes)
 try {
     if (!in_array($action, $publicActions)) {
         if (!$token) {
@@ -106,5 +99,5 @@ try {
     exit;
 }
 
-// ✅ Include controller and execute
+// [9] Include controller and execute
 require_once $actionFile;

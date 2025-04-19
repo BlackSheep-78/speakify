@@ -1,7 +1,7 @@
 <?php
-// file: backend/classes/ModelPlaylist.php
+// file: backend/classes/models/PlaylistModel.php
 
-class ModelPlaylist {
+class PlaylistModel {
   private $db;
 
   public function __construct($db) {

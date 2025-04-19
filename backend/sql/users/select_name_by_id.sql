@@ -1,0 +1,1 @@
+SELECT name FROM users WHERE id = :USER_ID LIMIT 1;

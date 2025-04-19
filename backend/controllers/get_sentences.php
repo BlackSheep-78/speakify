@@ -30,7 +30,7 @@
 // =============================================================================
 
 
-require_once BASEPATH . '/backend/classes/SentenceModel.php';
+// require_once BASEPATH . '/backend/classes/models/SentenceModel.php';
 
 try {
     $lang_id = $_GET['lang_id'] ?? 39;

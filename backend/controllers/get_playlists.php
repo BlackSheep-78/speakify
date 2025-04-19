@@ -10,11 +10,11 @@
      * =============================================================================
      */
 
-     require BASEPATH . '/backend/classes/ModelPlaylist.php';
+     //require BASEPATH . '/backend/classes/PlaylistModel.php';
      
      Logger::debug("get_playlists.php");
      
-     $model = new ModelPlaylist($pdo);
+     $model = new PlaylistModel($pdo);
      $user_id = SessionManager::getUserIdFromToken($_GET['token'] ?? null);
 
      $playlists = $model->getPlaylists($user_id);

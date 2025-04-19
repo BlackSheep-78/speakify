@@ -3,19 +3,6 @@
 // Load app-wide config, autoloaders, error handling, etc.
 require_once __DIR__ . '/../init.php';
 
-Logger::info(
-    "Incoming request: " . json_encode([
-        'URI' => $_SERVER['REQUEST_URI'] ?? '',
-        'SCRIPT_NAME' => $_SERVER['SCRIPT_NAME'] ?? '',
-        'SCRIPT_FILENAME' => $_SERVER['SCRIPT_FILENAME'] ?? '',
-        'PHP_SELF' => $_SERVER['PHP_SELF'] ?? '',
-        'QUERY_STRING' => $_SERVER['QUERY_STRING'] ?? '',
-        'GET' => $_GET,
-    ]),
-    __FILE__,
-    __LINE__
-);
-
 // Define allowed views
 $allowedViews = [
     'dashboard',

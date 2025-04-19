@@ -1,5 +1,7 @@
 <?php
 
+// File: /speakify/backend/php/db.php
+
 function connect_to_database(): PDO {
     try {
         $dsn = 'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8mb4';

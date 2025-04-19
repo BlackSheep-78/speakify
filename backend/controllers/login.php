@@ -7,9 +7,6 @@
 // 📤 Output: JSON with login status, session token, user info, and loggedin flag
 // =============================================================================
 
-require_once BASEPATH . '/backend/classes/LoginService.php';
-require_once BASEPATH . '/backend/classes/SessionManager.php';
-
 Logger::log("🔐 login.php called", __FILE__, __LINE__);
 header('Content-Type: application/json');
 
@@ -19,6 +16,8 @@ $email = $input['email'] ?? '';
 $password = $input['password'] ?? '';
 $token = $_GET['token'] ?? null;
 
+error_log($token);
+
 if (!$email || !$password) {
   http_response_code(400);
   echo json_encode(['error' => 'Missing email or password']);
@@ -26,8 +25,11 @@ if (!$email || !$password) {
 }
 
 // 🔐 Authenticate user
-$service = new LoginService($pdo);
+$service = new LoginService($database);
 $response = $service->authenticate($email, $password, $token);
+
+error_log("authenticate");
+error_log($token);
 
 // ❌ Failed authentication
 if (isset($response['error'])) {

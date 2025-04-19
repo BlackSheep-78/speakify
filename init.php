@@ -19,10 +19,10 @@
 //  7. Register class autoloader for backend/classes/
 // =============================================================================
 
-// ✅ Define BASEPATH
+// [1] Define BASEPATH
 define('BASEPATH', realpath(__DIR__));
 
-// ✅ Composer autoloader check
+// [2] Composer autoloader check
 $autoload = BASEPATH . '/vendor/autoload.php';
 if (!file_exists($autoload)) {
   http_response_code(500);
@@ -34,7 +34,7 @@ if (!file_exists($autoload)) {
 }
 require_once $autoload;
 
-// ✅ Autoloader for backend/classes/
+// [3] Autoloader for backend/classes/
 spl_autoload_register(function ($class) {
   $paths = [
     BASEPATH . '/backend/classes/core/',
@@ -53,11 +53,10 @@ spl_autoload_register(function ($class) {
   }
 });
 
-// ✅ Load config using ConfigLoader
-//require_once BASEPATH . '/backend/core/ConfigLoader.php';
+// [4] Load config using ConfigLoader
 $config = ConfigLoader::load();
 
-// ❌ Stop if config is still a template
+// [5] Stop if config is still a template
 if (!empty($config['template'])) {
   $msg = <<<HTML
   <h2>⚠️ Speakify Configuration Required</h2>
@@ -78,34 +77,15 @@ if (!empty($config['template'])) {
   exit;
 }
 
-// ✅ Create PDO connection and expose globally
-try {
-  $db = $GLOBALS['CREDENTIALS']['db'];
-  $pdo = new PDO(
-    "mysql:host={$db['host']};dbname={$db['name']};charset=utf8mb4",
-    $db['user'],
-    $db['pass'],
-    [
-      PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-      PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    ]
-  );
-  $GLOBALS['pdo'] = $pdo;
+// [6] Create database instance
+$database = Database::init(); 
 
-  // Re-init logger with full DB access
-  Logger::init($pdo);
-} catch (PDOException $e) {
-  Logger::error("❌ PDO connection failed: " . $e->getMessage(), __FILE__, __LINE__);
-  http_response_code(500);
-  echo json_encode(['error' => 'Database connection failed', 'details' => $e->getMessage()]);
-  exit;
-}
-
-// ✅ Session Manager
-$public_actions = ['register_user', 'create_session', 'validate_session', 'login'];
+// [8] Session Manager
+$public_actions = PublicActions::get();
 $current_action = $_GET['action'] ?? null;
 
-if (basename($_SERVER['SCRIPT_NAME']) === 'index.php' && strpos($_SERVER['REQUEST_URI'], '/api/') !== false) {
+if (basename($_SERVER['SCRIPT_NAME']) === 'index.php' && strpos($_SERVER['REQUEST_URI'], '/api/') !== false) 
+{
   $current_action = $_GET['action'] ?? null;
 
   if (!$current_action) {
@@ -118,8 +98,25 @@ if (basename($_SERVER['SCRIPT_NAME']) === 'index.php' && strpos($_SERVER['REQUES
     exit;
   }
 
-  $token = $_GET['token'] ?? '';
-  $session = SessionManager::validateOrCreate($token);
-  $_GET['token'] = $token;
-  $GLOBALS['auth_user_id'] = $session['user_id'] ?? null;
+  if (!in_array($current_action, $public_actions)) {
+    $token = $_GET['token'] ?? ($_COOKIE['speakify_token'] ?? '');
+    $session = strlen($token) >= 64
+      ? SessionManager::validate($token)
+      : SessionManager::create();
+
+    $token = $session['token'] ?? '';
+    $_GET['token'] = $token;
+    $GLOBALS['auth_user_id'] = $session['user_id'] ?? null;
+
+    // Optional: Persist token in cookie for frontend
+    setcookie('speakify_token', $token, [
+      'expires' => time() + 86400 * 7,
+      'path' => '/',
+      'secure' => false,
+      'httponly' => false,
+      'samesite' => 'Lax'
+    ]);
+  } else {
+    $GLOBALS['auth_user_id'] = null;
+  }
 }
