@@ -1,10 +1,19 @@
 <?php
 // =============================================================================
-// File: backend/classes/TTS.php
+// File: backend/classes/logic/TTS.php
 // Project: Speakify
 // Description: Main orchestrator for text-to-speech generation
 // Supports multiple providers (Google, OpenAI, Amazon, etc.)
 // =============================================================================
+
+
+/*
+
+TTS::generateSample()
+TTS::generateMissingAudio() → returns $task
+TTS::generateFor($task)
+
+*/
 
 class TTS
 {
@@ -27,60 +36,203 @@ class TTS
         throw new Exception("Unsupported TTS provider: $provider");
     }
   }
-
-  public static function generateSample()
+  public static function generateSample(): array
   {
-    $text = "Bonjour et bienvenue sur Speakify.";
-    $lang = "fr";
-    $provider = "google";
+      try {
+          // 🔍 Get one missing audio combo (sentence + language + provider + voice)
+          $task = self::generateMissingAudio();
   
-    return self::synthesize($text, $lang, $provider);
+          if (!$task) {
+              return [
+                  'success' => false,
+                  'message' => 'No missing audio found.'
+              ];
+          }
+  
+          // 🎯 Delegate to the actual generator
+          return self::generateFor($task);
+      } catch (Throwable $e) {
+          Logger::log('ERROR', 'generateSample failed: ' . $e->getMessage());
+  
+          return [
+              'success' => false,
+              'error' => 'Sample generation failed',
+              'details' => DEBUG ? $e->getMessage() : null
+          ];
+      }
   }
 
-  public static function synthesize(array $options)
+  public static function generateMissingAudio(): ?array
   {
-    $text     = trim($options['text'] ?? '');
-    $lang     = $options['lang'] ?? 'en-US';
-    $provider = $options['provider'] ?? 'google';
+      $db = Database::init();
+  
+      $result = $db->query("
+          SELECT 
+              s.sentence_id,
+              s.language_id,
+              v.provider_id,
+              v.name AS voice
+          FROM sentences s
+          JOIN tts_voices v ON v.language_id = s.language_id
+          JOIN tts_providers p ON p.provider_id = v.provider_id
+          LEFT JOIN tts_audio a 
+              ON a.sentence_id = s.sentence_id
+              AND a.language_id = v.language_id
+              AND a.provider_id = v.provider_id
+              AND a.voice = v.name
+          WHERE 
+              v.active = 1 AND p.active = 1
+              AND a.id IS NULL
+          ORDER BY RAND()
+          LIMIT 1
+      ")->result(['fetch' => 'assoc']);
+  
+      return $result[0] ?? null;
+  }  
 
-    if ($text === '' || !isset(self::$providers[$provider])) {
-      throw new Exception("Invalid request: missing text or unsupported provider.");
-    }
+  public static function generateFor(array $task): array
+  {
+      $db = Database::init();
+  
+      // 🧠 Extract info
+      $sentenceId  = (int)($task['sentence_id'] ?? 0);
+      $languageId  = (int)($task['language_id'] ?? 0);
+      $providerId  = (int)($task['provider_id'] ?? 0);
+      $voice       = $task['voice'] ?? '';
+  
+      // 🔍 Fetch sentence
+      $sentence = $db->query("SELECT sentence_text FROM sentences WHERE sentence_id = $sentenceId")
+                     ->result(['fetch' => 'assoc'])[0]['sentence_text'] ?? null;
+  
+      if (!$sentence) {
+          throw new Exception("Sentence not found: $sentenceId");
+      }
+  
+      // 🧠 Optional: fetch language tag from voice for rendering
+      $voiceMeta = $db->query("
+      SELECT 
+          p.name AS provider,
+          l.language_code AS lang_tag
+      FROM tts_voices v
+      JOIN tts_providers p ON p.provider_id = v.provider_id
+      JOIN languages l ON l.language_id = v.language_id
+      WHERE v.name = :VOICE AND v.provider_id = :PROVIDER_ID
+      LIMIT 1")
+      ->replace(':VOICE', $voice, 's')
+      ->replace(':PROVIDER_ID', $providerId, 'i')
+      ->result(['fetch' => 'assoc'])[0] ?? null;
+  
+      if (!$voiceMeta) {
+          throw new Exception("Voice metadata not found for $voice");
+      }
+  
+      $langTag = explode('-', $voice)[0] . '-' . explode('-', $voice)[1];
+      $provider = $voiceMeta['provider'];
+  
+      // 🧪 Hash check (prevent duplicates)
+      $hash = sha1($sentence . $langTag . $provider . $voice);
+      $check = $db->query("
+          SELECT * FROM tts_audio 
+          WHERE sentence_id = :SID AND language_id = :LID AND provider_id = :PID AND voice = :VOICE
+      ")->replace(':SID', $sentenceId, 'i')
+        ->replace(':LID', $languageId, 'i')
+        ->replace(':PID', $providerId, 'i')
+        ->replace(':VOICE', $voice, 's')
+        ->result(['fetch' => 'assoc']);
+  
+      if (!empty($check)) {
+          return [
+              'success' => true,
+              'message' => 'Audio already exists',
+              'audio'   => $check[0]
+          ];
+      }
+  
+      // 🎙️ Render file
+      $audio = self::renderAudioFile([
+          'text'     => $sentence,
+          'lang'     => $langTag,
+          'provider' => $provider,
+          'voice'    => $voice
+      ]);
 
-    $class = self::$providers[$provider];
-
-    // 🎯 Call the provider-specific synthesize method
-    $binary = $class::synthesize($text, $lang);
-
-    if (!$binary || !is_string($binary)) {
-      throw new Exception("TTS provider did not return valid audio data.");
-    }
-
-    // 📁 Determine secure storage path
-    $date = date('Y-m');
-    $outputDir = BASEPATH . "/backend/storage/tts/{$lang}/{$provider}/{$date}/";
-    if (!is_dir($outputDir)) mkdir($outputDir, 0777, true);
-
-    // 🎩 Generate safe random filename
-    $id = bin2hex(random_bytes(8));
-    $slug = strtolower(trim(preg_replace('/[^a-z0-9]+/i', '-', substr($text, 0, 30)), '-'));
-    $filename = $slug . '--' . $id . '.mp3';
-    $fullPath = $outputDir . $filename;
-
-    // 📂 Write audio file to storage
-    file_put_contents($fullPath, $binary);
-
-    // 🔐 Return metadata for tracking
-    return [
-      'success'     => true,
-      'id'          => $id,
-      'path'        => $fullPath,
-      'file'        => "/api?action=get_tts_file&id=$id", // future-safe
-      'provider'    => $provider,
-      'lang'        => $lang,
-      'created_at'  => date('Y-m-d H:i:s')
+      if (!$audio || !isset($audio['full_path'])) 
+      {
+        throw new Exception("Audio file rendering failed or returned invalid format.");
+      }
+  
+      // 💾 Store in DB
+      $db->query("
+          INSERT INTO tts_audio 
+          (sentence_id, language_id, provider_id, voice, audio_path, audio_hash, created_at)
+          VALUES (:SID, :LID, :PID, :VOICE, :PATH, :HASH, NOW())
+      ")->replace(':SID', $sentenceId, 'i')
+        ->replace(':LID', $languageId, 'i')
+        ->replace(':PID', $providerId, 'i')
+        ->replace(':VOICE', $voice, 's')
+        ->replace(':PATH', $audio['full_path'], 's')
+        ->replace(':HASH', $hash, 's')
+        ->result();
+  
+      return [
+          'success' => true,
+          'sentence_id' => $sentenceId,
+          'voice' => $voice,
+          'provider' => $provider,
+          'lang' => $langTag,
+          'file' => $audio['file'] ?? null,
+          'path' => $audio['full_path']
+      ];
+  }
+  
+  
+  public static function renderAudioFile(array $options)
+  {
+      $text     = trim($options['text'] ?? '');
+      $lang     = $options['lang'] ?? 'en-US';
+      $provider = $options['provider'] ?? 'google';
+      $voice    = $options['voice'] ?? null;
+  
+      if ($text === '' || !isset(self::$providers[$provider])) {
+          throw new Exception("Invalid request: missing text or unsupported provider.");
+      }
+  
+      $class = self::$providers[$provider];
+  
+      // 🎯 Synthesize audio
+      $binary = $class::synthesize($text, $lang, $voice);
+  
+      // 🎩 Generate safe path
+      $date = date('Y-m');
+      $outputDir = BASEPATH . "/backend/storage/tts/{$lang}/{$provider}/{$date}/";
+      if (!is_dir($outputDir)) mkdir($outputDir, 0777, true);
+  
+      $id = bin2hex(random_bytes(8));
+      $slug = strtolower(trim(preg_replace('/[^a-z0-9]+/i', '-', substr($text, 0, 30)), '-'));
+      $filename = $slug . '--' . $id . '.mp3';
+      $fullPath = $outputDir . $filename;
+  
+      // 📂 Write file
+      file_put_contents($fullPath, $binary);
+  
+      // ✅ Verify the file actually exists and has some size
+      if (!file_exists($fullPath) || filesize($fullPath) < 500) {
+          Logger::log('ERROR', "TTS file failed sanity check: $fullPath");
+          throw new Exception("Audio file rendering failed (file missing or too small).");
+      }
+  
+      return [
+        'success'     => true,
+        'id'          => $id,
+        'path'        => $fullPath,
+        'full_path'   => $fullPath, // ✅ THIS ONE IS MANDATORY
+        'file'        => "/api?action=get_tts_file&id=$id",
+        'provider'    => $provider,
+        'lang'        => $lang,
+        'created_at'  => date('Y-m-d H:i:s')
     ];
   }
+  
 
   protected static function generateFilename($text, $lang, $provider)
   {

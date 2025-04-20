@@ -9,64 +9,84 @@ use Google\Auth\Credentials\ServiceAccountCredentials;
 
 class GoogleTTSApi
 {
-  public static function synthesize($text, $lang = 'en')
+  public static function synthesize($text, $lang = 'en', $voiceName = null)
   {
-    $config = $GLOBALS['CREDENTIALS']['google'] ?? null;
-    $keyFile = $config['tts_key_file'] ?? null;
+      $config = $GLOBALS['CREDENTIALS']['google'] ?? null;
+      $keyFile = $config['tts_key_file'] ?? null;
   
-    if (!$keyFile) {
-      throw new Exception("Google TTS key file path not configured.");
-    }
+      if (!$keyFile) {
+          throw new Exception("Google TTS key file path not configured.");
+      }
   
-    $keyPath = BASEPATH . '/' . ltrim($keyFile, '/');
-    if (!file_exists($keyPath)) {
-      throw new Exception("Google TTS key file not found: $keyPath");
-    }
+      $keyPath = BASEPATH . '/' . ltrim($keyFile, '/');
+      if (!file_exists($keyPath)) {
+          throw new Exception("Google TTS key file not found: $keyPath");
+      }
   
-    $creds = json_decode(file_get_contents($keyPath), true);
-    if (!$creds || !is_array($creds)) {
-      throw new Exception("Google TTS credentials are missing or invalid.");
-    }
+      $creds = json_decode(file_get_contents($keyPath), true);
+      if (!$creds || !is_array($creds)) {
+          throw new Exception("Google TTS credentials are missing or invalid.");
+      }
   
-    $token = self::getAccessToken($creds);
+      $token = self::getAccessToken($creds);
   
-    $voice = self::mapLangToVoice($lang);
-    $postData = [
-      'input' => ['text' => $text],
-      'voice' => [
-        'languageCode' => $voice['lang'],
-        'name' => $voice['name']
-      ],
-      'audioConfig' => [
-        'audioEncoding' => 'MP3',
-        'speakingRate' => 1.0
-      ]
-    ];
+      // ✅ Use passed voice name, or fallback to internal resolver
+      $voice = $voiceName
+          ? ['lang' => $lang, 'name' => $voiceName]
+          : self::mapLangToVoice($lang);
   
-    $ch = curl_init('https://texttospeech.googleapis.com/v1/text:synthesize');
-    curl_setopt_array($ch, [
-      CURLOPT_RETURNTRANSFER => true,
-      CURLOPT_HTTPHEADER => [
-        'Content-Type: application/json',
-        "Authorization: Bearer $token"
-      ],
-      CURLOPT_POSTFIELDS => json_encode($postData)
-    ]);
+      $postData = [
+          'input' => ['text' => $text],
+          'voice' => [
+              'languageCode' => $voice['lang'],
+              'name' => $voice['name']
+          ],
+          'audioConfig' => [
+              'audioEncoding' => 'MP3',
+              'speakingRate' => 1.0
+          ]
+      ];
+
+      Logger::log('DEBUG', 'Google TTS POST: ' . json_encode($postData));
   
-    $result = curl_exec($ch);
-    $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    curl_close($ch);
+      $ch = curl_init('https://texttospeech.googleapis.com/v1/text:synthesize');
+      curl_setopt_array($ch, [
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_HTTPHEADER => [
+              'Content-Type: application/json',
+              "Authorization: Bearer $token"
+          ],
+          CURLOPT_POSTFIELDS => json_encode($postData)
+      ]);
   
-    if ($status !== 200 || !$result) {
-      throw new Exception("Google TTS request failed (status $status): " . substr($result, 0, 200));
-    }
+      $result = curl_exec($ch);
+      $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+      curl_close($ch);
   
-    $json = json_decode($result, true);
-    if (!isset($json['audioContent'])) {
-      throw new Exception("No audio content returned from Google TTS.");
-    }
+      if ($status !== 200 || !$result) {
+          throw new Exception("Google TTS request failed (status $status): " . substr($result, 0, 200));
+      }
   
-    return base64_decode($json['audioContent']);
+      $json = json_decode($result, true);
+
+      Logger::log('DEBUG', 'Google TTS RESPONSE: ' . $result); // Add this
+
+      if (!isset($json['audioContent'])) {
+          throw new Exception("No audio content returned from Google TTS.");
+      }
+  
+      $binary = base64_decode($json['audioContent']);
+
+      if (!$binary || !is_string($binary)) 
+      {
+        throw new Exception("TTS provider returned invalid binary.");
+      } 
+      elseif (strlen($binary) < 1000) 
+      {
+          Logger::log('WARN', 'TTS binary is unusually small: ' . strlen($binary));
+      }
+      
+      return $binary;
   }
   
   public static function listVoices(): array

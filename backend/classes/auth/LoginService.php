@@ -47,7 +47,7 @@ class LoginService {
   {
       // 🔍 Step 1: Find user
       $user = $this->db->file('/users/select_by_email.sql')
-                       ->replace('{EMAIL}', $email, 's')
+                       ->replace(':EMAIL', $email, 's')
                        ->result(['fetch' => 'assoc'])[0] ?? null;
   
       if (!$user || !password_verify($password, $user['password_hash'])) {
@@ -82,8 +82,6 @@ class LoginService {
       ];
   }
   
-  
-
   public function validate($token) 
   {
     if (!$token) {
@@ -91,7 +89,7 @@ class LoginService {
     }
 
     $session = $this->db->file('/session/select_valid_by_token.sql')
-                        ->replace('{TOKEN}', $token, 's')
+                        ->replace(':TOKEN', $token, 's')
                         ->result(['fetch' => 'assoc'])[0] ?? null;
 
     if (!$session) {
@@ -108,7 +106,7 @@ class LoginService {
 
     if ($isLoggedIn) {
       $user = $this->db->file('/users/select_profile_by_id.sql')
-                       ->replace('{USER_ID}', $session['user_id'], 'i')
+                       ->replace(':USER_ID', $session['user_id'], 'i')
                        ->result(['fetch' => 'assoc'])[0] ?? null;
 
       if ($user) {
@@ -136,7 +134,7 @@ class LoginService {
 
     // Step 3: Get the oldest log IDs
     $ids = $db->file('/logger/select_oldest_log_ids.sql')
-              ->replace('{LIMIT}', $limit, 'i')
+              ->replace(':LIMIT', $limit, 'i')
               ->result(['fetch' => 'column']);
 
     if (count($ids) > 0) {
@@ -153,13 +151,13 @@ class LoginService {
     $db = Database::init();
 
     $session = $db->file('/session/select_user_id_by_token.sql')
-                  ->replace('{TOKEN}', $token, 's')
+                  ->replace(':TOKEN', $token, 's')
                   ->result(['fetch' => 'assoc'])[0] ?? null;
 
     if ($session && !$session['user_id']) {
         $db->file('/session/update_user_id_by_token.sql')
-           ->replace('{USER_ID}', $user_id, 'i')
-           ->replace('{TOKEN}', $token, 's')
+           ->replace(':USER_ID', $user_id, 'i')
+           ->replace(':TOKEN', $token, 's')
            ->result();
 
         Logger::info("Session upgraded for token: {$token}");

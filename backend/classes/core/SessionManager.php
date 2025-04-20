@@ -46,9 +46,9 @@ class SessionManager {
         $db = Database::init();
     
         $db->file('/session/insert_session.sql')
-           ->replace('{TOKEN}', $token, 's')
-           ->replace('{NOW}', $now, 's')
-           ->replace('{EXPIRES}', $expires, 's')
+           ->replace(':TOKEN', $token, 's')
+           ->replace(':NOW', $now, 's')
+           ->replace(':EXPIRES', $expires, 's')
            ->result(); // No fetch needed, it's an insert
     
         return [
@@ -69,7 +69,7 @@ class SessionManager {
     
         // Get session row
         $row = $db->file('/session/select_valid_by_token.sql')
-                  ->replace('{TOKEN}', $token, 's')
+                  ->replace(':TOKEN', $token, 's')
                   ->result(['fetch' => 'assoc'])[0] ?? null;
     
         if (!$row) return null;
@@ -89,7 +89,7 @@ class SessionManager {
         if (time() - $lastActivity > 60) 
         {
             $db->file('/session/update_last_activity.sql')
-            ->replace('{TOKEN}', $token, 's')
+            ->replace(':TOKEN', $token, 's')
             ->result();
         }
 
@@ -98,7 +98,7 @@ class SessionManager {
     
         if ($user_id) {
             $user = $db->file('/users/select_name_by_id.sql')
-                       ->replace('{USER_ID}', $user_id, 'i')
+                       ->replace(':USER_ID', $user_id, 'i')
                        ->result(['fetch' => 'assoc'])[0] ?? null;
             $name = $user['name'] ?? null;
         }
@@ -151,8 +151,6 @@ class SessionManager {
       }
     }
     
-    
-
     // validateOrCreate
     public static function validateOrCreate(&$token)
     {
@@ -198,9 +196,10 @@ class SessionManager {
 
     // destroy
     public static function destroy($token) {
-        $db = Database::getInstance()->getConnection();
-        $stmt = $db->prepare("DELETE FROM sessions WHERE token = :token");
-        $stmt->execute([':token' => $token]);
+        Database::init()
+            ->file('/session/delete_by_token.sql')
+            ->replace(':TOKEN', $token, 's')
+            ->result(); // No fetch — just action
     }
 
     // logout
@@ -209,7 +208,7 @@ class SessionManager {
         $db = Database::init();
 
         $db->file('/session/logout.sql')
-        ->replace('{TOKEN}', $token, 's')
+        ->replace(':TOKEN', $token, 's')
         ->result(); // No fetch needed
 
         return ['success' => true];

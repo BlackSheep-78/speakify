@@ -8,8 +8,9 @@ class Database {
     private static $instance = null;
     private PDO $pdo;
     private string $query = '';
-    private array $bindings = []; // ✨ Stores [':TOKEN' => [value, type]]
-    private ?string $rawSql = null;   // 🔍 Tracks raw query until result()
+    private array $bindings = [];
+    private array $replacements = []; // 🪨 New: store token replacements for raw injection
+    private ?string $rawSql = null;   // 🔍 New: track raw query until result()
 
     /**
      * 🔁 Constructor (private): Establish PDO connection using config.json.
@@ -67,16 +68,32 @@ class Database {
     }
 
     /**
-     * 🧬 Register a token and value to be bound into the statement.
+     * 🧬 Replace token in query with sanitized value.
      */
     public function replace(string $token, $value, string $type = 's'): self 
     {
-        $this->bindings[$token] = [$value, $type];
+        $this->replacements[$token] = $this->sanitize($value, $type);
         return $this;
     }
 
     /**
-     * 📤 Execute query with bound parameters and return results.
+     * 🧡 Internal sanitize logic (type-based).
+     */
+    protected function sanitize($value, string $type): string 
+    {
+        return match ($type) {
+            'i' => (string)(int) $value,
+            'f' => (string)(float) $value,
+            'b' => $value ? '1' : '0',
+            'e' => filter_var($value, FILTER_VALIDATE_EMAIL) ? $this->pdo->quote($value) : "''",
+            's' => $this->pdo->quote($value),
+            'raw' => $value,
+            default => throw new InvalidArgumentException("Unknown sanitize type: $type"),
+        };
+    }
+
+    /**
+     * 📤 Execute query and return result with custom fetch options.
      * Options: 'fetch' => 'assoc' | 'column' | 'object'
      */
     public function result(array $options = []): mixed {
@@ -84,20 +101,17 @@ class Database {
             throw new RuntimeException("No SQL query set.");
         }
 
-        $stmt = $this->pdo->prepare($this->rawSql);
-
-        foreach ($this->bindings as $token => [$value, $type]) {
-            $stmt->bindValue($token, $value, $this->mapPDOType($type));
+        $sql = $this->rawSql;
+        foreach ($this->replacements as $token => $value) {
+            $sql = str_replace($token, $value, $sql);
         }
 
-        //error_log('[SQL] ' . $this->rawSql);
-        //error_log('[BINDINGS] ' . print_r($this->bindings, true));
-
+        $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
 
-        // Reset state after execution
+        // Reset
         $this->rawSql = null;
-        $this->bindings = [];
+        $this->replacements = [];
 
         return match ($options['fetch'] ?? 'assoc') {
             'column' => $stmt->fetchAll(PDO::FETCH_COLUMN),
@@ -107,7 +121,7 @@ class Database {
     }
 
     /**
-     * 🔒 Map custom type codes to PDO::PARAM constants.
+     * 🔒 Internal: Map custom type codes to PDO::PARAM constants.
      */
     private function mapPDOType(string $type): int {
         return match ($type) {
@@ -119,14 +133,14 @@ class Database {
     }
 
     /**
-     * 🪪 Get raw SQL query string for debug.
+     * 🪪 Get the raw SQL query string (for debugging).
      */
     public function raw(): string {
         return $this->rawSql ?? $this->query;
     }
 
     /**
-     * 🔌 Access raw PDO connection.
+     * 🔌 Direct access to raw PDO instance (use sparingly).
      */
     public function getPDO(): PDO {
         return $this->pdo;

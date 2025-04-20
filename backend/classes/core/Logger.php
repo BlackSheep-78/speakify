@@ -28,11 +28,11 @@ class Logger
         {
             Database::init()
                 ->file('/logger/insert_log.sql')
-                ->replace('{LEVEL}', $level, 's')
-                ->replace('{MESSAGE}', $msg, 's')
-                ->replace('{FILE}', $file, 's')
-                ->replace('{LINE}', $line, 'i')
-                ->replace('{CREATED}', $timestamp, 's')
+                ->replace(':LEVEL', $level, 's')
+                ->replace(':MESSAGE', $msg, 's')
+                ->replace(':FILE', $file, 's')
+                ->replace(':LINE', $line, 'i')
+                ->replace(':CREATED', $timestamp, 's')
                 ->result();
         } 
         catch (Exception $e) 

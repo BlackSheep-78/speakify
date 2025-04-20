@@ -38,9 +38,9 @@ try {
 
   Database::init()
     ->file('/session/insert_session.sql') // [7]
-    ->replace('{TOKEN}', $token, 's')
-    ->replace('{NOW}', $now, 's')
-    ->replace('{EXPIRES}', $expires, 's')
+    ->replace(':TOKEN', $token, 's')
+    ->replace(':NOW', $now, 's')
+    ->replace(':EXPIRES', $expires, 's')
     ->result(); // [8]
 
   Logger::log("✅ Session inserted into database successfully.", __FILE__, __LINE__); // [9]

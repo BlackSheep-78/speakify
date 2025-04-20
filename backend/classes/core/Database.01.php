@@ -1,6 +1,6 @@
 <?php
 // 📁 File: backend/core/Database.php
-// 🏦 Project: Speakify
+// 📦 Project: Speakify
 // 🧠 Description: Centralized PDO-based database class with clean SQL file loading,
 // variable replacement, query execution, and optional raw PDO access.
 
@@ -8,8 +8,7 @@ class Database {
     private static $instance = null;
     private PDO $pdo;
     private string $query = '';
-    private array $bindings = []; // ✨ Stores [':TOKEN' => [value, type]]
-    private ?string $rawSql = null;   // 🔍 Tracks raw query until result()
+    private array $bindings = [];
 
     /**
      * 🔁 Constructor (private): Establish PDO connection using config.json.
@@ -53,51 +52,39 @@ class Database {
         if (!file_exists($path)) {
             throw new Exception("SQL file not found: $path");
         }
-        $this->rawSql = file_get_contents($path);
+        $this->query = file_get_contents($path);
+        $this->bindings = []; // 🧹 Clear old bindings before reusing
         return $this;
     }
 
     /**
-     * 🔗 Direct query injection.
-     */
-    public function query(string $sql): self 
-    {
-        $this->rawSql = $sql;
-        return $this;
-    }
-
-    /**
-     * 🧬 Register a token and value to be bound into the statement.
+     * 🧬 Replace tokens in query with sanitized values.
+     * @param string $token  Token format: {PLACEHOLDER:TYPE}
+     * @param mixed  $value  Value to inject
+     * @param string $type   'i'=int, 's'=string, 'e'=email, 'b'=bool
      */
     public function replace(string $token, $value, string $type = 's'): self 
     {
-        $this->bindings[$token] = [$value, $type];
+        $placeholder = ':' . strtoupper(trim($token, '{}'));
+        $this->bindings[$placeholder] = [$value, $type];
         return $this;
     }
 
     /**
-     * 📤 Execute query with bound parameters and return results.
+     * 📤 Execute query and return result with custom fetch options.
      * Options: 'fetch' => 'assoc' | 'column' | 'object'
      */
     public function result(array $options = []): mixed {
-        if (!$this->rawSql) {
-            throw new RuntimeException("No SQL query set.");
+        $stmt = $this->pdo->prepare($this->query);
+
+        foreach ($this->bindings as $key => [$value, $type]) {
+            $stmt->bindValue($key, $value, $this->mapPDOType($type));
         }
 
-        $stmt = $this->pdo->prepare($this->rawSql);
-
-        foreach ($this->bindings as $token => [$value, $type]) {
-            $stmt->bindValue($token, $value, $this->mapPDOType($type));
-        }
-
-        //error_log('[SQL] ' . $this->rawSql);
-        //error_log('[BINDINGS] ' . print_r($this->bindings, true));
+        //error_log('[SQL] ' . $this->query);
+        //error_log('[Bindings] ' . print_r($this->bindings, true));
 
         $stmt->execute();
-
-        // Reset state after execution
-        $this->rawSql = null;
-        $this->bindings = [];
 
         return match ($options['fetch'] ?? 'assoc') {
             'column' => $stmt->fetchAll(PDO::FETCH_COLUMN),
@@ -107,7 +94,7 @@ class Database {
     }
 
     /**
-     * 🔒 Map custom type codes to PDO::PARAM constants.
+     * 🔒 Internal: Map custom type codes to PDO::PARAM constants.
      */
     private function mapPDOType(string $type): int {
         return match ($type) {
@@ -119,14 +106,14 @@ class Database {
     }
 
     /**
-     * 🪪 Get raw SQL query string for debug.
+     * 🪪 Get the raw SQL query string (for debugging).
      */
     public function raw(): string {
-        return $this->rawSql ?? $this->query;
+        return $this->query;
     }
 
     /**
-     * 🔌 Access raw PDO connection.
+     * 🔌 Direct access to raw PDO instance (use sparingly).
      */
     public function getPDO(): PDO {
         return $this->pdo;
