@@ -5,38 +5,20 @@
 
     class Translate
     {
-        function getRandomPairOfLanguages()
+        function getRandomPairOfLanguages(): array
         {
-            $sql = "
-                SELECT * FROM
-                (
-                    SELECT * 
-                    FROM languages 
-                    WHERE languages.`active` = 1
-                    ORDER BY RAND()
-                    LIMIT 2
-                ) AS t1
-                ORDER BY id ASC
-            ";
-
-            $db = new Database();
-            $db->query($sql);
-            $rows = $db->result();
-
-            return $rows;
+            $db = Database::init();
+            return $db->file('/languages/get_random_pair.sql')->result();
         }
 
-        function getOneForTranslation()
+        function getOneForTranslation(): array
         {
-            $db = new database();
-            $db->connect();
-            $db->file("get_one_for_translation.sql");
-            $rows = $db->result();
-            
-            if(count($rows) == 0) { return []; }
-
-            return $rows;
+            $db = Database::init();
+            $rows = $db->file('/get_one_for_translation.sql')->result();
+        
+            return $rows[0] ?? [];
         }
+        
 
         public function connectToGoogleToTranslate()
         {

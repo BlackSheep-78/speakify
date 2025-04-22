@@ -1,25 +1,7 @@
 <!-- 
-  file: speakify/public/register.html
+  file: speakify/public/views/register.html
   description: Registration page to create an account in Speakify.
 -->
-
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Inscription - Speakify</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <script src="js/app.js" defer></script> <!-- Link to your app.js -->
-</head>
-
-<body>
-
-  <!-- Header -->
-  <div class="header">
-    <div><a href="login-profile.html">👤 Connexion</a></div>
-    <div><a href="index.php">🏠 Accueil</a></div>
-  </div>
 
   <!-- Content -->
   <div class="content">
@@ -53,16 +35,4 @@
     </section>
     <!-- ==== END: Speakify Register Form ====# -->
 
-  </div>
 
-  <!-- Footer Navigation -->
-  <div class="footer-nav">
-    <a href="dashboard.html">🏠</a>
-    <a href="playback.html">🎧</a>
-    <a href="playlist-library.html">📚</a>
-    <a href="smart-lists.html">🧠</a>
-    <a href="settings.html">⚙️</a>
-  </div>
-
-</body>
-</html>

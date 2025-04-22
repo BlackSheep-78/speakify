@@ -1,0 +1,1 @@
+SELECT sentence_text FROM sentences WHERE sentence_id = :SID

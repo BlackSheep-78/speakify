@@ -66,26 +66,8 @@ class TTS
   {
       $db = Database::init();
   
-      $result = $db->query("
-          SELECT 
-              s.sentence_id,
-              s.language_id,
-              v.provider_id,
-              v.name AS voice
-          FROM sentences s
-          JOIN tts_voices v ON v.language_id = s.language_id
-          JOIN tts_providers p ON p.provider_id = v.provider_id
-          LEFT JOIN tts_audio a 
-              ON a.sentence_id = s.sentence_id
-              AND a.language_id = v.language_id
-              AND a.provider_id = v.provider_id
-              AND a.voice = v.name
-          WHERE 
-              v.active = 1 AND p.active = 1
-              AND a.id IS NULL
-          ORDER BY RAND()
-          LIMIT 1
-      ")->result(['fetch' => 'assoc']);
+      $result = $db->file('/tts/generate_missing_audio.sql')
+                   ->result(['fetch' => 'assoc']);
   
       return $result[0] ?? null;
   }  
@@ -101,26 +83,21 @@ class TTS
       $voice       = $task['voice'] ?? '';
   
       // 🔍 Fetch sentence
-      $sentence = $db->query("SELECT sentence_text FROM sentences WHERE sentence_id = $sentenceId")
+      $sentence = $db->file('/tts/get_sentence.sql')
+                     ->replace(':SID', $sentenceId, 'i')
                      ->result(['fetch' => 'assoc'])[0]['sentence_text'] ?? null;
+
   
       if (!$sentence) {
           throw new Exception("Sentence not found: $sentenceId");
       }
   
       // 🧠 Optional: fetch language tag from voice for rendering
-      $voiceMeta = $db->query("
-      SELECT 
-          p.name AS provider,
-          l.language_code AS lang_tag
-      FROM tts_voices v
-      JOIN tts_providers p ON p.provider_id = v.provider_id
-      JOIN languages l ON l.language_id = v.language_id
-      WHERE v.name = :VOICE AND v.provider_id = :PROVIDER_ID
-      LIMIT 1")
-      ->replace(':VOICE', $voice, 's')
-      ->replace(':PROVIDER_ID', $providerId, 'i')
-      ->result(['fetch' => 'assoc'])[0] ?? null;
+      $voiceMeta = $db->file('/tts/get_voice_metadata.sql')
+                ->replace(':VOICE', $voice, 's')
+                ->replace(':PROVIDER_ID', $providerId, 'i')
+                ->result(['fetch' => 'assoc'])[0] ?? null;
+
   
       if (!$voiceMeta) {
           throw new Exception("Voice metadata not found for $voice");
@@ -131,14 +108,13 @@ class TTS
   
       // 🧪 Hash check (prevent duplicates)
       $hash = sha1($sentence . $langTag . $provider . $voice);
-      $check = $db->query("
-          SELECT * FROM tts_audio 
-          WHERE sentence_id = :SID AND language_id = :LID AND provider_id = :PID AND voice = :VOICE
-      ")->replace(':SID', $sentenceId, 'i')
-        ->replace(':LID', $languageId, 'i')
-        ->replace(':PID', $providerId, 'i')
-        ->replace(':VOICE', $voice, 's')
-        ->result(['fetch' => 'assoc']);
+      $check = $db->file('/tts/check_audio_exists.sql')
+      ->replace(':SID', $sentenceId, 'i')
+      ->replace(':LID', $languageId, 'i')
+      ->replace(':PID', $providerId, 'i')
+      ->replace(':VOICE', $voice, 's')
+      ->result(['fetch' => 'assoc']);
+
   
       if (!empty($check)) {
           return [
@@ -162,17 +138,14 @@ class TTS
       }
   
       // 💾 Store in DB
-      $db->query("
-          INSERT INTO tts_audio 
-          (sentence_id, language_id, provider_id, voice, audio_path, audio_hash, created_at)
-          VALUES (:SID, :LID, :PID, :VOICE, :PATH, :HASH, NOW())
-      ")->replace(':SID', $sentenceId, 'i')
-        ->replace(':LID', $languageId, 'i')
-        ->replace(':PID', $providerId, 'i')
-        ->replace(':VOICE', $voice, 's')
-        ->replace(':PATH', $audio['full_path'], 's')
-        ->replace(':HASH', $hash, 's')
-        ->result();
+      $db->file('/tts/insert_audio.sql')
+      ->replace(':SID', $sentenceId, 'i')
+      ->replace(':LID', $languageId, 'i')
+      ->replace(':PID', $providerId, 'i')
+      ->replace(':VOICE', $voice, 's')
+      ->replace(':PATH', $audio['full_path'], 's')
+      ->replace(':HASH', $hash, 's')
+      ->result();
   
       return [
           'success' => true,

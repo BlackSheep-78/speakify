@@ -17,11 +17,6 @@
  * =============================================================================
  */
 
-require_once dirname(__DIR__) . '/init.php';
-
-// Log incoming raw request (for debugging only)
-file_put_contents(__DIR__ . '/../register.debug.log', file_get_contents('php://input'));
-
 // Accept JSON body
 $input = json_decode(file_get_contents('php://input'), true);
 $email = $input['email'] ?? '';
