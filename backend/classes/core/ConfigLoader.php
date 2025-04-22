@@ -93,6 +93,9 @@ class ConfigLoader
     defined('FRONTEND_METHODS')     || define('FRONTEND_METHODS', $config['frontend']['allow_methods']);
     defined('FRONTEND_HEADERS')     || define('FRONTEND_HEADERS', $config['frontend']['allow_headers']);
 
+    defined('STORAGE_AUDIO') || define('STORAGE_AUDIO', BASEPATH . '/backend/storage/audio');
+    defined('STORAGE_TTS')   || define('STORAGE_TTS', STORAGE_AUDIO . '/tts');
+
     // 9⃣ Expose globally
     $GLOBALS['CREDENTIALS'] = $config;
 

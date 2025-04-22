@@ -40,7 +40,8 @@ class SentenceModel {
         $this->config = $config;
     }
 
-    public function getSentences(int $lang_id = 39, ?int $user_id = null): array {
+    public function getSentences(int $lang_id = 39, ?int $user_id = null): array 
+    {
         // Fetch full flat list of pairs
         $stmt = $this->pdo->prepare("
             SELECT 
@@ -68,12 +69,16 @@ class SentenceModel {
         // Group by original_sentence_id
         $grouped = [];
 
-        foreach ($rows as $row) {
+        foreach ($rows as $row) 
+        {
             $origId = $row['original_sentence_id'];
 
-            if (!isset($grouped[$origId])) {
-                $grouped[$origId] = [
-                    'group' => [
+            if (!isset($grouped[$origId])) 
+            {
+                $grouped[$origId] = 
+                [
+                    'group' => 
+                    [
                         $origId,
                         $row['original_sentence'],
                         $row['original_language_id'],
@@ -83,11 +88,17 @@ class SentenceModel {
                 ];
             }
 
+            $audio = TTS::getAudioFor((int)$row['translated_sentence_id'], (int)$row['translated_language_id']);
+            $audioUrl = $audio['audio_hash'] ?? null
+                ? TTS::getSecureAudioUrl($audio['audio_hash'])
+                : null;
+            
             $grouped[$origId]['translations'][] = [
                 $row['translated_sentence_id'],
                 $row['translated_sentence'],
                 $row['translated_language_id'],
-                $row['translated_language']
+                $row['translated_language'],
+                $audioUrl
             ];
         }
 
@@ -103,7 +114,8 @@ class SentenceModel {
                     'trans_id',
                     'trans_txt',
                     'trans_lang_id',
-                    'trans_lang'
+                    'trans_lang',
+                    'audio_url'
                 ]
             ],
             'items' => array_values($grouped)

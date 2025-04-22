@@ -1,20 +1,19 @@
 <?php
 
-    require_once BASEPATH."/classes/Database.php";
-    require_once BASEPATH."/classes/GoogleTranslateAPi.php";
+    // File : /backend/classes/logic/Translate.php
 
     class Translate
     {
         function getRandomPairOfLanguages(): array
         {
             $db = Database::init();
-            return $db->file('/languages/get_random_pair.sql')->result();
+            return $db->file('/translate/get_random_pair.sql')->result();
         }
 
         function getOneForTranslation(): array
         {
             $db = Database::init();
-            $rows = $db->file('/get_one_for_translation.sql')->result();
+            $rows = $db->file('/translate/get_one_for_translation.sql')->result();
         
             return $rows[0] ?? [];
         }
@@ -39,7 +38,7 @@
 
             $db = new Database();
             $db->connect();
-            $db->file("insert_sentence_translation.sql");
+            $db->file("/sentences/insert_sentence_translation.sql");
             $db->replace("sentence_text_2",$sentence_text_2,"s");
             $db->replace("language_id_2",$data['language_id_2'],"i");
             $db->replace("sentence_id_1",$data['sentence_id_1'],"i");

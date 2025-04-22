@@ -13,7 +13,7 @@
 
 declare(strict_types=1);
 
-require_once BASEPATH . '/backend/classes/SessionManager.php';
+//require_once BASEPATH . '/backend/classes/SessionManager.php';
 
 class AdminService
 {

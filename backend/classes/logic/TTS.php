@@ -139,25 +139,26 @@ class TTS
   
       // 💾 Store in DB
       $db->file('/tts/insert_audio.sql')
-      ->replace(':SID', $sentenceId, 'i')
-      ->replace(':LID', $languageId, 'i')
-      ->replace(':PID', $providerId, 'i')
-      ->replace(':VOICE', $voice, 's')
-      ->replace(':PATH', $audio['full_path'], 's')
-      ->replace(':HASH', $hash, 's')
-      ->result();
+          ->replace(':SID', $sentenceId, 'i')
+          ->replace(':LID', $languageId, 'i')
+          ->replace(':PID', $providerId, 'i')
+          ->replace(':VOICE', $voice, 's')
+          ->replace(':PATH', $audio['path'], 's')   // ✅ use relative_path
+          ->replace(':HASH', $audio['hash'], 's')
+          ->result();
   
-      return [
-          'success' => true,
-          'sentence_id' => $sentenceId,
-          'voice' => $voice,
-          'provider' => $provider,
-          'lang' => $langTag,
-          'file' => $audio['file'] ?? null,
-          'path' => $audio['full_path']
-      ];
+          return [
+            'success'      => true,
+            'sentence_id'  => $sentenceId,
+            'voice'        => $voice,
+            'provider'     => $provider,
+            'lang'         => $langTag,
+            'file'         => $audio['file'],
+            'path'         => $audio['path'],       // relative
+            'full_path'    => $audio['full_path'],  // resolved
+            'hash'         => $audio['hash']
+        ];
   }
-  
   
   public static function renderAudioFile(array $options)
   {
@@ -176,14 +177,9 @@ class TTS
       $binary = $class::synthesize($text, $lang, $voice);
   
       // 🎩 Generate safe path
-      $date = date('Y-m');
-      $outputDir = BASEPATH . "/backend/storage/tts/{$lang}/{$provider}/{$date}/";
-      if (!is_dir($outputDir)) mkdir($outputDir, 0777, true);
-  
-      $id = bin2hex(random_bytes(8));
-      $slug = strtolower(trim(preg_replace('/[^a-z0-9]+/i', '-', substr($text, 0, 30)), '-'));
-      $filename = $slug . '--' . $id . '.mp3';
-      $fullPath = $outputDir . $filename;
+      $hash = sha1($text . $lang . $provider . $voice);
+      $paths = self::buildAudioPath($hash); // returns full_path + relative_path + file
+      $fullPath = $paths['full_path'];
   
       // 📂 Write file
       file_put_contents($fullPath, $binary);
@@ -196,16 +192,51 @@ class TTS
   
       return [
         'success'     => true,
-        'id'          => $id,
-        'path'        => $fullPath,
-        'full_path'   => $fullPath, // ✅ THIS ONE IS MANDATORY
-        'file'        => "/api?action=get_tts_file&id=$id",
+        'hash'        => $hash,
+        'path'        => $paths['relative_path'],
+        'full_path'   => $paths['full_path'],
+        'file'        => $paths['file'],
         'provider'    => $provider,
         'lang'        => $lang,
         'created_at'  => date('Y-m-d H:i:s')
     ];
   }
+
+  public static function buildAudioPath(string $hash): array
+  {
+      $dir1 = substr($hash, 0, 2);
+      $dir2 = substr($hash, 2, 2);
+      $dir3 = substr($hash, 4, 2);
+      $filename = substr($hash, 6) . '.mp3';
+
+      $relativePath = "audio/$dir1/$dir2/$dir3/$filename";
+      $fullPath = STORAGE_AUDIO . "/$dir1/$dir2/$dir3/";
+
+      if (!is_dir($fullPath)) {
+          mkdir($fullPath, 0775, true);
+      }
+
+      return [
+          'relative_path' => $relativePath,
+          'full_path'     => $fullPath . $filename,
+          'file'          => $filename
+      ];
+  }
   
+  public static function getAudioFor(int $sentenceId, int $langId): ?array
+  {
+      $db = Database::init();
+  
+      return $db->file('/tts/get_audio_for_sentence.sql')
+                ->replace(':SID', $sentenceId, 'i')
+                ->replace(':LID', $langId, 'i')
+                ->result(['fetch' => 'assoc'])[0] ?? null;
+  }
+
+  public static function getSecureAudioUrl(string $hash): string
+  {
+      return "/api/index.php?action=get_tts_file&hash=" . urlencode($hash);
+  }
 
   protected static function generateFilename($text, $lang, $provider)
   {
