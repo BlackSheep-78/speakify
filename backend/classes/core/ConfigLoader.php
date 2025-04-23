@@ -102,4 +102,23 @@ class ConfigLoader
     // ✅ Return config
     return $config;
   }
+
+  public static function get(string $key)
+  {
+      if (!isset($GLOBALS['CREDENTIALS'])) {
+          self::load(); // ensures config is loaded
+      }
+  
+      $config = $GLOBALS['CREDENTIALS'] ?? [];
+  
+      $keys = explode('.', $key);
+      foreach ($keys as $k) {
+          if (!isset($config[$k])) {
+              return null;
+          }
+          $config = $config[$k];
+      }
+  
+      return $config;
+  }
 }

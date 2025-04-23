@@ -116,40 +116,41 @@ class SessionManager {
     
     public static function cleanupOldSessions($db = null) 
     {
-        $pdo = $db ?: Database::init()->getPDO();
+        $db = $db ?: Database::init();
     
-        $stmt = $pdo->prepare("DELETE FROM sessions WHERE expires_at < NOW()");
-        $stmt->execute();
+        $db->file('/session/delete_expired_sessions.sql')
+           ->result(); // No fetch needed — it's a DELETE
     
         Logger::info("🧹 Old sessions cleaned up.");
     }
     
     public static function deleteOldestLogs($db = null): void
     {
-      $db = $db ?: Database::init();
-  
-      // Step 1: Count total logs
-      $total = $db->file('/logger/count_all_logs.sql')
-                  ->result(['fetch' => 'assoc'])[0]['total'] ?? 0;
-  
-      if ($total <= 0) return;
-  
-      // Step 2: Calculate 10% (rounded up, minimum 1)
-      $limit = max(1, (int) ceil($total * 0.10));
-  
-      // Step 3: Get the oldest log IDs
-      $ids = $db->file('/logger/select_oldest_log_ids.sql')
-                ->replace('{LIMIT}', $limit, 'i')
-                ->result(['fetch' => 'column']);
-  
-      if (count($ids) > 0) {
-          $in = implode(',', array_fill(0, count($ids), '?'));
-          $stmt = $db->getPDO()->prepare("DELETE FROM logs WHERE id IN ($in)");
-          $stmt->execute($ids);
-  
-          Logger::info("🗑️ Deleted {$limit} oldest logs (IDs: " . implode(',', $ids) . ").");
-      }
+        $db = $db ?: Database::init();
+    
+        // Step 1: Count total logs
+        $total = $db->file('/logger/count_all_logs.sql')
+                    ->result(['fetch' => 'assoc'])[0]['total'] ?? 0;
+    
+        if ($total <= 0) return;
+    
+        // Step 2: Calculate 10% (rounded up, minimum 1)
+        $limit = max(1, (int) ceil($total * 0.10));
+    
+        // Step 3: Get the oldest log IDs
+        $ids = $db->file('/logger/select_oldest_log_ids.sql')
+                  ->replace(':LIMIT', $limit, 'i')
+                  ->result(['fetch' => 'column']);
+    
+        if (count($ids) > 0) {
+            $db->file('/logger/delete_logs_by_ids.sql')
+               ->replace(':IDS', implode(',', $ids)) // uses SQL IN (:IDS)
+               ->result();
+    
+            Logger::info("🗑️ Deleted {$limit} oldest logs (IDs: " . implode(',', $ids) . ").");
+        }
     }
+    
     
     // validateOrCreate
     public static function validateOrCreate(&$token)
@@ -173,21 +174,20 @@ class SessionManager {
     // upgrade
     public static function upgrade($token, $user_id) 
     {
-        $db = Database::init()->getPDO();
+        $db = Database::init();
     
-        // Ensure that the session is anonymous (user_id is NULL)
-        $stmt = $db->prepare("SELECT user_id FROM sessions WHERE token = :token");
-        $stmt->execute([':token' => $token]);
-        $session = $stmt->fetch(PDO::FETCH_ASSOC);
+        // Step 1: Check if the session is anonymous
+        $session = $db->file('/session/select_user_id_by_token.sql')
+                      ->replace(':TOKEN', $token, 's')
+                      ->result(['fetch' => 'assoc'])[0] ?? null;
     
-        // Only upgrade if the session is anonymous (user_id is NULL)
         if ($session && !$session['user_id']) {
-            // Upgrade the session by setting the user_id
-            $stmt = $db->prepare("UPDATE sessions SET user_id = :user_id WHERE token = :token");
-            $stmt->execute([
-                ':user_id' => $user_id,
-                ':token' => $token
-            ]);
+            // Step 2: Upgrade session by setting user_id
+            $db->file('/session/update_user_id_by_token.sql')
+               ->replace(':TOKEN', $token, 's')
+               ->replace(':USER_ID', $user_id, 'i')
+               ->result();
+    
             Logger::info("Session upgraded for token: " . $token);
         } else {
             Logger::info("Session already upgraded or not found for token: " . $token);
@@ -219,22 +219,24 @@ class SessionManager {
         if (!$token) return null;
     
         $session = self::validate($token);
-
-        $str = json_encode($session, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-        Logger::debug($str, __FILE__, __LINE__);
-
+    
+        Logger::debug(json_encode($session, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+    
         if (!$session || empty($session['user_id'])) return null;
     
         try {
-            $db = Database::getInstance()->getConnection();
-            $stmt = $db->prepare("SELECT id, name, email FROM users WHERE id = :id");
-            $stmt->execute([':id' => $session['user_id']]);
-            return $stmt->fetch(PDO::FETCH_ASSOC);
+            $db = Database::init();
+    
+            return $db->file('/users/select_user_profile_by_id.sql')
+                      ->replace(':USER_ID', $session['user_id'], 'i')
+                      ->result(['fetch' => 'assoc'])[0] ?? null;
+    
         } catch (Exception $e) {
-            Logger::error("Failed to load user from session: " . $e->getMessage(), __FILE__, __LINE__);
+            Logger::error("Failed to load user from session: " . $e->getMessage());
             return null;
         }
     }
+    
 
     public static function getUserIdFromToken(?string $token): ?int {
         if (!$token) return null;

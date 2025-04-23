@@ -10,14 +10,17 @@
   ================================================================================
 */
 
-Logger::info("admin tool");
+Logger::debug("admin_key: " . ($_GET['admin_key'] ?? 'none'));
+Logger::debug("token: " . ($_GET['token'] ?? 'none'));
+Logger::debug("final used token: " . $token);
 
-//require_once dirname(__DIR__) . '/classes/AdminService.php';
+$token = $_GET['admin_key'] ?? $_GET['token'] ?? null;
 
 if (!AdminService::isAdmin($token)) {
     echo json_encode(['error' => 'Access denied']);
     exit;
 }
+    
 
 $tool = $_GET['tool'] ?? '';
 

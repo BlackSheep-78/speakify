@@ -21,22 +21,18 @@ class AdminService
      * Checks if the current user has admin privileges.
      * You can replace this logic with a role/flag check later.
      */
-    public static function isAdmin(string $token): bool
+    public static function isAdmin(string $adminKey): bool
     {
-        Logger::debug("isAdmin ".$token, __FILE__, __LINE__);
-
-
-
-        $session = SessionManager::getCurrentUser($token);
-
-        $str = json_encode($session, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-        Logger::debug($str, __FILE__, __LINE__);
-        Logger::debug($session['email'], __FILE__, __LINE__);
-
-
-
-        return isset($session['email']) && $session['email'] === 'jorge.mnf.alves@gmail.com';
+        $session = SessionManager::getCurrentUser($adminKey);
+    
+        if (!$session || empty($session['email'])) {
+            Logger::debug("Admin check failed.");
+            return false;
+        }
+    
+        return $session['email'] === 'jorge.mnf.alves@gmail.com';
     }
+    
     
 
     /**

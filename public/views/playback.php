@@ -1,7 +1,6 @@
-<!-- 
-  do not delete this:
-  file: /speakify/public/views/playback.php
--->
+<?php
+  // FILE: /speakify/public/views/playback.php
+?>
 
   <div class="content">
     <div class="playback">

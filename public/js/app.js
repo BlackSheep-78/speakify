@@ -685,51 +685,10 @@ app.api = function(endpoint, options = {}) {
   })();
 };
 
-app.initAdmin = function() {
-    // 🔧 Génération de la structure
-    const btnStructure = document.getElementById('btn-generate-structure');
-    const outputStructure = document.getElementById('output-generate');
-  
-    if (btnStructure && outputStructure) {
-      btnStructure.addEventListener('click', async () => {
-        outputStructure.textContent = '⏳ Exécution du script...';
-  
-        try {
-          const res = await app.api(`api/index.php?action=admin_tool&tool=generate_file_structure&token=${app.token}`);
-          if (res.success) {
-            outputStructure.textContent = `✅ Succès :\n${res.output}`;
-          } else {
-            outputStructure.textContent = `❌ Échec :\n${res.output || res.error}`;
-          }
-        } catch (err) {
-          outputStructure.textContent = '❌ Erreur réseau ou interne.';
-          console.error(err);
-        }
-      });
-    }
-  
-    // 🔊 TTS test
-    const btnTTS = document.getElementById('btn-tts-trigger');
-    const outputTTS = document.getElementById('output-tts');
-  
-    if (btnTTS && outputTTS) {
-      btnTTS.addEventListener('click', async () => {
-        outputTTS.textContent = "⏳ Requête en cours...";
-  
-        try {
-          const result = await app.api(`api/index.php?action=tts_generate&admin_key=${app.token}`);
-          if (result.success) {
-            outputTTS.textContent = `✅ Audio généré : ${result.file}`;
-          } else {
-            outputTTS.textContent = `❌ ${result.error || "Erreur inconnue"}`;
-          }
-        } catch (err) {
-          outputTTS.textContent = "❌ Erreur réseau ou interne.";
-          console.error(err);
-        }
-      });
-    }
-  };
+app.initAdmin = function() 
+{
+
+};
   
 
 

@@ -36,6 +36,7 @@ class TTS
         throw new Exception("Unsupported TTS provider: $provider");
     }
   }
+
   public static function generateSample(): array
   {
       try {
@@ -147,17 +148,19 @@ class TTS
           ->replace(':HASH', $audio['hash'], 's')
           ->result();
   
-          return [
+        return [
             'success'      => true,
             'sentence_id'  => $sentenceId,
             'voice'        => $voice,
             'provider'     => $provider,
             'lang'         => $langTag,
             'file'         => $audio['file'],
-            'path'         => $audio['path'],       // relative
-            'full_path'    => $audio['full_path'],  // resolved
-            'hash'         => $audio['hash']
+            'path'         => $audio['path'],
+            'full_path'    => $audio['full_path'],
+            'hash'         => $audio['hash'],
+            'original'     => $sentence // 👈 Add original text
         ];
+
   }
   
   public static function renderAudioFile(array $options)
