@@ -491,7 +491,7 @@ app.playback =
   },
 
   loop: async function () {
-    if (app.state.loopRunning) return;
+    if (app.state.loopRunning) return;         // 💣 Guard against re-entry
     app.state.loopRunning = true;
   
     const queue = app.state.playbackQueue;
@@ -516,14 +516,9 @@ app.playback =
       const entry = queue[index];
   
       for (const s of schema) {
-        const trans = (s.lang === app.state.mainLang)
-          ? { trans_txt: entry.orig_txt, trans_lang: entry.orig_lang, audio_url: null }
-          : entry.translations.find(t => t.trans_lang_id === app.getLangId(s.lang));
-  
-        const text = trans?.trans_txt;
-        const audioPath = trans?.audio_url;
-        const base = app.config.base_url?.replace(/\/+$/, '') || '';
-        const audioUrl = audioPath ? `${base}${audioPath}` : null;
+        const text = (s.lang === app.state.mainLang)
+          ? entry.orig_txt
+          : entry.translations.find(t => t.trans_lang_id === app.getLangId(s.lang))?.trans_txt;
   
         if (!text) continue;
   
@@ -542,28 +537,7 @@ app.playback =
           }
   
           console.log(`▶️ Playing ${s.lang.toUpperCase()} [${i + 1}/${s.repeat}]: ${text}`);
-  
-          try {
-            if (!audioUrl) {
-              console.warn("⛔️ No audio file for:", text);
-              await app.delay(1500);
-              continue;
-            }
-  
-            const audio = new Audio(audioUrl);
-  
-            await new Promise(resolve => {
-              audio.onended = resolve;
-              audio.onerror = resolve;
-              audio.play().catch(err => {
-                console.warn("Audio playback failed:", err);
-                resolve();
-              });
-            });
-          } catch (err) {
-            console.warn("Audio setup error:", err);
-            await app.delay(1500);
-          }
+          await app.delay(1500);
         }
       }
   
@@ -571,13 +545,10 @@ app.playback =
     }
   
     app.state.isPlaying = false;
-    app.state.loopRunning = false;
+    app.state.loopRunning = false;           // ✅ Unlock loop
     btn.classList.remove("playing");
     btn.textContent = "▶️";
   },
-  
-  
-  
   
   
   

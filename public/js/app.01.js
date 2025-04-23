@@ -57,6 +57,17 @@ const app =
     mainLang: "en"
   },
 
+  viewHandlers: 
+  {
+    "dashboard": "initDashboard",
+    "playback": "initPlayback",
+    "playlist-library": "initPlaylistLibrary",
+    "settings": "initSettings",
+    "smart-lists": "initSmartLists",
+    "admin": "initAdmin"
+  },
+
+
   token: null,
   authChecked: false,
 
@@ -87,11 +98,70 @@ const app =
 
     // 🔍 Get the name of the handler function for the current view
     const handler = this.viewHandlers?.[view];
-    if (typeof handler === "string" && typeof this[handler] === "function") {
-      await this[handler](); // legacy string-based
-    } else if (typeof handler === "object" && typeof handler.init === "function") {
-      handler.init(); // new object-based view module
+    // ✅ If a handler exists and it's defined as a function, call it
+    if (handler && typeof this[handler] === "function") 
+    {
+      await this[handler]();
     }
+
+  },
+
+  initPlayback() 
+  {
+    console.log("🎧 initPlayback() called");
+  
+    const active = document.getElementById("active-sentence");
+    const queue = document.getElementById("playloop-queue");
+    const played = document.getElementById("played-items");
+  
+    if (!active || !queue || !played) {
+      console.warn("⚠️ One or more playback sections are missing.");
+      return;
+    }
+  
+    const langId = this.getLangId(this.state.mainLang);
+
+    app.api(`api/index.php?action=get_sentences&lang_id=${langId}&token=${this.token}`)
+    .then(data => {
+      if (!data.items || !Array.isArray(data.items) || data.items.length === 0) {
+        queue.innerHTML = "<p>⚠️ Aucune donnée à lire.</p>";
+        return;
+      }
+  
+      console.log("📦 Loaded sentence items:", data.items);
+  
+      // ⤵️ keep the rest unchanged
+      const template = data.template;
+      const assembledItems = data.items.map((item, index) => {
+        const group = {};
+        template.group.forEach((key, i) => {
+          group[key] = item.group?.[i] ?? null;
+        });
+  
+        const translations = item.translations.map((row, tIndex) => {
+          const t = {};
+          template.translation.forEach((key, i) => {
+            t[key] = row?.[i] ?? null;
+          });
+          return t;
+        });
+  
+        return { ...group, translations };
+      });
+  
+      app.state.playbackQueue = assembledItems;
+      app.state.playedItems = [];
+      app.state.currentIndex = 0;
+      app.state.isPlaying = false;
+  
+      app.renderPlaybackUI();
+      app.startPlaybackLoop();
+    })
+    .catch(err => {
+      console.error("❌ Erreur lors du chargement de la lecture:", err);
+      queue.innerHTML = "<p>Erreur lors du chargement.</p>";
+    });
+  
 
   },
 
@@ -338,300 +408,6 @@ const app =
   }
 };
 
-
-
-
-app.playback = 
-{
-  queue: 
-  {
-    render() 
-    {
-      const container = document.getElementById("playloop-queue");
-      if (!container) return;
-
-      container.innerHTML = "";
-
-      app.state.playbackQueue.forEach((entry, index) => 
-      {
-        const isActive = (index === app.state.currentIndex);
-        const groupEl = isActive
-          ? this.renderActive(entry, index)
-          : this.renderWaiting(entry, index);
-        container.appendChild(groupEl);
-      });
-    },
-
-    renderActive(entry, index) 
-    {
-      const groupEl = document.createElement("div");
-      groupEl.className = "sentence-group active-block";
-      groupEl.dataset.index = index;
-
-      const originalLine = `<div class="original">🗣 ${entry.orig_txt}</div>`;
-      groupEl.innerHTML += originalLine;
-
-      app.state.schema.forEach(s => {
-        const isOrig = (s.lang === app.state.mainLang);
-        const trans = isOrig
-          ? { trans_txt: entry.orig_txt, trans_lang: entry.orig_lang }
-          : entry.translations.find(t => t.trans_lang_id === app.getLangId(s.lang));
-
-        if (!trans) return;
-
-        const transLine = `<div class="translation">🌍 ${trans.trans_txt}</div>`;
-        const progressLine = `<div class="progress-info">🎧 ${s.lang.toUpperCase()} ×${s.repeat}</div>`;
-        groupEl.innerHTML += transLine + progressLine;
-      });
-
-      return groupEl;
-    },
-
-    renderWaiting(entry, index) {
-      const groupEl = document.createElement("div");
-      groupEl.className = "sentence-group collapsed";
-      groupEl.dataset.index = index;
-
-      const bubble = document.createElement("div");
-      bubble.className = "sentence-bubble";
-      bubble.innerHTML = `<span class="lang-badge">${entry.orig_lang.slice(0,2).toUpperCase()}</span> ${entry.orig_txt}`;
-      groupEl.appendChild(bubble);
-
-      return groupEl;
-    },
-
-    startBlock(index) 
-    {
-      const el = document.querySelector(`.sentence-group[data-index='${index}']`);
-      if (el) {
-        el.classList.add("active-block");
-        el.classList.remove("collapsed");
-      }
-    },
-
-    endBlock(index) 
-    {
-      const el = document.querySelector(`.sentence-group[data-index='${index}']`);
-      if (el) {
-        el.classList.remove("active-block");
-        el.classList.add("collapsed");
-      }
-    },
-
-    refreshBlock(index, isActive = false) {
-      const container = document.getElementById("playloop-queue");
-      if (!container) return;
-    
-      const oldEl = container.querySelector(`.sentence-group[data-index='${index}']`);
-      if (oldEl) container.removeChild(oldEl);
-    
-      const entry = app.state.playbackQueue[index];
-      const newEl = isActive
-        ? this.renderActive(entry, index)
-        : this.renderWaiting(entry, index);
-    
-      const nextSibling = container.querySelector(`.sentence-group[data-index='${index + 1}']`);
-      container.insertBefore(newEl, nextSibling || null);
-    },
-
-    renderCollapsedOnly() {
-      const container = document.getElementById("playloop-queue");
-      if (!container) return;
-    
-      container.innerHTML = "";
-    
-      app.state.playbackQueue.forEach((entry, index) => {
-        const groupEl = this.renderWaiting(entry, index);
-        container.appendChild(groupEl);
-      });
-    }
-    
-    
-  },
-
-  init: async function () 
-  {
-    console.log("🎧 Playback module initialized");
-  
-    const result = await this.fetchSentences();
-    app.state.playbackQueue = result;
-    app.state.currentIndex = 0;
-    app.state.isPlaying = false;
-    app.state.loopRunning = false; // NEW guard flag
-  
-    this.queue.renderCollapsedOnly();
-  
-    // 🎮 Setup play/pause button — only triggers loop here
-    const playBtn = document.getElementById("toggle-playback");
-    if (playBtn) {
-      playBtn.addEventListener("click", () => {
-        app.state.isPlaying = !app.state.isPlaying;
-  
-        if (app.state.isPlaying) {
-          console.log("▶️ Start or Resume");
-          playBtn.classList.add("playing");
-  
-          if (!app.state.loopRunning) {
-            app.state.playedItems = [];
-            this.loop();
-          }
-        } else {
-          console.log("⏸️ Paused");
-          playBtn.classList.remove("playing");
-        }
-      });
-    }
-  },
-   
-
-  start() 
-  {
-    console.log("▶️ Playback started");
-    this.loop();
-  },
-
-  loop: async function () {
-    if (app.state.loopRunning) return;
-    app.state.loopRunning = true;
-  
-    const queue = app.state.playbackQueue;
-    const schema = app.state.schema;
-    const btn = document.getElementById("toggle-playback");
-  
-    if (!queue || !schema || !btn) return;
-  
-    let wasPaused = false;
-    btn.classList.add("playing");
-    btn.textContent = "⏸️";
-  
-    for (; app.state.currentIndex < queue.length; app.state.currentIndex++) {
-      const index = app.state.currentIndex;
-  
-      if (index > 0) this.queue.refreshBlock(index - 1, false);
-      this.queue.refreshBlock(index, true);
-  
-      const active = document.querySelector(`.sentence-group[data-index="${index}"]`);
-      if (active) active.scrollIntoView({ behavior: "smooth", block: "center" });
-  
-      const entry = queue[index];
-  
-      for (const s of schema) {
-        const trans = (s.lang === app.state.mainLang)
-          ? { trans_txt: entry.orig_txt, trans_lang: entry.orig_lang, audio_url: null }
-          : entry.translations.find(t => t.trans_lang_id === app.getLangId(s.lang));
-  
-        const text = trans?.trans_txt;
-        const audioPath = trans?.audio_url;
-        const base = app.config.base_url?.replace(/\/+$/, '') || '';
-        const audioUrl = audioPath ? `${base}${audioPath}` : null;
-  
-        if (!text) continue;
-  
-        for (let i = 0; i < s.repeat; i++) {
-          while (!app.state.isPlaying) {
-            if (!wasPaused) {
-              btn.textContent = "▶️";
-              wasPaused = true;
-            }
-            await app.delay(200);
-          }
-  
-          if (wasPaused) {
-            btn.textContent = "⏸️";
-            wasPaused = false;
-          }
-  
-          console.log(`▶️ Playing ${s.lang.toUpperCase()} [${i + 1}/${s.repeat}]: ${text}`);
-  
-          try {
-            if (!audioUrl) {
-              console.warn("⛔️ No audio file for:", text);
-              await app.delay(1500);
-              continue;
-            }
-  
-            const audio = new Audio(audioUrl);
-  
-            await new Promise(resolve => {
-              audio.onended = resolve;
-              audio.onerror = resolve;
-              audio.play().catch(err => {
-                console.warn("Audio playback failed:", err);
-                resolve();
-              });
-            });
-          } catch (err) {
-            console.warn("Audio setup error:", err);
-            await app.delay(1500);
-          }
-        }
-      }
-  
-      await app.delay(300);
-    }
-  
-    app.state.isPlaying = false;
-    app.state.loopRunning = false;
-    btn.classList.remove("playing");
-    btn.textContent = "▶️";
-  },
-  
-  
-  
-  
-  
-  
-  stop() {
-    console.log("⏹️ Playback stopped");
-    app.state.isPlaying = false;
-  },
-
-  fetchSentences() {
-    const langId = app.getLangId(app.state.mainLang);
-  
-    return app.api(`api/index.php?action=get_sentences&lang_id=${langId}&token=${app.token}`)
-      .then(data => {
-        if (!data.items || !Array.isArray(data.items) || data.items.length === 0) {
-          console.warn("⚠️ Aucune donnée à lire.");
-          return [];
-        }
-  
-        const template = data.template;
-        return data.items.map((item, index) => {
-          const group = {};
-          template.group.forEach((key, i) => {
-            group[key] = item.group?.[i] ?? null;
-          });
-  
-          const translations = item.translations.map((row) => {
-            const t = {};
-            template.translation.forEach((key, i) => {
-              t[key] = row?.[i] ?? null;
-            });
-            return t;
-          });
-  
-          return { ...group, translations };
-        });
-      });
-  }
-};
-
-
-app.viewHandlers = {
-  "dashboard": "initDashboard",
-  "playback": app.playback,  // 👈 CALL the function here
-  "playlist-library": "initPlaylistLibrary",
-  "settings": "initSettings",
-  "smart-lists": "initSmartLists",
-  "admin": "initAdmin"
-};
-
-
-
-
-
-
 app.registerFormHandler = function () 
 {
   const form = document.getElementById("register-form");
@@ -674,6 +450,44 @@ app.delay = function(ms)
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+app.renderPlaybackUI = function() 
+{
+  const active = document.getElementById("active-sentence");
+  const queue = document.getElementById("playloop-queue");
+  const played = document.getElementById("played-items");
+
+  const items = app.state.playbackQueue || [];
+  const history = app.state.playedItems || [];
+
+  // Played items
+  played.innerHTML = history.map(pair => `
+    <div class="sentence-pair faded">
+      <span class="original">${pair.original_sentence}</span>
+      <span class="arrow">→</span>
+      <span class="translated">${pair.translated_sentence}</span>
+    </div>
+  `).join('');
+
+  // Active sentence
+  const current = items[app.state.currentIndex];
+  active.innerHTML = current ? `
+    <div class="sentence-pair highlight">
+      <span class="original">${current.original_sentence}</span>
+      <span class="arrow">→</span>
+      <span class="translated">${current.translated_sentence}</span>
+    </div>
+  ` : `<p>Fin de la lecture</p>`;
+
+  // Remaining queue
+  queue.innerHTML = items.slice(app.state.currentIndex + 1).map(pair => `
+    <div class="sentence-pair">
+      <span class="original">${pair.original_sentence}</span>
+      <span class="arrow">→</span>
+      <span class="translated">${pair.translated_sentence}</span>
+    </div>
+  `).join('');
+};
+
 app.state.mainLang = 'en'; // used for collapsed display
 
 app.getLangId = function (code) {
@@ -687,6 +501,139 @@ app.state.schema = [
   { lang: 'pt', repeat: 1 }
 ];
 
+app.startPlaybackLoop = async function () {
+  const queue = app.state.playbackQueue;
+  const schema = app.state.schema;
+  const btn = document.getElementById("toggle-playback");
+
+  if (!queue || !schema || !btn) return;
+
+  let wasPaused = false;
+
+  // UI feedback: show pause icon
+  btn.classList.add("playing");
+  btn.textContent = "⏸️";
+
+  for (; app.state.currentIndex < queue.length; app.state.currentIndex++) {
+    const entry = queue[app.state.currentIndex];
+
+    app.renderPlaybackQueue();
+
+    // 🔃 Scroll to active
+    const active = document.querySelector(".sentence-group.active");
+    if (active) active.scrollIntoView({ behavior: "smooth", block: "center" });
+
+    for (const s of schema) {
+      const text = (s.lang === app.state.mainLang)
+        ? entry.orig_txt
+        : entry.translations.find(t => t.trans_lang_id === app.getLangId(s.lang))?.trans_txt;
+
+      if (!text) continue;
+
+      for (let i = 0; i < s.repeat; i++) {
+        // ⏸️ Wait if playback is paused
+        while (!app.state.isPlaying) {
+          if (!wasPaused) {
+            btn.textContent = "▶️";
+            wasPaused = true;
+          }
+          await app.delay(200);
+        }
+
+        if (wasPaused) {
+          btn.textContent = "⏸️";
+          wasPaused = false;
+        }
+
+        console.log(`▶️ Playing ${s.lang.toUpperCase()} [${i + 1}/${s.repeat}]: ${text}`);
+        await app.delay(1500); // Simulated audio
+      }
+    }
+
+    await app.delay(300);
+  }
+
+  app.state.isPlaying = false;
+  btn.classList.remove("playing");
+  btn.textContent = "▶️";
+};
+
+
+app.renderPlaybackQueue = function () 
+{
+  const container = document.getElementById("playloop-queue");
+  if (!container) return;
+
+  container.innerHTML = ""; // Clear all previous
+
+  app.state.playbackQueue.forEach((entry, index) => {
+    const isActive = (index === app.state.currentIndex);
+    const groupEl = document.createElement("div");
+    groupEl.className = "sentence-group";
+    if (isActive) groupEl.classList.add("active");
+
+    // 🔹 Collapsed display for non-active items (chat bubble style)
+    if (!isActive) {
+      const bubble = document.createElement("div");
+      bubble.className = "sentence-bubble";
+      bubble.innerHTML = `<span class=\"lang-badge\">${entry.orig_lang.slice(0,2).toUpperCase()}</span> ${entry.orig_txt}`;
+      groupEl.appendChild(bubble);
+      container.appendChild(groupEl);
+      return;
+    }
+
+    // 🔸 Expanded display for active block
+    const originalLine = `<div class="original">🗣 ${entry.orig_txt}</div>`;
+    groupEl.innerHTML += originalLine;
+
+    app.state.schema.forEach(s => {
+      const isOrig = (s.lang === app.state.mainLang);
+
+      // Find translation object for this schema lang
+      const trans = isOrig
+        ? { trans_txt: entry.orig_txt, trans_lang: entry.orig_lang }
+        : entry.translations.find(t => t.trans_lang_id === app.getLangId(s.lang));
+
+      if (!trans) return;
+
+      const transLine = `<div class="translation">🌍 ${trans.trans_txt}</div>`;
+      const progressLine = `<div class="progress-info">🎧 ${s.lang.toUpperCase()} ×${s.repeat}</div>`;
+      groupEl.innerHTML += transLine + progressLine;
+    });
+
+    container.appendChild(groupEl);
+  });
+};
+
+
+
+app.renderPlaybackUI = function () {
+  const queue = document.getElementById("playloop-queue");
+  if (!queue || !Array.isArray(app.state.playbackQueue)) return;
+
+  queue.innerHTML = "";
+
+  app.state.playbackQueue.forEach(entry => {
+    const groupDiv = document.createElement("div");
+    groupDiv.className = "sentence-group";
+
+    groupDiv.innerHTML = `
+      <div class="original"><strong>🗣 ${entry.orig_lang}:</strong> ${entry.orig_txt}</div>
+    `;
+
+    const transList = document.createElement("ul");
+    transList.className = "translations";
+
+    entry.translations.forEach(trans => {
+      const li = document.createElement("li");
+      li.innerHTML = `<strong>🌍 ${trans.trans_lang}:</strong> ${trans.trans_txt}`;
+      transList.appendChild(li);
+    });
+
+    groupDiv.appendChild(transList);
+    queue.appendChild(groupDiv);
+  });
+};
 
 app.config = {};
 
@@ -761,7 +708,26 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+console.log("WE NEED TO SORT THIS BUTTON EVENTUALLY");
 
+const playBtn = document.getElementById("toggle-playback");
+if (playBtn) {
+  playBtn.addEventListener("click", () => {
+    app.state.isPlaying = !app.state.isPlaying;
 
+    if (app.state.isPlaying) {
+      console.log("▶️ Start or Resume");
+      playBtn.classList.add("playing");
 
+      if (!app._loopRunning) {
+        app.state.currentIndex = 0;
+        app.state.playedItems = [];
+        app.startPlaybackLoop();
+      }
+    } else {
+      console.log("⏸️ Paused");
+      playBtn.classList.remove("playing");
+    }
+  });
+}
 
