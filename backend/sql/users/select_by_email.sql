@@ -1,1 +1,1 @@
-SELECT * FROM users WHERE email = :EMAIL LIMIT 1;
+SELECT id FROM users WHERE email = :EMAIL;

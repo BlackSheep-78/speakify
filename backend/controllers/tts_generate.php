@@ -11,7 +11,7 @@ try {
 
     echo json_encode($result);
 } catch (Throwable $e) {
-    Logger::log('ERROR', 'TTS generateSample failed: ' . $e->getMessage());
+    Logger::error('ERROR', 'TTS generateSample failed: ' . $e->getMessage());
 
     http_response_code(500);
     echo json_encode([

@@ -1,0 +1,2 @@
+SELECT * FROM playlists
+WHERE id = :PLAYLIST_ID;

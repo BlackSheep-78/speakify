@@ -26,34 +26,23 @@
   ==============================================================================
 */
 
-header('Content-Type: application/json'); // [1]
-Logger::log("📥 create_session.php called", __FILE__, __LINE__); // [2]
+header('Content-Type: application/json');
+Logger::info("📥 create_session.php called");
 
 try {
-  $token   = bin2hex(random_bytes(32)); // [3]
-  $now     = date('Y-m-d H:i:s'); // [4]
-  $expires = date('Y-m-d H:i:s', strtotime('+8 hours')); // [5]
+  $session = SessionManager::create();
+  Logger::info("✅ Session inserted into database successfully.");
 
-  Logger::log("🔐 Generated token: $token", __FILE__, __LINE__); // [6]
-
-  Database::init()
-    ->file('/session/insert_session.sql') // [7]
-    ->replace(':TOKEN', $token, 's')
-    ->replace(':NOW', $now, 's')
-    ->replace(':EXPIRES', $expires, 's')
-    ->result(); // [8]
-
-  Logger::log("✅ Session inserted into database successfully.", __FILE__, __LINE__); // [9]
-
-  echo json_encode([ // [10]
+  echo json_encode([
     'success' => true,
-    'token' => $token
+    'token' => $session['token']
   ]);
 } catch (Exception $e) {
-  Logger::log("❌ Error creating session: " . $e->getMessage()); // [11]
-  echo json_encode([ // [12]
+  Logger::info("❌ Error creating session: " . $e->getMessage());
+
+  echo json_encode([
     'error' => 'Could not create session.',
     'details' => $e->getMessage()
   ]);
-  exit; // [13]
+  exit;
 }

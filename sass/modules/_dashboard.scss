@@ -1,0 +1,21 @@
+// Project: Speakify
+// File: /sass/_dashboard.scss
+// Description: Styles for dashboard links and smart-list items
+
+.dashboard-links a,
+.smart-lists .smart-item {
+  text-decoration: none;
+  background-color: #ffffff;
+  padding: 12px 16px;
+  border-radius: 12px;
+  box-shadow: $shadow-medium;
+  color: $text-color;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  display: block;
+  margin-bottom: 12px;
+
+  &:hover {
+    background-color: $accent-bg;
+    box-shadow: $shadow-heavy;
+  }
+}

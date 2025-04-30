@@ -1,0 +1,14 @@
+// Project: Speakify
+// File: /sass/_base.scss
+// Description: Base styles: body, universal layout, resets
+
+body {
+    margin: 0;
+    font-family: $font-family-main;
+    background: $background-gradient;
+    color: $text-color;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  

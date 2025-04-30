@@ -1,32 +1,12 @@
 <?php
-/**
- * =============================================================================
- * 🧠 Speakify – Central API Router
- * =============================================================================
- * 📁 File: /speakify/public/api/index.php
- * 📦 Purpose: Acts as the public entry point for all API requests in production.
- *
- * ✅ Features:
- * - Handles routing to backend controllers via `action` parameter
- * - Validates session tokens for protected routes
- * - Supports CORS for cross-origin frontend access
- * - Centralized DB + session manager initialization
- * - Handles both public and protected actions
- *
- * 🚫 Important:
- * - This file is the ONLY public API access point. `backend/api.php` is not used.
- * - Only controllers in `/backend/controllers/` should be routed here.
- *
- * 🔐 Auth:
- * - Protected routes require a valid session token.
- * - On success, `$GLOBALS['auth_user_id']` is set and available to controller logic.
- *
- * 🔍 Dependencies:
- * - /init.php loads autoloaders and class definitions
- * - Database, SessionManager, Logger must be initialized before routing
- * =============================================================================
- */
 
+// ============================================
+// Project: Speakify
+// File: /public/api/index.php
+// Description: Central API router for all incoming public requests.
+// ============================================
+
+// [0] Loading settings and variables
 require_once __DIR__ . '/../../init.php';
 
 // [1] CORS Headers
@@ -36,68 +16,60 @@ header("Access-Control-Allow-Headers: Content-Type, Authorization");
 header("Content-Type: application/json");
 
 // [2] Handle CORS Preflight
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') 
+{
     http_response_code(200);
     echo json_encode(["status" => "CORS preflight OK"]);
     exit;
 }
 
-// [3] Initialize dependencies
-$pdo = Database::init()->getPDO();
-$sm  = new SessionManager($pdo);
+$action = Input::action();
+$token = Input::token();
 
-// [4] Get parameters
-$action = $_GET['action'] ?? null;
-$token  = $_GET['token'] ?? null;
-
-// [5] Valid public endpoints that don't require authentication
-$publicActions = PublicActions::get();
-
-// [6] Validate action
-if (!$action || !preg_match('/^[a-z0-9_]+$/', $action)) {
+// [3] Action validation
+if (!Actions::isValid($action)) 
+{
     http_response_code(400);
-    echo json_encode(['error' => 'Invalid or missing action']);
+    echo json_encode(['success' => false, 'error' => 'Unknown action', 'code' => 'ERROR_0003']);
     exit;
 }
+
+// [4] Session creation / validation
+$database = Database::init();
+$sessionManager = new SessionManager(['db' => $database]);
+$session = $sessionManager->check($token);
+
+//Logger::debug($session);
+
+// [5] If the action is protected, but session is invalid or not logged in:
+if (Actions::isProtected($action) && (!$session['success'] || empty($session['token']))) 
+{
+    http_response_code(403);
+    echo json_encode([
+        'success' => false,
+        'error' => 'Unauthorized access',
+        'code' => 'ERROR_0004',
+        'tip' => 'This action requires a protected session (anonymous or authenticated). Your session is missing, expired, or invalid.'
+      ]);
+    exit;
+}
+
+// [6] Creating a "global" , just in case
+$SESSION_DATA = $session;
 
 // [7] Locate controller file
-$actionFile = BASEPATH . "/backend/controllers/{$action}.php";
-if (!file_exists($actionFile)) {
-    Logger::log("❌ Action file NOT FOUND: {$actionFile}", __FILE__, __LINE__);
+$controllerPath = BASEPATH . "/backend/controllers/{$action}.php";
+
+if (!file_exists($controllerPath)) 
+{
     http_response_code(404);
-    echo json_encode(['error' => 'Unknown action']);
-    exit;
-}
-
-// [8] Auth validation (only for protected routes)
-try {
-    if (!in_array($action, $publicActions)) {
-        if (!$token) {
-            http_response_code(401);
-            echo json_encode(['error' => 'Missing session token']);
-            exit;
-        }
-
-        $session = $sm->validate($token);
-        if (!is_array($session)) {
-            http_response_code(401);
-            echo json_encode(['error' => 'Invalid or expired session']);
-            exit;
-        }
-
-        $GLOBALS['auth_user_id'] = $session['user_id'] ?? null;
-    } else {
-        $GLOBALS['auth_user_id'] = null;
-    }
-} catch (Exception $e) {
-    Logger::log("🔥 Session validation error: " . $e->getMessage(), __FILE__, __LINE__);
-    http_response_code(500);
     echo json_encode([
-        'error' => 'Session setup failed',
-        'details' => DEBUG ? $e->getMessage() : null
+        'success' => false,
+        'error' => "Action controller not found",
+        'code' => 'ERROR_0005'
     ]);
     exit;
 }
 
-// [9] Include controller and execute
-require_once $actionFile;
+// [8] Include controller
+require_once $controllerPath;

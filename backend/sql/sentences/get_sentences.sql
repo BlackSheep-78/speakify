@@ -1,16 +1,13 @@
--- =============================================================================
--- File: get_sentences.sql
--- Description:
---   Retrieves translation pairs where the original sentence is in a specific
---   source language. Returns both the original and translated sentences,
---   along with their language metadata and the translation pair ID.
--- 
--- Usage:
---   Replace {STARTING_LANGUAGE_ID} with the actual source language ID.
---
--- Example:
---   WHERE s1.language_id = 1  -- English
--- =============================================================================
+-- ==========================================
+-- Project: Speakify
+-- File: /backend/sql/sentences/get_sentences.sql
+-- Description: Returns a flat list of all available sentences 
+--              with their language information.
+-- ==========================================
+
+-- No input parameters
+-- OUTPUT: sentence_id, text, language_id, language_name
+
 
 SELECT 
     tp.pair_id,
@@ -27,5 +24,5 @@ JOIN sentences s1 ON tp.sentence_id_1 = s1.sentence_id
 JOIN languages l1 ON s1.language_id = l1.language_id
 JOIN sentences s2 ON tp.sentence_id_2 = s2.sentence_id
 JOIN languages l2 ON s2.language_id = l2.language_id
-WHERE s1.language_id = {STARTING_LANGUAGE_ID}
+WHERE s1.language_id = :LANG_ID
 ORDER BY tp.pair_id, l2.language_name;

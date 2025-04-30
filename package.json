@@ -1,0 +1,28 @@
+{
+  "name": "speakify",
+  "version": "1.0.0",
+  "description": "-    [Readme](https://github.com/BlackSheep-78/speakify/blob/main/README.md)",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": 
+  {
+    "sass-dev": "sass --watch sass/style.scss public/css/style.css --style=expanded",
+    "sass-prod": "sass sass/style.scss public/css/style.css --style=compressed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BlackSheep-78/speakify.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BlackSheep-78/speakify/issues"
+  },
+  "homepage": "https://github.com/BlackSheep-78/speakify#readme",
+  "devDependencies": {
+    "sass": "^1.87.0"
+  }
+}

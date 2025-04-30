@@ -1,5 +1,4 @@
 <?php
-
 /**
  * =============================================================================
  * 📌 IMPORTANT: DO NOT REMOVE OR MODIFY THIS HEADER
@@ -17,42 +16,40 @@
  * =============================================================================
  */
 
-// Accept JSON body
+header('Content-Type: application/json');
+
 $input = json_decode(file_get_contents('php://input'), true);
 $email = $input['email'] ?? '';
 $password = $input['password'] ?? '';
 $name = $input['name'] ?? 'Anonymous';
 
-// Validate input
 if (!$email || !$password) {
   http_response_code(400);
   echo json_encode(['success' => false, 'error' => 'Missing email or password']);
   exit;
 }
 
-try {
-  // Check if email exists
-  $stmt = $pdo->prepare("SELECT id FROM `users` WHERE `email` = :email");
-  $stmt->execute(['email' => $email]);
-  if ($stmt->fetch()) {
-    http_response_code(409);
-    echo json_encode(['success' => false, 'error' => 'Email already exists']);
-    exit;
-  }
+$userModel = new UserModel();
 
-  // Hash password
-  $hash = password_hash($password, PASSWORD_BCRYPT);
-
-  // Insert new user
-  $stmt = $pdo->prepare("INSERT INTO `users` (`email`, `password_hash`, `name`) VALUES (:email, :hash, :name)");
-  $stmt->execute([
-    'email' => $email,
-    'hash' => $hash,
-    'name' => $name
-  ]);
-
-  echo json_encode(['success' => true, 'status' => 'registered', 'email' => $email, 'name' => $name]);
-} catch (PDOException $e) {
-  http_response_code(500);
-  echo json_encode(['success' => false, 'error' => 'Registration failed', 'details' => $e->getMessage()]);
+if ($userModel->emailExists($email)) 
+{
+  http_response_code(409);
+  echo json_encode(['success' => false, 'error' => 'Email already exists']);
+  exit;
 }
+
+$hash = password_hash($password, PASSWORD_BCRYPT);
+
+if (!$userModel->createUser($email, $hash, $name)) 
+{
+  http_response_code(500);
+  echo json_encode(['success' => false, 'error' => 'User creation failed']);
+  exit;
+}
+
+echo json_encode([
+  'success' => true,
+  'status' => 'registered',
+  'email' => $email,
+  'name' => $name
+]);

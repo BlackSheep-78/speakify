@@ -47,7 +47,7 @@ class GoogleTTSApi
           ]
       ];
 
-      Logger::log('DEBUG', 'Google TTS POST: ' . json_encode($postData));
+      Logger::debug( 'Google TTS POST: ' . json_encode($postData));
   
       $ch = curl_init('https://texttospeech.googleapis.com/v1/text:synthesize');
       curl_setopt_array($ch, [
@@ -69,7 +69,7 @@ class GoogleTTSApi
   
       $json = json_decode($result, true);
 
-      Logger::log('DEBUG', 'Google TTS RESPONSE: ' . $result); // Add this
+      Logger::debug( 'Google TTS RESPONSE: ' . $result); // Add this
 
       if (!isset($json['audioContent'])) {
           throw new Exception("No audio content returned from Google TTS.");
@@ -83,7 +83,7 @@ class GoogleTTSApi
       } 
       elseif (strlen($binary) < 1000) 
       {
-          Logger::log('WARN', 'TTS binary is unusually small: ' . strlen($binary));
+          Logger::warn('TTS binary is unusually small: ' . strlen($binary));
       }
       
       return $binary;

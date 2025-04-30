@@ -4,7 +4,6 @@
 // 🎯 Serves TTS audio files by SHA1 hash
 // =============================================================================
 
-
 $hash = $_GET['hash'] ?? null;
 
 if (!$hash || !preg_match('/^[a-f0-9]{40}$/', $hash)) {
@@ -13,16 +12,16 @@ if (!$hash || !preg_match('/^[a-f0-9]{40}$/', $hash)) {
     exit;
 }
 
-$path = TTSModel::resolvePathFromHash($hash);
+$paths = TTS::buildAudioPath($hash);
+$file  = $paths['full_path'];
 
-if (!$path || !file_exists($path)) {
+if (!file_exists($file)) {
     http_response_code(404);
     echo json_encode(['error' => 'Audio file not found']);
     exit;
 }
 
 header('Content-Type: audio/mpeg');
-header('Content-Length: ' . filesize($path));
-readfile($path);
+header('Content-Length: ' . filesize($file));
+readfile($file);
 exit;
-

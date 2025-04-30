@@ -1,0 +1,104 @@
+// Project: Speakify
+// File: /sass/_components.scss
+// Description: UI components like buttons, cards, forms, info messages
+
+.card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: $shadow-medium;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+  
+  .form-group {
+    margin-bottom: 16px;
+  }
+  
+  label {
+    font-weight: 500;
+    display: block;
+    margin-bottom: 6px;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: $font-family-main;
+    box-sizing: border-box;
+  }
+  
+  .button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+  
+    &.primary {
+      background-color: $primary-color;
+      color: white;
+  
+      &:hover {
+        background-color: $primary-hover;
+      }
+    }
+  
+    &.danger {
+      background-color: $danger-color;
+      color: white;
+  
+      &:hover {
+        background-color: $danger-hover;
+      }
+    }
+  }
+  
+  .info {
+    margin-top: 12px;
+    font-size: 14px;
+    color: $text-color;
+  }
+
+.floating-play-button {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 64px;
+    height: 64px;
+    background-color: rgba(255, 255, 255, 0.85);
+    color: $primary-color;
+    border: 2px solid $primary-color;
+    border-radius: 50%;
+    box-shadow: $shadow-heavy;
+    cursor: grab;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  
+    &:hover {
+      background-color: #f0f4ff;
+      color: $primary-hover;
+      border-color: $primary-hover;
+    }
+  
+    svg {
+      width: 28px;
+      height: 28px;
+      fill: currentColor;
+      pointer-events: none;
+      transition: transform 0.2s ease;
+    }
+  
+    &.playing svg {
+      transform: scale(1.1);
+    }
+  }
+  
+  

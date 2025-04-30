@@ -1,0 +1,54 @@
+// Project: Speakify
+// File: /sass/_layout.scss
+// Description: Layout structures: header, footer, content zones
+
+.header {
+    padding: 16px 24px;
+    background: white;
+    box-shadow: $shadow-heavy;
+    border-radius: 0 0 20px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+    a {
+      color: $text-color;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+  
+      &:hover {
+        color: $primary-color;
+      }
+    }
+  }
+  
+  .content {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+  }
+  
+  .footer-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 12px 16px;
+    background: white;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    border-radius: 20px 20px 0 0;
+    font-size: 22px;
+  
+    a {
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 10px;
+      transition: background 0.2s, transform 0.2s;
+  
+      &:hover {
+        background: $accent-bg;
+        transform: translateY(-2px);
+      }
+    }
+  }
+  

@@ -58,7 +58,7 @@ class AdminService
     
         // Step 3: Build and run command
         $cmd = "$bashExe $scriptBashPath $rootBashPath $outputBashPath 2>&1";
-        Logger::debug("Running file structure generator: $cmd", __FILE__, __LINE__);
+        Logger::debug("Running file structure generator: $cmd");
     
         exec($cmd, $output, $returnCode);
     

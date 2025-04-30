@@ -1,4 +1,20 @@
--- FILE : /backend/sql/sentences/insert_sentence_translation.sql
+-- ==========================================
+-- Project: Speakify
+-- File: /backend/sql/sentences/insert_sentence_translation.sql
+-- Description: Inserts a new translated sentence, links it to an original 
+--              sentence as a translation pair, and records the source.
+-- ==========================================
+
+-- INPUT:
+--   :SENTENCE_TEXT_2       → Text of the translated sentence
+--   :LANGUAGE_ID_2         → Language ID of the translated sentence
+--   :SENTENCE_ID_1         → ID of the original sentence
+--   :TRANSLATION_VERSION   → Version info for this translation (e.g. 1)
+--   :SOURCE_ID             → ID of the translation source
+
+-- OUTPUT:
+--   Creates entries in: `sentences`, `translation_pairs`, `translation_pair_sources`
+
 
 -- Step 1: Insert the translated sentence and store the ID
 SET @sentence_id_2 = NULL;

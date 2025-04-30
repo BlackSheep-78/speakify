@@ -10,10 +10,6 @@
   ================================================================================
 */
 
-Logger::debug("admin_key: " . ($_GET['admin_key'] ?? 'none'));
-Logger::debug("token: " . ($_GET['token'] ?? 'none'));
-Logger::debug("final used token: " . $token);
-
 $token = $_GET['admin_key'] ?? $_GET['token'] ?? null;
 
 if (!AdminService::isAdmin($token)) {

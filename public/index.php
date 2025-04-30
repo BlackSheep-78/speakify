@@ -24,7 +24,8 @@ $page = $_GET['page'] ?? 'dashboard';
 $page = basename($page);
 
 // Fallback to 404 if not allowed
-if (!in_array($page, $allowedViews)) {
+if (!in_array($page, $allowedViews)) 
+{
     $page = '404';
 }
 

@@ -9,8 +9,10 @@
 
 header('Content-Type: application/json');
 
+global $database, $session;
+
 $token = $_GET['token'] ?? '';
-$service = new LoginService(Database::init());
+$service = new LoginService(['db' => $database]);
 
 $response = $service->validate($token);
 

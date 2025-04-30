@@ -1,0 +1,27 @@
+// Project: Speakify
+// File: /sass/_responsive.scss
+// Description: Responsive adjustments for mobile and small screens
+
+@media (max-width: 600px) {
+    .header,
+    .content,
+    .footer-nav {
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+  
+    .footer-nav {
+      font-size: 20px;
+    }
+  
+    .floating-play-button {
+      width: 56px;
+      height: 56px;
+  
+      svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+  

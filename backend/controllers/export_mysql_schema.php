@@ -28,23 +28,3 @@ try {
         'error' => $e->getMessage()
     ]);
 }
-
-
-$db = Database::init();
-$db->query("SHOW TABLES"); or $db->file("/sql/admim/show_tables.sql");
-$tables = $db->result([possibility to throw options in here]);
-
-so that script would be basicly :
-
-$db = Database::init();
-$db->file("/sql/admim/show_tables.sql");
-$tables = $db->result([possibility to throw options in here]);
-
-i like this kind of abstraction
-
-the method $db->replace() or another name that you think bzerrst
-would be used to replace vars on the query while sanitazing the input like 
-
-$db->replace("{USER:ID}",$user_id,"i") where "i" means integer 
-$db->replace("{USER:MAIL}",$user_mail,"e") where "e" means an email adress
-etc.. etc... do you get my point ?

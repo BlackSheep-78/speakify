@@ -1,0 +1,20 @@
+@import 'variables';
+@import 'mixins';
+@import 'reset';
+@import 'base';
+@import 'layout';
+@import 'components';
+@import 'modules/dashboard';
+@import 'modules/playback';
+@import 'modules/playlist';
+@import 'modules/smartlists';
+@import 'modules/settings';
+@import 'modules/achievements';
+@import 'modules/auth';
+@import 'responsive';
+
+
+.teste
+{
+    color:red;
+}

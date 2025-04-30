@@ -11,20 +11,23 @@
 
 class Translate
 {
+    private TranslationModel $translationModel;
+    private GoogleTranslateApi $googleApi;
+
+    public function __construct() 
+    {
+        $this->translationModel = new TranslationModel();
+        $this->googleApi = new GoogleTranslateApi();
+    }
+
     public function getRandomPairOfLanguages(): array
     {
-        return Database::init()
-            ->file('/translate/get_random_pair.sql')
-            ->result();
+        return $this->translationModel->getRandomLanguagePair();
     }
 
     public function getOneForTranslation(): array
     {
-        $rows = Database::init()
-            ->file('/translate/get_one_for_translation.sql')
-            ->result();
-
-        return $rows[0] ?? [];
+        return $this->translationModel->getPendingTranslation();
     }
 
     public function connectToGoogleToTranslate(): array
@@ -39,8 +42,7 @@ class Translate
             ];
         }
 
-        $GoogleTranslate = new GoogleTranslateApi();
-        $translated = $GoogleTranslate->translate(
+        $translated = $this->googleApi->translate(
             $data['sentence_text_1'],
             $data['language_code_1'],
             $data['language_code_2']
@@ -63,14 +65,11 @@ class Translate
             ];
         }
 
-        Database::init()
-            ->file("/sentences/insert_sentence_translation.sql")
-            ->replace(":SENTENCE_TEXT_2", $translated, "s")
-            ->replace(":LANGUAGE_ID_2", $data['language_id_2'], "i")
-            ->replace(":SENTENCE_ID_1", $data['sentence_id_1'], "i")
-            ->replace(":TRANSLATION_VERSION", 1, "i")
-            ->replace(":SOURCE_ID", 1, "i")
-            ->result();
+        $this->translationModel->saveTranslation(
+            $translated,
+            $data['language_id_2'],
+            $data['sentence_id_1']
+        );
 
         return [
             'success' => true,
