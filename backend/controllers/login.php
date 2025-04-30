@@ -1,51 +1,55 @@
 <?php
 // =============================================================================
-// 🔐 File: login.php
-// 📁 Location: backend/controllers/login.php
-// 🎯 Purpose: API endpoint for user login and session upgrade
-// 📦 Input: JSON body with `email`, `password`; optional `token` (GET)
-// 📤 Output: JSON with login status, session token, user info, and loggedin flag
+// File: backend/controllers/login.php
+// Project: Speakify
+// Description: Handles user login and session upgrade
 // =============================================================================
 
-header('Content-Type: application/json');
+global $database;
 
-// 📥 Parse input
-$input = json_decode(file_get_contents('php://input'), true);
-$email = $input['email'] ?? '';
+$input = Input::json();
+$email = trim($input['email'] ?? '');
 $password = $input['password'] ?? '';
-$token = $_GET['token'] ?? null;
+$token = $_GET['token'] ?? '';
 
+// 🔐 Basic validation
 if (!$email || !$password) {
-  http_response_code(400);
-  echo json_encode(['error' => 'Missing email or password']);
-  exit;
+    echo json_encode(['success' => false, 'error' => 'Missing credentials']);
+    exit;
 }
 
-// 🔐 Authenticate user
-$service = new LoginService($database);
-$response = $service->authenticate($email, $password, $token);
 
-// ❌ Failed authentication
-if (isset($response['error'])) {
-  http_response_code(401);
-  echo json_encode($response);
-  exit;
+
+$sessionManager = new SessionManager(['db' => $database]);
+$session = $sessionManager->check($token);
+
+// 🔁 If session is expired or invalid, silently generate a new one
+if (!$session) 
+{
+    $session = $sessionManager->create();
+    $token = $session['token'];
 }
 
-// ✅ ENFORCE RULE 10 — Upgrade session if token is present
-if ($token) {
-  $session = SessionManager::validate($token);
-  Logger::info("Session validation result: " . json_encode($session));
+$loginService = new LoginService(['db' => $database]);
+$result = $loginService->authenticate($email, $password, $token);
 
-  if ($session && !$session['logged_in']) 
-  {
-    //Logger::info("🔄 Upgrading session for token: " . $token);
-    SessionManager::upgrade($token, $response['user_id']);
-    //Logger::info("✅ Session upgraded for user: " . $response['user_id']);
-  } else {
-    //Logger::info("ℹ️ Session already logged in or invalid for token: " . $token);
-  }
+if (!$result['success']) 
+{
+    echo json_encode(['success' => false, 'error' => $result['error'] ?? 'Authentication failed']);
+    exit;
 }
 
-// ✅ Success
-echo json_encode($response);
+// 🔁 Upgrade current session with user_id
+$sessionManager->upgrade($token, $result['user_id']);
+
+// ✅ Return session + user data
+echo json_encode([
+    'success' => true,
+    'token' => $token,
+    'user_id' => $result['user_id'],
+    'email' => $result['email'],
+    'name' => $result['name'],
+    'last_login' => $result['last_login'] ?? null,
+    'logged_in' => true
+]);
+exit;

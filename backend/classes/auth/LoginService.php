@@ -18,21 +18,22 @@ class LoginService
     $this->loggerModel  = new LoggerModel($options);
   }
 
-  public function authenticate(string $email, string $password, ?string $existingToken = null): array 
+  public function authenticate(string $email, string $password, ?string $token = null): array 
   {
     $user = $this->userModel->findByEmail($email);
 
+    Logger::debug($user);
+
     if (!$user || !password_verify($password, $user['password_hash'])) 
     {
-      return ['error' => 'Invalid credentials'];
+      return ['error' => 'Invalid credentials','code'=>'ERROR_0006'];
     }
 
-    $session = $this->sessionModel->validateToken($existingToken);
+    $session = $this->sessionModel->validateToken($token);
 
     if ($session && !$session['user_id']) 
     {
-      $this->sessionModel->upgradeUserSession($existingToken, $user['id']);
-      $token = $existingToken;
+      $this->sessionModel->upgradeUserSession($token, $user['id']);
     } 
     else 
     {

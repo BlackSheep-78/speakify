@@ -1,24 +1,24 @@
 <?php
 // =============================================================================
-// 🔐 File: validate_session.php
-// 📁 Location: backend/actions/validate_session.php
-// 🎯 Purpose: Validate a session token and return login status
-// 📦 Input: GET `token`
-// 📤 Output: JSON with success, token, loggedin, (optional) user info
+// Project: Speakify
+// File: /backend/controllers/validate_session.php
+// Description: Validates a session token and returns login status + user info
 // =============================================================================
+
 
 header('Content-Type: application/json');
 
-global $database, $session;
+global $database;
 
 $token = $_GET['token'] ?? '';
 $service = new LoginService(['db' => $database]);
-
 $response = $service->validate($token);
 
 if (isset($response['error'])) {
-    $new = SessionManager::create();
+    $sessionManager = new SessionManager(['db' => $database]);
+    $new = $sessionManager->create(); // ✅ FIXED: instance call
     $token = $new['token'];
+
     $response = [
         'success'   => true,
         'logged_in' => false,

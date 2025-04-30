@@ -79,7 +79,9 @@ class Database {
      * 📤 Execute query with bound parameters and return results.
      * Options: 'fetch' => 'assoc' | 'column' | 'object'
      */
-    public function result(array $options = []): mixed {
+    /*
+    public function result(array $options = []): mixed 
+    {
         if (!$this->rawSql) {
             throw new RuntimeException("No SQL query set.");
         }
@@ -104,7 +106,33 @@ class Database {
             'object' => $stmt->fetchAll(PDO::FETCH_OBJ),
             default => $stmt->fetchAll(PDO::FETCH_ASSOC),
         };
+    }*/
+
+    public function result(array $options = []): mixed
+{
+    if (!$this->rawSql) {
+        throw new RuntimeException("No SQL query set.");
     }
+
+    $stmt = $this->pdo->prepare($this->rawSql);
+
+    foreach ($this->bindings as $token => [$value, $type]) {
+        $stmt->bindValue($token, $value, $this->mapPDOType($type));
+    }
+
+    $stmt->execute();
+
+    $this->rawSql = null;  // Reset state after execution
+    $this->bindings = [];
+
+    // Fetch the result based on 'fetch' option
+    return match ($options['fetch'] ?? 'assoc') {
+        'column' => $stmt->fetchAll(PDO::FETCH_COLUMN), 
+        'object' => $stmt->fetchAll(PDO::FETCH_OBJ),
+        'row' => $stmt->fetch(PDO::FETCH_ASSOC), // Only fetch a single row here
+        default => $stmt->fetchAll(PDO::FETCH_ASSOC),
+    };
+}
 
     /**
      * 🔒 Map custom type codes to PDO::PARAM constants.

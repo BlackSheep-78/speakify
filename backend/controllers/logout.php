@@ -1,29 +1,17 @@
 <?php
 // =============================================================================
-// File: actions/logout.php
-// Description: Unlinks user_id from a session, but keeps session active
+// Project: Speakify
+// File: /backend/controllers/logout.php
+// Description: Logs the user out of their session by clearing user_id
 // =============================================================================
 
-Logger::info("logout.php called");
+header('Content-Type: application/json');
 
 $token = $_GET['token'] ?? '';
 
-if (!$token) {
+global $database;
+$sessionManager = new SessionManager(['db' => $database]);
 
-  Logger::info("exiting #4!");
-  http_response_code(400);
-  echo json_encode(['error' => 'Missing token']);
-  exit;
-}
+$sessionManager->logout($token);
 
-try {
-  $result = SessionManager::logout($token);
-
-  Logger::info("here #4!");
-
-
-  echo json_encode($result);
-} catch (PDOException $e) {
-  http_response_code(500);
-  echo json_encode(['error' => 'Server error', 'details' => $e->getMessage()]);
-}
+echo json_encode(['success' => true, 'message' => 'Logged out']);

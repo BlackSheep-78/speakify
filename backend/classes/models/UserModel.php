@@ -16,14 +16,6 @@ class UserModel {
         }
     }
 
-    public function emailExists(string $email): bool 
-    {
-        $result = $this->db->file('/users/select_by_email.sql')
-                           ->replace(':EMAIL', $email, 's')
-                           ->result(['fetch' => 'row']);
-        return !empty($result);
-    }
-
     public function createUser(string $email, string $hash, string $name): bool 
     {
         return $this->db->file('/users/insert_user.sql')
@@ -32,4 +24,26 @@ class UserModel {
                         ->replace(':NAME', $name, 's')
                         ->result(['fetch' => 'none']);
     }
+
+    public function getProfileById(int $userId): ?array
+    {
+        $result = $this->db->file('/users/select_profile_by_id.sql')
+                           ->replace(':USER_ID', $userId, 'i')
+                           ->result(['fetch' => 'row']);
+    
+        return $result ?: null;
+    }
+
+    public function findByEmail(string $email)
+    {
+        // Fetch a single row from the database (no need for [0])
+        $result = $this->db->file('/users/select_by_email.sql')
+                            ->replace(':EMAIL', $email, 's')
+                            ->result(['fetch' => 'row']); // Ensures only one row returned
+    
+        Logger::debug($result);
+        
+        return $result ?: null; // Return user or null if no result
+    }
+    
 }
