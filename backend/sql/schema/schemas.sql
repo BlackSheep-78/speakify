@@ -1,13 +1,8 @@
 -- =============================================================================
--- File: schemas.sql
--- Description:
---   Defines the 'schemas' table used to store custom playback schemas per user.
---   Each schema contains a JSON sequence that controls playback logic (language
---   order and repetition), and is tied to the user who created it.
---
--- Usage:
---   Used by the frontend to control the playback sequence per session.
---   Displayed in the Schema Editor and selected in the player UI.
+-- File: backend/sql/schema/schemas.sql
+-- Project: Speakify
+-- Table: schemas
+-- Description: Defines the schemas table used to control playback sequences
 -- =============================================================================
 
 CREATE TABLE `schemas` (
