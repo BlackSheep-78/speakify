@@ -10,11 +10,12 @@ header('Content-Type: application/json');
 
 global $database;
 
-$token = $_GET['token'] ?? '';
-$service = new LoginService(['db' => $database]);
+$token    = Input::get('token', '');  
+$service  = new LoginService(['db' => $database]);
 $response = $service->validate($token);
 
-if (isset($response['error'])) {
+if (isset($response['error'])) 
+{
     $sessionManager = new SessionManager(['db' => $database]);
     $new = $sessionManager->create(); // ✅ FIXED: instance call
     $token = $new['token'];

@@ -7,7 +7,7 @@
 
 header('Content-Type: application/json');
 
-$token = $_GET['token'] ?? '';
+$token = Input::get('token', '');  // Sanitized input using Input class
 
 global $database;
 $sessionManager = new SessionManager(['db' => $database]);

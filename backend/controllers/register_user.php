@@ -1,29 +1,18 @@
 <?php
-/**
- * =============================================================================
- * 📌 IMPORTANT: DO NOT REMOVE OR MODIFY THIS HEADER
- * =============================================================================
- * File: backend/actions/register_user.php
- * Project: Speakify
- *
- * Description:
- * Handles new user registration from the public frontend.
- * - Accepts JSON POST payload with email, password, and name
- * - Validates and checks for duplicate emails
- * - Hashes password securely (bcrypt)
- * - Inserts user into the `users` table
- * - Returns JSON response with status
- * =============================================================================
- */
+// =============================================================================
+// File: register_user.php
+// Project: Speakify
+// Description: Handles new user registration from the public frontend.
+// =============================================================================
 
 header('Content-Type: application/json');
 
-$input = json_decode(file_get_contents('php://input'), true);
-$email = $input['email'] ?? '';
-$password = $input['password'] ?? '';
-$name = $input['name'] ?? 'Anonymous';
+$email    = Input::get('email', '');  // Sanitized input for email
+$password = Input::get('password', '');  // Sanitized input for password
+$name     = Input::get('name', 'Anonymous');  // Sanitized input for name
 
-if (!$email || !$password) {
+if (!$email || !$password) 
+{
   http_response_code(400);
   echo json_encode(['success' => false, 'error' => 'Missing email or password']);
   exit;

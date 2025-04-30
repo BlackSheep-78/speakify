@@ -5,9 +5,10 @@
 // Description: Lists available voices from Google TTS for inspection
 // =============================================================================
 
-try {
-  $provider = $_GET['provider'] ?? 'google';
-  $voices = TTS::getVoices($provider);
+try 
+{
+  $provider = Input::get('provider', 'google');
+  $voices   = TTS::getVoices($provider);
 
   echo json_encode([
     'success' => true,
@@ -15,7 +16,9 @@ try {
     'count' => count($voices),
     'voices' => $voices
   ]);
-} catch (Exception $e) {
+} 
+catch (Exception $e) 
+{
   http_response_code(500);
   echo json_encode([
     'success' => false,

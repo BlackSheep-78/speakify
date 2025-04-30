@@ -6,11 +6,13 @@
 
 header('Content-Type: application/json');
 
-try {
+try 
+{
     $result = TTS::generateSample();
-
     echo json_encode($result);
-} catch (Throwable $e) {
+} 
+catch (Throwable $e) 
+{
     Logger::error('ERROR', 'TTS generateSample failed: ' . $e->getMessage());
 
     http_response_code(500);

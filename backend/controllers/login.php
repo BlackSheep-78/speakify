@@ -7,13 +7,13 @@
 
 global $database;
 
-$input = Input::json();
-$email = trim($input['email'] ?? '');
-$password = $input['password'] ?? '';
-$token = $_GET['token'] ?? '';
++ $email    = Input::post('email', '');  // Correct method for POST input
++ $password = Input::post('password', '');  // Correct method for POST input
++ $token    = Input::get('token', '');  
 
 // 🔐 Basic validation
-if (!$email || !$password) {
+if (!$email || !$password) 
+{
     echo json_encode(['success' => false, 'error' => 'Missing credentials']);
     exit;
 }

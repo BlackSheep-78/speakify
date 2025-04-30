@@ -20,7 +20,7 @@
     - [ ] Ordonner l’agencement des blocs et mettre en œuvre la philosophie mobile first (media queries) afin d’assurer une adaptation de l’affichage aux diverses tailles d’écran.
     - [x] Structurer le code en utilisant des préprocesseurs CSS pour faciliter le travail afin d’améliorer l’écriture des fichiers et l'éco-conception.
     - [ ] Manipuler la page web pour interagir avec l’utilisateur.
-    - [ ] Développer des requêtes HTTP asynchrones pour communiquer avec un serveur de manière fluide et transparente.
+    - [x] Développer des requêtes HTTP asynchrones pour communiquer avec un serveur de manière fluide et transparente.
 
 
     - Feedback : Absence d'éléments essentiels à la validation : les maquettes et le préprocesseur. De plus, le responsive n'est pas géré, juste une media query pour les petits formats. La sémantique semble connue mais pas utilisée, il n'y a pas les balises basiques telles que <footer> et <header>. L'accessibilité est à améliorer. Les côtés positifs sont la réflexion sur l'UX et l'utilisation de l'application à une seule main, ainsi que la partie JavaScript qui semble maîtrisée.

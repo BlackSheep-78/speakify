@@ -18,7 +18,8 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') 
+{
     http_response_code(200);
     echo json_encode(['status' => 'OK (preflight)']);
     exit;
@@ -26,7 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 
 $config = require __DIR__ . '/../config.php';
 
-try {
+try 
+{
     $token = $_GET['token'] ?? '';
     if (!$token) {
         http_response_code(400);
@@ -58,7 +60,9 @@ try {
 
     echo json_encode(['status' => 'valid']);
 
-} catch (Exception $e) {
+} 
+catch (Exception $e) 
+{
     http_response_code(500);
     echo json_encode([
         'error' => 'Internal server error',
