@@ -30,7 +30,7 @@ $token = Input::token();
 if (!Actions::isValid($action)) 
 {
     http_response_code(400);
-    echo json_encode(['success' => false, 'error' => 'Unknown action', 'code' => 'ERROR_0003']);
+    echo json_encode(['success' => false, 'error' => 'Unknown action ['.$action.']', 'code' => 'ERROR_0003','tip'=>'Add this action to Actions.php']);
     exit;
 }
 

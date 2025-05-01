@@ -93,6 +93,12 @@ const app =
       handler.init(); // new object-based view module
     }
 
+    if (localStorage.getItem("test_runner_state")) 
+    {
+      console.log("🧪 Resuming test sequence from saved state...");
+      await this.test(); // continue where it left off
+    }
+
   },
 
   async initPlaylistLibrary() 
@@ -463,7 +469,8 @@ app.playback =
   
     // 🎮 Setup play/pause button — only triggers loop here
     const playBtn = document.getElementById("toggle-playback");
-    if (playBtn) {
+    if (playBtn) 
+    {
       playBtn.addEventListener("click", () => {
         app.state.isPlaying = !app.state.isPlaying;
   
@@ -480,7 +487,13 @@ app.playback =
           playBtn.classList.remove("playing");
         }
       });
+    };
+
+    if (localStorage.getItem('test_runner_state')) {
+      console.log("🧪 Resuming test from persisted state...");
+      await app.test();
     }
+
   },
    
 
@@ -751,6 +764,237 @@ app.initAdmin = function()
 {
 
 };
+
+app.test = async function (arg = null) 
+{
+  console.log("🔥 app.test() has started");
+  console.log("🧪 Test runner invoked");
+
+  console.log("🧪 test() running: current =", localStorage.getItem("test_runner_state"));
+
+  const defaultDelay = 30;
+
+  // Internal state storage key
+  const LS_KEY = 'test_runner_state';
+
+  // Define test plan
+  const testPlan = 
+  {
+    dashboardView: 
+    {
+      run: true,
+      action: () => document.querySelector('.footer-nav a[href="dashboard"]')?.click(),
+      endpoints: ['get_config', 'validate_session']
+    },
+
+    playbackView: 
+    {
+      run: true,
+      action: () => document.querySelector('.footer-nav a[href="playback"]')?.click(),
+      endpoints: ['get_config', 'validate_session','get_sentences']
+    },
+
+    'playlist-libraryView': 
+    {
+      run: true,
+      action: () => document.querySelector('.footer-nav a[href="playlist-library"]')?.click(),
+      endpoints: ['get_config', 'validate_session','get_playlists']
+    },
+
+    'smart-listsView': 
+    {
+      run: true,
+      action: () => document.querySelector('.footer-nav a[href="smart-lists"]')?.click(),
+      endpoints: ['get_config', 'validate_session','get_playlists']
+    },
+
+    settingsView: 
+    {
+      run: true,
+      action: () => document.querySelector('.footer-nav a[href="settings"]')?.click(),
+      endpoints: ['get_config', 'validate_session','get_playlists']
+    },
+
+    'login-profileView': 
+    {
+      run: true,
+      action: () => document.querySelector('.header a[href="login-profile"]')?.click(),
+      endpoints: ['get_config', 'validate_session']
+    },
+
+    achievementsView: 
+    {
+      run: true,
+      action: () => document.querySelector('.header a[href="achievements"]')?.click(),
+      endpoints: ['get_config', 'validate_session']
+    },
+
+    'offline-modeView': 
+    {
+      run: true,
+      action: () => document.querySelector('.header a[href="offline-mode"]')?.click(),
+      endpoints: ['get_config', 'validate_session']
+    }    
+
+  };
+
+  const testOrder = 
+  [
+    'settingsView',
+    'dashboardView', 
+    'playbackView',
+    'playlist-libraryView',
+    'smart-listsView',
+    'settingsView',
+    'login-profileView',
+    'achievementsView',
+    'offline-modeView',
+
+    'dashboardView'
+  ];
+
+
+    // Handle quick single test execution
+    if (typeof arg === 'string') {
+      const quick = testPlan[arg];
+      if (!quick) {
+        console.warn(`❌ No such test: '${arg}'`);
+        return;
+      }
+      console.log(`🎯 Running standalone test '${arg}'`);
+      try {
+        await quick.action();
+      } catch (err) {
+        console.error(`❌ Error in '${arg}':`, err);
+      }
+      return;
+    }
+
+    let state;
+
+    if (typeof arg === 'number') {
+      localStorage.removeItem('next_test_timestamp');
+      state = {
+        current: 0,
+        results: [],
+        delay: arg
+      };
+    } else {
+      state = JSON.parse(localStorage.getItem(LS_KEY) || 'null');
+      if (!state) {
+        state = {
+          current: 0,
+          results: [],
+          delay: defaultDelay
+        };
+      }
+    }
+
+   // Always persist the resolved state
+   localStorage.setItem(LS_KEY, JSON.stringify(state));
+
+// 🕒 Delay gate (based on saved timestamp)
+const nextAt = parseInt(localStorage.getItem('next_test_timestamp') || '0');
+const now = Date.now();
+if (now < nextAt) {
+  const wait = nextAt - now;
+  console.log(`⏳ Waiting ${Math.ceil(wait / 1000)}s before next test...`);
+  await new Promise(res => setTimeout(res, wait));
+}
+
+  const nextTestName = testOrder[state.current];
+  const test = testPlan[nextTestName];
+
+  console.log("🧠 nextTestName =", nextTestName);
+  console.log("🧠 test =", test);
+
+   if (!nextTestName || !test) 
+  {
+    console.log("🛑 No next test. Should trigger report.");
+    console.log("✅ All tests completed.");
+
+    // ✅ Test Results
+    console.group("📋 Test Results");
+    console.table(state.results);
+        // 🚫 Skipped tests
+    const skipped = Object.keys(testPlan).filter(k => !testPlan[k].run);
+    console.log("⏭️ Skipped tests:", skipped);
+        // 📦 Coverage check
+    const testedEndpoints = Object.values(testPlan)
+      .flatMap(t => Array.isArray(t.endpoints) ? t.endpoints : []);
+    const uniqueTested = [...new Set(testedEndpoints)];
+    const coverageScan = await app.api("api/index.php?action=tests&step=scan&token=" + app.token);
+    const backendControllers = coverageScan?.controllers || [];
+    const backendViews = coverageScan?.views || [];
+    const uncovered = backendControllers.filter(ctrl => !uniqueTested.includes(ctrl));
+    console.log("✅ Covered endpoints:", uniqueTested);
+    console.log("⚠️ Uncovered endpoints:", uncovered);
+    console.groupEnd();
+        console.groupEnd();
+    
+        // 🧭 View coverage check
+        const testPlanViews = Object.keys(testPlan).map(k => k.replace(/View$/, ''));
+        const missingViewTests = backendViews.filter(view => !testPlanViews.includes(view));
+        const orphanedTests = testPlanViews.filter(view => !backendViews.includes(view));
+    
+        console.group("🗺️ View Coverage");
+        console.log("📂 Views found:", backendViews);
+        console.log("✅ Views covered by tests:", testPlanViews);
+        console.log("❗ Views NOT covered by testPlan:", missingViewTests);
+        console.log("❗ Tests defined for NON-EXISTENT views:", orphanedTests);
+
+        // 🧱 PHP + DB Logs
+    const report = await app.api("api/index.php?action=tests&step=report&token=" + app.token);
+    console.group("🧱 Error Logs");
+    console.log("🐘 PHP error.log:");
+    console.log((report?.error_log || []).join('\n') || "✅ No recent PHP errors");
+        console.log("🗃️ Logger DB:");
+    console.table(report?.log_db || []);
+    console.groupEnd();
+        // 🔥 Cleanup
+    localStorage.removeItem(LS_KEY);
+    localStorage.removeItem('next_test_timestamp');
+    return;
+  }
+
+    console.log(`🚀 Running test ${state.current + 1}/${testOrder.length}: ${nextTestName}`);
+  
+    // Advance BEFORE triggering navigation
+    state.current += 1;
+    localStorage.setItem(LS_KEY, JSON.stringify(state));
+
+    const delayInMs = state.delay * 1000;
+    const nextTime = Date.now() + delayInMs;
+    localStorage.setItem('next_test_timestamp', nextTime.toString());
+  
+      try {
+          setTimeout(() => {
+            test.action();
+          }, 100); // 🔁 Give DOM 100ms to settle
+      // 🧠 Skip result logging here — next page handles it
+    } catch (err) {
+      console.error(`❌ Error running '${nextTestName}'`, err);
+      const stateNow = JSON.parse(localStorage.getItem(LS_KEY));
+      if (stateNow) {
+        stateNow.results.push({ name: nextTestName, status: 'error', message: err.message });
+        localStorage.setItem(LS_KEY, JSON.stringify(stateNow));
+      }
+    }
+
+};
+
+
+app.resetTest = function (delay = 30) {
+  localStorage.setItem('test_runner_state', JSON.stringify({
+    current: 0,
+    results: [],
+    delay: delay
+  }));
+  localStorage.removeItem('next_test_timestamp');
+  window.location.href = 'dashboard'; // or the first view you expect
+};
+
+
   
 
 
