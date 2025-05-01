@@ -37,8 +37,6 @@ if (!Actions::isValid($action))
     exit;
 }
 
-
-
 // [4] Session creation / validation
 $database = Database::init();
 $sessionManager = new SessionManager(['db' => $database]);

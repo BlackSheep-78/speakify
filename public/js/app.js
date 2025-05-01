@@ -106,16 +106,16 @@ const app =
     console.log("📚 initPlaylistLibrary() called");
   
     const container = document.getElementById("playlist-list");
-    if (!container) {
+    if (!container) 
+    {
       console.warn("⚠️ No #playlist-list container found.");
       return;
     }
   
-    try {
-      const data = await app.api(`api/index.php?action=get_playlists&token=${this.token}`);
+    try 
+    {
+      const data = await app.api(`api/index.php?action=get_playlists`);
 
-      console.log(data);
-  
       if (!data.success || !Array.isArray(data.playlists)) {
         container.innerHTML = `<p>❌ Erreur lors du chargement des playlists.</p>`;
         return;
@@ -228,7 +228,7 @@ const app =
 
     if (headerUserLink) headerUserLink.textContent = "👤 Connexion";
 
-    let token = localStorage.getItem('speakify_token');
+    let token = app.token;
     if (!token) return;
 
     const result = this.state.validatedTokenData;
@@ -261,12 +261,12 @@ const app =
     {
       logoutButton.onclick = async () => 
       {
-        const token = localStorage.getItem("speakify_token");
+        const token = app.token;
     
         // ✅ Call backend to remove user_id, keep session token alive
         if (token) 
         {
-          await app.api(`api/index.php?action=logout&token=${token}`);
+          await app.api(`api/index.php?action=logout`);
         }
     
         // ✅ Keep token, but clear user identity info
@@ -322,7 +322,7 @@ const app =
       try {
         const token = localStorage.getItem("speakify_token") || "";
 
-        const result = await app.api(`api/index.php?action=login&token=${token}`, {
+        const result = await app.api(`api/index.php?action=login`, {
           method: "POST",
           body: JSON.stringify(payload),
           headers: { "Content-Type": "application/json" }
@@ -599,12 +599,15 @@ app.playback =
     app.state.isPlaying = false;
   },
 
-  fetchSentences() {
+  fetchSentences() 
+  {
     const langId = app.getLangId(app.state.mainLang);
   
-    return app.api(`api/index.php?action=get_sentences&lang_id=${langId}&token=${app.token}`)
-      .then(data => {
-        if (!data.items || !Array.isArray(data.items) || data.items.length === 0) {
+    return app.api(`api/index.php?action=get_sentences&lang_id=${langId}`)
+      .then(data => 
+      {
+        if (!data.items || !Array.isArray(data.items) || data.items.length === 0) 
+        {
           console.warn("⚠️ Aucune donnée à lire.");
           return [];
         }
@@ -705,41 +708,61 @@ app.config = {};
 
 app.api = function(endpoint, options = {}) 
 {
-  return (async function () {
+  return (async function () 
+  {
     // Load config if needed
-    if (!app.config || !app.config.base_url) {
-      try {
-        const res = await fetch("/api/index.php?action=get_config");
-        const data = await res.json();
-        if (data.success) {
-          app.config = data;
-          console.log("✅ Config loaded in app.api()", app.config);
-        } else {
-          throw new Error("❌ Failed to load config.");
+    if (!app.config || !app.config.base_url) 
+      {
+        try 
+        {
+          const res = await fetch("/api/index.php?action=get_config");
+          const data = await res.json();
+          if (data.success) 
+          {
+            app.config = data;
+            console.log("✅ Config loaded in app.api()", app.config);
+          } 
+          else 
+          {
+            throw new Error("❌ Failed to load config.");
+          }
+        } 
+        catch (e) 
+        {
+          console.error("❌ Failed to load initial config:", e);
+          return { success: false, error: "Network error during config fetch" };
         }
-      } catch (e) {
-        console.error("❌ Failed to load initial config:", e);
-        return { success: false, error: "Network error during config fetch" };
       }
-    }
 
     const base = app.config.base_url || "";
     const safeBase = base.replace(/\/+$/, "");
     const safeEndpoint = endpoint.replace(/^\/+/, "");
-    const url = `${window.location.origin}${safeBase}/${safeEndpoint}`;
 
-    const defaultHeaders = {
+    const token = app.token || localStorage.getItem("speakify_token") || "";
+    let finalEndpoint = safeEndpoint;
+    
+    if (token && !finalEndpoint.includes("token=")) {
+      finalEndpoint += (finalEndpoint.includes("?") ? "&" : "?") + "token=" + token;
+    }
+    
+    const url = `${window.location.origin}${safeBase}/${finalEndpoint}`;
+    
+
+    const defaultHeaders = 
+    {
       "Content-Type": "application/json"
     };
 
-    try {
+    try 
+    {
       const response = await fetch(url, {
         method: "GET",
         headers: defaultHeaders,
         ...options
       });
 
-      if (!response.ok) {
+      if (!response.ok) 
+      {
         const errorText = await response.text();
         return {
           success: false,
@@ -926,7 +949,7 @@ if (now < nextAt) {
     const testedEndpoints = Object.values(testPlan)
       .flatMap(t => Array.isArray(t.endpoints) ? t.endpoints : []);
     const uniqueTested = [...new Set(testedEndpoints)];
-    const coverageScan = await app.api("api/index.php?action=tests&step=scan&token=" + app.token);
+    const coverageScan = await app.api("api/index.php?action=tests&step=scan");
     const backendControllers = coverageScan?.controllers || [];
     const backendViews = coverageScan?.views || [];
     const uncovered = backendControllers.filter(ctrl => !uniqueTested.includes(ctrl));
@@ -947,7 +970,7 @@ if (now < nextAt) {
         console.log("❗ Tests defined for NON-EXISTENT views:", orphanedTests);
 
         // 🧱 PHP + DB Logs
-    const report = await app.api("api/index.php?action=tests&step=report&token=" + app.token);
+    const report = await app.api("api/index.php?action=tests&step=report");
     console.group("🧱 Error Logs");
     console.log("🐘 PHP error.log:");
     console.log((report?.error_log || []).join('\n') || "✅ No recent PHP errors");

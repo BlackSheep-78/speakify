@@ -24,9 +24,9 @@ class Actions
         'admin_tool'        => ['public' => false, 'protected' => true],
         'check_session'     => ['public' => false, 'protected' => true],
         'get_sentences'     => ['public' => true,  'protected' => false],
-        'get_playlists'     => ['public' => true, 'protected' => false],
+        'get_playlists'     => ['public' => true,  'protected' => false],
 
-        'tests'             => ['public' => true, 'protected' => false]
+        'tests'             => ['public' => true,  'protected' => false]
     ];
 
     public static function isPublic(string $action): bool
