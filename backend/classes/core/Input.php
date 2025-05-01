@@ -14,8 +14,21 @@ class Input
         return $_GET[$key] ?? $default;
     }
 
-    public static function post(string $key, $default = null): mixed
+    public static function post($key = null, $default = null)
     {
+        static $jsonCache = null;
+    
+        if ($jsonCache === null && self::isJsonRequest()) {
+            $raw = file_get_contents('php://input');
+            $jsonCache = json_decode($raw, true) ?? [];
+        }
+    
+        if (self::isJsonRequest()) {
+            if ($key === null) return $jsonCache;
+            return $jsonCache[$key] ?? $default;
+        }
+    
+        if ($key === null) return $_POST;
         return $_POST[$key] ?? $default;
     }
 
@@ -84,6 +97,12 @@ class Input
     {
         return self::get('action') ?? '';
     }
+
+    private static function isJsonRequest()
+    {
+        return isset($_SERVER['CONTENT_TYPE']) && strpos($_SERVER['CONTENT_TYPE'], 'application/json') !== false;
+    }
+    
 
     protected static function fail(string $message): void
     {

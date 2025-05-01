@@ -7,9 +7,9 @@
 
 global $database;
 
-+ $email    = Input::post('email', '');  // Correct method for POST input
-+ $password = Input::post('password', '');  // Correct method for POST input
-+ $token    = Input::get('token', '');  
+$email    = Input::post('email', '');  // Correct method for POST input
+$password = Input::post('password', '');  // Correct method for POST input
+$token    = Input::get('token', '');  
 
 // 🔐 Basic validation
 if (!$email || !$password) 

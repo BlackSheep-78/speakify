@@ -756,8 +756,7 @@ app.api = function(endpoint, options = {})
     try 
     {
       const response = await fetch(url, {
-        method: "GET",
-        headers: defaultHeaders,
+        ...{ method: "GET", headers: defaultHeaders },
         ...options
       });
 

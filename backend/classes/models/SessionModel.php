@@ -48,8 +48,6 @@ class SessionModel {
                         ->replace(':TOKEN', $token, 's')
                         ->result(['fetch' => 'row']);
 
-        Logger::debug($result);
-
         return is_array($result) ? $result : null; // 🔥 fix here
     }
 
