@@ -749,8 +749,11 @@ app.api = function(endpoint, options = {})
       }
 
       return await response.json();
-    } catch (err) {
+    } 
+    catch (err) 
+    {
       console.error("❌ API request failed:", err);
+      
       return {
         success: false,
         error: "Network or server unreachable",

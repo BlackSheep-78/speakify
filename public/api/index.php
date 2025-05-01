@@ -23,23 +23,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS')
     exit;
 }
 
-$action = Input::action();
-$token = Input::token();
+$action = Input::get('action', 'string');
+$token  = Input::get('token', 'token');
 
 // [3] Action validation
 if (!Actions::isValid($action)) 
 {
     http_response_code(400);
-    echo json_encode(['success' => false, 'error' => 'Unknown action ['.$action.']', 'code' => 'ERROR_0003','tip'=>'Add this action to Actions.php']);
+    echo json_encode(['success' => false, 
+                      'error' => 'Unknown action ['.$action.']', 
+                      'code' => 'ERROR_0003',
+                      'tip'=>'Add this action to Actions.php']);
     exit;
 }
+
+
 
 // [4] Session creation / validation
 $database = Database::init();
 $sessionManager = new SessionManager(['db' => $database]);
 $session = $sessionManager->check($token);
-
-//Logger::debug($session);
 
 // [5] If the action is protected, but session is invalid or not logged in:
 if (Actions::isProtected($action) && (!$session['success'] || empty($session['token']))) 
@@ -54,10 +57,7 @@ if (Actions::isProtected($action) && (!$session['success'] || empty($session['to
     exit;
 }
 
-// [6] Creating a "global" , just in case
-$SESSION_DATA = $session;
-
-// [7] Locate controller file
+// [6] Locate controller file
 $controllerPath = BASEPATH . "/backend/controllers/{$action}.php";
 
 if (!file_exists($controllerPath)) 
@@ -71,5 +71,5 @@ if (!file_exists($controllerPath))
     exit;
 }
 
-// [8] Include controller
+// [7] Include controller
 require_once $controllerPath;
