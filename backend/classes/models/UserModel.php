@@ -41,7 +41,7 @@ class UserModel {
                             ->replace(':EMAIL', $email, 's')
                             ->result(['fetch' => 'row']); // Ensures only one row returned
     
-        Logger::debug($result);
+        //Logger::debug($result);
         
         return $result ?: null; // Return user or null if no result
     }
