@@ -23,8 +23,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS')
     exit;
 }
 
-$action = Input::get('action', 'string');
-$token  = Input::get('token', 'token');
+$database = Database::init();
+$action   = Input::get('action', 'string','');
+$token    = Input::get('token', 'token');
 
 // [3] Action validation
 if (!Actions::isValid($action)) 
@@ -38,9 +39,8 @@ if (!Actions::isValid($action))
 }
 
 // [4] Session creation / validation
-$database = Database::init();
 $sessionManager = new SessionManager(['db' => $database]);
-$session = $sessionManager->check($token);
+$session        = $sessionManager->check($token);
 
 // [5] If the action is protected, but session is invalid or not logged in:
 if (Actions::isProtected($action) && (!$session['success'] || empty($session['token']))) 

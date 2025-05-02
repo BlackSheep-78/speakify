@@ -10,17 +10,20 @@
   ================================================================================
 */
 
-$token = $_GET['admin_key'] ?? $_GET['token'] ?? null;
+$token = Input::get('token', 'token', null);
+$tool  = Input::get('tool', 'string', '');
 
-if (!AdminService::isAdmin($token)) {
+if (!AdminService::isAdmin($token)) 
+{
     echo json_encode(['error' => 'Access denied']);
     exit;
 }
     
 
-$tool = $_GET['tool'] ?? '';
 
-switch ($tool) {
+
+switch ($tool) 
+{
     case 'generate_file_structure':
         echo json_encode(AdminService::generateFileStructure());
         break;

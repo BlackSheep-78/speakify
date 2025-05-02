@@ -10,7 +10,7 @@ header('Content-Type: application/json');
 
 global $database;
 
-$token    = Input::get('token', '');  
+$token    = Input::get('token', 'token', '');
 $service  = new LoginService(['db' => $database]);
 $response = $service->validate($token);
 

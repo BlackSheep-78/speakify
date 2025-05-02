@@ -5,10 +5,17 @@
 //              Falls back to /logs/error.log if DB logging fails.
 // =============================================================================
 
+error_log("***** yes we are here I");
+trigger_error("***** yes we are here I");
+
 function log_error_to_db($level, $message, $file = null, $line = null, $context = null)
 {
     try 
     {
+        error_log("***** yes we are here II");
+        trigger_error("***** yes we are here II");
+
+
         $logger = new LoggerModel();
         $logger->insert($level, $message, $file, $line, $context);
     } 

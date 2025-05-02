@@ -6,8 +6,8 @@
 // ============================================================================
 
 
-$step = $_GET['step'] ?? '';
-$token = $_GET['token'] ?? '';
+$step  = Input::get('step', 'string', '');
+$token = Input::get('token', 'token', '');
 
 $controllerDir = __DIR__; // 🔒 Defined earlier to avoid undefined variable
 

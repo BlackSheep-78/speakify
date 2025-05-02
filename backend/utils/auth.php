@@ -9,6 +9,9 @@
 
 $config = $config ?? require_once __DIR__ . '/../config.php';
 
+// ✅ Extract token from request
+$token = Input::get('token', 'token', '');
+
 try {
     // ✅ Setup PDO if not already available
     if (!isset($pdo)) {
@@ -27,8 +30,8 @@ try {
     require_once BASEPATH . '/classes/SessionManager.php';
     $sessionManager = new SessionManager($pdo, $config);
 
-    // ✅ Extract token from request
-    $token = $_GET['token'] ?? $_POST['token'] ?? '';
+
+
     if (!$token) {
         http_response_code(401);
         echo json_encode([

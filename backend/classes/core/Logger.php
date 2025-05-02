@@ -17,12 +17,15 @@ class Logger
         $trace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2)[1] ?? null;
         $file = $trace['file'] ?? 'unknown';
         $line = $trace['line'] ?? 0;
-    
-        try {
+        
+        try 
+        {
             $model = self::getLoggerModel();
             $model->write($message, $level, $file, (int)$line);
-        } catch (Throwable $e) {
-            error_log('[LOGGER ERROR] ' . $e->getMessage());
+        } 
+        catch (Throwable $e) 
+        {
+            error_log('[LOGGER ERROR #1] ' . $e->getMessage());
         }
     }
 

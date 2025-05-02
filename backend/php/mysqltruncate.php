@@ -7,7 +7,7 @@
     $database = 'translate';
 
 
-    IF(ISSET($_GET['confirm']) && $_GET['confirm']  == true)
+    if (Input::get('confirm', 'bool', false))
     {
         $db = new Database();
         $db->connect();

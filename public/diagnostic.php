@@ -21,7 +21,7 @@ $override_ok = ini_get('allow_url_include') !== false;
 echo "🔒 AllowOverride All (assumed): " . ($override_ok ? "✅ YES" : "❓ UNKNOWN") . "\n";
 
 // 4. Check clean URL routing
-$clean_url_working = (isset($_GET['ping']) && $_GET['ping'] === 'pong');
+$clean_url_working = (Input::get('ping', 'string', '') === 'pong');
 echo "🌐 Clean URL route: " . ($clean_url_working ? "✅ YES" : "❌ NO") . "\n";
 
 // 5. Verify .htaccess file exists
@@ -30,7 +30,7 @@ $htaccess_exists = file_exists($htaccess_path);
 echo "\n📄 .htaccess file: " . ($htaccess_exists ? "✅ FOUND" : "❌ MISSING") . " at /public/.htaccess\n";
 
 // 6. Optional cleanup
-if (isset($_GET['delete']) && $_GET['delete'] === 'true') {
+if (Input::get('delete', 'bool', false)) {
     unlink(__FILE__);
     echo "\n🧼 diagnostic.php deleted.\n";
 } else {

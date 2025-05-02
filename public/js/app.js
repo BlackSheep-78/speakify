@@ -39,6 +39,8 @@
  * - docs/project.md
  */
 
+// throw new Error("💣 JS disabled for testing — app.js halted.");
+
 const app = 
 {
   state: 

@@ -9,24 +9,12 @@ class Input
 {
     protected static ?array $jsonCache = null;
 
-    protected static array $filters = [
-        'int'    => FILTER_VALIDATE_INT,
-        'float'  => FILTER_VALIDATE_FLOAT,
-        'bool'   => FILTER_VALIDATE_BOOLEAN,
-        'email'  => FILTER_VALIDATE_EMAIL,
-        'url'    => FILTER_VALIDATE_URL,
-        'ip'     => FILTER_VALIDATE_IP,
-        'string' => 'sanitize_string',
-        'token'  => 'sanitize_token',
-        'raw'    => null
-    ];
-
-    public static function get(string $key, string $filter = 'raw', mixed $default = null): mixed
+    public static function get(string $key, $default = null): mixed
     {
-        return self::filter($_GET[$key] ?? null, $filter ?? 'raw', $default);
+        return $_GET[$key] ?? $default;
     }
 
-    public static function post(string $key, string $filter = 'raw', mixed $default = null): mixed
+    public static function post($key = null, $default = null)
     {
         static $jsonCache = null;
     
@@ -41,12 +29,7 @@ class Input
         }
     
         if ($key === null) return $_POST;
-        return self::filter($_POST[$key] ?? null, $filter ?? 'raw', $default);
-    }
-
-    public static function request(string $key, string $filter = 'raw', mixed $default = null): mixed
-    {
-        return self::filter($_REQUEST[$key] ?? null, $filter ?? 'raw', $default);
+        return $_POST[$key] ?? $default;
     }
 
     public static function cookie(string $key, $default = null): mixed
@@ -61,13 +44,18 @@ class Input
             ?? self::json($key, $default);
     }
 
-    public static function json(string $key, string $filter = 'raw', mixed $default = null): mixed
+    public static function json(?string $key = null, $default = null): mixed
     {
-        static $json = null;
-        if ($json === null) {
-            $json = json_decode(file_get_contents('php://input'), true);
+        if (self::$jsonCache === null) {
+            $raw = file_get_contents('php://input');
+            self::$jsonCache = json_decode($raw, true) ?? [];
         }
-        return self::filter($json[$key] ?? null, $filter ?? 'raw', $default);
+
+        if ($key === null) {
+            return self::$jsonCache;
+        }
+
+        return self::$jsonCache[$key] ?? $default;
     }
 
     public static function require(string $key, string $scope = 'param'): mixed
@@ -110,44 +98,12 @@ class Input
         return self::get('action') ?? '';
     }
 
-    protected static function filter(mixed $value, string $filter, mixed $default): mixed
-    {
-        if ($value === null) return $default;
-
-        if (isset(self::$filters[$filter])) 
-        {
-            $f = self::$filters[$filter];
-
-            if (is_string($f) && is_callable([__CLASS__, $f])) 
-            {
-                return call_user_func([__CLASS__, $f], $value);
-            }
-
-            if (is_int($f)) 
-            {
-                return filter_var($value, $f) !== false ? $value : $default;
-            }
-        }
-
-        return $default;
-    }
-    
     private static function isJsonRequest()
     {
         return isset($_SERVER['CONTENT_TYPE']) && strpos($_SERVER['CONTENT_TYPE'], 'application/json') !== false;
     }
+    
 
-    protected static function sanitize_string(string $value): string
-    {
-        return trim(strip_tags($value));
-    }
-    
-    protected static function sanitize_token(string $value): string
-    {
-        return preg_replace('/[^a-f0-9]/i', '', $value);
-    }
-    
-    
     protected static function fail(string $message): void
     {
         http_response_code(400);
