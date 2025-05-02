@@ -10,17 +10,17 @@
   ================================================================================
 */
 
+global $database;
+
 $token = Input::get('token', 'token', null);
 $tool  = Input::get('tool', 'string', '');
 
-if (!AdminService::isAdmin($token)) 
+if (!AdminService::isAdmin($token,['db'=>$database])) 
 {
-    echo json_encode(['error' => 'Access denied']);
+    echo json_encode(['error' => 'Access denied',['code'=>'ERROR_1534']]);
     exit;
 }
     
-
-
 
 switch ($tool) 
 {

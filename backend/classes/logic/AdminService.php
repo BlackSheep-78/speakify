@@ -21,11 +21,21 @@ class AdminService
      * Checks if the current user has admin privileges.
      * You can replace this logic with a role/flag check later.
      */
-    public static function isAdmin(string $adminKey): bool
+    public static function isAdmin(string $token,array $options = []): bool
     {
-        $session = SessionManager::getCurrentUser($adminKey);
+
+        $db = $options['db'] ?? null;
+
+        if (!$db instanceof Database) 
+        {
+            throw new Exception(static::class . " requires a valid 'db' instance. ERROR_T_1525");
+        }
+
+        $sessionManager = new SessionManager(['db' => $db]);
+        $session = $sessionManager->getCurrentUser($token);
     
-        if (!$session || empty($session['email'])) {
+        if (!$session || empty($session['email'])) 
+        {
             Logger::debug("Admin check failed.");
             return false;
         }

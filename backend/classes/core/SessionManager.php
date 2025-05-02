@@ -15,7 +15,7 @@ class SessionManager
         $this->db = $options['db'] ?? null;
     
         if (!$this->db instanceof Database) {
-            throw new Exception("ClassName requires a valid 'db' instance.");
+            throw new Exception("ClassName requires a valid 'db' instance. ERROR_T_1548");
         }
     
         // Optional: store other values
@@ -118,17 +118,16 @@ class SessionManager
         if (!$token) return null;
 
         $session = self::validate($token);
-        Logger::debug(json_encode($session, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+        Logger::debug("getCurrentUser: ".json_encode($session, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
 
         if (!$session || empty($session['user_id'])) return null;
 
-        try {
-            $userModel = new UserModel();
-            return $userModel->getProfileById($session['user_id']);
-        } catch (Exception $e) {
-            Logger::error("Failed to load user from session: " . $e->getMessage());
-            return null;
-        }
+        $userModel = new UserModel(['db'=>$this->db]);
+
+        Logger::debug("userMode");
+        Logger::debug($userModel);
+
+        return $userModel->getProfileById($session['user_id']);
     }
 
     public function getUserIdFromToken(?string $token): ?int 

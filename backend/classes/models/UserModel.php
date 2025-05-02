@@ -5,7 +5,8 @@
 // Description: User database operations
 // ========================================================
 
-class UserModel {
+class UserModel 
+{
     private $db;
 
     public function __construct(array $options = []) 

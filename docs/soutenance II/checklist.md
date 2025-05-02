@@ -27,13 +27,13 @@
     - Score : 7,5/20
 
 - bloc 3
-    - [ ] Modéliser une base de données optimisée répondant aux spécifications techniques et fonctionnelles afin de stocker les données, d’y accéder de manière sécurisée et de limiter la redondance des données dans un souci d’éco-conception.
-    - [ ] Composer des requêtes HTTP (POST, GET) efficaces via formulaires ou appels d’URL pour gérer les interactions entre l’utilisateur et le serveur et optimiser les performances d’accès et la sécurité.
-    - [ ] Concevoir une application en mobilisant des modèles de programmation moderne (tels que le Modèle-Vue-Contrôleur) afin de répondre aux besoins fonctionnels de l’application.
-    - [ ] Développer le code source en suivant les règles de nommage et les bonnes pratiques afin d’optimiser le site et de réduire l’empreinte carbone et d’améliorer l’accessibilité aux personnes en situation de handicap.
+    - [x] Modéliser une base de données optimisée répondant aux spécifications techniques et fonctionnelles afin de stocker les données, d’y accéder de manière sécurisée et de limiter la redondance des données dans un souci d’éco-conception.
+    - [x] Composer des requêtes HTTP (POST, GET) efficaces via formulaires ou appels d’URL pour gérer les interactions entre l’utilisateur et le serveur et optimiser les performances d’accès et la sécurité.
+    - [x] Concevoir une application en mobilisant des modèles de programmation moderne (tels que le Modèle-Vue-Contrôleur) afin de répondre aux besoins fonctionnels de l’application.
+    - [x] Développer le code source en suivant les règles de nommage et les bonnes pratiques afin d’optimiser le site et de réduire l’empreinte carbone et d’améliorer l’accessibilité aux personnes en situation de handicap.
     - [ ] Construire un backoffice complet afin de faciliter l’administration de l’application web, en tenant compte des éventuelles situations de handicap des équipes qui utilisent le back office (typographie, accessibilité…).
-    - [ ] Déployer les techniques de sécurité (authentification, “hash” des mots de passe via des algorithmes récents et éprouvés) pour permettre l’inscription, la connexion/déconnexion de manière sécurisée.
-    - [ ] Évaluer son propre code et les fonctionnalités du projet pour s’assurer de son bon fonctionnement et mettre en place le cas échéant des solutions correctives.
+    - [x] Déployer les techniques de sécurité (authentification, “hash” des mots de passe via des algorithmes récents et éprouvés) pour permettre l’inscription, la connexion/déconnexion de manière sécurisée.
+    - [x] Évaluer son propre code et les fonctionnalités du projet pour s’assurer de son bon fonctionnement et mettre en place le cas échéant des solutions correctives.
     - [ ] Établir la maintenance de l’application (suivi des mises à jour et documentation) afin de permettre le maintien dans le temps de l’application par l’équipe, en tenant compte des éventuelles situations de handicap des équipes qui utilisent le back office (typographie, accessibilité…).
     - [ ] Proposer le cas échéant, en réponse à des situations imprévues, des solutions correctives afin d’assurer la continuité du site ou de l’application et les transmettre à l’équipe.
 
