@@ -41,9 +41,6 @@ class SessionModel {
 
     public function validateToken(string $token): ?array 
     {
-        Logger::debug($token);
-
-
         $result =  $this->db->file('/session/validate_token.sql')
                         ->replace(':TOKEN', $token, 's')
                         ->result(['fetch' => 'row']);

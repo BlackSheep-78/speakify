@@ -24,14 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS')
 }
 
 $database = Database::init();
-
-Logger::debug($_GET['action']." - ".$_GET['token']);
-
-//$action = Input::get('action', 'string','get_config');
-$action = Input::get('action', 'string','action_default');
-$token  = Input::get('token', 'token');
-
-Logger::log("index.php: ".$action );
+$action   = Input::get('action', 'string','');
+$token    = Input::get('token', 'token');
 
 // [3] Action validation
 if (!Actions::isValid($action)) 
@@ -46,7 +40,7 @@ if (!Actions::isValid($action))
 
 // [4] Session creation / validation
 $sessionManager = new SessionManager(['db' => $database]);
-$session = $sessionManager->check($token);
+$session        = $sessionManager->check($token);
 
 // [5] If the action is protected, but session is invalid or not logged in:
 if (Actions::isProtected($action) && (!$session['success'] || empty($session['token']))) 

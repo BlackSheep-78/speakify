@@ -7,7 +7,7 @@
 
 global $database, $session;
 
-$lang_id = isset($_GET['lang_id']) ? (int) $_GET['lang_id'] : 39;
+$lang_id = Input::get('lang_id', 'int', 39);
 $user_id = $session['user_id'] ?? null;
 
 $model = new SentenceModel([

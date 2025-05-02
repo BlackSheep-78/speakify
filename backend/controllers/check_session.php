@@ -6,9 +6,10 @@
 
 header('Content-Type: application/json');
 
-$token = $_GET['token'] ?? '';
+$token = Input::get('token', 'token', '');
 
-if (!$token) {
+if (!$token) 
+{
   http_response_code(400);
   echo json_encode(['error' => 'Missing token']);
   exit;

@@ -3,6 +3,10 @@
 // Load app-wide config, autoloaders, error handling, etc.
 require_once __DIR__ . '/../init.php';
 
+$database = Database::init();
+$page     = Input::get('page', 'string', 'dashboard');
+$page     = basename($page);
+
 // Define allowed views
 $allowedViews = [
     'dashboard',
@@ -19,9 +23,7 @@ $allowedViews = [
     'admin'
 ];
 
-// ✅ Clean fallback logic — only use `?page=...`, no basename fallback
-$page = $_GET['page'] ?? 'dashboard';
-$page = basename($page);
+
 
 // Fallback to 404 if not allowed
 if (!in_array($page, $allowedViews)) 

@@ -6,7 +6,7 @@
 
 header('Content-Type: application/json');
 
-$token = $_GET['token'] ?? '';
+$token = Input::get('token', 'token', '');
 
 if (!$token) 
 {

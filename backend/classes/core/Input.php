@@ -112,9 +112,6 @@ class Input
 
     protected static function filter(mixed $value, string $filter, mixed $default): mixed
     {
-
-        Logger::log("Input::filter() : ".$value." - ".$filter." - ".$default);
-
         if ($value === null) return $default;
 
         if (isset(self::$filters[$filter])) 
@@ -125,16 +122,6 @@ class Input
             {
                 return call_user_func([__CLASS__, $f], $value);
             }
-
-            //if (is_string($f) && method_exists(__CLASS__, $f)) 
-            //{
-            //    return call_user_func([__CLASS__, $f], $value);
-            //}
-
-            //if (is_string($f) && is_callable([__CLASS__, $f])) 
-            //{
-            //    return call_user_func([__CLASS__, $f], $value);
-            //}
 
             if (is_int($f)) 
             {
