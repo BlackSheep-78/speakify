@@ -15,11 +15,11 @@
 - bloc 2
     - [ ] Analyser conceptuellement la maquette (images, vidéos, etc.) pour la découper en blocs sémantiques puis la traduire en HTML.
     - [ ] Développer une page web et mettre en place la structure HTML (balises sémantiques et génériques) pour intégrer la maquette.
-    - [ ] Importer des “actifs” (feuilles de style, images, vidéos, fichiers audio, scripts) pour dynamiser la page ou le site (éco-conception).
+    - [x] Importer des “actifs” (feuilles de style, images, vidéos, fichiers audio, scripts) pour dynamiser la page ou le site (éco-conception).
     - [ ] Manipuler la typographie (corps, graisse, import de polices, etc.) pour mettre en forme les textes et respecter les normes d’accessibilité du site pour les personnes en situation de handicap.
     - [ ] Ordonner l’agencement des blocs et mettre en œuvre la philosophie mobile first (media queries) afin d’assurer une adaptation de l’affichage aux diverses tailles d’écran.
     - [x] Structurer le code en utilisant des préprocesseurs CSS pour faciliter le travail afin d’améliorer l’écriture des fichiers et l'éco-conception.
-    - [ ] Manipuler la page web pour interagir avec l’utilisateur.
+    - [x] Manipuler la page web pour interagir avec l’utilisateur.
     - [x] Développer des requêtes HTTP asynchrones pour communiquer avec un serveur de manière fluide et transparente.
 
 
