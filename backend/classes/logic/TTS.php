@@ -33,33 +33,38 @@ class TTS
         }
     }
 
-    public static function generateSample(): array
+    public static function generateSample(Database $db): array
     {
-        try {
-            $task = TTSModel::getMissingAudioTask();
-            if (!$task) {
-                return [
-                    'success' => false,
-                    'message' => 'No missing audio found.'
-                ];
-            }
-            return self::generateFor($task);
-        } catch (Throwable $e) {
-            Logger::error('generateSample failed: ' . $e->getMessage());
+        Logger::debug("generateSample()");
+        $task = TTSModel::getMissingAudioTask(['db' => $db]);
+        Logger::debug("TASK: " . json_encode($task));
+
+        if (!$task) 
+        {
             return [
                 'success' => false,
-                'error' => 'Sample generation failed',
-                'details' => defined('DEBUG') && DEBUG ? $e->getMessage() : null
+                'error' => 'No missing audio task found',
+                'code' => 'ERROR_0009',
+                'message' => 'There is currently no audio generation task available. Nothing to generate.'
             ];
         }
+        
+        return self::generateFor($task,['db'=>$db]);
     }
 
-    public static function generateFor(array $task): array
+    public static function generateFor(array $task,array $options = []): array
     {
-        $sentence = TTSModel::getSentenceText($task['sentence_id']);
+        $db = $options['db'] ?? null;
+
+        if (!$db instanceof Database) 
+        {
+            throw new Exception(static::class . " requires a valid 'db' instance. ERROR_T_1359");
+        }
+
+        $sentence = TTSModel::getSentenceText($task['sentence_id'],['db' => $db]);
         if (!$sentence) throw new Exception("Sentence not found: {$task['sentence_id']}");
 
-        $voiceMeta = TTSModel::getVoiceMetadata($task['voice'], $task['provider_id']);
+        $voiceMeta = TTSModel::getVoiceMetadata($task['voice'], $task['provider_id'],['db'=>$db]);
         if (!$voiceMeta) throw new Exception("Voice metadata not found for {$task['voice']}");
 
         $langTag = explode('-', $task['voice'])[0] . '-' . explode('-', $task['voice'])[1];
@@ -71,7 +76,8 @@ class TTS
             $task['sentence_id'],
             $task['language_id'],
             $task['provider_id'],
-            $task['voice']
+            $task['voice'],
+            ['db'=>$db]
         );
 
         if (!empty($existing)) {
@@ -99,7 +105,8 @@ class TTS
             $task['provider_id'],
             $task['voice'],
             $audio['path'],
-            $audio['hash']
+            $audio['hash'],
+            ['db'=>$db]
         );
 
         return [

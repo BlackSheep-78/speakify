@@ -14,19 +14,21 @@ class GoogleTTSApi
       $config = $GLOBALS['CREDENTIALS']['google'] ?? null;
       $keyFile = $config['tts_key_file'] ?? null;
   
-      if (!$keyFile) {
+      if (!$keyFile) 
+      {
           throw new Exception("Google TTS key file path not configured.");
-      }
+      };
   
       $keyPath = BASEPATH . '/' . ltrim($keyFile, '/');
-      if (!file_exists($keyPath)) {
+      if (!file_exists($keyPath)) 
+      {
           throw new Exception("Google TTS key file not found: $keyPath");
-      }
+      };
   
       $creds = json_decode(file_get_contents($keyPath), true);
       if (!$creds || !is_array($creds)) {
           throw new Exception("Google TTS credentials are missing or invalid.");
-      }
+      };
   
       $token = self::getAccessToken($creds);
   
@@ -63,7 +65,8 @@ class GoogleTTSApi
       $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
       curl_close($ch);
   
-      if ($status !== 200 || !$result) {
+      if ($status !== 200 || !$result) 
+      {
           throw new Exception("Google TTS request failed (status $status): " . substr($result, 0, 200));
       }
   
@@ -71,9 +74,10 @@ class GoogleTTSApi
 
       Logger::debug( 'Google TTS RESPONSE: ' . $result); // Add this
 
-      if (!isset($json['audioContent'])) {
+      if (!isset($json['audioContent'])) 
+      {
           throw new Exception("No audio content returned from Google TTS.");
-      }
+      };
   
       $binary = base64_decode($json['audioContent']);
 

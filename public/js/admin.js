@@ -59,7 +59,7 @@ ${res.output || res.error}
       outputTTS.textContent = "⏳ Requête en cours...";
 
       try {
-        const result = await app.api(`api/index.php?action=tts_generate&admin_key=${app.token}`);
+        const result = await app.api(`api/index.php?action=tts_generate`);
         if (result.success) {
           outputTTS.textContent = `✅ Audio généré : ${result.file}\n${result.lang?.split('-')[0]?.toUpperCase()}: \"${result.original || 'Texte inconnu'}\"`;
         } else {
