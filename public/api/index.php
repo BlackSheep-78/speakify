@@ -23,8 +23,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS')
     exit;
 }
 
-$action = Input::get('action', 'string');
+$database = Database::init();
+
+Logger::debug($_GET['action']." - ".$_GET['token']);
+
+//$action = Input::get('action', 'string','get_config');
+$action = Input::get('action', 'string','action_default');
 $token  = Input::get('token', 'token');
+
+Logger::log("index.php: ".$action );
 
 // [3] Action validation
 if (!Actions::isValid($action)) 
@@ -38,7 +45,6 @@ if (!Actions::isValid($action))
 }
 
 // [4] Session creation / validation
-$database = Database::init();
 $sessionManager = new SessionManager(['db' => $database]);
 $session = $sessionManager->check($token);
 
