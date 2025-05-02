@@ -3,7 +3,8 @@
 // File: /backend/classes/models/LoggerModel.php
 // Description: Handles error log writing to the logs table
 
-class LoggerModel {
+class LoggerModel 
+{
     private $db;
 
     public function __construct(array $options = []) 

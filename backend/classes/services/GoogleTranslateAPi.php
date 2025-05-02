@@ -1,20 +1,21 @@
 <?php
 
-// ============================================================================
-// ⚠️ DO NOT REMOVE OR MODIFY THIS HEADER
-// This class connects to the Google Translate API to translate text.
-// It returns the translated sentence or null if the API call fails.
-// ----------------------------------------------------------------------------
-// 📁 File: /backend/classes/services/GoogleTranslateApi.php
-// 🏦 Project: Speakify
-// ============================================================================
+// =============================================================================
+// Project: Speakify
+// File: /backend/classes/services/GoogleTranslateApi.php
+// Description: Connects to Google Translate API to translate text.
+//              Returns translated sentence or error if the API call fails.
+// =============================================================================
 
 class GoogleTranslateApi 
 {
     private string $apiKey;
 
-    public function __construct() {
+    public function __construct() 
+    {
+        Logger::debug("ConfigLoader::get(): ".ConfigLoader::get("google.translate_api_key"));
         $this->apiKey = ConfigLoader::get("google.translate_api_key");
+        Logger::debug("this->apiKey: ".$this->apiKey);
     }
 
     public function translate(string $text, string $sourceLanguage, string $targetLanguage)

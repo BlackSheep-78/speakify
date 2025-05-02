@@ -26,6 +26,8 @@ class Actions
         'get_sentences'     => ['public' => true,  'protected' => false],
         'get_playlists'     => ['public' => true,  'protected' => false],
 
+        'translate_one'     => ['public' => false,  'protected' => true],
+
         'tests'             => ['public' => true,  'protected' => false]
     ];
 

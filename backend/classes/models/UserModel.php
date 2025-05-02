@@ -1,7 +1,9 @@
 <?php
+// ========================================================
 // Project: Speakify
 // File: /backend/classes/models/UserModel.php
 // Description: User database operations
+// ========================================================
 
 class UserModel {
     private $db;

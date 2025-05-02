@@ -1,25 +1,30 @@
 <?php
 
-// ============================================================================
-// ⚠️ DO NOT REMOVE OR MODIFY THIS HEADER
-// This file handles sentence translation logic using external translation APIs.
-// It retrieves a pending translation, processes it, and stores the result.
-// ----------------------------------------------------------------------------
-// 📁 File: /backend/classes/logic/Translate.php
-// 📦 Project: Speakify
-// ============================================================================
 
+// =============================================================================
+// Project: Speakify
+// File: /backend/classes/logic/Translate.php
+// Description: Handles sentence translation logic using external APIs.
+// Note: Retrieves pending items, translates, and stores results.
+// =============================================================================
+ 
 class Translate
 {
     private TranslationModel $translationModel;
     private GoogleTranslateApi $googleApi;
 
-    public function __construct() 
+    public function __construct(array $options = []) 
     {
-        $this->translationModel = new TranslationModel();
+        $db = $options['db'] ?? null;
+
+        if (!$db instanceof Database) {
+            throw new Exception(static::class . " requires a valid 'db' instance.");
+        }
+
+        $this->translationModel = new TranslationModel(['db' => $db]);
         $this->googleApi = new GoogleTranslateApi();
     }
-
+    
     public function getRandomPairOfLanguages(): array
     {
         return $this->translationModel->getRandomLanguagePair();
