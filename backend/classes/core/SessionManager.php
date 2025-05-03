@@ -45,6 +45,12 @@ class SessionManager
     
     public function create(): array 
     {
+        file_put_contents(
+            BASEPATH . '/logs/session_debug.log',
+            "[" . date('Y-m-d H:i:s') . "] SESSION CREATE: " . ($_SERVER['HTTP_USER_AGENT'] ?? 'unknown') . " | " . ($_GET['action'] ?? 'no-action') . " | IP: " . ($_SERVER['REMOTE_ADDR'] ?? 'no-ip') . "\n",
+            FILE_APPEND
+          );
+
         $sessionModel = new SessionModel(['db' => $this->db]);
         return $sessionModel->create();
     }

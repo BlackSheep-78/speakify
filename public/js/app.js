@@ -875,8 +875,8 @@ app.test = async function (arg = null)
     'settingsView',
     'login-profileView',
     'achievementsView',
+    'dashboardView',
     'offline-modeView',
-
     'dashboardView'
   ];
 

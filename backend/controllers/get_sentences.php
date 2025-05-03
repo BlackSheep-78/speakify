@@ -18,6 +18,6 @@ $model = new SentenceModel([
 
 $result = $model->getSentencePairs();
 
-Logger::debug($result);
+//Logger::debug($result);
 
 echo json_encode($result);
