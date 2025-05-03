@@ -47,7 +47,7 @@
     - [ ] Proposer le cas échéant, en réponse à des situations imprévues, des solutions correctives afin d’assurer la continuité du site ou de l’application et les transmettre à l’équipe.
     - [ ] Protéger l’espace administrateur avec vérification de session utilisateur. 
     - [ ] Centraliser toutes les requêtes SQL dans les modèles (pas de SQL dans les contrôleurs).
-    - [ ] Sécuriser toutes les entrées utilisateurs contre les failles XSS (htmlspecialchars ou équivalent).
+    - [x] Sécuriser toutes les entrées utilisateurs contre les failles XSS (htmlspecialchars ou équivalent).
     - [x] Respecter une convention de nommage uniforme dans tout le projet (camelCase, snake_case, etc.).
     - [ ] Terminer le backoffice avec au moins 2 écrans fonctionnels (gestion, édition, etc.).
     - [ ] Rédiger une documentation de maintenance (format Markdown ou PDF).
