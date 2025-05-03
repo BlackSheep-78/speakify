@@ -11,7 +11,7 @@ $token = Input::get('token', 'token', '');
 if (!$token) 
 {
   http_response_code(400);
-  echo json_encode(['error' => 'Missing token']);
+  output(['error' => 'Missing token']);
   exit;
 }
 
@@ -20,11 +20,11 @@ $session = $sessionModel->validateToken($token);
 
 if (!$session) {
   http_response_code(401);
-  echo json_encode(['error' => 'Invalid or expired session']);
+  output(['error' => 'Invalid or expired session']);
   exit;
 }
 
-echo json_encode([
+output([
   'status' => 'valid',
   'user_id' => $session['user_id']
 ]);

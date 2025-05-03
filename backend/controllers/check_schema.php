@@ -53,7 +53,7 @@ try {
                 $pdo->exec($sql);
                 $restored[] = $table;
             } catch (PDOException $e) {
-                echo json_encode([
+                output([
                     'error' => "Failed to restore table '$table'",
                     'details' => $e->getMessage()
                 ]);
@@ -62,7 +62,7 @@ try {
         }
     }
 
-    echo json_encode([
+    output([
         'status' => empty($missingTables) ? 'ok' : (empty($restored) ? 'incomplete' : 'restored'),
         'required' => $requiredTables,
         'existing' => $existingTables,
@@ -71,7 +71,7 @@ try {
     ]);
 } catch (PDOException $e) {
     http_response_code(500);
-    echo json_encode([
+    output([
         'error' => 'Database connection failed',
         'details' => $e->getMessage()
     ]);

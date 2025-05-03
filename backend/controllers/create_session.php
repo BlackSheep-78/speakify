@@ -33,14 +33,14 @@ try {
   $session = SessionManager::create();
   Logger::info("✅ Session inserted into database successfully.");
 
-  echo json_encode([
+  output([
     'success' => true,
     'token' => $session['token']
   ]);
 } catch (Exception $e) {
   Logger::info("❌ Error creating session: " . $e->getMessage());
 
-  echo json_encode([
+  output([
     'error' => 'Could not create session.',
     'details' => $e->getMessage()
   ]);

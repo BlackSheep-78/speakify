@@ -20,4 +20,4 @@ $result = $model->getSentencePairs();
 
 //Logger::debug($result);
 
-echo json_encode($result);
+output($result);

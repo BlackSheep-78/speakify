@@ -16,4 +16,4 @@ $translator = new Translate(['db'=>$database]);
 $response   = $translator->connectToGoogleToTranslate();
 
 header('Content-Type: application/json');
-echo json_encode($response);
+output($response);

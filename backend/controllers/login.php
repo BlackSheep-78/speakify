@@ -14,7 +14,7 @@ $token    = Input::get('token','token','');
 // 🔐 Basic validation
 if (!$email || !$password) 
 {
-    echo json_encode(['success' => false, 'error' => 'Missing credentials']);
+    output(['success' => false, 'error' => 'Missing credentials']);
     exit;
 }
 
@@ -35,7 +35,7 @@ $result = $loginService->authenticate($email, $password, $token);
 
 if (!$result['success']) 
 {
-    echo json_encode(['success' => false, 'error' => $result['error'] ?? 'Authentication failed']);
+    output(['success' => false, 'error' => $result['error'] ?? 'Authentication failed']);
     exit;
 }
 
@@ -43,7 +43,7 @@ if (!$result['success'])
 $sessionManager->upgrade($token, $result['user_id']);
 
 // ✅ Return session + user data
-echo json_encode([
+output([
     'success' => true,
     'token' => $token,
     'user_id' => $result['user_id'],

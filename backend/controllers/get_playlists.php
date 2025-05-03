@@ -12,7 +12,7 @@ $model = new PlaylistModel(['db' => $database]);
 
 $playlists = $model->getPlaylists(); // assuming this exists and returns an array
 
-echo json_encode([
+output([
     'success' => true,
     'playlists' => $playlists
 ]);

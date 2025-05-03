@@ -14,4 +14,4 @@ $sessionManager = new SessionManager(['db' => $database]);
 
 $sessionManager->logout($token);
 
-echo json_encode(['success' => true, 'message' => 'Logged out']);
+output(['success' => true, 'message' => 'Logged out']);

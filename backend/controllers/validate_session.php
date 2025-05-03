@@ -28,4 +28,4 @@ if (isset($response['error']))
 }
 
 http_response_code(isset($response['error']) ? 401 : 200);
-echo json_encode($response);
+output($response);

@@ -18,12 +18,12 @@ try {
         $schema[$table] = $res['Create Table'] ?? 'N/A';
     }
 
-    echo json_encode([
+    output([
         'success' => true,
         'schema' => $schema
     ]);
 } catch (Exception $e) {
-    echo json_encode([
+    output([
         'success' => false,
         'error' => $e->getMessage()
     ]);

@@ -32,7 +32,7 @@ if ($step === 'scan') {
             }, $viewFiles);
         }
 
-    echo json_encode([
+    output([
         'success' => true,
         'controllers' => array_values($controllers),
         'views' => array_values($views)
@@ -53,7 +53,7 @@ if ($step === 'report') {
     // 🔍 Scan logs DB if available
     $logDb = method_exists('Logger', 'lastErrors') ? Logger::lastErrors(20) : [];
 
-    echo json_encode([
+    output([
         'success' => true,
         'error_log' => $errors,
         'log_db' => $logDb
@@ -61,4 +61,4 @@ if ($step === 'report') {
     exit;
 }
 
-echo json_encode(['success' => false, 'error' => 'Unknown step']);
+output(['success' => false, 'error' => 'Unknown step']);

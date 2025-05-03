@@ -152,7 +152,7 @@ class Input
     {
         http_response_code(400);
         header('Content-Type: application/json');
-        echo json_encode([
+        output([
             'success' => false,
             'error' => $message,
             'code' => 'ERROR 0002'

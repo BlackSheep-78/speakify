@@ -18,7 +18,7 @@ try {
         $schema[$table] = $result[0]['Create Table'] ?? 'N/A';
     }
 
-    echo json_encode([
+    output([
         'success' => true,
         'schema' => $schema
     ]);
@@ -26,7 +26,7 @@ try {
     Logger::error('ERROR', 'Schema export failed: ' . $e->getMessage());
 
     http_response_code(500);
-    echo json_encode([
+    output([
         'error' => 'Schema export failed',
         'details' => defined('DEBUG') && DEBUG ? $e->getMessage() : null
     ]);

@@ -10,7 +10,7 @@ try
   $provider = Input::get('provider', 'google');
   $voices   = TTS::getVoices($provider);
 
-  echo json_encode([
+  output([
     'success' => true,
     'provider' => $provider,
     'count' => count($voices),
@@ -20,7 +20,7 @@ try
 catch (Exception $e) 
 {
   http_response_code(500);
-  echo json_encode([
+  output([
     'success' => false,
     'error' => 'Failed to get TTS voices',
     'details' => $e->getMessage()

@@ -27,7 +27,7 @@ $autoload = BASEPATH . '/vendor/autoload.php';
 if (!file_exists($autoload)) 
 {
   http_response_code(500);
-  echo json_encode([
+  output([
     'error' => 'Missing Composer dependencies',
     'hint' => 'Run `composer install` from project root to restore vendor folder.'
   ]);
@@ -77,7 +77,7 @@ $config = ConfigLoader::load();
     {
       header('Content-Type: application/json');
       http_response_code(500);
-      echo json_encode([
+      output([
         'error' => 'Configuration template detected',
         'hint' => 'Update config.json and set "template": false'
       ]);

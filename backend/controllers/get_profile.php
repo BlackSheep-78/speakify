@@ -11,7 +11,7 @@ $token = Input::get('token', 'token', '');
 if (!$token) 
 {
   http_response_code(400);
-  echo json_encode(['error' => 'Missing token']);
+  output(['error' => 'Missing token']);
   exit;
 }
 
@@ -21,11 +21,11 @@ $user = $sessionModel->getUserProfile($token);
 if (!$user) 
 {
   http_response_code(401);
-  echo json_encode(['error' => 'Invalid token']);
+  output(['error' => 'Invalid token']);
   exit;
 }
 
-echo json_encode([
+output([
   'name' => $user['name'],
   'email' => $user['email'],
   'last_login' => $user['last_login']

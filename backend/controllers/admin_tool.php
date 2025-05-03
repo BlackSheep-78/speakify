@@ -17,7 +17,7 @@ $tool  = Input::get('tool', 'string', '');
 
 if (!AdminService::isAdmin($token,['db'=>$database])) 
 {
-    echo json_encode(['error' => 'Access denied',['code'=>'ERROR_1534']]);
+    output(['error' => 'Access denied',['code'=>'ERROR_1534']]);
     exit;
 }
     
@@ -25,12 +25,12 @@ if (!AdminService::isAdmin($token,['db'=>$database]))
 switch ($tool) 
 {
     case 'generate_file_structure':
-        echo json_encode(AdminService::generateFileStructure());
+        output(AdminService::generateFileStructure());
         break;
 
     // 🧩 Add more admin tools here...
 
     default:
-        echo json_encode(['error' => 'Unknown admin tool']);
+        output(['error' => 'Unknown admin tool']);
         break;
 }

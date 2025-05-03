@@ -8,6 +8,7 @@
 
 // [0] Loading settings and variables
 require_once __DIR__ . '/../../init.php';
+require_once BASEPATH . '/backend/utils/helpers.php';
 
 // [1] CORS Headers
 header("Access-Control-Allow-Origin: *");
@@ -19,7 +20,7 @@ header("Content-Type: application/json");
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') 
 {
     http_response_code(200);
-    echo json_encode(["status" => "CORS preflight OK"]);
+    output(["status" => "CORS preflight OK"]);
     exit;
 }
 
@@ -31,7 +32,7 @@ $token    = Input::get('token', 'token');
 if (!Actions::isValid($action)) 
 {
     http_response_code(400);
-    echo json_encode(['success' => false, 
+    output(['success' => false, 
                       'error' => 'Unknown action ['.$action.']', 
                       'code' => 'ERROR_0003',
                       'tip'=>'Add this action to Actions.php']);
@@ -46,7 +47,7 @@ $session        = $sessionManager->check($token);
 if (Actions::isProtected($action) && (!$session['success'] || empty($session['token']))) 
 {
     http_response_code(403);
-    echo json_encode([
+    output([
         'success' => false,
         'error' => 'Unauthorized access',
         'code' => 'ERROR_0004',
@@ -61,7 +62,7 @@ $controllerPath = BASEPATH . "/backend/controllers/{$action}.php";
 if (!file_exists($controllerPath)) 
 {
     http_response_code(404);
-    echo json_encode([
+    output([
         'success' => false,
         'error' => "Action controller not found",
         'code' => 'ERROR_0005'

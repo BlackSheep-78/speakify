@@ -14,7 +14,7 @@ $name     = Input::get('name', 'Anonymous');  // Sanitized input for name
 if (!$email || !$password) 
 {
   http_response_code(400);
-  echo json_encode(['success' => false, 'error' => 'Missing email or password']);
+  output(['success' => false, 'error' => 'Missing email or password']);
   exit;
 }
 
@@ -23,7 +23,7 @@ $userModel = new UserModel();
 if ($userModel->emailExists($email)) 
 {
   http_response_code(409);
-  echo json_encode(['success' => false, 'error' => 'Email already exists']);
+  output(['success' => false, 'error' => 'Email already exists']);
   exit;
 }
 
@@ -32,11 +32,11 @@ $hash = password_hash($password, PASSWORD_BCRYPT);
 if (!$userModel->createUser($email, $hash, $name)) 
 {
   http_response_code(500);
-  echo json_encode(['success' => false, 'error' => 'User creation failed']);
+  output(['success' => false, 'error' => 'User creation failed']);
   exit;
 }
 
-echo json_encode([
+output([
   'success' => true,
   'status' => 'registered',
   'email' => $email,

@@ -7,7 +7,7 @@
 
 $config = $GLOBALS['CREDENTIALS'] ?? [];
 
-echo json_encode([
+output([
   'success'  => true,
   'env'      => $config['env'] ?? 'production',
   'debug'    => $config['debug'] ?? false,

@@ -34,7 +34,7 @@ class Database {
             } catch (PDOException $e) {
                 Logger::error("❌ Database connection failed: " . $e->getMessage());
                 http_response_code(500);
-                echo json_encode([
+                output([
                     'error' => 'Database connection failed',
                     'details' => defined('DEBUG') && DEBUG ? $e->getMessage() : 'See server logs'
                 ]);
