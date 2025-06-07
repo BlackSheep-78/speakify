@@ -370,14 +370,10 @@ app.playback =
       });
     },
 
-    renderActive(entry, index) 
-    {
+    renderActive(entry, index) {
       const groupEl = document.createElement("div");
       groupEl.className = "sentence-group active-block";
       groupEl.dataset.index = index;
-
-      const originalLine = `<div class="original">🗣 ${entry.orig_txt}</div>`;
-      groupEl.innerHTML += originalLine;
 
       app.state.schema.forEach(s => {
         const isOrig = (s.lang === app.state.mainLang);
@@ -387,9 +383,15 @@ app.playback =
 
         if (!trans) return;
 
-        const transLine = `<div class="translation">🌍 ${trans.trans_txt}</div>`;
-        const progressLine = `<div class="progress-info">🎧 ${s.lang.toUpperCase()} ×${s.repeat}</div>`;
-        groupEl.innerHTML += transLine + progressLine;
+        const langLabel = s.lang.toUpperCase();
+        const transLine = `<div class="translation-line"><strong>${langLabel}:</strong> ${trans.trans_txt}</div>`;
+        const bar = `
+          <div class="progress-row">
+            <div class="progress-bar" data-lang="${s.lang}" data-repeat="${s.repeat}" data-index="${index}" data-count="0"></div>
+            <div class="progress-meta">×${s.repeat}</div>
+          </div>
+        `;
+        groupEl.innerHTML += transLine + bar;
       });
 
       return groupEl;
@@ -505,97 +507,121 @@ app.playback =
     this.loop();
   },
 
-  loop: async function () {
-    if (app.state.loopRunning) return;
-    app.state.loopRunning = true;
-  
-    const queue = app.state.playbackQueue;
-    const schema = app.state.schema;
-    const btn = document.getElementById("toggle-playback");
-  
-    if (!queue || !schema || !btn) return;
-  
-    let wasPaused = false;
-    btn.classList.add("playing");
-    btn.textContent = "⏸️";
-  
-    for (; app.state.currentIndex < queue.length; app.state.currentIndex++) {
-      const index = app.state.currentIndex;
-  
-      if (index > 0) this.queue.refreshBlock(index - 1, false);
-      this.queue.refreshBlock(index, true);
-  
-      const active = document.querySelector(`.sentence-group[data-index="${index}"]`);
-      if (active) active.scrollIntoView({ behavior: "smooth", block: "center" });
-  
-      const entry = queue[index];
-  
-      for (const s of schema) {
-        const trans = (s.lang === app.state.mainLang)
-          ? { trans_txt: entry.orig_txt, trans_lang: entry.orig_lang, audio_url: null }
-          : entry.translations.find(t => t.trans_lang_id === app.getLangId(s.lang));
-  
-        const text = trans?.trans_txt;
-        const audioPath = trans?.audio_url;
-        const base = app.config.base_url?.replace(/\/+$/, '') || '';
-        const audioUrl = audioPath ? `${base}${audioPath}` : null;
-  
-        if (!text) continue;
-  
-        for (let i = 0; i < s.repeat; i++) {
-          while (!app.state.isPlaying) {
-            if (!wasPaused) {
-              btn.textContent = "▶️";
-              wasPaused = true;
-            }
-            await app.delay(200);
+loop: async function () {
+  if (app.state.loopRunning) return;
+  app.state.loopRunning = true;
+
+  const queue = app.state.playbackQueue;
+  const schema = app.state.schema;
+  const btn = document.getElementById("toggle-playback");
+
+  if (!queue || !schema || !btn) return;
+
+  let wasPaused = false;
+  btn.classList.add("playing");
+  btn.textContent = "⏸️";
+
+  for (; app.state.currentIndex < queue.length; app.state.currentIndex++) {
+    const index = app.state.currentIndex;
+
+    if (index > 0) app.playback.queue.refreshBlock(index - 1, false);
+    app.playback.queue.refreshBlock(index, true);
+
+    const active = document.querySelector(`.sentence-group[data-index="${index}"]`);
+    if (active) active.scrollIntoView({ behavior: "smooth", block: "center" });
+
+    const entry = queue[index];
+
+    for (const s of schema) {
+      const trans = (s.lang === app.state.mainLang)
+        ? { trans_txt: entry.orig_txt, trans_lang: entry.orig_lang, audio_url: null }
+        : entry.translations.find(t => t.trans_lang_id === app.getLangId(s.lang));
+
+      const text = trans?.trans_txt;
+      const audioPath = trans?.audio_url;
+      const base = app.config.base_url?.replace(/\/+\$/, '') || '';
+      const audioUrl = audioPath ? `${base}${audioPath}` : null;
+
+      if (!text) continue;
+
+      for (let i = 0; i < s.repeat; i++) {
+        // ⏸ Pause handling
+        while (!app.state.isPlaying) {
+          if (!wasPaused) {
+            btn.textContent = "▶️";
+            wasPaused = true;
           }
-  
-          if (wasPaused) {
-            btn.textContent = "⏸️";
-            wasPaused = false;
-          }
-  
-          console.log(`▶️ Playing ${s.lang.toUpperCase()} [${i + 1}/${s.repeat}]: ${text}`);
-  
-          try {
-            if (!audioUrl) {
-              console.warn("⛔️ No audio file for:", text);
-              await app.delay(1500);
-              continue;
-            }
-  
-            const audio = new Audio(audioUrl);
-  
-            await new Promise(resolve => {
-              audio.onended = resolve;
-              audio.onerror = resolve;
-              audio.play().catch(err => {
-                console.warn("Audio playback failed:", err);
-                resolve();
-              });
-            });
-          } catch (err) {
-            console.warn("Audio setup error:", err);
+          await app.delay(200);
+        }
+
+        if (wasPaused) {
+          btn.textContent = "⏸️";
+          wasPaused = false;
+        }
+
+        console.log(`▶️ Playing ${s.lang.toUpperCase()} [${i + 1}/${s.repeat}]: ${text}`);
+
+        try {
+          if (!audioUrl) {
+            console.warn("⛔️ No audio file for:", text);
             await app.delay(1500);
+            continue;
           }
+
+          const audio = new Audio(audioUrl);
+          const progressBar = document.querySelector(`.progress-bar[data-lang="${s.lang}"][data-index="${index}"]`);
+
+          await new Promise(resolve => {
+            if (progressBar) {
+              // Clean previous fill
+              progressBar.innerHTML = "";
+              const fill = document.createElement("div");
+              fill.className = "progress-fill";
+              fill.style.cssText = `
+                width: 0%; height: 100%; position: absolute;
+                top: 0; left: 0; background: #4caf50;
+                transition: width 0.1s linear;
+              `;
+              progressBar.appendChild(fill);
+
+              const animate = () => {
+                if (audio.duration) {
+                  const pct = (audio.currentTime / audio.duration) * 100;
+                  fill.style.width = `${pct}%`;
+                }
+                if (!audio.paused && !audio.ended) {
+                  requestAnimationFrame(animate);
+                }
+              };
+
+              audio.addEventListener("play", animate);
+            }
+
+            audio.onended = resolve;
+            audio.onerror = resolve;
+            audio.play().catch(err => {
+              console.warn("Audio playback failed:", err);
+              resolve();
+            });
+          });
+
+        } catch (err) {
+          console.warn("Audio setup error:", err);
+          await app.delay(1500);
         }
       }
-  
-      await app.delay(300);
     }
+
+    await app.delay(300);
+  }
+
+  app.state.isPlaying = false;
+  app.state.loopRunning = false;
+  btn.classList.remove("playing");
+  btn.textContent = "▶️";
+},
   
-    app.state.isPlaying = false;
-    app.state.loopRunning = false;
-    btn.classList.remove("playing");
-    btn.textContent = "▶️";
-  },
-  
-  
-  
-  
-  
-  
+
   stop() {
     console.log("⏹️ Playback stopped");
     app.state.isPlaying = false;

@@ -255,6 +255,44 @@ label {
   text-transform: uppercase;
 }
 
+.translation-line {
+  margin-top: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.progress-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0 12px;
+}
+
+.progress-bar {
+  flex-grow: 1;
+  height: 6px;
+  background-color: #ddd;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background-color: #4caf50;
+  transition: width 0.4s ease;
+}
+
+.progress-meta {
+  font-size: 0.9rem;
+  color: #444;
+}
+
 @media (max-width: 600px) {
   .header,
   .content,
