@@ -22,6 +22,9 @@
 // [1] Define BASEPATH
 define('BASEPATH', realpath(__DIR__));
 
+// [1.1] Load global helpers
+require_once BASEPATH . '/backend/utils/helpers.php';
+
 // [2] Composer autoloader check
 $autoload = BASEPATH . '/vendor/autoload.php';
 if (!file_exists($autoload)) 

@@ -17,6 +17,7 @@ class Actions
         'create_session'    => ['public' => true,  'protected' => false],
         'ping_session'      => ['public' => true,  'protected' => false],
         'validate_session'  => ['public' => true,  'protected' => false],
+        'get_tts_file'      => ['public' => true,  'protected' => false],
 
         'get_profile'       => ['public' => false, 'protected' => true],
         'check_schema'      => ['public' => false, 'protected' => true],

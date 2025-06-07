@@ -35,6 +35,6 @@
   "google": 
   {
     "tts_key_file": "backend/secrets/google-tts.json",
-    "translate_api_key": "YOUR_SECRET_KEY"
+    "translate_key_file": "backend/secrets/google-translate.json"
   }
 }

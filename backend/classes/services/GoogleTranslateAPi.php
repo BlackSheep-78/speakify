@@ -13,10 +13,24 @@ class GoogleTranslateApi
 
     public function __construct() 
     {
-        Logger::debug("ConfigLoader::get(): ".ConfigLoader::get("google.translate_api_key"));
-        $this->apiKey = ConfigLoader::get("google.translate_api_key");
-        Logger::debug("this->apiKey: ".$this->apiKey);
+        $config = ConfigLoader::load();
+        $keyPath = BASEPATH . '/' . ltrim($config['google']['translate_key_file'] ?? '', '/');
+        Logger::debug("GoogleTranslateApi: keyPath = " . $keyPath);
+
+        if (!$keyPath || !file_exists($keyPath)) {
+            throw new Exception("Missing or invalid Google Translate key file: {$keyPath}");
+        }
+
+        $keyData = json_decode(file_get_contents($keyPath), true);
+        $this->apiKey = $keyData['api_key'] ?? null;
+
+        if (!$this->apiKey) {
+            throw new Exception("Missing 'api_key' field in translate key file: {$keyPath}");
+        }
+
+        Logger::debug("GoogleTranslateApi: apiKey loaded");
     }
+
 
     public function translate(string $text, string $sourceLanguage, string $targetLanguage)
     {
