@@ -6,6 +6,11 @@
 // Description: Central API router for all incoming public requests.
 // ============================================
 
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 // [0] Loading settings and variables
 require_once __DIR__ . '/../../init.php';
 require_once BASEPATH . '/backend/utils/helpers.php';
