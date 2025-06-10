@@ -8,6 +8,10 @@
  
 class SessionManager 
 {
+    private $db;
+    private $lang_id;
+    private $user_id;
+    
     private static ?array $activeSession = null;
 
     public function __construct(array $options = []) 
