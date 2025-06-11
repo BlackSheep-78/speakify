@@ -1,4 +1,4 @@
-- [Readme](https://github.com/BlackSheep-78/speakify/blob/main/README.md)
+# [Readme](https://github.com/BlackSheep-78/speakify/blob/main/README.md)
 
 # Speakify – Cahier des Charges
 
