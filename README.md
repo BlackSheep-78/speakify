@@ -8,7 +8,7 @@
 
 - ### [Spécifications Techniques](/docs/today/technical_specification_document.fr.md)
 
-- ### [Checklist de Soutenance](./docs/checklist.md)  
+- ### [Checklist de Soutenance](/docs/today/checklist.md)  
   _Cette checklist a été construite à partir du rapport de ma précédente soutenance (non validée).  
   Elle me sert de guide pour corriger les points manquants et renforcer le projet en vue de cette nouvelle présentation._
 
