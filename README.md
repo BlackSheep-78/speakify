@@ -2,9 +2,11 @@
 
 - ### [Readme](https://github.com/BlackSheep-78/speakify/blob/main/README.md)
 
-- ### [Cahier des Charges](docs/speakify/statement_of_work_and_technical_specs.fr.md)
+- ### [Dossier de Présentation](docs/today/presentation.md)
 
-- ### [Document de Spécifications Techniques](/docs/speakify/technical_specification_document.fr.md)
+- ### [Cahier des Charges](docs/today/statement_of_work.fr.md)
+
+- ### [Document de Spécifications Techniques](/docs/today/technical_specification_document.fr.md)
 
 
   
