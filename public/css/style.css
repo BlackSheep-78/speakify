@@ -1,30 +1,7 @@
-body {
+* {
   margin: 0;
-  font-family: "Segoe UI", sans-serif;
-  background: linear-gradient(to bottom, #F5F7FA, #E3E9F0);
-  color: #2E2E2E;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
-
-.header {
-  padding: 16px 24px;
-  background: white;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-radius: 0 0 20px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.header a {
-  color: #2E2E2E;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-.header a:hover {
-  color: #0057B7;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .content {
@@ -33,12 +10,46 @@ body {
   overflow-y: auto;
 }
 
+nav {
+  width: 100%;
+}
+nav .status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  padding: 0 16px;
+  margin: 0;
+}
+nav .status-bar li {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+}
+nav .status-bar li.left {
+  justify-content: flex-start;
+}
+nav .status-bar li.right {
+  justify-content: flex-end;
+}
+nav .status-bar li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
 .footer-nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding: 12px 16px;
-  background: white;
+  background-color: white;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
   border-radius: 20px 20px 0 0;
   font-size: 22px;
@@ -47,19 +58,21 @@ body {
   text-decoration: none;
   padding: 8px 12px;
   border-radius: 10px;
-  transition: background 0.2s, transform 0.2s;
+  transition: background-color 0.2s, transform 0.2s;
 }
 .footer-nav a:hover {
-  background: #EEF3FA;
+  background-color: #eef3fa;
   transform: translateY(-2px);
 }
 
 .card {
-  background: #ffffff;
-  border-radius: 16px;
+  background-color: #fff;
+  border-radius: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   padding: 24px;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
+  width: 100%;
+  max-width: 100%;
 }
 
 .form-group {
@@ -93,14 +106,14 @@ label {
 }
 .button.primary {
   background-color: #0057B7;
-  color: white;
+  color: #fff;
 }
 .button.primary:hover {
   background-color: #003e8a;
 }
 .button.danger {
   background-color: #FF5252;
-  color: white;
+  color: #fff;
 }
 .button.danger:hover {
   background-color: #e74c3c;
@@ -112,38 +125,107 @@ label {
   color: #2E2E2E;
 }
 
-.floating-play-button {
-  position: fixed;
-  bottom: 80px;
-  right: 20px;
-  width: 64px;
-  height: 64px;
-  background-color: rgba(255, 255, 255, 0.85);
+.register-link {
+  margin-top: 16px;
+  font-size: 0.9rem;
+}
+.register-link a {
   color: #0057B7;
-  border: 2px solid #0057B7;
-  border-radius: 50%;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  cursor: grab;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
+  text-decoration: underline;
 }
-.floating-play-button:hover {
-  background-color: #f0f4ff;
+.register-link a:hover {
   color: #003e8a;
-  border-color: #003e8a;
 }
-.floating-play-button svg {
-  width: 28px;
-  height: 28px;
-  fill: currentColor;
-  pointer-events: none;
-  transition: transform 0.2s ease;
+
+@media (max-width: 600px) {
+  .header,
+  .content,
+  .footer-nav {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .footer-nav {
+    font-size: 20px;
+  }
+  .floating-play-button {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    border: 3px solid #0057B7;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0057B7;
+    font-size: 24px;
+    transition: all 0.3s ease;
+  }
+  .floating-play-button:hover {
+    background-color: #eef3fa;
+    color: #003e8a;
+    border-color: #003e8a;
+  }
+  .floating-play-button svg, .floating-play-button i {
+    pointer-events: none;
+  }
 }
-.floating-play-button.playing svg {
-  transform: scale(1.1);
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(to bottom, #F5F7FA, #E3E9F0);
+  color: #2E2E2E;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+header {
+  padding: 16px 24px;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 20px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+header nav ul li a {
+  color: #2E2E2E;
+  text-decoration: none;
+  font-weight: 500;
+}
+header nav ul li a:hover {
+  color: rgb(0, 78.3, 164.7);
+}
+
+footer nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 12px 16px;
+  background: white;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 20px 20px 0 0;
+  font-size: 22px;
+}
+footer nav a {
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 10px;
+}
+footer nav a:hover {
+  background: #eef3fa;
+  transform: translateY(-2px);
 }
 
 .dashboard-links a,
@@ -160,7 +242,7 @@ label {
 }
 .dashboard-links a:hover,
 .smart-lists .smart-item:hover {
-  background-color: #EEF3FA;
+  background-color: #eef3fa;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -293,27 +375,89 @@ label {
   color: #444;
 }
 
-@media (max-width: 600px) {
-  .header,
-  .content,
-  .footer-nav {
-    padding-left: 12px;
-    padding-right: 12px;
-  }
-  .footer-nav {
-    font-size: 20px;
-  }
-  .floating-play-button {
-    width: 56px;
-    height: 56px;
-  }
-  .floating-play-button svg {
-    width: 24px;
-    height: 24px;
-  }
+.playlist-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
 }
-.teste {
-  color: red;
+.playlist-cards .playlist-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+.playlist-cards h3 {
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+.playlist-cards p {
+  margin-bottom: 12px;
+  color: #666;
+  font-size: 0.95rem;
+}
+.playlist-cards .actions {
+  display: flex;
+  gap: 8px;
+}
+.playlist-cards .actions a {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  text-decoration: none;
+  background: white;
+  transition: background 0.2s ease;
+}
+.playlist-cards .actions a:hover {
+  background: #eef3fa;
+}
+.playlist-cards .actions a svg {
+  margin-right: 4px;
+}
+
+.smartlist-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+.smartlist-links a {
+  display: block;
+  background: #fff;
+  padding: 12px 16px;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  text-decoration: none;
+  color: #2E2E2E;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+.smartlist-links a:hover {
+  background: #eef3fa;
+}
+
+.settings-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+.settings-links a {
+  display: block;
+  background: #fff;
+  padding: 12px 16px;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  text-decoration: none;
+  color: #2E2E2E;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+.settings-links a:hover {
+  background: #eef3fa;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,13 +1,17 @@
 <?php
-  // FILE: /speakify/public/views/playback.php
+// -----------------------------------------------------------------------------
+// Project     : Speakify
+// File        : /public/views/playback.php
+// Description : Playback view with active sentence, queue, and floating button
+// -----------------------------------------------------------------------------
 ?>
 
-  <div class="content">
-    <div class="playback">
-      <div id="played-items"></div>
-      <div class="active-sentence" id="active-sentence"></div>
-      <div class="queue" id="playloop-queue"></div>
-    </div>
-  </div>
+<main class="content">
+  <section class="playback">
+    <div id="played-items"></div>
+    <div class="active-sentence" id="active-sentence"></div>
+    <div class="queue" id="playloop-queue"></div>
+  </section>
+</main>
 
-  <button id="toggle-playback" class="floating-play-button">▶️</button>
+<button id="toggle-playback" class="floating-play-button">▶️</button>
