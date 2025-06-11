@@ -1,6 +1,6 @@
 ### [Readme](https://github.com/BlackSheep-78/speakify/blob/main/README.md)
 
-- Bloc 1
+- ## Bloc 1
     - [x] Cahier des charges 
     - [x] Présenter au client interne/externe ou “product owner” le dossier de spécifications techniques pour validation et le planning
     - [x] Formaliser les spécifications de la solution web afin de répondre à la problématique du client interne/externe ou “product owner” en espectant les normes et les standards du web, en particulier de sécurité et d’accessibilité pour les personnes en situation de handicap
@@ -10,11 +10,15 @@
     - [ ] Prepare the new MCD including all additional tables and their relationships.
     - [ ] Ensure MCD readability and accessibility for public presentation (use color, spacing, labels).
 
-    ## Jury Feedback from First Soutenance (archived)
-        - Feedback : CDC basé sur du listing dépourvu d’explications. Votre CDC était particulièrement difficile à comprendre car vous avez principalement énoncé des éléments (sous forme de liste) sans jamais détailler les points. Votre CDC manque fortement d’explications, de précisions, et de développement. Ne vous contentez pas de lister des points importants. Développez-les ! Prévoyez votre MCD pour la soutenance. Courage !
-        - Sccore : 10,29/20
+    ### Retour du jury lors de la première soutenance
+    
+    **Feedback :** Le Cahier des Charges était basé sur un listing dépourvu d’explications. Il était particulièrement difficile à comprendre, car vous avez principalement énoncé des éléments (sous forme de liste) sans les développer. Il manque fortement d’explications, de précisions et de développement. Ne vous contentez pas de lister les points importants : développez-les. Pensez également à prévoir votre MCD pour la soutenance. Courage !
+    
+    **Note :** 10,29 / 20
 
-- Bloc 2
+---
+
+- ## Bloc 2
     - [ ] Analyser conceptuellement la maquette (images, vidéos, etc.) pour la découper en blocs sémantiques puis la traduire en HTML.
     - [ ] Développer une page web et mettre en place la structure HTML (balises sémantiques et génériques) pour intégrer la maquette.
     - [x] Importer des “actifs” (feuilles de style, images, vidéos, fichiers audio, scripts) pour dynamiser la page ou le site (éco-conception).
@@ -30,11 +34,20 @@
     - [ ] Ajouter des éléments d’accessibilité : texte alternatif, ordre de tabulation, aria-labels.
     - [ ] Utiliser des balises ARIA et vérifier la compatibilité avec les lecteurs d’écran.
 
-    ## Jury Feedback from First Soutenance (archived)
-        - Feedback : Absence d'éléments essentiels à la validation : les maquettes et le préprocesseur. De plus, le responsive n'est pas géré, juste une media query pour les petits formats. La sémantique semble connue mais pas utilisée, il n'y a pas les balises basiques telles que <footer> et <header>. L'accessibilité est à améliorer. Les côtés positifs sont la réflexion sur l'UX et l'utilisation de l'application à une seule main, ainsi que la partie JavaScript qui semble maîtrisée.
-        - Score : 7,5/20
+    ### Retour du jury lors de la première soutenance
+    
+    **Feedback :** Absence d’éléments essentiels à la validation : les maquettes et le préprocesseur CSS.  
+    Le responsive n’est pas géré — une seule media query est présente pour les petits formats.  
+    La sémantique semble connue mais n’est pas utilisée : il manque des balises de base comme `<footer>` et `<header>`.  
+    L’accessibilité doit également être améliorée.  
+    
+    **Points positifs :** réflexion pertinente sur l’UX, avec une utilisation pensée pour une seule main, et une maîtrise apparente de la partie JavaScript.
+    
+    **Note :** 7,5 / 20
 
-- Bloc 3
+---
+
+- ## Bloc 3
     - [x] Modéliser une base de données optimisée répondant aux spécifications techniques et fonctionnelles afin de stocker les données, d’y accéder de manière sécurisée et de limiter la redondance des données dans un souci d’éco-conception.
     - [x] Composer des requêtes HTTP (POST, GET) efficaces via formulaires ou appels d’URL pour gérer les interactions entre l’utilisateur et le serveur et optimiser les performances d’accès et la sécurité.
     - [x] Concevoir une application en mobilisant des modèles de programmation moderne (tels que le Modèle-Vue-Contrôleur) afin de répondre aux besoins fonctionnels de l’application.
@@ -53,8 +66,17 @@
     - [ ] Rédiger une documentation de maintenance (format Markdown ou PDF).
     - [ ] Préparer une checklist de tests à suivre avant toute mise en production.
 
-    ## Jury Feedback from First Soutenance (archived)
-        - Feedback : L'application n'est pas encore fonctionnelle, l'espace administrateur ne peut être testé. Il n'y a pas de protection contre la faille XSS et l'architecture n'est pas optimale avec notamment des requêtes SQL un peu partout, un code un peu désorganisé. Les conventions de nommage sont peu respectées. La page admin est accessible sans authentification. Ce qui est positif est une bonne utilisation de la programmation orientée objet et l'utilisation de GIT pour le versionning. Jorge a brièvement évoqué les axes d'améliorations futures.
-        - Score : 6,67/20
+    ###  Retour du jury lors de la première soutenance
+    
+    **Feedback :** L’application n’est pas encore fonctionnelle, l’espace administrateur ne peut pas être testé.  
+    Aucune protection contre les failles XSS n’a été mise en place, et l’architecture n’est pas optimale : des requêtes SQL sont présentes un peu partout et le code est assez désorganisé.  
+    Les conventions de nommage sont peu respectées. La page admin est accessible sans authentification.
+    
+    **Points positifs :** bonne utilisation de la programmation orientée objet, et usage pertinent de GIT pour le versionning. Jorge a brièvement présenté les axes d’amélioration envisagés.
+    
+    **Note :** 6,67 / 20
+
+---
+
 
 - Commentaire général : Un projet qui a de l'avenir mais qui n'est pas abouti avec encore trop de code en construction.
