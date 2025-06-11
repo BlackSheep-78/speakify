@@ -12,8 +12,9 @@
     - [ ] Prepare the new MCD including all additional tables and their relationships.
     - [ ] Ensure MCD readability and accessibility for public presentation (use color, spacing, labels).
 
-    - Feedback : CDC basé sur du listing dépourvu d’explications. Votre CDC était particulièrement difficile à comprendre car vous avez principalement énoncé des éléments (sous forme de liste) sans jamais détailler les points. Votre CDC manque fortement d’explications, de précisions, et de développement. Ne vous contentez pas de lister des points importants. Développez-les ! Prévoyez votre MCD pour la soutenance. Courage !
-    - Sccore : 10,29/20
+    ## Jury Feedback from First Soutenance (archived)
+        - Feedback : CDC basé sur du listing dépourvu d’explications. Votre CDC était particulièrement difficile à comprendre car vous avez principalement énoncé des éléments (sous forme de liste) sans jamais détailler les points. Votre CDC manque fortement d’explications, de précisions, et de développement. Ne vous contentez pas de lister des points importants. Développez-les ! Prévoyez votre MCD pour la soutenance. Courage !
+        - Sccore : 10,29/20
 
 - bloc 2
     - [ ] Analyser conceptuellement la maquette (images, vidéos, etc.) pour la découper en blocs sémantiques puis la traduire en HTML.
@@ -31,8 +32,9 @@
     - [ ] Ajouter des éléments d’accessibilité : texte alternatif, ordre de tabulation, aria-labels.
     - [ ] Utiliser des balises ARIA et vérifier la compatibilité avec les lecteurs d’écran.
 
-    - Feedback : Absence d'éléments essentiels à la validation : les maquettes et le préprocesseur. De plus, le responsive n'est pas géré, juste une media query pour les petits formats. La sémantique semble connue mais pas utilisée, il n'y a pas les balises basiques telles que <footer> et <header>. L'accessibilité est à améliorer. Les côtés positifs sont la réflexion sur l'UX et l'utilisation de l'application à une seule main, ainsi que la partie JavaScript qui semble maîtrisée.
-    - Score : 7,5/20
+    ## Jury Feedback from First Soutenance (archived)
+        - Feedback : Absence d'éléments essentiels à la validation : les maquettes et le préprocesseur. De plus, le responsive n'est pas géré, juste une media query pour les petits formats. La sémantique semble connue mais pas utilisée, il n'y a pas les balises basiques telles que <footer> et <header>. L'accessibilité est à améliorer. Les côtés positifs sont la réflexion sur l'UX et l'utilisation de l'application à une seule main, ainsi que la partie JavaScript qui semble maîtrisée.
+        - Score : 7,5/20
 
 - bloc 3
     - [x] Modéliser une base de données optimisée répondant aux spécifications techniques et fonctionnelles afin de stocker les données, d’y accéder de manière sécurisée et de limiter la redondance des données dans un souci d’éco-conception.
@@ -46,14 +48,15 @@
     - [ ] Proposer le cas échéant, en réponse à des situations imprévues, des solutions correctives afin d’assurer la continuité du site ou de l’application et les transmettre à l’équipe.
     - [ ] Proposer le cas échéant, en réponse à des situations imprévues, des solutions correctives afin d’assurer la continuité du site ou de l’application et les transmettre à l’équipe.
     - [ ] Protéger l’espace administrateur avec vérification de session utilisateur. 
-    - [ ] Centraliser toutes les requêtes SQL dans les modèles (pas de SQL dans les contrôleurs).
+    - [x] Centraliser toutes les requêtes SQL dans les modèles (pas de SQL dans les contrôleurs).
     - [x] Sécuriser toutes les entrées utilisateurs contre les failles XSS (htmlspecialchars ou équivalent).
     - [x] Respecter une convention de nommage uniforme dans tout le projet (camelCase, snake_case, etc.).
     - [ ] Terminer le backoffice avec au moins 2 écrans fonctionnels (gestion, édition, etc.).
     - [ ] Rédiger une documentation de maintenance (format Markdown ou PDF).
     - [ ] Préparer une checklist de tests à suivre avant toute mise en production.
 
-    - Feedback : L'application n'est pas encore fonctionnelle, l'espace administrateur ne peut être testé. Il n'y a pas de protection contre la faille XSS et l'architecture n'est pas optimale avec notamment des requêtes SQL un peu partout, un code un peu désorganisé. Les conventions de nommage sont peu respectées. La page admin est accessible sans authentification. Ce qui est positif est une bonne utilisation de la programmation orientée objet et l'utilisation de GIT pour le versionning. Jorge a brièvement évoqué les axes d'améliorations futures.
-    - Score : 6,67/20
+    ## Jury Feedback from First Soutenance (archived)
+        - Feedback : L'application n'est pas encore fonctionnelle, l'espace administrateur ne peut être testé. Il n'y a pas de protection contre la faille XSS et l'architecture n'est pas optimale avec notamment des requêtes SQL un peu partout, un code un peu désorganisé. Les conventions de nommage sont peu respectées. La page admin est accessible sans authentification. Ce qui est positif est une bonne utilisation de la programmation orientée objet et l'utilisation de GIT pour le versionning. Jorge a brièvement évoqué les axes d'améliorations futures.
+        - Score : 6,67/20
 
 - Commentaire général : Un projet qui a de l'avenir mais qui n'est pas abouti avec encore trop de code en construction.
