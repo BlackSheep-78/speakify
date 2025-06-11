@@ -1,10 +1,6 @@
 ### [Readme](https://github.com/BlackSheep-78/speakify/blob/main/README.md)
 
-## 📄 Documentation
-
----
-  
-🛠️ DOCUMENT DE SPÉCIFICATIONS TECHNIQUES
+# Speakify – Spécifications Techniques
 
 📌 Présentation du Projet
 - Nom du projet : Speakify
