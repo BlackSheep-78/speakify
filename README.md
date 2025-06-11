@@ -1,7 +1,5 @@
 ## 📄 Documentation
 
-- ### [Readme](https://github.com/BlackSheep-78/speakify/blob/main/README.md)
-
 - ### [Dossier de Présentation](docs/today/presentation.md)
 
 - ### [Cahier des Charges](docs/today/statement_of_work.fr.md)
