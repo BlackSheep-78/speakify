@@ -20,6 +20,15 @@
 
 ---
 
+- 📘 [Pourquoi ce projet](./docs/today/pourquoi-ce-projet.md)  
+  _Les motivations, les objectifs personnels, et la genèse de Speakify._
+
+- 🎓 [La formation](./docs/today/la-formation.md)  
+  _Ce que la formation m’a apporté, les compétences acquises, et l’évolution technique._
+
+- ✅ [Conclusion](./docs/today/conclusion.md)  
+  _Bilan du projet, résultats, pistes futures et réflexions personnelles._
+
 
 
 
