@@ -12,6 +12,9 @@
 
 - ### [Maquette sur Figma](https://www.figma.com/proto/KVXW8xRzNIM24ZjB4duoUe/Speakify?node-id=3-13&p=f&t=yNHp8yvKNKKr6bk2-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1)
 
+-  ### [diaporama de présentation]([https://www.figma.com/proto/KVXW8xRzNIM24ZjB4duoUe/Speakify?node-id=3-13&p=f&t=yNHp8yvKNKKr6bk2-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1](https://docs.google.com/presentation/d/1PBIGio4ludcBh7yNv26cniMTyn6ENDHb0blfyW2BNMo/edit?usp=sharing))
+
+
 
 
 
