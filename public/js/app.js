@@ -81,7 +81,7 @@ const app =
     await this.ensureToken();
 
     // ✅ Universal UI updates (if needed across all views)
-    if (["login-profile", "register", "dashboard", "playback"].includes(view)) 
+    if (["login-profile", "register", "dashboard", "playback","update-details","update-details"].includes(view)) 
     {
       await this.updateUI();
       await this.setupPageElements();
@@ -89,7 +89,11 @@ const app =
 
     // 🔍 Get the name of the handler function for the current view
     const handler = this.viewHandlers?.[view];
-    if (typeof handler === "string" && typeof this[handler] === "function") {
+
+    console.log(handler);
+
+    if (typeof handler === "string" && typeof this[handler] === "function") 
+    {
       await this[handler](); // legacy string-based
     } else if (typeof handler === "object" && typeof handler.init === "function") {
       handler.init(); // new object-based view module
@@ -139,7 +143,6 @@ const app =
     }
   },
   
-
   getCurrentView() {
     const path = window.location.pathname;
     return path.split('/').pop().replace('.php', '').replace('.html', '');
@@ -664,17 +667,14 @@ loop: async function () {
 
 app.viewHandlers = {
   "dashboard": "initDashboard",
-  "playback": app.playback,  // 👈 CALL the function here
+  "playback": app.playback,
   "playlist-library": "initPlaylistLibrary",
   "settings": "initSettings",
   "smart-lists": "initSmartLists",
-  "admin": "initAdmin"
+  "admin": "initAdmin",
+  "update-details": "initUpdateDetails",
+  "create-play-schema": "initCreatePlaySchema"
 };
-
-
-
-
-
 
 app.registerFormHandler = function () 
 {
@@ -1046,6 +1046,83 @@ app.resetTest = function (delay = 30) {
   localStorage.removeItem('next_test_timestamp');
   window.location.href = 'dashboard'; // or the first view you expect
 };
+
+app.initUpdateDetails = async function () {
+  console.log("# initUpdateDetails");
+
+  const data = await app.api(`api/index.php?action=get_profile`);
+
+  if (data?.redirect) {
+    window.location.href = data.redirect;
+    return;
+  }
+
+  if (data?.name && data?.email) {
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    if (nameInput) nameInput.value = data.name;
+    if (emailInput) emailInput.value = data.email;
+  }
+
+  const form = document.getElementById("update-details-form");
+  const message = document.getElementById("update-details-message");
+
+  if (!form) return;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    message.textContent = "";
+
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const password = form.password.value;
+    const confirm = form.confirm.value;
+
+    if (!name || !email) {
+      message.textContent = "❌ Nom et email sont obligatoires.";
+      return;
+    }
+
+    if (password && password !== confirm) {
+      message.textContent = "❌ Les mots de passe ne correspondent pas.";
+      return;
+    }
+
+    const payload = {
+      name,
+      email
+    };
+
+    if (password) payload.password = password;
+
+    message.textContent = "⏳ Mise à jour...";
+
+    const result = await app.api("api/index.php?action=update_user", {
+      method: "POST",
+      body: JSON.stringify(payload),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+
+    if (result.success) {
+      message.textContent = "✅ Informations mises à jour avec succès.";
+    } else {
+      message.textContent = `❌ ${result.error || "Échec de la mise à jour."}`;
+    }
+  });
+};
+
+
+
+app.initCreatePlaySchema = async function()
+{
+  console.log("# initCreatePlaySchema");
+
+  const data = await app.api(`api/index.php?action=get_play_schemas`);
+
+}
+
 
 
   

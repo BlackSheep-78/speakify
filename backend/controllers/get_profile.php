@@ -6,27 +6,29 @@
 
 header('Content-Type: application/json');
 
-$token = Input::get('token', 'token', '');
+global $database;
 
-if (!$token) 
+$token    = Input::get('token', 'token', '');
+$service  = new LoginService(['db' => $database]);
+$response = $service->validate($token);
+
+if (isset($response['error'])) 
 {
-  http_response_code(400);
-  output(['error' => 'Missing token']);
-  exit;
+    $sessionManager = new SessionManager(['db' => $database]);
+    $new = $sessionManager->create(); // ✅ FIXED: instance call
+    $token = $new['token'];
+
+    $response = [
+        'success'   => true,
+        'logged_in' => false,
+        'token'     => $token
+    ];
 }
 
-$sessionModel = new SessionModel();
-$user = $sessionModel->getUserProfile($token);
-
-if (!$user) 
+if(!$response['logged_in'])
 {
-  http_response_code(401);
-  output(['error' => 'Invalid token']);
-  exit;
+  $response['redirect'] = "login-profile";
 }
 
-output([
-  'name' => $user['name'],
-  'email' => $user['email'],
-  'last_login' => $user['last_login']
-]);
+http_response_code(isset($response['error']) ? 401 : 200);
+output($response);

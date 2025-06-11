@@ -61,4 +61,22 @@ class UserModel
 
         return is_array($result) && !empty($result); // Or check specific column
     }
+
+    public function updateUser(int $userId, array $data): bool
+    {
+        $file = isset($data['password'])
+            ? '/users/update_user_with_password.sql'
+            : '/users/update_user_basic.sql';
+
+        $sql = $this->db->file($file)
+                        ->replace(':ID', $userId, 'i')
+                        ->replace(':NAME', $data['name'], 's')
+                        ->replace(':EMAIL', $data['email'], 's');
+
+        if (isset($data['password'])) {
+            $sql->replace(':PASSWORD', $data['password'], 's');
+        }
+
+        return $sql->result(['fetch' => 'none']) !== false;
+    }
 }

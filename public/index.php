@@ -20,7 +20,9 @@ $allowedViews = [
     'settings',
     'smart-lists',
     'achievements',
-    'admin'
+    'admin',
+    'update-details',
+    ''
 ];
 
 

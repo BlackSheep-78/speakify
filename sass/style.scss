@@ -598,3 +598,64 @@ footer nav {
   }
 }
 
+// ===============================
+// 🔹 Forms
+// ===============================
+
+.form-card {
+  max-width: 480px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.06);
+
+  label {
+    display: block;
+    margin-top: 1.2rem;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  input {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    margin-top: 0.4rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+
+    &:focus {
+      border-color: #2c7be5;
+      outline: none;
+    }
+  }
+
+  button {
+    margin-top: 2rem;
+    padding: 0.8rem;
+    width: 100%;
+    background: #2c7be5;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: #1a5fcc;
+    }
+  }
+
+  #update-details-message {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #444;
+    text-align: center;
+  }
+}
+
+

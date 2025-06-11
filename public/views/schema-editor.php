@@ -1,37 +1,25 @@
-<!-- 
-  do not delete this:
-  file: schema-editor.html
--->
+<?php
+// -----------------------------------------------------------------------------
+// Project     : Speakify
+// File        : /public/views/schema-editor.php
+// Description : Interface to create or edit a playback schema
+// -----------------------------------------------------------------------------
+?>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Schema Editor - Speakify</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="js/app.js" defer></script>
-</head>
-<body>
+<main class="content">
+  <h1>🎛️ Création de schéma de lecture</h1>
 
-<div class="header">
-  <div><a href="login-profile.html">👤 Jorge</a></div>
-  <div><a href="achievements.html">🔥 12 jours</a></div>
-  <div><a href="achievements.html">🌟 2 450 XP</a></div>
-</div>
+  <form id="schema-editor-form" class="form-card">
+    <label for="schema-name">Nom du schéma</label>
+    <input type="text" id="schema-name" name="schema-name" placeholder="Ex: Répétition FR/EN" required>
 
-<div class="content">
-  <h1>Schema Editor</h1>
-  <div>Définir les règles et la logique de lecture.</div>
-</div>
+    <div id="schema-steps">
+      <!-- JS will populate schema steps here -->
+    </div>
 
-<div class="footer-nav">
-  <a href="dashboard.html">🏠</a>
-  <a href="playback.html">🎧</a>
-  <a href="playlist-library.html">📚</a>
-  <a href="smart-lists.html">🧠</a>
-  <a href="settings.html">⚙️</a>
-</div>
+    <button type="button" id="add-step">➕ Ajouter une étape</button>
+    <button type="submit">💾 Enregistrer</button>
 
-</body>
-</html>
+    <p id="schema-editor-message"></p>
+  </form>
+</main>
