@@ -8,6 +8,11 @@
 
 - ### [Spécifications Techniques](/docs/today/technical_specification_document.fr.md)
 
+- ### [Checklist de Soutenance](./docs/checklist.md)  
+  _Cette checklist a été construite à partir du rapport de ma précédente soutenance (non validée).  
+  Elle me sert de guide pour corriger les points manquants et renforcer le projet en vue de cette nouvelle présentation._
+
+
 - ### [MCD](/docs/today/MCD.pdf)
   _MCD du projet complet, incluant les cardinalités et zones fonctionnelles. (Ctrl+clic pour ouvrir dans un nouvel onglet)_
 
