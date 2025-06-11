@@ -20,11 +20,7 @@
 
 ---
 
-## 🚀 Run Deployment
 
-To deploy Speakify to the production server, run the following command:
-
-👉 `ansible-playbook playbooks/deploy.yml --ask-vault-pass`
 
 
   
