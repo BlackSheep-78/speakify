@@ -1,8 +1,8 @@
 ## 📄 Documentation
 
-- [Readme](https://github.com/BlackSheep-78/speakify/blob/main/README.md)
+# [Readme](https://github.com/BlackSheep-78/speakify/blob/main/README.md)
 
-- [Cahier des Charges](docs/speakify/statement_of_work_and_technical_specs.fr.md)  
+# [Cahier des Charges](docs/speakify/statement_of_work_and_technical_specs.fr.md)  
   
 - 🇫🇷 [Document de Spécifications Techniques (FR)](https://github.com/BlackSheep-78/speakify/blob/main/docs/technical_specification_document.fr.md)  
 - 🇬🇧 [Technical Specification Document (EN)](https://github.com/BlackSheep-78/speakify/blob/main/docs/technical_specification_document.en.md)
