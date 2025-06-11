@@ -31,6 +31,18 @@ $shadow-light: 0 2px 6px rgba(0, 0, 0, 0.05);
 $shadow-medium: 0 2px 8px rgba(0, 0, 0, 0.06);
 $shadow-heavy: 0 4px 12px rgba(0, 0, 0, 0.1);
 
+// ===============================
+// 🔹 Simulate mobile
+// ===============================
+
+body {
+  width: 400px;              // iPhone X width
+  height: 812px;             // iPhone X height
+  margin: 0 auto;
+  overflow: auto;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
 
 // ===============================
 // 🔹 Reset
