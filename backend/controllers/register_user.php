@@ -7,9 +7,9 @@
 
 header('Content-Type: application/json');
 
-$email    = Input::get('email', '');  // Sanitized input for email
-$password = Input::get('password', '');  // Sanitized input for password
-$name     = Input::get('name', 'Anonymous');  // Sanitized input for name
+$email    = Input::post('email', 'email');  // Sanitized input for email
+$password = Input::post('password', 'string');  // Sanitized input for password
+$name     = Input::post('name', 'string');  // Sanitized input for name
 
 if (!$email || !$password) 
 {
@@ -18,7 +18,7 @@ if (!$email || !$password)
   exit;
 }
 
-$userModel = new UserModel();
+$userModel = new UserModel(['db' => $database]);
 
 if ($userModel->emailExists($email)) 
 {
