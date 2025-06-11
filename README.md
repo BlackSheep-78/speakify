@@ -4,9 +4,9 @@
 
 - ### [Cahier des Charges](docs/speakify/statement_of_work_and_technical_specs.fr.md)
 
-- ### [Document de Spécifications Techniques](/docs/technical_specification_document.fr.md)
+- ### [Document de Spécifications Techniques](/docs/speakify/technical_specification_document.fr.md)
 
-- https://github.com/BlackSheep-78/speakify/blob/main/docs/speakify/technical_specification_document.fr.md
+
   
 
 ---
