@@ -6,7 +6,7 @@
 
 - ### [Cahier des Charges](docs/today/statement_of_work.fr.md)
 
-- ### [Document de Spécifications Techniques](/docs/today/technical_specification_document.fr.md)
+- ### [Spécifications Techniques](/docs/today/technical_specification_document.fr.md)
 
 - ### [MCD](/docs/today/MCD.pdf)
   _MCD du projet complet, incluant les cardinalités et zones fonctionnelles. (Ctrl+clic pour ouvrir dans un nouvel onglet)_
