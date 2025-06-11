@@ -14,22 +14,9 @@
 
 - ### [Diaporama de Présentation](https://docs.google.com/presentation/d/1PBIGio4ludcBh7yNv26cniMTyn6ENDHb0blfyW2BNMo/present)
 
-
-
-
-
-
-
-
-  
-
 ---
 
-## 🌐 Deployment URL
-
-Once deployed, Speakify is available at:
-
-👉 <a href="http://89.116.29.115/" target="_blank">http://89.116.29.115/</a>
+- ### [Speakify en ligne](http://speakify.blacksheep-node-c04fe.com/)
 
 ---
 
