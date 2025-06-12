@@ -544,7 +544,7 @@ loop: async function () {
       const text = trans?.trans_txt;
       const audioPath = trans?.audio_url;
       const base = app.config.base_url?.replace(/\/+\$/, '') || '';
-      const audioUrl = audioPath ? `${base}${audioPath}` : null;
+      const audioUrl = "http://speakify.blacksheep-node-c04fe.com/" +  audioPath ? `${base}${audioPath}` : null;
 
       console.log("### base",base);
       console.log("### audioUrl",audioUrl);
