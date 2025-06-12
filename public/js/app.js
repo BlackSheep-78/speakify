@@ -136,6 +136,7 @@ const app =
           <button onclick="location.href='playlist-editor.html?id=${pl.id}'">✏️ Modifier</button>
         </div>
       `).join('');
+
   
     } catch (err) {
       console.error("❌ Failed to load playlists:", err);
@@ -544,6 +545,8 @@ loop: async function () {
       const audioPath = trans?.audio_url;
       const base = app.config.base_url?.replace(/\/+\$/, '') || '';
       const audioUrl = audioPath ? `${base}${audioPath}` : null;
+
+      console.log("audioUrl",audioUrl);
 
       if (!text) continue;
 
