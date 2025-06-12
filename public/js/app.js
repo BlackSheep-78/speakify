@@ -546,7 +546,8 @@ loop: async function () {
       const base = app.config.base_url?.replace(/\/+\$/, '') || '';
       const audioUrl = audioPath ? `${base}${audioPath}` : null;
 
-      console.log("audioUrl",audioUrl);
+      console.log("### base",base);
+      console.log("### audioUrl",audioUrl);
 
       if (!text) continue;
 
