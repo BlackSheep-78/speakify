@@ -15,7 +15,9 @@
   - _MCD du projet complet, incluant les cardinalités et zones fonctionnelles._
   - _(Ctrl+clic pour ouvrir dans un nouvel onglet)_
 
-- ### [Maquette sur Figma](https://www.figma.com/proto/KVXW8xRzNIM24ZjB4duoUe/Speakify?node-id=21-2&t=N9TmyKqrlr54NuD3-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=21%3A2)
+
+
+- ### [Maquette sur Figma](https://www.figma.com/proto/KVXW8xRzNIM24ZjB4duoUe/Speakify?t=hiGBQ6gjOwvReRuo-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&node-id=21-2&starting-point-node-id=21%3A2)
    - _Maquette interactive Figma représentant l’interface utilisateur de Speakify._
    - _(Ctrl+clic pour ouvrir dans un nouvel onglet)_
 
