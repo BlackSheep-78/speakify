@@ -743,7 +743,7 @@ app.api = function(endpoint, options = {})
       {
         try 
         {
-          const res = await fetch("http://speakify.blacksheep-node-c04fe.com/api/index.php?action=get_config");
+          const res = await fetch("/api/index.php?action=get_config");
           const data = await res.json();
           if (data.success) 
           {
